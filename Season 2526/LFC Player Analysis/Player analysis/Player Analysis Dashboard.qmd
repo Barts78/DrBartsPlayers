@@ -3064,7 +3064,7 @@ Player_Summary_Plot_Home
 #| label: Whole Team Goal Data
 #| width: 200
 
-Player_Summary_Plot_Home <- Player_Goal_data_Home %>% 
+Player_Summary_Plot_HomeTG <- Player_Goal_data_Home %>% 
   ggplot() +
   geom_col(aes(x = Metric,
                y = Value,
@@ -3121,14 +3121,14 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
         legend.text = element_text(colour = "black", size = 4),
         legend.position = "top")
 
-Player_Summary_Plot_Home
+Player_Summary_Plot_HomeTG
 
 ```
 ```{r}
 #| title: Keepers Goal Data
 #| label: Keepers Goal Data
 
-Player_Summary_Plot_Home <- Player_Goal_data_Home %>% 
+Player_Summary_Plot_HomeGG <- Player_Goal_data_Home %>% 
   filter(role == "Keeper") %>%
   ggplot() +
   geom_col(aes(x = Metric,
@@ -3186,7 +3186,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
         legend.text = element_text(colour = "black", size = 6),
         legend.position = "top")
 
-Player_Summary_Plot_Home
+Player_Summary_Plot_HomeGG
 
 ```
 
@@ -3195,7 +3195,7 @@ Player_Summary_Plot_Home
 #| title: Defenders Goal Data
 #| label: Defenders Goal Data
 
-Player_Summary_Plot_Home <- Player_Goal_data_Home %>% 
+Player_Summary_Plot_HomeDG <- Player_Goal_data_Home %>% 
   filter(role == "Defender") %>%
   ggplot() +
   geom_col(aes(x = Metric,
@@ -3253,14 +3253,14 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
         legend.text = element_text(colour = "black", size = 6),
         legend.position = "top")
 
-Player_Summary_Plot_Home
+Player_Summary_Plot_HomeDG
 
 ```
 ```{r}
 #| title: Midfielders  Goal Data
 #| label: Midfielders  Goal Data
 
-Player_Summary_Plot_Home <- Player_Goal_data_Home %>% 
+Player_Summary_Plot_HomeMG <- Player_Goal_data_Home %>% 
   filter(role == "Midfielder") %>%
   ggplot() +
   geom_col(aes(x = Metric,
@@ -3318,14 +3318,14 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
         legend.text = element_text(colour = "black", size = 6),
         legend.position = "top")
 
-Player_Summary_Plot_Home
+Player_Summary_Plot_HomeMG
 
 ```
 ```{r}
 #| title: Forwards  Goal Data
 #| label: Forwards  Goal Data
 
-Player_Summary_Plot_Home <- Player_Goal_data_Home %>% 
+Player_Summary_Plot_HomeFG <- Player_Goal_data_Home %>% 
   filter(role == "Forward") %>%
   ggplot() +
   geom_col(aes(x = Metric,
@@ -3383,7 +3383,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
         legend.text = element_text(colour = "black", size = 6),
         legend.position = "top")
 
-Player_Summary_Plot_Home
+Player_Summary_Plot_HomeFG
 
 ```
 

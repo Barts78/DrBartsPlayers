@@ -1,6 +1,6 @@
 ---
 title: "Player Analysis Dashboard"
-author: "Dr Phi Barter"
+author: "Dr Phil Barter"
 format: 
   dashboard:
       scrolling: true
@@ -65,6 +65,10 @@ library(ggforce)
 library(scales)
 library(slider)
 library(rlang)
+library(scales)
+library(ggtext)
+library(slider)
+library(lubridate)
 
 ###############
 #set database
@@ -216,7 +220,7 @@ Game_date <- last(na.omit(plottingData$Game_date))
 GameName <- paste0(Match_Home," vs ", Match_Away)
 
 #set fixture
-Match_Fixture <- paste0(Match_Home, " vs ", Match_Away, "up to - ", Game_date)
+Match_Fixture <- paste0(Match_Home, " vs ", Match_Away, " up to - ", Game_date)
 
 
 #######################
@@ -292,9 +296,9 @@ social_caption <- function(twitter="@Barts78",
     icon = icons[name]
     info = social[name]
     html = glue("<span style='font-family:\"Font Awesome 7 Brands\";color:{icon_color};font-size:8px;'>{icon};</span>
-                <span style='color:{bg_color};font-size:8px;'>.</span>
+                <span style='color:{bg_color};font-size:7px;'>.</span>
                 <span style='font-family:{font_family};color:{font_color};font-size:8px;'>{info}</span>
-                <span style='color:{bg_color};font-size:8px;'>.</span>")
+                <span style='color:{bg_color};font-size:7px;'>.</span>")
     
     
     caption = paste0(caption,html)
@@ -317,9 +321,9 @@ my_socials <- social_caption(twitter = "@Barts78",
                              font_family = "sans-serif")
 
 my_datasource <- paste0('<span style="font-family:\'Font Awesome 7 Free\', Arial, sans-serif;color:#454545;font-size:8px;">&#x1F4BE;</span>',
-                        '<span style="color:#FFF9FB;font-size:8px;">...</span>',
+                        '<span style="color:#FFF9FB;font-size:7px;">...</span>',
                         '<span style="font-family:sans-serif;color:#454545;font-size:8px;">OPTA</span>',
-                        '<span style="color:#FFF9FB;font-size:8px;">...</span>')
+                        '<span style="color:#FFF9FB;font-size:7px;">...</span>')
 
 My_caption <- paste0(my_socials)
 
@@ -1882,6 +1886,121 @@ nodes <- nodes %>%
 }
 ```
 
+``` {r}
+#| label: metric-plot-function
+#| echo: false
+#| message: false
+#| warning: false
+
+plot_metric_dashboard <- function(metric, metric_label, metric_is_percent = FALSE) {
+
+  roll_n <- 5
+
+  base_dat <- MatchPLayerSeasonData %>%
+    filter(
+      TeamName == Match_Home,
+      player_shirt <= 38,
+      !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
+    ) %>%
+    mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")) %>%
+    arrange(playerId, Game_date)
+
+  team_avg <- base_dat %>%
+    summarise(team_avg = mean(.data[[metric]], na.rm = TRUE)) %>%
+    pull(team_avg)
+
+  players <- base_dat %>%
+    distinct(playerId) %>%
+    arrange(playerId) %>%
+    pull(playerId)
+
+  date_limits <- base_dat %>%
+    summarise(
+      min_date = floor_date(min(Game_date, na.rm = TRUE), "month"),
+      max_date = ceiling_date(max(Game_date, na.rm = TRUE), "month")
+    )
+
+  cat("::: {.player-grid}\n\n")
+
+  for (p in players) {
+
+    cat("::: {.callout-plain title='", p, "'}\n\n", sep = "")
+
+    player_dat <- base_dat %>%
+      filter(playerId == p) %>%
+      arrange(Game_date) %>%
+      mutate(
+        metric_roll = slide_dbl(
+          .data[[metric]],
+          ~ mean(.x, na.rm = TRUE),
+          .before = roll_n - 1
+        )
+      )
+
+    y_scale <- if (metric_is_percent) {
+      scale_y_continuous(
+        breaks = seq(0, 1, 0.2),
+        labels = percent_format(accuracy = 1),
+        limits = c(0, 1)
+      )
+    } else {
+      scale_y_continuous(
+        breaks = scales::pretty_breaks(n = 5)
+      )
+    }
+
+    p_plot <- ggplot(player_dat, aes(x = Game_date)) +
+      geom_line(aes(y = .data[[metric]]),
+                linewidth = 0.7,
+                alpha = 0.6,
+                colour = Color_Home) +
+      geom_line(aes(y = metric_roll),
+                linewidth = 0.9,
+                linetype = "dashed",
+                colour = Color_Home) +
+      geom_hline(yintercept = team_avg,
+                 linewidth = 0.7,
+                 colour = "gray35") +
+      scale_x_date(
+        limits = c(date_limits$min_date, date_limits$max_date),
+        breaks = seq(date_limits$min_date, date_limits$max_date, by = "1 month"),
+        labels = scales::date_format("%b")
+      ) +
+      y_scale +
+      labs(
+        title = p,
+        subtitle = paste0(
+          Match_Fixture,
+          ", Solid = Player, Dashed = Rolling Avg (", roll_n,
+          "), Grey = Team Avg"
+        ),
+        x = NULL,
+        y = metric_label,
+        caption = My_caption
+      ) +
+      theme(
+        plot.background = element_rect(colour = "snow", fill = "snow"),
+        panel.background = element_rect(colour = "snow", fill = "snow"),
+        plot.title = element_text(size = 11, face = "bold", colour = "gray12"),
+        plot.subtitle = element_text(size = 9),
+        plot.caption = element_markdown(),
+        plot.title.position = "plot",
+        axis.text.y = element_text(size = 6),
+        axis.text.x = element_text(size = 8, angle = 90),
+        legend.position = "none",
+        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
+        panel.grid.minor = element_blank()
+      )
+
+    print(p_plot)
+
+    cat("\n:::\n\n")
+  }
+
+  cat(":::\n")
+}
+```
+
 ```{r}
 #| output: false
 #| label: set Summary values
@@ -2743,10 +2862,10 @@ SeasonSummaryPLayerDefensiveTableHome <- MatchSummaryPLayerDefensiveSeasonData %
 SeasonSummaryPLayerDefensiveTableHome
 ```
 
-
-
 ### Season Total Profiles {.tabset}
+
 #### Standard Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team Profile
 #| label: Whole Team Profile
@@ -2811,6 +2930,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers
@@ -2877,7 +2997,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders
@@ -2943,6 +3062,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders
@@ -3008,6 +3128,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards
@@ -3073,7 +3194,9 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 #### Goal Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Goal Data
@@ -3139,6 +3262,7 @@ Player_Summary_Plot_HomeTG <- Player_Goal_data_Home %>%
 Player_Summary_Plot_HomeTG
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers Goal Data
@@ -3205,7 +3329,6 @@ Player_Summary_Plot_HomeGG
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders Goal Data
@@ -3271,6 +3394,7 @@ Player_Summary_Plot_HomeDG <- Player_Goal_data_Home %>%
 Player_Summary_Plot_HomeDG
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders Goal Data
@@ -3336,6 +3460,7 @@ Player_Summary_Plot_HomeMG <- Player_Goal_data_Home %>%
 Player_Summary_Plot_HomeMG
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards Goal Data
@@ -3401,7 +3526,9 @@ Player_Summary_Plot_HomeFG <- Player_Goal_data_Home %>%
 Player_Summary_Plot_HomeFG
 
 ```
+
 ### Passing Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -3449,6 +3576,7 @@ PassConnectionsPP <- PassConnections %>%
                        "Ryan Gravenberch"))
 
 ```
+
 ```{r}
 #| title: Successful Passes
 #| label: SPassing high EPV
@@ -3502,6 +3630,7 @@ EPV_PassesFT <- PassConnectionsEPV %>%
 EPV_PassesFT
 
 ```
+
 ```{r}
 #| title: Progressive Pases
 #| label: P Passing high EPV
@@ -3555,6 +3684,7 @@ EPV_PassesFT <- PassConnectionsPP %>%
 EPV_PassesFT
 
 ```
+
 ```{r}
 #| title: Key Passes
 #| label: KP Passing high EPV
@@ -3611,6 +3741,7 @@ EPV_PassesFT
 ```
 
 ### Season per game Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -3919,612 +4050,664 @@ MatchPLayerDefensiveSeasonData <- MatchPLayerDefensiveSeasonData %>%
 ```{r}
 #| title: Passing Success
 #| label: player Passing P Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-PassingPLinePlot <- MatchPLayerSeasonData %>%
+metric <- "Pass_Success"
+metric_label <- "Passing Success"
+metric_is_percent <- TRUE
+
+roll_n <- 5
+ncol_cards <- 3
+
+base_dat <- MatchPLayerSeasonData %>%
   filter(
     TeamName == Match_Home,
     player_shirt <= 38,
     !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
   ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Pass_Success, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
+  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")) %>%
+  arrange(playerId, Game_date)
+
+team_avg <- base_dat %>%
+  summarise(team_avg = mean(.data[[metric]], na.rm = TRUE)) %>%
+  pull(team_avg)
+
+players <- base_dat %>%
+  distinct(playerId) %>%
+  arrange(playerId) %>%
+  pull(playerId)
+
+date_limits <- base_dat %>%
+  summarise(
+    min_date = floor_date(min(Game_date, na.rm = TRUE), "month"),
+    max_date = ceiling_date(max(Game_date, na.rm = TRUE), "month")
+  )
+
+# Open grid container (NO columns)
+cat("::: {.player-grid}\n\n")
+
+for (p in players) {
+
+  # Open callout (do NOT close it yet)
+  cat("::: {.callout-plain title='", p, "'}\n\n", sep = "")
+
+  player_dat <- base_dat %>%
+    filter(playerId == p) %>%
+    arrange(Game_date) %>%
+    mutate(
+      metric_roll = slide_dbl(
+        .data[[metric]],
+        ~ mean(.x, na.rm = TRUE),
+        .before = roll_n - 1
+        )
+    )
+  
+  y_scale <- if (metric_is_percent) {
   scale_y_continuous(
-    breaks = seq(0, 1, 0.25),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Passing Success",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
+    breaks = seq(0, 1, 0.2),
+    labels = percent_format(accuracy = 1),
+    limits = c(0, 1)
+  )
+} else {
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 5)
+  )
+}
 
-PassingPLinePlot
+  PassingPLinePlot <- ggplot(player_dat, aes(x = Game_date)) +
+    geom_line(aes(y = .data[[metric]]),
+              linewidth = 0.7,
+              alpha = 0.6,
+              colour = Color_Home) +
+    geom_line(aes(y = metric_roll),
+              linewidth = 0.9,
+              linetype = "dashed",
+              colour = Color_Home) +
+    geom_hline(yintercept = team_avg,
+               linewidth = 0.7,
+               colour = "gray35") +
+    scale_x_date(
+      limits = c(date_limits$min_date, date_limits$max_date),
+      breaks = seq(date_limits$min_date, date_limits$max_date, by = "1 month"),
+      labels = scales::date_format("%b")
+    ) +
+    y_scale +
+    
+    labs(
+      title = p,
+      subtitle = paste0(
+        Match_Fixture,
+        ", Solid Line = Player,\nDashed Line = Rolling Avg (", roll_n, " games), Grey Line = Team Avg"
+      ),
+      x = NULL,
+      y = metric_label,
+      caption = My_caption
+    ) +
+    theme(
+      plot.background = element_rect(colour = "snow", fill = "snow"),
+      panel.background = element_rect(colour = "snow", fill = "snow"),
+      plot.title = element_text(size = 11, face = "bold", colour = "gray12"),
+      plot.subtitle = element_text(size = 9),
+      plot.caption = element_markdown(),
+      plot.title.position = "plot",
+      axis.title = element_text(colour = "gray12", size = 8),
+      axis.text.y = element_text(size = 6),
+      axis.text.x = element_text(size = 8, angle = 90),
+      text = element_text(color = "gray12", family = "Arial"),
+      legend.position = "none",
+      panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
+      panel.grid.minor = element_blank()
+    )
 
+  print(PassingPLinePlot)
+
+  # Close callout
+  cat("\n:::\n\n")
+}
+
+# Close grid container
+cat(":::\n")
 ```
 
 ```{r}
 #| title: Passes Made
 #| label: player Passing graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-PassingLinePlot <- MatchPLayerSeasonData %>%
+metric <- "Successful_Passes"
+metric_label <- "Successful Passes"
+metric_is_percent <- FALSE
+
+roll_n <- 5
+ncol_cards <- 3
+
+base_dat <- MatchPLayerSeasonData %>%
   filter(
     TeamName == Match_Home,
     player_shirt <= 38,
     !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
   ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Successful_Passes, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  #scale_y_continuous(
-  #  breaks = seq(0, 1, 0.1),
-  #  labels = percent_format(accuracy = 1)
-  #) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Passes made",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
+  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")) %>%
+  arrange(playerId, Game_date)
 
-PassingLinePlot
+team_avg <- base_dat %>%
+  summarise(team_avg = mean(.data[[metric]], na.rm = TRUE)) %>%
+  pull(team_avg)
 
+players <- base_dat %>%
+  distinct(playerId) %>%
+  arrange(playerId) %>%
+  pull(playerId)
+
+date_limits <- base_dat %>%
+  summarise(
+    min_date = floor_date(min(Game_date, na.rm = TRUE), "month"),
+    max_date = ceiling_date(max(Game_date, na.rm = TRUE), "month")
+  )
+
+# Open grid container (NO columns)
+cat("::: {.player-grid}\n\n")
+
+for (p in players) {
+
+  # Open callout (do NOT close it yet)
+  cat("::: {.callout-plain title='", p, "'}\n\n", sep = "")
+
+  player_dat <- base_dat %>%
+    filter(playerId == p) %>%
+    arrange(Game_date) %>%
+    mutate(
+      metric_roll = slide_dbl(
+        .data[[metric]],
+        ~ mean(.x, na.rm = TRUE),
+        .before = roll_n - 1
+        )
+    )
+  
+  y_scale <- if (metric_is_percent) {
+  scale_y_continuous(
+    breaks = seq(0, 1, 0.2),
+    labels = percent_format(accuracy = 1),
+    limits = c(0, 1)
+  )
+} else {
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 5)
+  )
+}
+
+  PassingPLinePlot <- ggplot(player_dat, aes(x = Game_date)) +
+    geom_line(aes(y = .data[[metric]]),
+              linewidth = 0.7,
+              alpha = 0.6,
+              colour = Color_Home) +
+    geom_line(aes(y = metric_roll),
+              linewidth = 0.9,
+              linetype = "dashed",
+              colour = Color_Home) +
+    geom_hline(yintercept = team_avg,
+               linewidth = 0.7,
+               colour = "gray35") +
+    scale_x_date(
+      limits = c(date_limits$min_date, date_limits$max_date),
+      breaks = seq(date_limits$min_date, date_limits$max_date, by = "1 month"),
+      labels = scales::date_format("%b")
+    ) +
+    y_scale +
+    
+    labs(
+      title = p,
+      subtitle = paste0(
+        Match_Fixture,
+        ", Solid Line = Player,\nDashed Line = Rolling Avg (", roll_n, " games), Grey Line = Team Avg"
+      ),
+      x = NULL,
+      y = metric_label,
+      caption = My_caption
+    ) +
+    theme(
+      plot.background = element_rect(colour = "snow", fill = "snow"),
+      panel.background = element_rect(colour = "snow", fill = "snow"),
+      plot.title = element_text(size = 11, face = "bold", colour = "gray12"),
+      plot.subtitle = element_text(size = 9),
+      plot.caption = element_markdown(),
+      plot.title.position = "plot",
+      axis.title = element_text(colour = "gray12", size = 8),
+      axis.text.y = element_text(size = 6),
+      axis.text.x = element_text(size = 8, angle = 90),
+      text = element_text(color = "gray12", family = "Arial"),
+      legend.position = "none",
+      panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
+      panel.grid.minor = element_blank()
+    )
+
+  print(PassingPLinePlot)
+
+  # Close callout
+  cat("\n:::\n\n")
+}
+
+# Close grid container
+cat(":::\n")
 ```
 
 ```{r}
 #| title: Receiving Success
 #| label: player Receiving P graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-ReceivingPLinePlot <- MatchPLayerSeasonData %>%
+metric <- "receiving_Suc"
+metric_label <- "Receiving Success"
+metric_is_percent <- TRUE
+
+roll_n <- 5
+ncol_cards <- 3
+
+base_dat <- MatchPLayerSeasonData %>%
   filter(
     TeamName == Match_Home,
     player_shirt <= 38,
     !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
   ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = receiving_Suc, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
+  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")) %>%
+  arrange(playerId, Game_date)
+
+team_avg <- base_dat %>%
+  summarise(team_avg = mean(.data[[metric]], na.rm = TRUE)) %>%
+  pull(team_avg)
+
+players <- base_dat %>%
+  distinct(playerId) %>%
+  arrange(playerId) %>%
+  pull(playerId)
+
+date_limits <- base_dat %>%
+  summarise(
+    min_date = floor_date(min(Game_date, na.rm = TRUE), "month"),
+    max_date = ceiling_date(max(Game_date, na.rm = TRUE), "month")
+  )
+
+# Open grid container (NO columns)
+cat("::: {.player-grid}\n\n")
+
+for (p in players) {
+
+  # Open callout (do NOT close it yet)
+  cat("::: {.callout-plain title='", p, "'}\n\n", sep = "")
+
+  player_dat <- base_dat %>%
+    filter(playerId == p) %>%
+    arrange(Game_date) %>%
+    mutate(
+      metric_roll = slide_dbl(
+        .data[[metric]],
+        ~ mean(.x, na.rm = TRUE),
+        .before = roll_n - 1
+        )
+    )
+  
+  y_scale <- if (metric_is_percent) {
   scale_y_continuous(
-    breaks = seq(0, 1, 0.25),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Receiving Success",
-       title = paste0(Match_Home, " Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
+    breaks = seq(0, 1, 0.2),
+    labels = percent_format(accuracy = 1),
+    limits = c(0, 1)
+  )
+} else {
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 5)
+  )
+}
 
-ReceivingPLinePlot
+  PassingPLinePlot <- ggplot(player_dat, aes(x = Game_date)) +
+    geom_line(aes(y = .data[[metric]]),
+              linewidth = 0.7,
+              alpha = 0.6,
+              colour = Color_Home) +
+    geom_line(aes(y = metric_roll),
+              linewidth = 0.9,
+              linetype = "dashed",
+              colour = Color_Home) +
+    geom_hline(yintercept = team_avg,
+               linewidth = 0.7,
+               colour = "gray35") +
+    scale_x_date(
+      limits = c(date_limits$min_date, date_limits$max_date),
+      breaks = seq(date_limits$min_date, date_limits$max_date, by = "1 month"),
+      labels = scales::date_format("%b")
+    ) +
+    y_scale +
+    
+    labs(
+      title = p,
+      subtitle = paste0(
+        Match_Fixture,
+        ", Solid Line = Player,\nDashed Line = Rolling Avg (", roll_n, " games), Grey Line = Team Avg"
+      ),
+      x = NULL,
+      y = metric_label,
+      caption = My_caption
+    ) +
+    theme(
+      plot.background = element_rect(colour = "snow", fill = "snow"),
+      panel.background = element_rect(colour = "snow", fill = "snow"),
+      plot.title = element_text(size = 11, face = "bold", colour = "gray12"),
+      plot.subtitle = element_text(size = 9),
+      plot.caption = element_markdown(),
+      plot.title.position = "plot",
+      axis.title = element_text(colour = "gray12", size = 8),
+      axis.text.y = element_text(size = 6),
+      axis.text.x = element_text(size = 8, angle = 90),
+      text = element_text(color = "gray12", family = "Arial"),
+      legend.position = "none",
+      panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
+      panel.grid.minor = element_blank()
+    )
 
+  print(PassingPLinePlot)
+
+  # Close callout
+  cat("\n:::\n\n")
+}
+
+# Close grid container
+cat(":::\n")
 ```
 
 ```{r}
 #| title: Receiving Passes
 #| label: player receiving graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-ReceivingLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Passes_Recieved, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  #scale_y_continuous(
-  #  breaks = seq(0, 1, 0.1),
-  #  labels = percent_format(accuracy = 1)
-  #) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Passes Received",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-ReceivingLinePlot
+plot_metric_dashboard("Passes_Recieved", "Passes Received", FALSE)
 
 ```
 
 ```{r}
 #| title: Attacking Threat
 #| label: Home threat graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-EPVLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Team_EPV_P, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  scale_y_continuous(
-    breaks = seq(0, 0.8, 0.025),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "% Team EPV",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-EPVLinePlot
+plot_metric_dashboard("Team_EPV_P", "Attacking Threat", FALSE)
 
 ```
+
 ```{r}
 #| title: Defensive Threat
 #| label: Home Def threat graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-EPVDLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = EPV_Won, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  scale_y_continuous(
-    breaks = seq(0, 1, 0.25),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "% EPV Defensive Won",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-EPVDLinePlot
+plot_metric_dashboard("EPV_Won", "Defensive Threat", TRUE)
 
 ```
-
 
 ```{r}
 #| title: xG
 #| label: xG graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-xGLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = xG, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  #scale_y_continuous(
-  #  breaks = seq(0, 1, 0.1),
-  #  labels = percent_format(accuracy = 1)
-  #) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "xG",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-xGLinePlot
+plot_metric_dashboard("xG", "Expected Goals", FALSE)
 
 ```
+
 ```{r}
 #| title: xGOT
 #| label: xGOT graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-xGOTLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = xGOT, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  #scale_y_continuous(
-  #  breaks = seq(0, 1, 0.1),
-  #  labels = percent_format(accuracy = 1)
-  #) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "xGOT",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-xGOTLinePlot
+plot_metric_dashboard("xGOT", "Expected Goals on Target", FALSE)
 
 ```
 
 ```{r}
 #| title: Shot Accuracy
 #| label: Shot a graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-shotALinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = `Shot Accuracy`, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  scale_y_continuous(
-    breaks = seq(0, 2, 0.25),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Shot Accuracy",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
+plot_metric_dashboard("Shot Accuracy", "Shot Accuracy", TRUE)
 
-shotALinePlot
 
 ```
+
 ```{r}
 #| title: Shot Quality
 #| label: shot q graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-shotQLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = `Shot Quality`, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  scale_y_continuous(
-    breaks = seq(0, 15, 1),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Shot Quality (xGOT-xG / xG",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-shotQLinePlot
+plot_metric_dashboard("Shot Quality", "Shot Quality", TRUE)
 
 ```
 
 ```{r}
 #| title: ADs
 #| label: Home AD graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-ADLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Aerial_Success, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  scale_y_continuous(
-    breaks = seq(0, 1, 0.1),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "% Aerial Duel Success",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-ADLinePlot
+plot_metric_dashboard("Aerial_Success", "Aerial Success", TRUE)
 
 ```
+
 ```{r}
 #| title: DAs
 #| label: Home DA graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-DALinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Duel_Success, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  scale_y_continuous(
-    breaks = seq(0, 1, 0.1),
-    labels = percent_format(accuracy = 1)
-  ) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "% Duel Success",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-DALinePlot
+plot_metric_dashboard("Duel_Success", "Duel Success", TRUE)
 
 ```
+
 ```{r}
 #| title: PC
 #| label: Home PC graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-PCLinePlot <- MatchPLayerSeasonData %>%
-  filter(
-    TeamName == Match_Home,
-    player_shirt <= 38,
-    !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
-  ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Posession_Control, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  #scale_y_continuous(
-  #  breaks = seq(0, 1, 0.1),
-  #  labels = percent_format(accuracy = 1)
-  #) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Posession Control",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
-
-PCLinePlot
+plot_metric_dashboard("Posession_Control", "Possession Control", FALSE)
 
 ```
 
 ```{r}
 #| title: Prog Passes
 #| label: Home Pps graph Season P match
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+#| fig-width: 4
+#| fig-height: 3.6
+#| fig-dpi: 150
 
-PPsLinePlot <- MatchPLayerSeasonData %>%
+metric <- "Prog_Passes"
+metric_label <- "Progressive Passes"
+metric_is_percent <- FALSE
+
+roll_n <- 5
+ncol_cards <- 3
+
+base_dat <- MatchPLayerSeasonData %>%
   filter(
     TeamName == Match_Home,
     player_shirt <= 38,
     !playerId %in% c("Harvey Elliott", "Freddie Woodman", "Giovanni Leoni")
   ) %>%
-  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")
-         ) %>%
-  ggplot(aes(x = Game_date, y = Prog_Passes, colour = playerId, group = playerId)) +
-  geom_line(linewidth = 0.5) +
-  #scale_y_continuous(
-  #  breaks = seq(0, 1, 0.1),
-  #  labels = percent_format(accuracy = 1)
-  #) +
-  facet_wrap(~playerId, ncol = 8) +
-  labs(x = "Month", 
-       y = "Progressive Passes",
-       title = paste0(Match_Home, "  Player Season Performance"),
-       caption = My_caption,
-       subtitle = paste0(Match_Fixture))  +
-  theme(plot.background = element_rect(colour = "snow", fill = "snow"),
-        panel.background = element_rect(colour = "snow", fill = "snow"),
-        plot.title = element_markdown(),
-        plot.caption = element_markdown(),
-        plot.title.position = "plot",
-        plot.subtitle = element_text(size = 12),
-        axis.title = element_text(colour = "gray12", size = 8),
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 8, angle = 90),
-        text = element_text(color = "gray12", family = "Arial"),
-        legend.position = "none",
-        panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
-        panel.grid.minor = element_blank(),
-        strip.text.x = element_text(face = "bold", size = 6, colour = Color_Home_Text),
-        strip.background.x = element_rect(fill = Color_Home, color = "black", linetype = "solid", linewidth = 1))
+  mutate(Game_date = as.Date(Game_date, format = "%d-%m-%Y")) %>%
+  arrange(playerId, Game_date)
 
-PPsLinePlot
+team_avg <- base_dat %>%
+  summarise(team_avg = mean(.data[[metric]], na.rm = TRUE)) %>%
+  pull(team_avg)
+
+players <- base_dat %>%
+  distinct(playerId) %>%
+  arrange(playerId) %>%
+  pull(playerId)
+
+date_limits <- base_dat %>%
+  summarise(
+    min_date = floor_date(min(Game_date, na.rm = TRUE), "month"),
+    max_date = ceiling_date(max(Game_date, na.rm = TRUE), "month")
+  )
+
+# Open grid container (NO columns)
+cat("::: {.player-grid}\n\n")
+
+for (p in players) {
+
+  # Open callout (do NOT close it yet)
+  cat("::: {.callout-plain title='", p, "'}\n\n", sep = "")
+
+  player_dat <- base_dat %>%
+    filter(playerId == p) %>%
+    arrange(Game_date) %>%
+    mutate(
+      metric_roll = slide_dbl(
+        .data[[metric]],
+        ~ mean(.x, na.rm = TRUE),
+        .before = roll_n - 1
+        )
+    )
+  
+  y_scale <- if (metric_is_percent) {
+  scale_y_continuous(
+    breaks = seq(0, 1, 0.2),
+    labels = percent_format(accuracy = 1),
+    limits = c(0, 1)
+  )
+} else {
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 5)
+  )
+}
+
+  PassingPLinePlot <- ggplot(player_dat, aes(x = Game_date)) +
+    geom_line(aes(y = .data[[metric]]),
+              linewidth = 0.7,
+              alpha = 0.6,
+              colour = Color_Home) +
+    geom_line(aes(y = metric_roll),
+              linewidth = 0.9,
+              linetype = "dashed",
+              colour = Color_Home) +
+    geom_hline(yintercept = team_avg,
+               linewidth = 0.7,
+               colour = "gray35") +
+    scale_x_date(
+      limits = c(date_limits$min_date, date_limits$max_date),
+      breaks = seq(date_limits$min_date, date_limits$max_date, by = "1 month"),
+      labels = scales::date_format("%b")
+    ) +
+    y_scale +
+    
+    labs(
+      title = p,
+      subtitle = paste0(
+        Match_Fixture,
+        ", Solid Line = Player,\nDashed Line = Rolling Avg (", roll_n, " games), Grey Line = Team Avg"
+      ),
+      x = NULL,
+      y = metric_label,
+      caption = My_caption
+    ) +
+    theme(
+      plot.background = element_rect(colour = "snow", fill = "snow"),
+      panel.background = element_rect(colour = "snow", fill = "snow"),
+      plot.title = element_text(size = 11, face = "bold", colour = "gray12"),
+      plot.subtitle = element_text(size = 9),
+      plot.caption = element_markdown(),
+      plot.title.position = "plot",
+      axis.title = element_text(colour = "gray12", size = 8),
+      axis.text.y = element_text(size = 6),
+      axis.text.x = element_text(size = 8, angle = 90),
+      text = element_text(color = "gray12", family = "Arial"),
+      legend.position = "none",
+      panel.grid.major = element_line(colour = "#454545", linewidth = 0.4, linetype = "dashed"),
+      panel.grid.minor = element_blank()
+    )
+
+  print(PassingPLinePlot)
+
+  # Close callout
+  cat("\n:::\n\n")
+}
+
+# Close grid container
+cat(":::\n")
 
 ```
 
@@ -5553,7 +5736,9 @@ SeasonSummaryPLayerDefensiveTableHome
 ```
 
 ### Season Totals Profiles {.tabset}
+
 #### Standard Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Profile EPL
@@ -5618,6 +5803,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers EPL
@@ -5684,7 +5870,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders EPL
@@ -5750,6 +5935,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders EPL
@@ -5815,6 +6001,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards EPL
@@ -5880,7 +6067,9 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 #### Goal Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Goal Data EPL
@@ -5946,6 +6135,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers Goal Data EPL
@@ -6012,7 +6202,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders Goal Data EPL
@@ -6078,6 +6267,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders Goal Data EPL
@@ -6143,6 +6333,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards Goal Data EPL
@@ -6210,6 +6401,7 @@ Player_Summary_Plot_Home
 ```
 
 ### Passing Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -6257,6 +6449,7 @@ PassConnectionsPP <- PassConnections %>%
                        "Ryan Gravenberch"))
 
 ```
+
 ```{r}
 #| title: Successful Passes
 #| label: SPassing high EPV EPL
@@ -6310,6 +6503,7 @@ EPV_PassesFT <- PassConnectionsEPV %>%
 EPV_PassesFT
 
 ```
+
 ```{r}
 #| title: Progressive Pases
 #| label: P Passing high EPV EPL
@@ -6363,6 +6557,7 @@ EPV_PassesFT <- PassConnectionsPP %>%
 EPV_PassesFT
 
 ```
+
 ```{r}
 #| title: Key Passes
 #| label: KP Passing high EPV EPL
@@ -6419,6 +6614,7 @@ EPV_PassesFT
 ```
 
 ### Season per game Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -6943,6 +7139,7 @@ EPVLinePlot <- MatchPLayerSeasonData %>%
 EPVLinePlot
 
 ```
+
 ```{r}
 #| title: Defensive Threat
 #| label: Home Def threat graph Season P match EPL
@@ -6987,7 +7184,6 @@ EPVDLinePlot
 
 ```
 
-
 ```{r}
 #| title: xG
 #| label: xG graph Season P match EPL
@@ -7031,6 +7227,7 @@ xGLinePlot <- MatchPLayerSeasonData %>%
 xGLinePlot
 
 ```
+
 ```{r}
 #| title: xGOT
 #| label: xGOT graph Season P match EPL
@@ -7118,6 +7315,7 @@ shotALinePlot <- MatchPLayerSeasonData %>%
 shotALinePlot
 
 ```
+
 ```{r}
 #| title: Shot Quality
 #| label: shot q graph Season P match EPL
@@ -7205,6 +7403,7 @@ ADLinePlot <- MatchPLayerSeasonData %>%
 ADLinePlot
 
 ```
+
 ```{r}
 #| title: DAs
 #| label: Home DA graph Season P match EPL
@@ -7248,6 +7447,7 @@ DALinePlot <- MatchPLayerSeasonData %>%
 DALinePlot
 
 ```
+
 ```{r}
 #| title: PC
 #| label: Home PC graph Season P match EPL
@@ -7291,6 +7491,7 @@ PCLinePlot <- MatchPLayerSeasonData %>%
 PCLinePlot
 
 ```
+
 ```{r}
 #| title: Prog Passes
 #| label: Home PPs graph Season P match EPL
@@ -7334,7 +7535,6 @@ PPsLinePlot <- MatchPLayerSeasonData %>%
 PPsLinePlot
 
 ```
-
 
 ### Season P90 {.tabset}
 
@@ -7583,8 +7783,6 @@ SeasonSummaryPLayerDefensiveTableHomeP90 <- MatchSummaryPLayerDefensiveSeasonDat
 
 SeasonSummaryPLayerDefensiveTableHomeP90
 ```
-
-
 
 # CL
 
@@ -8362,7 +8560,9 @@ SeasonSummaryPLayerDefensiveTableHome
 ```
 
 ### Season Totals Profiles {.tabset}
+
 #### Standard Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Profile CL
@@ -8427,6 +8627,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers CL
@@ -8493,7 +8694,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders CL
@@ -8559,6 +8759,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders CL
@@ -8624,6 +8825,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards CL
@@ -8689,7 +8891,9 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 #### Goal Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Goal Data CL
@@ -8755,6 +8959,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers Goal Data CL
@@ -8821,7 +9026,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders Goal Data CL
@@ -8887,6 +9091,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders Goal Data CL
@@ -8952,6 +9157,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards Goal Data CL
@@ -9019,6 +9225,7 @@ Player_Summary_Plot_Home
 ```
 
 ### Passing Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -9066,6 +9273,7 @@ PassConnectionsPP <- PassConnections %>%
                        "Ryan Gravenberch"))
 
 ```
+
 ```{r}
 #| title: Successful Passes
 #| label: SPassing high EPV CL
@@ -9119,6 +9327,7 @@ EPV_PassesFT <- PassConnectionsEPV %>%
 EPV_PassesFT
 
 ```
+
 ```{r}
 #| title: Progressive Pases
 #| label: P Passing high EPV CL
@@ -9172,6 +9381,7 @@ EPV_PassesFT <- PassConnectionsPP %>%
 EPV_PassesFT
 
 ```
+
 ```{r}
 #| title: Key Passes
 #| label: KP Passing high EPV CL
@@ -9228,6 +9438,7 @@ EPV_PassesFT
 ```
 
 ### Season per game Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -9752,6 +9963,7 @@ EPVLinePlot <- MatchPLayerSeasonData %>%
 EPVLinePlot
 
 ```
+
 ```{r}
 #| title: Defensive Threat
 #| label: Home Def threat graph Season P match CL
@@ -9796,7 +10008,6 @@ EPVDLinePlot
 
 ```
 
-
 ```{r}
 #| title: xG
 #| label: xG graph Season P match CL
@@ -9840,6 +10051,7 @@ xGLinePlot <- MatchPLayerSeasonData %>%
 xGLinePlot
 
 ```
+
 ```{r}
 #| title: xGOT
 #| label: xGOT graph Season P match CL
@@ -9927,6 +10139,7 @@ shotALinePlot <- MatchPLayerSeasonData %>%
 shotALinePlot
 
 ```
+
 ```{r}
 #| title: Shot Quality
 #| label: shot q graph Season P match CL
@@ -10014,6 +10227,7 @@ ADLinePlot <- MatchPLayerSeasonData %>%
 ADLinePlot
 
 ```
+
 ```{r}
 #| title: DAs
 #| label: Home DA graph Season P match CL
@@ -10057,6 +10271,7 @@ DALinePlot <- MatchPLayerSeasonData %>%
 DALinePlot
 
 ```
+
 ```{r}
 #| title: PC
 #| label: Home PC graph Season P match CL
@@ -10100,6 +10315,7 @@ PCLinePlot <- MatchPLayerSeasonData %>%
 PCLinePlot
 
 ```
+
 ```{r}
 #| title: Prog Passes
 #| label: Home PPs graph Season P match CL
@@ -10143,8 +10359,6 @@ PPsLinePlot <- MatchPLayerSeasonData %>%
 PPsLinePlot
 
 ```
-
-
 
 ### Season P90 {.tabset}
 
@@ -11170,7 +11384,9 @@ SeasonSummaryPLayerDefensiveTableHome
 ```
 
 ### Season Totals Profiles {.tabset}
+
 #### Standard Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Profile FAC
@@ -11235,6 +11451,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers FAC
@@ -11301,7 +11518,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders FAC
@@ -11367,6 +11583,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders FAC
@@ -11432,6 +11649,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards FAC
@@ -11497,7 +11715,9 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 #### Goal Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Goal Data FAC
@@ -11563,6 +11783,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers Goal Data FAC
@@ -11629,7 +11850,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders Goal Data FAC
@@ -11695,6 +11915,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders Goal Data FAC
@@ -11760,6 +11981,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards Goal Data FAC
@@ -11827,6 +12049,7 @@ Player_Summary_Plot_Home
 ```
 
 ### Season per game Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -12351,6 +12574,7 @@ EPVLinePlot <- MatchPLayerSeasonData %>%
 EPVLinePlot
 
 ```
+
 ```{r}
 #| title: Defensive Threat
 #| label: Home Def threat graph Season P match FAC
@@ -12395,7 +12619,6 @@ EPVDLinePlot
 
 ```
 
-
 ```{r}
 #| title: xG
 #| label: xG graph Season P match FAC
@@ -12439,6 +12662,7 @@ xGLinePlot <- MatchPLayerSeasonData %>%
 xGLinePlot
 
 ```
+
 ```{r}
 #| title: xGOT
 #| label: xGOT graph Season P match FAC
@@ -12526,6 +12750,7 @@ shotALinePlot <- MatchPLayerSeasonData %>%
 shotALinePlot
 
 ```
+
 ```{r}
 #| title: Shot Quality
 #| label: shot q graph Season P match FAC
@@ -12613,6 +12838,7 @@ ADLinePlot <- MatchPLayerSeasonData %>%
 ADLinePlot
 
 ```
+
 ```{r}
 #| title: DAs
 #| label: Home DA graph Season P match FAC
@@ -12656,6 +12882,7 @@ DALinePlot <- MatchPLayerSeasonData %>%
 DALinePlot
 
 ```
+
 ```{r}
 #| title: PC
 #| label: Home PC graph Season P match FAC
@@ -12699,6 +12926,7 @@ PCLinePlot <- MatchPLayerSeasonData %>%
 PCLinePlot
 
 ```
+
 ```{r}
 #| title: Prog Passes
 #| label: Home PPs graph Season P match FAC
@@ -12742,8 +12970,6 @@ PPsLinePlot <- MatchPLayerSeasonData %>%
 PPsLinePlot
 
 ```
-
-
 
 ### Season P90 {.tabset}
 
@@ -13769,7 +13995,9 @@ SeasonSummaryPLayerDefensiveTableHome
 ```
 
 ### Season Totals Profiles {.tabset}
+
 #### Standard Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Profile LC
@@ -13834,6 +14062,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers LC
@@ -13900,7 +14129,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders LC
@@ -13966,6 +14194,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders LC
@@ -14031,6 +14260,7 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards LC
@@ -14096,7 +14326,9 @@ Player_Summary_Plot_Home <- Player_Summary_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 #### Goal Profiles {.tabset}
+
 ```{r}
 #| title: Whole Team
 #| label: Whole Team Goal Data LC
@@ -14162,6 +14394,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Keepers
 #| label: Keepers Goal Data LC
@@ -14228,7 +14461,6 @@ Player_Summary_Plot_Home
 
 ```
 
-
 ```{r}
 #| title: Defenders
 #| label: Defenders Goal Data LC
@@ -14294,6 +14526,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Midfielders
 #| label: Midfielders Goal Data LC
@@ -14359,6 +14592,7 @@ Player_Summary_Plot_Home <- Player_Goal_data_Home %>%
 Player_Summary_Plot_Home
 
 ```
+
 ```{r}
 #| title: Forwards
 #| label: Forwards Goal Data LC
@@ -14426,6 +14660,7 @@ Player_Summary_Plot_Home
 ```
 
 ### Season per game Profiles {.tabset}
+
 ```{r}
 #| output: false
 #| echo: false
@@ -14950,6 +15185,7 @@ EPVLinePlot <- MatchPLayerSeasonData %>%
 EPVLinePlot
 
 ```
+
 ```{r}
 #| title: Defensive Threat
 #| label: Home Def threat graph Season P match LC
@@ -14994,7 +15230,6 @@ EPVDLinePlot
 
 ```
 
-
 ```{r}
 #| title: xG
 #| label: xG graph Season P match LC
@@ -15038,6 +15273,7 @@ xGLinePlot <- MatchPLayerSeasonData %>%
 xGLinePlot
 
 ```
+
 ```{r}
 #| title: xGOT
 #| label: xGOT graph Season P match LC
@@ -15125,6 +15361,7 @@ shotALinePlot <- MatchPLayerSeasonData %>%
 shotALinePlot
 
 ```
+
 ```{r}
 #| title: Shot Quality
 #| label: shot q graph Season P match LC
@@ -15212,6 +15449,7 @@ ADLinePlot <- MatchPLayerSeasonData %>%
 ADLinePlot
 
 ```
+
 ```{r}
 #| title: DAs
 #| label: Home DA graph Season P match LC
@@ -15255,6 +15493,7 @@ DALinePlot <- MatchPLayerSeasonData %>%
 DALinePlot
 
 ```
+
 ```{r}
 #| title: PC
 #| label: Home PC graph Season P match LC
@@ -15298,6 +15537,7 @@ PCLinePlot <- MatchPLayerSeasonData %>%
 PCLinePlot
 
 ```
+
 ```{r}
 #| title: Prog Passes
 #| label: Home PPs graph Season P match LC
@@ -15341,8 +15581,6 @@ PPsLinePlot <- MatchPLayerSeasonData %>%
 PPsLinePlot
 
 ```
-
-
 
 ### Season P90 {.tabset}
 

@@ -13,6 +13,47 @@ $hover-color: lighten($link-color, 60%);
 
 $font-size-root: 1.25rem;
 
+/* Make the dashboard content area wider */
+.quarto-dashboard .page-content,
+.quarto-dashboard .content,
+.quarto-dashboard main {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+// player cards
+.player-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important; /* <-- 3 columns */
+  gap: 0.8rem !important;
+  width: 100% !important;
+  align-items: start;
+}
+
+/* Remove Bootstrap callout spacing so cards pack tightly */
+.player-grid > .callout {
+  margin: 0 !important;
+}
+
+/* Ensure plots shrink to card width */
+.player-grid figure,
+.player-grid .figure,
+.player-grid .cell-output-display,
+.player-grid img {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Responsive fallbacks */
+@media (max-width: 1200px) {
+  .player-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+@media (max-width: 800px) {
+  .player-grid { grid-template-columns: 1fr !important; }
+}
+
 /*-- scss:rules --*/
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap");
 
@@ -203,3 +244,4 @@ body {
     order: -1;
   }
 }
+

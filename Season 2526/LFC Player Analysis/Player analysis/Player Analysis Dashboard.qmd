@@ -153,18 +153,6 @@ plottingData <- SeasonData
 #################################
 #set color palletes
 
-#set away color scale
-#ColorScale_Home <- paste("ggsci::red_material")
-
-#set away color scale con
-#ColorScale_HomeC <- paste("ggthemes::Red")
-
-#set home color scale
-#ColorScale_Away <- paste("ggsci::green_material")
-
-#set home color scale con
-#ColorScale_AwayC <- paste("ggthemes::Green")
-
 HomeplottingData <- plottingData %>% filter(TeamName == homeTeam)
 AwayplottingData <- plottingData %>% filter(TeamName == awayTeam)
 
@@ -214,7 +202,11 @@ Match_Away <- paste0("All Oppo")
 Match_Home <- paste0("Liverpool")
 
 #set match date
-Game_date <- last(na.omit(plottingData$Game_date))
+plottingData <- plottingData %>%
+  mutate(Game_date = as.Date(trimws(Game_date), format = "%d-%m-%Y"))
+
+Game_date <- format(max(plottingData$Game_date, na.rm = TRUE), "%d-%m-%Y")
+
 
 #set Game name
 GameName <- paste0(Match_Home," vs ", Match_Away)

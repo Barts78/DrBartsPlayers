@@ -119,6 +119,3 @@ output <- paste0(
 
 knitr::asis_output(output)
 ```
-<!-- ## [Specials](Specials/)
-## [FA Cup](FA%20Cup/)
-## [EPL](EPL/) -->

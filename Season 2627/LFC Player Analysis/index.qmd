@@ -1,0 +1,285 @@
+---
+title: "Dr Barts"
+subtitle: "Player Analysis"
+image: Images/Social_profile.png
+
+format:
+  html:
+    theme:
+      - litera
+      - Matchdash.scss
+    page-layout: full
+---
+
+:::::: hero
+:::: hero-text
+# Dr Barts
+
+<p class="hero-kicker">
+
+Football Stats Hub
+
+</p>
+
+<p class="hero-blurb">
+
+I am a part time football analyst specialising in the Quarto and R ecosystems.
+
+</p>
+
+::: hero-links
+<a class="hero-link" href="https://github.com/Barts78"><i class="bi bi-github"></i></a> <a class="hero-link" href="https://twitter.com/Barts78"><i class="bi bi-twitter"></i></a> <a class="hero-link" href="https://www.linkedin.com/in/phil-barter-55500122/"><i class="bi bi-linkedin"></i></a> <a class="hero-link" href="https://bsky.app/profile/barts78.bsky.social"><i class="bi bi-bluesky"></i></a>
+:::
+::::
+
+::: hero-portrait
+![](Images/Social_profile.png){.hero-avatar}
+:::
+::::::
+
+:::: bio-card
+::: bio-title
+<b>Bio</b>
+:::
+
+This is a home for my football visualisation work across **AnfieldIndex**, **The Under Pressure Podcast**.
+
+<div style="margin-top:1rem; text-align:center;">
+
+<a href="https://patreon.com/UnderPressurePodcastLFC?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_fan&utm_content=copyLink"
+   target="_blank"
+   class="btn btn-danger btn-lg"
+   style="font-weight:600;">
+
+🎙️ Join the Under Pressure Patreon
+
+</a>
+
+<p style="margin-top:0.75rem; font-size:0.9em; color:#666;">
+Support the show and get access to exclusive previews, bonus podcasts and additional analysis.
+</p>
+
+</div>
+::::
+## Player Analysis
+
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+
+library(dplyr)
+library(stringr)
+library(htmltools)
+
+base_dir <- "."
+
+exclude_dirs <- c(
+  "Images", "images", "bigrams", "data", "Data", "R", "scripts",
+  "_extensions", "_site", "_cache", "_freeze",
+  "index_files", "site_libs"
+)
+
+# Get subdirectories (sections)
+comp_dirs <- list.dirs(base_dir, recursive = FALSE, full.names = FALSE)
+
+# Keep only "real" folders
+comp_dirs <- comp_dirs[!grepl("^\\.", comp_dirs)]
+comp_dirs <- comp_dirs[!comp_dirs %in% exclude_dirs]
+comp_dirs <- comp_dirs[!grepl("^Season\\s+\\d+$", comp_dirs)]  # optional
+
+# ---- Sorting helpers ----
+stage_rank <- function(x) {
+  case_when(
+    str_detect(x, regex("\\bR\\s*\\d+", ignore_case = TRUE)) ~ 1,
+    str_detect(x, regex("\\bQF\\b", ignore_case = TRUE)) ~ 2,
+    str_detect(x, regex("\\bSF\\b", ignore_case = TRUE)) ~ 3,
+    str_detect(x, regex("\\bF\\b",  ignore_case = TRUE)) ~ 4,
+    TRUE ~ 0
+  )
+}
+
+extract_int <- function(x, pattern) {
+  m <- str_match(x, pattern)[, 2]
+  ifelse(is.na(m), NA_real_, as.numeric(m))
+}
+
+sort_table <- tibble::tibble(folder = comp_dirs) |>
+  mutate(
+    comp_code = str_extract(folder, "^[A-Za-z]+"),
+    is_md     = str_detect(folder, regex("MD", ignore_case = TRUE)),
+    stage     = stage_rank(folder),
+    round_num = extract_int(folder, regex("R\\s*(\\d+)", ignore_case = TRUE)),
+    md_num    = extract_int(folder, regex("MD\\s*(\\d+)", ignore_case = TRUE)),
+    leg_num   = extract_int(folder, regex("L\\s*(\\d+)", ignore_case = TRUE))
+  ) |>
+  mutate(
+    round_num = ifelse(is.na(round_num), 999, round_num),
+    md_num    = ifelse(is.na(md_num),    999, md_num),
+    leg_num   = ifelse(is.na(leg_num),   999, leg_num)
+  ) |>
+  arrange(comp_code, is_md, stage, round_num, md_num, leg_num, folder)
+
+comp_dirs <- sort_table$folder
+
+# ---- Thumbnails ----
+thumb_map <- c(
+  "EPL"        = "Images/EPL.png",
+  "FA Cup"     = "Images/FA_Cup.png",
+  "CL"         = "Images/UCL.png",
+  "League Cup" = "Images/League_cup.png",
+  "Specials"   = "Images/Premier-League-ball.png"
+)
+
+default_thumb <- "Images/Premier-League-ball.png"
+
+pick_md_thumb <- function(folder, base_dir = ".",
+                          target_png = "Match Result Probablity Plot-1.png",
+                          fallback = "Images/champions-league-ball.png") {
+
+  folder_path <- file.path(base_dir, folder)
+
+  # Look in both potential roots:
+  #  - folder/docs (Quarto style)
+  #  - folder/     (non-docs style)
+  candidates <- c(file.path(folder_path, "docs"), folder_path)
+  candidates <- candidates[dir.exists(candidates)]
+
+  if (length(candidates) == 0) return(fallback)
+
+  # 1) Try to find the exact target PNG anywhere under these roots
+  hits <- unlist(lapply(candidates, function(root) {
+    list.files(root,
+               pattern = paste0("^", stringr::fixed(target_png), "$"),
+               recursive = TRUE,
+               full.names = TRUE)
+  }))
+
+  if (length(hits) > 0) {
+    # pick the most recently modified one (nice if there are multiple)
+    hits <- hits[order(file.info(hits)$mtime, decreasing = TRUE)]
+    return(gsub("\\\\", "/", hits[1]))
+  }
+
+  # 2) Fallback: pick *any* png from a figure-html folder
+  fig_hits <- unlist(lapply(candidates, function(root) {
+    list.files(root,
+               pattern = "\\.png$",
+               recursive = TRUE,
+               full.names = TRUE)
+  }))
+
+  fig_hits <- fig_hits[grepl("figure-html", fig_hits)]
+  if (length(fig_hits) > 0) {
+    fig_hits <- fig_hits[order(file.info(fig_hits)$mtime, decreasing = TRUE)]
+    return(gsub("\\\\", "/", fig_hits[1]))
+  }
+
+  fallback
+}
+
+pick_thumb <- function(folder) {
+  if (str_detect(folder, regex("MD", ignore_case = TRUE))) {
+    return(pick_md_thumb(folder))
+  }
+  thumb <- unname(thumb_map[folder])
+  if (is.na(thumb) || length(thumb) == 0) default_thumb else thumb
+}
+
+pick_url <- function(folder, base_dir = ".") {
+
+  # 1) Prefer docs/index.html
+  docs_dir <- file.path(base_dir, folder, "docs")
+  if (dir.exists(docs_dir)) {
+    idx <- file.path(docs_dir, "index.html")
+    if (file.exists(idx)) {
+      rel <- file.path(folder, "docs", "index.html")
+      rel <- gsub("\\\\", "/", rel)
+      return(utils::URLencode(rel))
+    }
+
+    # Otherwise first HTML in docs/
+    htmls <- list.files(docs_dir, pattern = "\\.html$", full.names = FALSE)
+    if (length(htmls) > 0) {
+      html <- sort(htmls)[1]
+      rel <- file.path(folder, "docs", html)
+      rel <- gsub("\\\\", "/", rel)
+      return(utils::URLencode(rel))
+    }
+  }
+
+  # 2) Fallback: index.html at folder root
+  idx_root <- file.path(base_dir, folder, "index.html")
+  if (file.exists(idx_root)) {
+    rel <- file.path(folder, "index.html")
+    rel <- gsub("\\\\", "/", rel)
+    return(utils::URLencode(rel))
+  }
+
+  # 3) Fallback: first HTML at folder root
+  htmls_root <- list.files(file.path(base_dir, folder),
+                           pattern = "\\.html$",
+                           full.names = FALSE)
+  if (length(htmls_root) > 0) {
+    html <- sort(htmls_root)[1]
+    rel <- file.path(folder, html)
+    rel <- gsub("\\\\", "/", rel)
+    return(utils::URLencode(rel))
+  }
+
+  # 4) Absolute fallback: folder itself
+  rel <- gsub("\\\\", "/", file.path(folder, ""))
+  utils::URLencode(rel)
+}
+
+
+# Optional: subtitle from folder name (simple)
+make_subtitle <- function(folder) {
+  md_num <- extract_int(folder, regex("MD\\s*(\\d+)", ignore_case = TRUE))
+  round_num <- extract_int(folder, regex("R\\s*(\\d+)", ignore_case = TRUE))
+  leg_num <- extract_int(folder, regex("L\\s*(\\d+)", ignore_case = TRUE))
+
+  if (!is.na(round_num)) {
+    s <- paste0("Round of ", round_num)
+    if (!is.na(leg_num)) s <- paste0(s, " • Leg ", leg_num)
+    return(s)
+  }
+  if (!is.na(md_num)) return(paste0("Matchday ", md_num))
+  "Browse dashboards & visuals"
+}
+
+# Build cards (NO extra cards)
+cards <- vapply(comp_dirs, function(folder) {
+  url      <- pick_url(folder, base_dir = base_dir)
+  thumb    <- pick_thumb(folder)
+  subtitle <- make_subtitle(folder)
+
+  sprintf(
+    paste0(
+      '<div class="g-col-12 g-col-md-6 g-col-lg-4">\n',
+      '  <div class="card season-card">\n',
+      '    <div class="season-card-media">\n',
+      '      <img src="%s" class="card-img-top img-fluid" alt="%s thumbnail">\n',
+      '    </div>\n',
+      '    <div class="card-body">\n',
+      '      <h3><a href="%s">%s</a></h3>\n',
+      '      <div class="text-muted">%s</div>\n',
+      '    </div>\n',
+      '  </div>\n',
+      '</div>\n'
+    ),
+    thumb, folder, url, folder, htmlEscape(subtitle)
+  )
+}, character(1))
+
+output <- paste0(
+  '<div class="grid">\n',
+  paste(cards, collapse = "\n"),
+  "\n</div>\n"
+)
+
+knitr::asis_output(output)
+```
+<!-- ## [Specials](Specials/)
+## [FA Cup](FA%20Cup/)
+## [EPL](EPL/) -->

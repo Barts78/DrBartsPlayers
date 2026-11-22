@@ -1,0 +1,2031 @@
+---
+title: "Tottenham Players 2627"
+author: "Dr Phil Barter"
+params:
+  team: "Tottenham"
+  database: "EPLComp_LFC_Games_2627"
+  competition: "Premier League"
+  season: "2627"
+format:
+  dashboard:
+      scrolling: true
+      logo: https://anfieldindex.com/wp-content/uploads/2016/09/AI-Under-Pressure.png
+      nav-buttons:
+                  - icon: github
+                    href: https://github.com/Barts78
+                  - icon: linkedin
+                    href: https://www.linkedin.com/in/phil-barter-55500122/
+                  - icon: twitter
+                    href: https://twitter.com/Barts78
+                  - icon: bluesky
+                    href: https://bsky.app/profile/barts78.bsky.social
+      theme:
+        - Lux
+        - Matchdash_UP_v2.scss
+      type: default
+      include-in-header:
+        text: |
+          <style>
+          .method-card .card-body { background-color: #FFFFFF !important; color: #1A1A1A !important; }
+          .method-card .card-body p, .method-card .card-body li,
+          .method-card .card-body strong, .method-card .card-body code { color: #1A1A1A !important; }
+          .pp-wrap { background:#FFFAFA; color:#1A1A1A; padding:.5rem; }
+          .pp-wrap select { font-size:1rem; padding:.3rem .6rem; border-radius:6px; border:2px solid var(--pp-col); min-width:18rem; }
+          .pp-head, .pp-head.html-fill-container { display:flex !important; flex-direction:row !important; flex-wrap:wrap !important; gap:.5rem; margin:.6rem 0; }
+          .pp-chip { display:inline-block !important; width:auto !important; flex:0 0 auto !important; background:var(--pp-col); color:var(--pp-txt); border-radius:999px; padding:.15rem .7rem; font-size:.85rem; font-weight:600; }
+          .pp-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap:.6rem; }
+          .pp-grid img { width:100%; height:auto; display:block; border:1px solid #DDD; }
+          .rt-wrap { background:#FFFFFF; color:#1A1A1A; }
+          </style>
+---
+
+
+
+# Squad
+
+## Row {height="130px"}
+
+
+::: {.cell content='valuebox' title='Players used'}
+::: {.cell-output .cell-output-stdout}
+
+```
+$icon
+[1] "people"
+
+$color
+[1] "primary"
+
+$value
+[1] 26
+```
+
+
+:::
+:::
+
+
+
+::: {.cell content='valuebox' title='Top scorer'}
+::: {.cell-output .cell-output-stdout}
+
+```
+$icon
+[1] "dribbble"
+
+$color
+[1] "primary"
+
+$value
+[1] "D. Solanke (2)"
+```
+
+
+:::
+:::
+
+
+
+::: {.cell content='valuebox' title='Most xG + xA'}
+::: {.cell-output .cell-output-stdout}
+
+```
+$icon
+[1] "bullseye"
+
+$color
+[1] "primary"
+
+$value
+[1] "D. Solanke (4.42)"
+```
+
+
+:::
+:::
+
+
+
+::: {.cell content='valuebox' title='Most minutes'}
+::: {.cell-output .cell-output-stdout}
+
+```
+$icon
+[1] "stopwatch"
+
+$color
+[1] "primary"
+
+$value
+[1] "A. Kinsky (1083)"
+```
+
+
+:::
+:::
+
+
+## Row
+
+
+::: {.cell title='Squad Table (search, sort; colours = percentile against league players in the same role)'}
+::: {.cell-output-display}
+
+```{=html}
+<div class="rt-wrap">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-e4610caefe24b077cb0d" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e4610caefe24b077cb0d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Shirt":[31,6,37,14,3,23,5,13,4,33,16,18,20,11,8,30,17,10,15,47,68,27,22,19,9,21],"Player":["Antonín Kinsky","Jan Paul van Hecke","Micky van de Ven","Archie Gray","Andy Robertson","Pedro Porro","Marcos Senesi","Destiny Udogie","Tosin Adarabioyo","Ben Davies","Sandro Tonali","Mateus Fernandes","Mohammed Kudus","Mathys Tel","Conor Gallagher","Rodrigo Bentancur","Sávio","James Maddison","Lucas Bergvall","Mikey Moore","Luca Williams-Barnett","Mykhailo Mudryk","Omar Marmoush","Dominic Solanke","Richarlison","Dejan Kulusevski"],"Role":["Goalkeeper","Defender","Defender","Defender","Defender","Defender","Defender","Defender","Defender","Defender","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Forward","Forward","Forward","Forward"],"Apps":[11,11,9,10,10,7,3,6,2,2,10,11,10,8,9,7,5,7,5,2,3,1,10,11,1,4],"Starts":[11,11,8,8,8,5,3,3,1,0,10,7,6,6,4,4,4,3,2,1,1,0,8,6,1,0],"Mins":[1083,1083,815,786,736,458,283,268,82,38,951,675,671,503,452,440,390,291,190,95,83,22,737,624,69,66],"G":[0,2,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,1,0,1,2,0,0],"A":[0,0,0,0,1,1,0,0,0,0,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0],"xG tot":[0,1.85,0.67,0.52,0.28,0.55,0,0,0,0.04,0.4,0.35,1.35,0.65,1.42,0.36,0.6,0.43,0.12,0.4,0.84,0,1.09,3.24,0,0.05],"xA tot":[0,0.9,0.14,0.36,0.23,0.1,0,0,0,0,0.01,0.02,0.57,0.06,0.23,0,0.08,0.09,0.01,0.05,0.65,0,0.4,1.18,0,0.02],"NPxG":["NA",0.153739612188366,0.0739877300613497,0.0595419847328244,0.0342391304347826,0.108078602620087,0,0,0,0.0947368421052632,0.0378548895899054,0.0466666666666667,0.18107302533532,0.116302186878728,0.282743362831858,0.0736363636363637,0.138461538461538,0.132989690721649,0.0568421052631579,0.378947368421053,0.910843373493976,0,0.133107191316147,0.467307692307692,0,0.0681818181818182],"xA":["NA",0.074792243767313,0.0154601226993865,0.0412213740458015,0.028125,0.0196506550218341,0,0,0,0,0.000946372239747634,0.00266666666666667,0.0764530551415797,0.0107355864811133,0.0457964601769911,0,0.0184615384615385,0.0278350515463918,0.00473684210526316,0.0473684210526316,0.704819277108434,0,0.0488466757123474,0.170192307692308,0,0.0272727272727273],"Shots":["NA",0.997229916897507,0.441717791411043,0.687022900763359,0.611413043478261,2.16157205240175,0,0,0,2.36842105263158,1.32492113564669,1.46666666666667,2.01192250372578,2.32604373757455,1.99115044247788,0.409090909090909,2.07692307692308,2.47422680412371,0.947368421052632,3.78947368421053,4.33734939759036,0,2.3202170963365,3.02884615384615,0,2.72727272727273],"Key passes":["NA",0.914127423822715,0.331288343558282,0.572519083969466,1.71195652173913,1.37554585152838,1.27208480565371,0.671641791044776,0,0,0.757097791798107,1.6,1.60953800298063,1.78926441351889,0.199115044247788,0.204545454545455,2.53846153846154,0.618556701030928,0.473684210526316,0.947368421052632,2.16867469879518,0,0.854816824966079,0.865384615384615,0,0],"Progressive passes":[0,8.22714681440443,5.41104294478528,1.94656488549618,5.13586956521739,6.2882096069869,8.58657243816254,7.05223880597015,7.68292682926829,7.10526315789474,3.97476340694006,4.8,3.0849478390462,6.44135188866799,1.5929203539823,3.06818181818182,5.07692307692308,4.32989690721649,2.36842105263158,0.947368421052632,3.25301204819277,0,1.34328358208955,0.576923076923077,0,4.09090909090909],"Progressive carries":["NA",1.16343490304709,0.883435582822086,1.37404580152672,1.83423913043478,1.57205240174672,0.318021201413428,2.01492537313433,1.09756097560976,0,1.32492113564669,1.06666666666667,0.402384500745156,1.07355864811133,1.19469026548673,1.22727272727273,1.38461538461538,1.23711340206186,1.42105263157895,0,1.08433734939759,0,1.09905020352782,0.721153846153846,0,2.72727272727273],"EPV added":[0.0389750692520776,0.24606648199446,0.136049079754601,0.105343511450382,0.396807065217391,0.32325327510917,0.23660777385159,0.32339552238806,0.145975609756098,0.151578947368421,0.233091482649842,0.346266666666667,0.37381520119225,0.341212723658052,0.179203539823009,0.1485,0.382846153846154,0.282371134020619,0.304105263157895,0.0786315789473684,0.446746987951807,0.00818181818181818,0.103432835820896,0.0501923076923077,0.0247826086956522,0.118636363636364],"Tackles won":["NA",1.32963988919668,0.773006134969325,1.48854961832061,0.855978260869565,1.37554585152838,2.54416961130742,1.00746268656716,3.29268292682927,2.36842105263158,2.17665615141956,3.2,1.47540983606557,0.357852882703777,3.38495575221239,3.68181818181818,0,2.78350515463918,2.84210526315789,0.947368421052632,1.08433734939759,0,0.854816824966079,0.576923076923077,0,6.81818181818182],"Interceptions":["NA",0.997229916897507,0.331288343558282,1.14503816793893,0.489130434782609,0.589519650655022,0.636042402826855,1.34328358208955,0,0,0.851735015772871,0.533333333333333,0.402384500745156,0.536779324055666,1.19469026548673,1.22727272727273,0.461538461538462,0.618556701030928,1.89473684210526,0,0,0,0.122116689280868,0.288461538461538,0,0],"Recoveries":[1.82825484764543,3.07479224376731,3.20245398773006,3.3206106870229,2.93478260869565,3.73362445414847,4.13427561837456,3.02238805970149,4.39024390243902,2.36842105263158,4.25867507886435,5.6,5.9016393442623,4.47316103379722,5.17699115044248,5.31818181818182,3.69230769230769,4.63917525773196,5.21052631578947,1.89473684210526,2.16867469879518,0,3.41926729986431,2.88461538461538,0,4.09090909090909],"Aerials won":["NA",3.73961218836565,2.20858895705521,0.458015267175573,0.611413043478261,0.196506550218341,2.22614840989399,3.02238805970149,7.68292682926829,0,0.473186119873817,0.933333333333333,0.402384500745156,0.894632206759443,1.19469026548673,1.84090909090909,0,0.309278350515464,1.42105263157895,0,0,0,0.366350067842605,1.29807692307692,0,0],"Pass %":[71.304347826087,91.2731006160164,95.9398496240601,89.5081967213115,85.80375782881,76.7025089605735,89.5752895752896,88.4057971014493,92,100,89.0547263681592,92.2465208747515,88.9763779527559,85.7142857142857,87.2340425531915,89.5104895104895,80.9523809523809,88.9952153110048,87.0588235294118,82.3529411764706,75.609756097561,50,92.7536231884058,84.3373493975904,88.8888888888889,77.2727272727273]},"columns":[{"id":"Shirt","name":"#","type":"numeric","width":45},{"id":"Player","name":"Player","type":"character","minWidth":160,"sticky":"left","style":{"fontWeight":600}},{"id":"Role","name":"Role","type":"character","minWidth":110},{"id":"Apps","name":"Apps","type":"numeric","width":60},{"id":"Starts","name":"Starts","type":"numeric","width":65},{"id":"Mins","name":"Mins","type":"numeric","width":65},{"id":"G","name":"G","type":"numeric","width":45},{"id":"A","name":"A","type":"numeric","width":45},{"id":"xG tot","name":"xG","type":"numeric","width":60},{"id":"xA tot","name":"xA","type":"numeric","width":60},{"id":"NPxG","name":"NPxG /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#84A6EF","fontWeight":600},{"background":"#B0C7F4","fontWeight":600},{"background":"#C7D8F5","fontWeight":400},{"background":"#F8ECE8","fontWeight":400},{"background":"#9BB6F1","fontWeight":600},{"background":"#EA8A71","fontWeight":400},{"background":"#EA8A71","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#F4BBA9","fontWeight":400},{"background":"#F6C6B6","fontWeight":400},{"background":"#C7D8F5","fontWeight":400},{"background":"#F0F2F7","fontWeight":400},{"background":"#9BB6F1","fontWeight":600},{"background":"#F8E1D9","fontWeight":400},{"background":"#DBE4F6","fontWeight":400},{"background":"#E0E7F6","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#F2AE99","fontWeight":400},{"background":"#B7CCF4","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"xA","name":"xA /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#96B2F1","fontWeight":600},{"background":"#E7ECF7","fontWeight":400},{"background":"#BBD0F5","fontWeight":400},{"background":"#C5D6F5","fontWeight":400},{"background":"#D6E1F6","fontWeight":400},{"background":"#F2AE99","fontWeight":400},{"background":"#F2AE99","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#F0A590","fontWeight":400},{"background":"#F3B09C","fontWeight":400},{"background":"#94B0F0","fontWeight":600},{"background":"#F7D9CF","fontWeight":400},{"background":"#C7D8F5","fontWeight":400},{"background":"#EC927A","fontWeight":400},{"background":"#F8EEEA","fontWeight":400},{"background":"#EBEFF7","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#F7D9CF","fontWeight":400},{"background":"#96B2F1","fontWeight":600},{"color":"#999999"},{"color":"#999999"}]},{"id":"Shots","name":"Shots /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#A4BDF2","fontWeight":600},{"background":"#F8E3DB","fontWeight":400},{"background":"#CAD9F6","fontWeight":400},{"background":"#E7ECF7","fontWeight":400},{"background":"#82A4EE","fontWeight":600},{"background":"#EA8A71","fontWeight":400},{"background":"#EA8A71","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#F8ECE8","fontWeight":400},{"background":"#F0F2F7","fontWeight":400},{"background":"#C7D8F5","fontWeight":400},{"background":"#B0C7F4","fontWeight":600},{"background":"#CAD9F6","fontWeight":400},{"background":"#F0A590","fontWeight":400},{"background":"#C3D5F5","fontWeight":400},{"background":"#A2BBF2","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#E4EAF6","fontWeight":400},{"background":"#9DB8F2","fontWeight":600},{"color":"#999999"},{"color":"#999999"}]},{"id":"Key passes","name":"Key passes /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#ABC3F3","fontWeight":600},{"background":"#F8E1D9","fontWeight":400},{"background":"#E2E9F6","fontWeight":400},{"background":"#82A4EE","fontWeight":600},{"background":"#8AA9EF","fontWeight":600},{"background":"#94B0F0","fontWeight":600},{"background":"#D6E1F6","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#F7D2C5","fontWeight":400},{"background":"#BED2F5","fontWeight":400},{"background":"#BED2F5","fontWeight":400},{"background":"#B2C8F4","fontWeight":400},{"background":"#EA8C74","fontWeight":400},{"background":"#EC927A","fontWeight":400},{"background":"#8CABEF","fontWeight":600},{"background":"#F5C4B3","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#F8E3DB","fontWeight":400},{"background":"#F8E8E3","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Progressive passes","name":"Progressive passes /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F0A38D","fontWeight":400},{"background":"#84A6EF","fontWeight":600},{"background":"#98B4F1","fontWeight":600},{"background":"#F4BBA9","fontWeight":400},{"background":"#9DB8F2","fontWeight":600},{"background":"#8FADF0","fontWeight":600},{"background":"#82A4EE","fontWeight":600},{"background":"#87A7EF","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"background":"#D8E3F6","fontWeight":400},{"background":"#B4CAF4","fontWeight":400},{"background":"#F8E3DB","fontWeight":400},{"background":"#91AFF0","fontWeight":600},{"background":"#ED9880","fontWeight":400},{"background":"#F8DFD6","fontWeight":400},{"background":"#AEC5F3","fontWeight":600},{"background":"#C3D5F5","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#EBEFF7","fontWeight":400},{"background":"#F2AE99","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Progressive carries","name":"Progressive carries /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#C0D3F5","fontWeight":400},{"background":"#D8E3F6","fontWeight":400},{"background":"#ABC3F3","fontWeight":600},{"background":"#8FADF0","fontWeight":600},{"background":"#9DB8F2","fontWeight":600},{"background":"#F3B39F","fontWeight":400},{"background":"#8AA9EF","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"background":"#D4DFF6","fontWeight":400},{"background":"#F8EEEA","fontWeight":400},{"background":"#EF9D86","fontWeight":400},{"background":"#F7F1EF","fontWeight":400},{"background":"#E9EDF7","fontWeight":400},{"background":"#E4EAF6","fontWeight":400},{"background":"#CAD9F6","fontWeight":400},{"background":"#E0E7F6","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#ABC3F3","fontWeight":600},{"background":"#F8E8E3","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"EPV added","name":"EPV added /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#EA8A71","fontWeight":400},{"background":"#98B4F1","fontWeight":600},{"background":"#F8EAE5","fontWeight":400},{"background":"#F6C6B6","fontWeight":400},{"background":"#7FA2EE","fontWeight":600},{"background":"#8AA9EF","fontWeight":600},{"background":"#A0BAF2","fontWeight":600},{"background":"#84A6EF","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"background":"#D8E3F6","fontWeight":400},{"background":"#A4BDF2","fontWeight":600},{"background":"#98B4F1","fontWeight":600},{"background":"#A7BFF3","fontWeight":600},{"background":"#F8E8E3","fontWeight":400},{"background":"#F6C6B6","fontWeight":400},{"background":"#94B0F0","fontWeight":600},{"background":"#C3D5F5","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#F0F2F7","fontWeight":400},{"background":"#F0A590","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Tackles won","name":"Tackles won /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#F8EEEA","fontWeight":400},{"background":"#F3B39F","fontWeight":400},{"background":"#EBEFF7","fontWeight":400},{"background":"#F5C1AF","fontWeight":400},{"background":"#F7F1EF","fontWeight":400},{"background":"#91AFF0","fontWeight":600},{"background":"#F6CDBE","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#B9CEF5","fontWeight":400},{"background":"#8FADF0","fontWeight":600},{"background":"#F8E5DE","fontWeight":400},{"background":"#EA8A71","fontWeight":400},{"background":"#87A7EF","fontWeight":600},{"background":"#7FA2EE","fontWeight":600},{"background":"#E9876E","fontWeight":400},{"background":"#98B4F1","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#DDE6F6","fontWeight":400},{"background":"#F7F7F7","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Interceptions","name":"Interceptions /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#E4EAF6","fontWeight":400},{"background":"#EA8A71","fontWeight":400},{"background":"#D1DEF6","fontWeight":400},{"background":"#EFA089","fontWeight":400},{"background":"#F2AB96","fontWeight":400},{"background":"#F4B9A6","fontWeight":400},{"background":"#B7CCF4","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#DBE4F6","fontWeight":400},{"background":"#F8E1D9","fontWeight":400},{"background":"#F6CBBB","fontWeight":400},{"background":"#F8E3DB","fontWeight":400},{"background":"#B2C8F4","fontWeight":400},{"background":"#ABC3F3","fontWeight":600},{"background":"#F7D0C3","fontWeight":400},{"background":"#F7F7F7","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#F7D9CF","fontWeight":400},{"background":"#CAD9F6","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Recoveries","name":"Recoveries /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#C3D5F5","fontWeight":400},{"background":"#F8E8E3","fontWeight":400},{"background":"#F7F7F7","fontWeight":400},{"background":"#E2E9F6","fontWeight":400},{"background":"#F7DBD1","fontWeight":400},{"background":"#C5D6F5","fontWeight":400},{"background":"#A4BDF2","fontWeight":600},{"background":"#F8E6E0","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#E0E7F6","fontWeight":400},{"background":"#96B2F1","fontWeight":600},{"background":"#8FADF0","fontWeight":600},{"background":"#CFDCF6","fontWeight":400},{"background":"#B0C7F4","fontWeight":600},{"background":"#A7BFF3","fontWeight":600},{"background":"#F7F1EF","fontWeight":400},{"background":"#C0D3F5","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#9DB8F2","fontWeight":600},{"background":"#CAD9F6","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Aerials won","name":"Aerials won /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"color":"#999999"},{"background":"#8FADF0","fontWeight":600},{"background":"#DDE6F6","fontWeight":400},{"background":"#EE9A83","fontWeight":400},{"background":"#EF9D86","fontWeight":400},{"background":"#E9876E","fontWeight":400},{"background":"#DBE4F6","fontWeight":400},{"background":"#A9C1F3","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"background":"#F7D0C3","fontWeight":400},{"background":"#D4DFF6","fontWeight":400},{"background":"#F6C6B6","fontWeight":400},{"background":"#DDE6F6","fontWeight":400},{"background":"#B7CCF4","fontWeight":400},{"background":"#91AFF0","fontWeight":600},{"background":"#EB8F77","fontWeight":400},{"background":"#F4B6A3","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#EF9D86","fontWeight":400},{"background":"#F8EEEA","fontWeight":400},{"color":"#999999"},{"color":"#999999"}]},{"id":"Pass %","name":"Pass %","type":"numeric","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"na":"-","minWidth":95,"style":[{"background":"#B0C7F4","fontWeight":600},{"background":"#8FADF0","fontWeight":600},{"background":"#7FA2EE","fontWeight":600},{"background":"#A4BDF2","fontWeight":600},{"background":"#E0E7F6","fontWeight":400},{"background":"#EB8F77","fontWeight":400},{"background":"#A0BAF2","fontWeight":600},{"background":"#BBD0F5","fontWeight":400},{"color":"#999999"},{"color":"#999999"},{"background":"#A7BFF3","fontWeight":600},{"background":"#84A6EF","fontWeight":600},{"background":"#ABC3F3","fontWeight":600},{"background":"#D4DFF6","fontWeight":400},{"background":"#B9CEF5","fontWeight":400},{"background":"#A2BBF2","fontWeight":600},{"background":"#F8E3DB","fontWeight":400},{"background":"#A9C1F3","fontWeight":600},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"color":"#999999"},{"background":"#82A4EE","fontWeight":600},{"background":"#91AFF0","fontWeight":600},{"color":"#999999"},{"color":"#999999"}]}],"searchable":true,"defaultSorted":[{"id":"Mins","desc":true}],"defaultPageSize":40,"highlight":true,"striped":true,"compact":true,"theme":{"headerStyle":{"background":"#132257","color":"white"}},"dataKey":"ae56998a3e75ff756e17fc18e33325d0"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<p style="font-size:.75rem;color:#555;margin:.4rem;">Tottenham | Premier League | 11 games to 21-11-2026. Per-90 colours: percentile against Premier League players in the same role with 248+ minutes (blue = high, red = low; grey = too few minutes). Minutes from the substitution and red-card events.</p>
+</div>
+```
+
+:::
+:::
+
+
+## Row
+
+
+::: {.cell title='Minutes by Game'}
+::: {.cell-output-display}
+![](Tottenham_2627_Player_Dashboard_files/figure-html/minutes grid-1.png){width=2400}
+:::
+:::
+
+
+# Player Profiles
+
+
+
+## Row
+
+
+::: {.cell title='Player Profile (pick a player)'}
+::: {.cell-output-display}
+
+```{=html}
+<div id="pp" class="pp-wrap" style="--pp-col:#132257;--pp-txt:white;">
+  <label for="pp-select" style="font-weight:600;margin-right:.5rem;">Player:</label>
+  <select id="pp-select">
+    <optgroup label="Goalkeeper">
+      <option value="Anton-in-Kinsky">Antonín Kinsky</option>
+    </optgroup>
+    <optgroup label="Defender">
+      <option value="Jan-Paul-van-Hecke">Jan Paul van Hecke</option>
+      <option value="Micky-van-de-Ven">Micky van de Ven</option>
+      <option value="Archie-Gray">Archie Gray</option>
+      <option value="Andy-Robertson">Andy Robertson</option>
+      <option value="Pedro-Porro">Pedro Porro</option>
+      <option value="Marcos-Senesi">Marcos Senesi</option>
+      <option value="Destiny-Udogie">Destiny Udogie</option>
+      <option value="Tosin-Adarabioyo">Tosin Adarabioyo</option>
+      <option value="Ben-Davies">Ben Davies</option>
+    </optgroup>
+    <optgroup label="Midfielder">
+      <option value="Sandro-Tonali">Sandro Tonali</option>
+      <option value="Mateus-Fernandes">Mateus Fernandes</option>
+      <option value="Mohammed-Kudus">Mohammed Kudus</option>
+      <option value="Mathys-Tel">Mathys Tel</option>
+      <option value="Conor-Gallagher">Conor Gallagher</option>
+      <option value="Rodrigo-Bentancur">Rodrigo Bentancur</option>
+      <option value="S-avio">Sávio</option>
+      <option value="James-Maddison">James Maddison</option>
+      <option value="Lucas-Bergvall">Lucas Bergvall</option>
+      <option value="Mikey-Moore">Mikey Moore</option>
+      <option value="Luca-Williams-Barnett">Luca Williams-Barnett</option>
+      <option value="Mykhailo-Mudryk">Mykhailo Mudryk</option>
+    </optgroup>
+    <optgroup label="Forward">
+      <option value="Omar-Marmoush">Omar Marmoush</option>
+      <option value="Dominic-Solanke">Dominic Solanke</option>
+      <option value="Richarlison">Richarlison</option>
+      <option value="Dejan-Kulusevski">Dejan Kulusevski</option>
+    </optgroup>
+  </select>
+  <div class="pp-panel" data-player="Anton-in-Kinsky">
+    <div class="pp-head">
+      <span class="pp-chip">Goalkeeper</span>
+      <span class="pp-chip">#31</span>
+      <span class="pp-chip">11 apps (11 starts)</span>
+      <span class="pp-chip">1083 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.00 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Anton-in-Kinsky-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Anton-in-Kinsky-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Anton-in-Kinsky-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Jan-Paul-van-Hecke" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#6</span>
+      <span class="pp-chip">11 apps (11 starts)</span>
+      <span class="pp-chip">1083 mins</span>
+      <span class="pp-chip">2 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">1.85 xG</span>
+      <span class="pp-chip">0.90 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Jan-Paul-van-Hecke-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Jan-Paul-van-Hecke-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Jan-Paul-van-Hecke-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Micky-van-de-Ven" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#37</span>
+      <span class="pp-chip">9 apps (8 starts)</span>
+      <span class="pp-chip">815 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.67 xG</span>
+      <span class="pp-chip">0.14 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Micky-van-de-Ven-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Micky-van-de-Ven-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Micky-van-de-Ven-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Archie-Gray" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#14</span>
+      <span class="pp-chip">10 apps (8 starts)</span>
+      <span class="pp-chip">786 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.52 xG</span>
+      <span class="pp-chip">0.36 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Archie-Gray-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Archie-Gray-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Archie-Gray-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Andy-Robertson" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#3</span>
+      <span class="pp-chip">10 apps (8 starts)</span>
+      <span class="pp-chip">736 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">1 assists</span>
+      <span class="pp-chip">0.28 xG</span>
+      <span class="pp-chip">0.23 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Andy-Robertson-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Andy-Robertson-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Andy-Robertson-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Pedro-Porro" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#23</span>
+      <span class="pp-chip">7 apps (5 starts)</span>
+      <span class="pp-chip">458 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">1 assists</span>
+      <span class="pp-chip">0.55 xG</span>
+      <span class="pp-chip">0.10 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Pedro-Porro-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Pedro-Porro-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Pedro-Porro-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Marcos-Senesi" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#5</span>
+      <span class="pp-chip">3 apps (3 starts)</span>
+      <span class="pp-chip">283 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.00 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Marcos-Senesi-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Marcos-Senesi-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Marcos-Senesi-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Destiny-Udogie" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#13</span>
+      <span class="pp-chip">6 apps (3 starts)</span>
+      <span class="pp-chip">268 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.00 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Destiny-Udogie-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Destiny-Udogie-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Destiny-Udogie-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Tosin-Adarabioyo" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#4</span>
+      <span class="pp-chip">2 apps (1 starts)</span>
+      <span class="pp-chip">82 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.00 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Tosin-Adarabioyo-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Tosin-Adarabioyo-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Tosin-Adarabioyo-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Ben-Davies" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Defender</span>
+      <span class="pp-chip">#33</span>
+      <span class="pp-chip">2 apps (0 starts)</span>
+      <span class="pp-chip">38 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.04 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Ben-Davies-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Ben-Davies-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Ben-Davies-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Sandro-Tonali" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#16</span>
+      <span class="pp-chip">10 apps (10 starts)</span>
+      <span class="pp-chip">951 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">1 assists</span>
+      <span class="pp-chip">0.40 xG</span>
+      <span class="pp-chip">0.01 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Sandro-Tonali-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Sandro-Tonali-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Sandro-Tonali-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Mateus-Fernandes" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#18</span>
+      <span class="pp-chip">11 apps (7 starts)</span>
+      <span class="pp-chip">675 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.35 xG</span>
+      <span class="pp-chip">0.02 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mateus-Fernandes-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mateus-Fernandes-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mateus-Fernandes-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Mohammed-Kudus" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#20</span>
+      <span class="pp-chip">10 apps (6 starts)</span>
+      <span class="pp-chip">671 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">2 assists</span>
+      <span class="pp-chip">1.35 xG</span>
+      <span class="pp-chip">0.57 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mohammed-Kudus-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mohammed-Kudus-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mohammed-Kudus-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Mathys-Tel" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#11</span>
+      <span class="pp-chip">8 apps (6 starts)</span>
+      <span class="pp-chip">503 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.65 xG</span>
+      <span class="pp-chip">0.06 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mathys-Tel-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mathys-Tel-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mathys-Tel-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Conor-Gallagher" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#8</span>
+      <span class="pp-chip">9 apps (4 starts)</span>
+      <span class="pp-chip">452 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">1.42 xG</span>
+      <span class="pp-chip">0.23 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Conor-Gallagher-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Conor-Gallagher-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Conor-Gallagher-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Rodrigo-Bentancur" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#30</span>
+      <span class="pp-chip">7 apps (4 starts)</span>
+      <span class="pp-chip">440 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.36 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Rodrigo-Bentancur-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Rodrigo-Bentancur-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Rodrigo-Bentancur-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="S-avio" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#17</span>
+      <span class="pp-chip">5 apps (4 starts)</span>
+      <span class="pp-chip">390 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.60 xG</span>
+      <span class="pp-chip">0.08 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-S-avio-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-S-avio-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-S-avio-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="James-Maddison" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#10</span>
+      <span class="pp-chip">7 apps (3 starts)</span>
+      <span class="pp-chip">291 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.43 xG</span>
+      <span class="pp-chip">0.09 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-James-Maddison-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-James-Maddison-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-James-Maddison-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Lucas-Bergvall" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#15</span>
+      <span class="pp-chip">5 apps (2 starts)</span>
+      <span class="pp-chip">190 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.12 xG</span>
+      <span class="pp-chip">0.01 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Lucas-Bergvall-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Lucas-Bergvall-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Lucas-Bergvall-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Mikey-Moore" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#47</span>
+      <span class="pp-chip">2 apps (1 starts)</span>
+      <span class="pp-chip">95 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.40 xG</span>
+      <span class="pp-chip">0.05 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mikey-Moore-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mikey-Moore-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mikey-Moore-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Luca-Williams-Barnett" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#68</span>
+      <span class="pp-chip">3 apps (1 starts)</span>
+      <span class="pp-chip">83 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.84 xG</span>
+      <span class="pp-chip">0.65 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Luca-Williams-Barnett-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Luca-Williams-Barnett-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Luca-Williams-Barnett-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Mykhailo-Mudryk" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Midfielder</span>
+      <span class="pp-chip">#27</span>
+      <span class="pp-chip">1 apps (0 starts)</span>
+      <span class="pp-chip">22 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.00 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mykhailo-Mudryk-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mykhailo-Mudryk-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Mykhailo-Mudryk-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Omar-Marmoush" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Forward</span>
+      <span class="pp-chip">#22</span>
+      <span class="pp-chip">10 apps (8 starts)</span>
+      <span class="pp-chip">737 mins</span>
+      <span class="pp-chip">1 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">1.09 xG</span>
+      <span class="pp-chip">0.40 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Omar-Marmoush-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Omar-Marmoush-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Omar-Marmoush-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Dominic-Solanke" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Forward</span>
+      <span class="pp-chip">#19</span>
+      <span class="pp-chip">11 apps (6 starts)</span>
+      <span class="pp-chip">624 mins</span>
+      <span class="pp-chip">2 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">3.24 xG</span>
+      <span class="pp-chip">1.18 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Dominic-Solanke-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Dominic-Solanke-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Dominic-Solanke-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Richarlison" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Forward</span>
+      <span class="pp-chip">#9</span>
+      <span class="pp-chip">1 apps (1 starts)</span>
+      <span class="pp-chip">69 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.00 xG</span>
+      <span class="pp-chip">0.00 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Richarlison-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Richarlison-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Richarlison-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <div class="pp-panel" data-player="Dejan-Kulusevski" style="display:none;">
+    <div class="pp-head">
+      <span class="pp-chip">Forward</span>
+      <span class="pp-chip">#21</span>
+      <span class="pp-chip">4 apps (0 starts)</span>
+      <span class="pp-chip">66 mins</span>
+      <span class="pp-chip">0 goals</span>
+      <span class="pp-chip">0 assists</span>
+      <span class="pp-chip">0.05 xG</span>
+      <span class="pp-chip">0.02 xA</span>
+    </div>
+    <div class="pp-grid">
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Dejan-Kulusevski-pct.png" loading="lazy"/>
+      </div>
+      <div>
+        <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Dejan-Kulusevski-trend.png" loading="lazy"/>
+      </div>
+    </div>
+    <div style="margin-top:.6rem;">
+      <img src="Tottenham_2627_Player_Dashboard_files/figure-html/pp-Dejan-Kulusevski-maps.png" loading="lazy"/>
+    </div>
+  </div>
+  <script>(function(){var s=document.getElementById('pp-select');if(!s)return;
+    s.addEventListener('change',function(){document.querySelectorAll('#pp .pp-panel').forEach(function(p){
+      p.style.display=(p.getAttribute('data-player')===s.value)?'':'none';});});})();</script>
+</div>
+```
+
+:::
+:::
+
+
+# Passing
+
+## Row
+
+
+::: {.cell title='Who Passes to Whom'}
+::: {.cell-output-display}
+![](Tottenham_2627_Player_Dashboard_files/figure-html/unnamed-chunk-8-1.png){width=2000}
+:::
+:::
+
+
+## Row
+
+
+::: {.cell title='Top Passing Pairs'}
+::: {.cell-output-display}
+
+```{=html}
+<div id="twtjmqciyo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#twtjmqciyo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#twtjmqciyo thead, #twtjmqciyo tbody, #twtjmqciyo tfoot, #twtjmqciyo tr, #twtjmqciyo td, #twtjmqciyo th {
+  border-style: none;
+}
+
+#twtjmqciyo p {
+  margin: 0;
+  padding: 0;
+}
+
+#twtjmqciyo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#twtjmqciyo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#twtjmqciyo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#twtjmqciyo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_col_heading {
+  color: #333333;
+  background-color: #DBDBDB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#twtjmqciyo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #DBDBDB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#twtjmqciyo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#twtjmqciyo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#twtjmqciyo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#twtjmqciyo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#twtjmqciyo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#twtjmqciyo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#twtjmqciyo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#twtjmqciyo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#twtjmqciyo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#twtjmqciyo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twtjmqciyo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#twtjmqciyo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#twtjmqciyo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#twtjmqciyo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twtjmqciyo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#twtjmqciyo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twtjmqciyo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#twtjmqciyo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twtjmqciyo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#twtjmqciyo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#twtjmqciyo .gt_left {
+  text-align: left;
+}
+
+#twtjmqciyo .gt_center {
+  text-align: center;
+}
+
+#twtjmqciyo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#twtjmqciyo .gt_font_normal {
+  font-weight: normal;
+}
+
+#twtjmqciyo .gt_font_bold {
+  font-weight: bold;
+}
+
+#twtjmqciyo .gt_font_italic {
+  font-style: italic;
+}
+
+#twtjmqciyo .gt_super {
+  font-size: 65%;
+}
+
+#twtjmqciyo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#twtjmqciyo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#twtjmqciyo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#twtjmqciyo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#twtjmqciyo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#twtjmqciyo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#twtjmqciyo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#twtjmqciyo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#twtjmqciyo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_title gt_font_normal" style><span data-qmd-base64="KipUb3R0ZW5oYW0gVG9wIFBhc3NpbmcgUGFpcnMqKg=="><span class='gt_from_md'><strong>Tottenham Top Passing Pairs</strong></span></span></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Tottenham | Premier League | 11 games to 21-11-2026</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Player-A">Player A</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Player-B">Player B</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="A-to-B">A to B</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="B-to-A">B to A</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Total">Total</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="DUPE_COLUMN_PLT"></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Player A" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Player B" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="A to B" class="gt_row gt_right">149</td>
+<td headers="B to A" class="gt_row gt_right">173</td>
+<td headers="Total" class="gt_row gt_right">322</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='86.08' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Player B" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="A to B" class="gt_row gt_right">114</td>
+<td headers="B to A" class="gt_row gt_right">119</td>
+<td headers="Total" class="gt_row gt_right">233</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='62.29' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Player B" class="gt_row gt_left">Mateus Fernandes</td>
+<td headers="A to B" class="gt_row gt_right">77</td>
+<td headers="B to A" class="gt_row gt_right">89</td>
+<td headers="Total" class="gt_row gt_right">166</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='44.38' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Archie Gray</td>
+<td headers="Player B" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="A to B" class="gt_row gt_right">87</td>
+<td headers="B to A" class="gt_row gt_right">78</td>
+<td headers="Total" class="gt_row gt_right">165</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='44.11' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Player B" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="A to B" class="gt_row gt_right">83</td>
+<td headers="B to A" class="gt_row gt_right">79</td>
+<td headers="Total" class="gt_row gt_right">162</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='43.31' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Antonín Kinsky</td>
+<td headers="Player B" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="A to B" class="gt_row gt_right">70</td>
+<td headers="B to A" class="gt_row gt_right">78</td>
+<td headers="Total" class="gt_row gt_right">148</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='39.56' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Player B" class="gt_row gt_left">Pedro Porro</td>
+<td headers="A to B" class="gt_row gt_right">77</td>
+<td headers="B to A" class="gt_row gt_right">58</td>
+<td headers="Total" class="gt_row gt_right">135</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='36.09' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Antonín Kinsky</td>
+<td headers="Player B" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="A to B" class="gt_row gt_right">67</td>
+<td headers="B to A" class="gt_row gt_right">63</td>
+<td headers="Total" class="gt_row gt_right">130</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='34.75' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Player B" class="gt_row gt_left">Mathys Tel</td>
+<td headers="A to B" class="gt_row gt_right">70</td>
+<td headers="B to A" class="gt_row gt_right">47</td>
+<td headers="Total" class="gt_row gt_right">117</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='31.28' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Mateus Fernandes</td>
+<td headers="Player B" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="A to B" class="gt_row gt_right">62</td>
+<td headers="B to A" class="gt_row gt_right">53</td>
+<td headers="Total" class="gt_row gt_right">115</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='30.74' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Player B" class="gt_row gt_left">Marcos Senesi</td>
+<td headers="A to B" class="gt_row gt_right">59</td>
+<td headers="B to A" class="gt_row gt_right">52</td>
+<td headers="Total" class="gt_row gt_right">111</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='29.67' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Player B" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="A to B" class="gt_row gt_right">56</td>
+<td headers="B to A" class="gt_row gt_right">52</td>
+<td headers="Total" class="gt_row gt_right">108</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='28.87' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="Player B" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="A to B" class="gt_row gt_right">58</td>
+<td headers="B to A" class="gt_row gt_right">49</td>
+<td headers="Total" class="gt_row gt_right">107</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='28.60' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Player B" class="gt_row gt_left">Mohammed Kudus</td>
+<td headers="A to B" class="gt_row gt_right">54</td>
+<td headers="B to A" class="gt_row gt_right">38</td>
+<td headers="Total" class="gt_row gt_right">92</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='24.59' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+    <tr><td headers="Player A" class="gt_row gt_left">Mohammed Kudus</td>
+<td headers="Player B" class="gt_row gt_left">Pedro Porro</td>
+<td headers="A to B" class="gt_row gt_right">37</td>
+<td headers="B to A" class="gt_row gt_right">47</td>
+<td headers="Total" class="gt_row gt_right">84</td>
+<td headers="DUPE_COLUMN_PLT" class="gt_row gt_left"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='99.21pt' height='14.17pt' viewBox='0 0 99.21 14.17'><g class='svglite'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }    .svglite g.glyphgroup path {      fill: inherit;      stroke: none;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3'>    <rect x='0.00' y='0.00' width='99.21' height='14.17' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw5OS4yMXwwLjAwfDE0LjE3)'><rect x='0.00' y='0.0000000000000018' width='99.21' height='14.17' style='stroke-width: 0.00; stroke: none;' /><rect x='4.39' y='0.89' width='22.45' height='12.40' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #132257;' /><line x1='4.39' y1='14.17' x2='4.39' y2='0.0000000000000016' style='stroke-width: 1.07; stroke-linecap: butt;' /></g></g></svg></td></tr>
+  </tbody>
+  <tfoot>
+    <tr class="gt_sourcenotes">
+      <td class="gt_sourcenote" colspan="6">Completed passes where the next action is by the receiving team-mate. Data: Opta</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+```
+
+:::
+:::
+
+
+
+::: {.cell title='Who Each Player Passes To Most'}
+::: {.cell-output-display}
+
+```{=html}
+<div id="rgoqchcpbe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rgoqchcpbe table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rgoqchcpbe thead, #rgoqchcpbe tbody, #rgoqchcpbe tfoot, #rgoqchcpbe tr, #rgoqchcpbe td, #rgoqchcpbe th {
+  border-style: none;
+}
+
+#rgoqchcpbe p {
+  margin: 0;
+  padding: 0;
+}
+
+#rgoqchcpbe .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rgoqchcpbe .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rgoqchcpbe .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rgoqchcpbe .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_col_heading {
+  color: #333333;
+  background-color: #DBDBDB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rgoqchcpbe .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #DBDBDB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rgoqchcpbe .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rgoqchcpbe .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rgoqchcpbe .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rgoqchcpbe .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rgoqchcpbe .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #FFFFFF;
+  background-color: #132257;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rgoqchcpbe .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #FFFFFF;
+  background-color: #132257;
+  font-size: 100%;
+  font-weight: bold;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rgoqchcpbe .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rgoqchcpbe .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rgoqchcpbe .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rgoqchcpbe .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgoqchcpbe .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rgoqchcpbe .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rgoqchcpbe .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rgoqchcpbe .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgoqchcpbe .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rgoqchcpbe .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgoqchcpbe .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rgoqchcpbe .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgoqchcpbe .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rgoqchcpbe .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgoqchcpbe .gt_left {
+  text-align: left;
+}
+
+#rgoqchcpbe .gt_center {
+  text-align: center;
+}
+
+#rgoqchcpbe .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rgoqchcpbe .gt_font_normal {
+  font-weight: normal;
+}
+
+#rgoqchcpbe .gt_font_bold {
+  font-weight: bold;
+}
+
+#rgoqchcpbe .gt_font_italic {
+  font-style: italic;
+}
+
+#rgoqchcpbe .gt_super {
+  font-size: 65%;
+}
+
+#rgoqchcpbe .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rgoqchcpbe .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rgoqchcpbe .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rgoqchcpbe .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rgoqchcpbe .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rgoqchcpbe .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rgoqchcpbe .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rgoqchcpbe .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rgoqchcpbe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal" style><span data-qmd-base64="KipGYXZvdXJpdGUgUGFzc2luZyBUYXJnZXRzKio="><span class='gt_from_md'><strong>Favourite Passing Targets</strong></span></span></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Tottenham | Premier League | 11 games to 21-11-2026</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Player">Player</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Completed">Completed</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Favourite-target">Favourite target</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Share-%">Share %</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <th colspan="4" class="gt_group_heading" style="color: #FFFFFF;" scope="colgroup" id="Goalkeeper">Goalkeeper</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Goalkeeper  Player" class="gt_row gt_left">Antonín Kinsky</td>
+<td headers="Goalkeeper  Completed" class="gt_row gt_right">296</td>
+<td headers="Goalkeeper  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Goalkeeper  Share %" class="gt_row gt_right">23.6</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="4" class="gt_group_heading" style="color: #FFFFFF;" scope="colgroup" id="Defender">Defender</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Defender  Player" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Defender  Completed" class="gt_row gt_right">889</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="Defender  Share %" class="gt_row gt_right">16.8</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="Defender  Completed" class="gt_row gt_right">639</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Defender  Share %" class="gt_row gt_right">27.1</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Archie Gray</td>
+<td headers="Defender  Completed" class="gt_row gt_right">310</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Defender  Share %" class="gt_row gt_right">28.1</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Defender  Completed" class="gt_row gt_right">460</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="Defender  Share %" class="gt_row gt_right">24.8</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Pedro Porro</td>
+<td headers="Defender  Completed" class="gt_row gt_right">242</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Defender  Share %" class="gt_row gt_right">24.0</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Marcos Senesi</td>
+<td headers="Defender  Completed" class="gt_row gt_right">233</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Defender  Share %" class="gt_row gt_right">22.3</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Destiny Udogie</td>
+<td headers="Defender  Completed" class="gt_row gt_right">133</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="Defender  Share %" class="gt_row gt_right">13.5</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Tosin Adarabioyo</td>
+<td headers="Defender  Completed" class="gt_row gt_right">69</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Micky van de Ven</td>
+<td headers="Defender  Share %" class="gt_row gt_right">27.5</td></tr>
+    <tr><td headers="Defender  Player" class="gt_row gt_left">Ben Davies</td>
+<td headers="Defender  Completed" class="gt_row gt_right">22</td>
+<td headers="Defender  Favourite target" class="gt_row gt_left">Mateus Fernandes</td>
+<td headers="Defender  Share %" class="gt_row gt_right">22.7</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="4" class="gt_group_heading" style="color: #FFFFFF;" scope="colgroup" id="Midfielder">Midfielder</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Midfielder  Player" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">532</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">14.8</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Mateus Fernandes</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">469</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">19.0</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Mohammed Kudus</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">239</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">15.9</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Mathys Tel</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">170</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">27.6</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Conor Gallagher</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">206</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">11.2</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Rodrigo Bentancur</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">258</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">19.8</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Sávio</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">112</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Archie Gray</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">10.7</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">James Maddison</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">184</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">13.6</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Lucas Bergvall</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">74</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">16.2</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Mikey Moore</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">15</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">33.3</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Luca Williams-Barnett</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">32</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">James Maddison</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">21.9</td></tr>
+    <tr><td headers="Midfielder  Player" class="gt_row gt_left">Mykhailo Mudryk</td>
+<td headers="Midfielder  Completed" class="gt_row gt_right">1</td>
+<td headers="Midfielder  Favourite target" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Midfielder  Share %" class="gt_row gt_right">100.0</td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="4" class="gt_group_heading" style="color: #FFFFFF;" scope="colgroup" id="Forward">Forward</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Forward  Player" class="gt_row gt_left">Omar Marmoush</td>
+<td headers="Forward  Completed" class="gt_row gt_right">129</td>
+<td headers="Forward  Favourite target" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Forward  Share %" class="gt_row gt_right">25.6</td></tr>
+    <tr><td headers="Forward  Player" class="gt_row gt_left">Dominic Solanke</td>
+<td headers="Forward  Completed" class="gt_row gt_right">69</td>
+<td headers="Forward  Favourite target" class="gt_row gt_left">Sandro Tonali</td>
+<td headers="Forward  Share %" class="gt_row gt_right">14.5</td></tr>
+    <tr><td headers="Forward  Player" class="gt_row gt_left">Richarlison</td>
+<td headers="Forward  Completed" class="gt_row gt_right">7</td>
+<td headers="Forward  Favourite target" class="gt_row gt_left">Andy Robertson</td>
+<td headers="Forward  Share %" class="gt_row gt_right">42.9</td></tr>
+    <tr><td headers="Forward  Player" class="gt_row gt_left">Dejan Kulusevski</td>
+<td headers="Forward  Completed" class="gt_row gt_right">18</td>
+<td headers="Forward  Favourite target" class="gt_row gt_left">Jan Paul van Hecke</td>
+<td headers="Forward  Share %" class="gt_row gt_right">27.8</td></tr>
+  </tbody>
+  
+</table>
+</div>
+```
+
+:::
+:::
+
+
+# League Finder
+
+## Row
+
+
+::: {.cell title='Every League Player (search a name or club, filter a column, sort)'}
+::: {.cell-output-display}
+
+```{=html}
+<div class="rt-wrap">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-4e2577c3b884270ed682" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4e2577c3b884270ed682">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Player":["Ben White","Bruno Guimarães","Bukayo Saka","Christos Tzolis","David Raya","Declan Rice","Eberechi Eze","Ezri Konsa","Gabriel Magalhães","Jurriën Timber","Kai Havertz","Martin Ødegaard","Mikel Merino","Myles Lewis-Skelly","Noni Madueke","Riccardo Calafiori","Aaron Wan-Bissaka","Alysson","Boubacar Kamara","Emiliano Buendía","George Hemmings","Ian Maatsen","Johan Manzambi","John McGinn","João Gomes","Leon Goretzka","Matty Cash","Nicolas Jackson","Pau Torres","Ross Barkley","Tyrone Mings","Victor Lindelöf","Zion Suzuki","Adam Smith","Adrien Truffert","Alex Scott","António Silva","Djordje Petrovic","Evanilson","James Hill","Justin Kluivert","Lewis Cook","Marcus Tavernier","Rayan","Ryan Christie","Tyler Adams","Aaron Hickey","Caoimhín Kelleher","Dango Ouattara","Igor Thiago","Jaidon Anthony","Jannik Schuster","Keane Lewis-Potter","Kevin Schade","Kristoffer Ajer","Mamadou Sangaré","Mathias Jensen","Michael Kayode","Mikkel Damsgaard","Nathan Collins","Sepp van den Berg","Vitaly Janelt","Yehor Yarmoliuk","Bart Verbruggen","Charalampos Kostoulas","Chema Andrés","Costinha","Diego Gómez","Ferdi Kadioglu","Lewis Dunk","Luka Vuskovic","Malick Yalcouyé","Maxim De Cuyper","Olivier Boscagli","Pascal Groß","Yasin Ayari","Cole Palmer","Emiliano Martínez","Estêvão","Jordan Henderson","Jorrel Hato","Josh Acheampong","João Pedro","Levi Colwill","Malo Gusto","Maxence Lacroix","Mike Penders","Moisés Caicedo","Morgan Rogers","Pedro Neto","Pep Chavarría","Reece James","Roméo Lavia","Wesley Fofana","Aurèle Amenda","Bobby Thomas","Brandon Thomas-Asante","Caleb Yirenkyi","Carl Rushworth","Ephron Mason-Clark","Ethan Pinnock","Frank Onyeka","Jack Rudoni","Jay Dasilva","Matt Grimes","Milan van Ewijk","Sidiki Cherif","Stephen Mfuni","Taiwo Awoniyi","Tatsuhiro Sakamoto","Victor Torp","Adam Wharton","Anan Khalaili","Axel Disasi","Chris Richards","Daichi Kamada","Dean Henderson","Dwight McNeil","Eddie Nketiah","Jaydee Canvot","Jefferson Lerma","Jørgen Strand Larsen","Quinten Timber","Tyrick Mitchell","Walter Benítez","Yéremy Pino","Ainsley Maitland-Niles","Brennan Johnson","Harrison Armstrong","Jack Grealish","Jake O'Brien","James Garner","James Tarkowski","Jarrad Branthwaite","Jordan Pickford","Kiernan Dewsbury-Hall","Merlin Röhl","Thierno Barry","Tyrique George","Vitalii Mykolenko","Alex Iwobi","Antonee Robinson","Bernd Leno","Calvin Bassey","César Palacios","David Affengruber","Gonzalo García","Josh King","Kenny Tete","Oscar Bobb","Ryan Sessegnon","Sander Berge","Shea Charles","Timothy Castagne","Elliot Stroud","John Egan","Konstantinos Tzolakis","Lewie Coyle","Lucas Gourna-Douath","Lucas Herrington","Matt Crooks","Mohamed Belloumi","Nobel Mendy","Oliver McBurnie","Regan Slater","Ryan Giles","Semi Ajayi","Sorba Thomas","Tim Iroegbunam","Abdoul Ouattara","Abdul Fatawu","Christian Walton","Daizen Maeda","Dara O'Shea","Emersonn","Exequiel Palacios","Florentino","Issa Diop","Jack Clarke","Jacob Greaves","Jaden Philogene","Julio Enciso","Kjell Scherpen","Leif Davis","Sasa Lukic","Zian Flemming","Anton Stach","Ao Tanaka","Brenden Aaronson","Dominic Calvert-Lewin","Ethan Ampadu","Gabriel Gudmundsson","Harry Wilson","Jaka Bijol","James Justin","James Trafford","Jayden Bogle","Nico Elvedi","Noah Okafor","Sean Longstaff","Tarik Muharemovic","Alexander Isak","Alexis Mac Allister","Alisson Becker","Bradley Barcola","Cody Gakpo","Dominik Szoboszlai","Florian Wirtz","Jérémy Jacquet","Milos Kerkez","Ronald Araujo","Ryan Gravenberch","Trey Nyoni","Virgil van Dijk","Víctor Muñoz","Abdukodir Khusanov","Antoine Semenyo","Ayyoub Bouaddi","Elliot Anderson","Enzo Fernández","Erling Haaland","Gianluigi Donnarumma","Iliman Ndiaye","Josko Gvardiol","Jérémy Doku","Marc Guéhi","Matheus Nunes","Nico O'Reilly","Phil Foden","Rayan Cherki","Rúben Dias","Amad Diallo","Andrey Santos","Ayden Heaven","Bruno Fernandes","Bryan Mbeumo","Carlos Baleba","Diogo Dalot","Harry Maguire","Kobbie Mainoo","Leny Yoro","Lisandro Martínez","Luke Shaw","Marcus Rashford","Matheus Cunha","Noussair Mazraoui","Senne Lammens","Youri Tielemans","Amar Dedic","Anthony Elanga","Dan Burn","Fabian Schär","Harvey Barnes","Jacob Murphy","Joe Willock","Joelinton","Lewis Hall","Lewis Miley","Lukás Hornícek","Malick Thiaw","Matias Fernandez-Pardo","Nico González","Sean Steur","Sven Botman","William Osula","Yoane Wissa","Dan Ndoye","Daniel Muñoz","Igor Jesus","Jair Cunha","James McAtee","Liam Delap","Matz Sels","Morgan Gibbs-White","Murillo","Neco Williams","Nikola Milenkovic","Ola Aina","Ousmane Diomande","Xaver Schlager","Brian Brobbey","Chemsdine Talbi","Chris Rigg","Dan Ballard","Enzo Le Fée","Granit Xhaka","Kevin Danso","Luke O'Nien","Nilson Angulo","Noah Sadiki","Nordi Mukiele","Reinildo Mandava","Robin Roefs","Thomas Meunier","Trai Hume","Wilson Isidor","Andy Robertson","Antonín Kinsky","Archie Gray","Conor Gallagher","Destiny Udogie","Dominic Solanke","James Maddison","Jan Paul van Hecke","Marcos Senesi","Mateus Fernandes","Mathys Tel","Micky van de Ven","Mohammed Kudus","Omar Marmoush","Pedro Porro","Rodrigo Bentancur","Sandro Tonali","Sávio"],"Club":["Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Arsenal","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Aston Villa","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Bournemouth","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brentford","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Brighton","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Chelsea","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Coventry","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Crystal Palace","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Everton","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Fulham","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Hull","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Ipswich","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Leeds","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Liverpool","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man City","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Man Utd","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Newcastle","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Nottingham Forest","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Sunderland","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham","Tottenham"],"Role":["Defender","Midfielder","Midfielder","Midfielder","Goalkeeper","Midfielder","Midfielder","Defender","Defender","Defender","Forward","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Defender","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Forward","Defender","Midfielder","Defender","Defender","Goalkeeper","Defender","Defender","Midfielder","Defender","Goalkeeper","Forward","Defender","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Goalkeeper","Midfielder","Forward","Midfielder","Defender","Defender","Midfielder","Defender","Midfielder","Midfielder","Defender","Midfielder","Defender","Defender","Midfielder","Midfielder","Goalkeeper","Forward","Midfielder","Defender","Midfielder","Defender","Defender","Defender","Midfielder","Midfielder","Defender","Midfielder","Midfielder","Midfielder","Goalkeeper","Midfielder","Midfielder","Defender","Defender","Forward","Defender","Defender","Defender","Goalkeeper","Midfielder","Midfielder","Midfielder","Defender","Midfielder","Midfielder","Defender","Defender","Defender","Midfielder","Midfielder","Goalkeeper","Forward","Defender","Midfielder","Midfielder","Defender","Midfielder","Defender","Forward","Defender","Forward","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Defender","Midfielder","Goalkeeper","Forward","Forward","Defender","Defender","Forward","Midfielder","Midfielder","Goalkeeper","Forward","Defender","Midfielder","Midfielder","Midfielder","Defender","Midfielder","Defender","Defender","Goalkeeper","Midfielder","Defender","Forward","Midfielder","Defender","Midfielder","Defender","Goalkeeper","Defender","Midfielder","Defender","Forward","Midfielder","Defender","Midfielder","Defender","Midfielder","Midfielder","Defender","Midfielder","Defender","Goalkeeper","Defender","Midfielder","Defender","Midfielder","Midfielder","Defender","Forward","Midfielder","Defender","Defender","Midfielder","Midfielder","Defender","Midfielder","Goalkeeper","Midfielder","Defender","Forward","Midfielder","Midfielder","Defender","Midfielder","Defender","Midfielder","Midfielder","Goalkeeper","Defender","Midfielder","Forward","Forward","Midfielder","Forward","Forward","Midfielder","Midfielder","Forward","Defender","Defender","Goalkeeper","Midfielder","Defender","Forward","Forward","Defender","Forward","Midfielder","Goalkeeper","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Defender","Defender","Midfielder","Midfielder","Defender","Midfielder","Defender","Midfielder","Midfielder","Midfielder","Midfielder","Forward","Goalkeeper","Midfielder","Defender","Midfielder","Defender","Defender","Defender","Midfielder","Midfielder","Defender","Midfielder","Midfielder","Defender","Midfielder","Midfielder","Midfielder","Defender","Defender","Midfielder","Defender","Defender","Defender","Midfielder","Forward","Defender","Goalkeeper","Midfielder","Defender","Midfielder","Defender","Defender","Midfielder","Midfielder","Midfielder","Midfielder","Defender","Midfielder","Goalkeeper","Defender","Forward","Midfielder","Midfielder","Defender","Forward","Midfielder","Forward","Midfielder","Forward","Defender","Midfielder","Forward","Goalkeeper","Forward","Defender","Midfielder","Defender","Midfielder","Defender","Midfielder","Forward","Midfielder","Midfielder","Defender","Midfielder","Midfielder","Defender","Defender","Midfielder","Midfielder","Defender","Defender","Goalkeeper","Defender","Midfielder","Forward","Defender","Goalkeeper","Defender","Midfielder","Defender","Forward","Midfielder","Defender","Defender","Midfielder","Midfielder","Defender","Midfielder","Forward","Defender","Midfielder","Midfielder","Midfielder"],"Apps":[7,9,7,8,11,11,8,10,11,7,11,11,11,8,8,11,7,10,11,10,6,8,8,11,7,5,8,10,8,11,6,10,10,11,11,6,11,11,11,11,9,11,11,11,10,11,10,10,10,10,9,4,10,10,10,10,6,10,8,4,4,9,8,10,10,7,9,10,7,9,10,10,10,10,10,9,11,7,9,6,6,9,6,10,8,8,4,7,11,11,9,4,9,7,4,9,11,10,11,7,10,8,11,10,11,10,7,6,9,7,7,11,11,7,11,11,6,8,10,9,7,9,7,11,5,11,5,10,10,5,6,10,10,9,10,10,7,10,10,9,11,10,11,11,9,8,11,11,6,11,7,11,11,9,8,10,10,10,4,8,6,9,7,10,10,10,10,5,7,11,9,7,11,11,11,10,8,11,10,6,6,11,4,11,7,9,10,10,9,11,11,9,9,5,11,11,11,9,10,7,11,9,10,10,8,8,8,10,10,10,10,7,8,10,9,8,7,6,11,9,11,11,9,11,7,10,7,9,9,10,11,5,6,5,9,10,4,10,10,8,7,8,5,6,10,5,10,9,9,7,6,5,11,10,11,4,11,9,11,10,6,8,9,8,7,11,11,9,7,9,11,10,11,10,11,11,7,7,5,11,8,5,6,5,11,10,5,6,10,11,9,10,11,9,10,9,10,11,10,9,6,11,7,11,3,11,8,9,10,10,7,7,10,5],"Mins":[581,504,644,568,1061,980,344,914,1091,473,892,966,268,488,578,939,411,471,1067,705,353,759,559,896,445,264,715,852,618,466,501,1004,999,1001,1078,509,1090,1090,989,1090,624,459,1000,1020,525,866,405,999,496,909,523,340,838,849,999,676,350,818,394,259,346,898,414,981,763,487,417,924,554,816,962,370,879,836,957,790,1058,672,292,573,437,732,562,925,370,705,329,491,1065,817,524,323,613,634,390,829,581,697,1082,353,905,442,870,973,862,984,336,443,527,527,328,1058,827,545,1082,1041,588,392,346,806,306,628,563,1043,494,809,329,465,930,317,269,863,999,873,999,976,650,927,703,874,941,871,1069,1069,328,778,873,916,278,835,284,887,890,796,527,913,981,778,250,402,408,730,554,958,914,761,922,295,391,724,582,698,612,1094,703,794,465,1094,385,494,318,982,396,1081,622,310,742,756,342,1028,1078,775,366,286,1049,1078,956,842,591,266,1078,806,831,987,625,650,618,847,932,892,723,372,275,987,512,697,611,296,949,644,1061,1075,708,778,522,880,556,470,467,624,1075,385,363,258,893,975,251,780,938,622,496,636,447,373,756,265,991,695,723,407,412,250,1069,547,695,291,1077,720,1092,882,352,594,421,699,481,793,704,723,346,872,967,823,1083,985,1076,1045,685,475,380,880,678,284,261,498,1032,901,421,500,573,1019,852,966,1094,680,798,398,736,1083,786,452,268,624,291,1083,283,675,503,815,671,737,458,440,951,390],"Goals":[0,0.357142857142857,0.419254658385093,0,"NA",0,0.261627906976744,0.0984682713347921,0.0824931255728689,0,0.302690582959641,0.279503105590062,0,0,0.311418685121107,0.0958466453674121,0,0.382165605095541,0,0.127659574468085,0,0,0.322003577817531,0.200892857142857,0,0.340909090909091,0,0.633802816901408,0,0,0,0,"NA",0,0,0.176817288801572,0,"NA",0.546006066734075,0,0.288461538461538,0,0.45,0.0882352941176471,0,0,0,"NA",0.181451612903226,0.198019801980198,0.17208413001912,0,0.214797136038186,0.318021201413428,0.0900900900900901,0,0,0.110024449877751,0,0,0,0.200445434298441,0.217391304347826,"NA",0.353866317169069,0.184804928131417,0,0.194805194805195,0,0.110294117647059,0.0935550935550936,0.486486486486487,0.204778156996587,0,0.376175548589342,0.341772151898734,0.255198487712665,"NA",0,0.31413612565445,0,0,0.800711743772242,0,0,0,"NA",0,0.422535211267606,0.330477356181151,0,0,0.146818923327896,0,0,0,0,0,"NA",0,0,0,0.310344827586207,0.092497430626927,0,0,0.267857142857143,0.203160270880361,0.341555977229602,0.341555977229602,0,0,0.108827085852479,0,0,0.0864553314121038,"NA",0,0.260115606936416,0,0.294117647058824,0.286624203821656,0,0.172579098753595,"NA",0.222496909765142,0.273556231003039,0,0,0,0,0,0.0900900900900901,0,"NA",0.276639344262295,0,0.58252427184466,0.128022759601707,0,0.0956429330499469,0,"NA",0,0.274390243902439,0,0.103092783505155,0.196506550218341,0,0.107784431137725,0.316901408450704,0,0,0,0,0,"NA",0,0,0,0,0.36986301369863,0.162454873646209,0.187891440501044,0,0,0.0976138828633406,0,0.230179028132992,0.124309392265193,0,"NA",0.147058823529412,0.0822669104204753,0.256045519203414,0,0.193548387096774,0,0.467532467532468,0,0,0.183299389002037,"NA",0.166512488436633,0,0.580645161290323,0.121293800539084,0,0.263157894736842,0.437743190661479,0,0,0,0,0.0857959961868446,"NA",0.0941422594142259,0,0.609137055837564,0,0,0.781637717121588,0.108303249097473,"NA",0,0.138461538461538,0.145631067961165,0.106257378984652,0,0,0,0,0,0,0.3515625,0,0.294599018003273,0,0.0948366701791359,0.139751552795031,0.763430725730443,"NA",0,0.115681233933162,0.172413793103448,0.102272727272727,0,0,0.19271948608137,0.721153846153846,0,0,0,0,0.403135498320269,0.369230769230769,0,0,0,0,0,0,0,0,0.119047619047619,0,"NA",0.129496402877698,0,0.442260442260442,0,0,0.252572497661366,0.164533820840951,0.258992805755396,0,0.0835654596100279,0,"NA",0.102040816326531,0,0,0,0.128755364806867,0.187110187110187,0.113493064312736,0.255681818181818,0,0.260115606936416,0.103211009174312,0,0.328068043742406,"NA",0.0913705583756345,0,0.0861244019138756,0,0,0,0,0.398230088495575,0,0,0,0.261627906976744,0,0,0,0.157068062827225,0,0,0,"NA",0,0,0.226130653266332,0,"NA",0.114503816793893,0.199115044247788,0,0.288461538461538,0.309278350515464,0.166204986149584,0,0,0.178926441351889,0,0,0.122116689280868,0,0,0,0],"NPxG":[0.0278829604130809,0.144642857142857,0.396894409937888,0.0713028169014085,"NA",0.0551020408163265,0.188372093023256,0.0482494529540481,0.134463794683776,0.00380549682875264,0.286547085201794,0.22360248447205,0.28544776119403,0.0405737704918033,0.200865051903114,0.121725239616613,0,0.105095541401274,0.0118088097469541,0.228510638297872,0.0178470254957507,0.0545454545454545,0.294633273703041,0.174776785714286,0,0.2625,0.0264335664335664,0.367605633802817,0.0509708737864078,0.131330472103004,0.0359281437125748,0.0412350597609562,"NA",0.0521478521478521,0.0166975881261596,0.118467583497053,0.153577981651376,"NA",0.494135490394338,0.0330275229357798,0.31875,0.0156862745098039,0.3834,0.287647058823529,0.183428571428571,0.0207852193995381,0.0177777777777778,"NA",0.197782258064516,0.330693069306931,0.294263862332696,0.0264705882352941,0.15035799522673,0.257597173144876,0.0414414414414414,0.063905325443787,0.0488571428571429,0.0638141809290954,0.0868020304568528,0.142471042471042,0.0520231213872832,0.0531180400890869,0.041304347826087,"NA",0.303145478374836,0.0979466119096509,0.0712230215827338,0.130519480519481,0.0243682310469314,0.00330882352941176,0.118814968814969,0.355135135135135,0.254948805460751,0.0150717703349282,0.136363636363636,0.248354430379747,0.150567107750473,"NA",0.126369863013699,0.0769633507853403,0.00205949656750572,0.0122950819672131,0.486832740213523,0.0194594594594595,0.0340540540540541,0.051063829787234,"NA",0.00916496945010183,0.276338028169014,0.203794369645043,0.00687022900763359,0.0947368421052631,0.11305057096248,0.028391167192429,0.00461538461538462,0.0683956574185766,0.20447504302926,0.0193687230989957,"NA",0.13257790368272,0.0198895027624309,0.0285067873303167,0.170689655172414,0.048098663926002,0.0177494199535963,0.000914634146341463,0.104464285714286,0.0772009029345373,0.485009487666034,0.0836812144212524,0.104268292682927,0.0374291115311909,0.140386940749698,0.0544954128440367,0.0216266173752311,0.120172910662824,"NA",0.0688775510204082,0.35635838150289,0.00558312655086849,0.3,0.339649681528662,0.0767317939609236,0.075071907957814,"NA",0.226946847960445,0.0164133738601824,0.207096774193548,0.0648387096774194,0.0312302839116719,0.0702602230483271,0.0500579374275782,0.0162162162162162,0.0350515463917526,"NA",0.15030737704918,0.0110769230769231,0.690291262135922,0.090896159317212,0.0185354691075515,0.130074388947928,0.0423650975889782,"NA",0.0378858746492049,0.285365853658537,0.0231362467866324,0.405154639175258,0.212227074235808,0,0.204790419161677,0.0919014084507042,0.0355129650507328,0.0950561797752809,0.0915829145728643,0.0341555977229602,0.0345016429353779,"NA",0.0277634961439589,0.0108,0.00447761194029851,0,0.152876712328767,0.10072202166065,0.134342379958246,0.0305251641137856,0.00236530880420499,0.067353579175705,0.0671186440677966,0.112787723785166,0.0360497237569061,0.0618556701030928,"NA",0.176470588235294,0.0246800731261426,0.34950213371266,0.00226700251889169,0.0483870967741935,0.00822669104204753,0.10987012987013,0.00364372469635628,0.0707547169811321,0.208961303462322,"NA",0.133209990749306,0.00144694533762058,0.296129032258065,0.181940700808625,0.216666666666667,0.0394736842105263,0.437743190661479,0.0208719851576994,0.0209032258064516,0.0737704918032787,0.0409090909090909,0.040324118207817,"NA",0.151569037656904,0.0598574821852732,0.169035532994924,0.165789473684211,0.0542671614100186,0.484615384615385,0.0974729241877256,"NA",0.20016,0.156461538461538,0.0990291262135922,0.23801652892562,0.0473175965665236,0.0221973094170404,0.13195020746888,0.0290322580645161,0.0163636363636364,0.0346504559270517,0.116015625,0.0103299856527977,0.0486088379705401,0.0152027027027027,0.0407797681770284,0.216614906832298,0.664184731385485,"NA",0.189406779661017,0.0867609254498715,0.160344827586207,0.0992045454545454,0.0242805755395683,0.291063829787234,0.458672376873662,0.330288461538462,0.0761860465116279,0.252467532467532,0.0471074380165289,0.0418604651162791,0.246920492721165,0.368307692307692,0.0430278884462151,0.0484615384615385,0.0278251599147122,0.0607717041800643,0.0254032258064516,0.0339622641509434,0.00604026845637584,0.345040214477212,0.144047619047619,0.0815094339622641,"NA",0.133381294964029,0.0211618257261411,0.194594594594595,0.0502427184466019,0.0432,0.210477081384471,0.0592321755027422,0.283597122302158,0.0525773195876289,0.0426183844011142,0.01,"NA",0.0285714285714286,0.158522727272727,0.00757575757575758,0.0128266033254157,0.0270386266094421,0.155301455301455,0.288272383354351,0.301704545454546,0.104564315352697,0.358959537572254,0.0660550458715596,0.118200620475698,0.34775212636695,"NA",0.180913705583756,0.108736059479554,0.0869856459330144,0.0289051094890511,0.0113684210526316,0.0544736842105263,0.0501136363636364,0.556194690265487,0.107746478873239,0.0827586206896552,0.0560240963855422,0.0654069767441861,0.0159822419533851,0.0641330166270784,0.0612,0.124083769633508,0.0388616290480864,0.0887323943661972,0.00279503105590062,"NA",0.0648529411764706,0.0654135338345865,0.515577889447236,0.0342391304347826,"NA",0.0595419847328244,0.282743362831858,0,0.467307692307692,0.132989690721649,0.153739612188366,0,0.0466666666666667,0.116302186878728,0.0739877300613497,0.18107302533532,0.133107191316147,0.108078602620087,0.0736363636363637,0.0378548895899054,0.138461538461538],"xA":[0,0.0571428571428571,0.0964285714285714,0.0190140845070423,"NA",0.0073469387755102,0.0340116279069767,0,0.0354720439963336,0,0.101905829596413,0.0167701863354037,0.0604477611940299,0.0516393442622951,0.0311418685121107,0.0546325878594249,0,0.045859872611465,0.00337394564198688,0.0459574468085106,0.00764872521246459,0.0213438735177866,0.0595706618962433,0.0220982142857143,0,0.0238636363636364,0.00377622377622378,0.0126760563380282,0.0800970873786408,0.01931330472103,0.00718562874251497,0,"NA",0,0.00166975881261596,0.0141453831041257,0.0346788990825688,"NA",0.105561172901921,0.00247706422018349,0.0721153846153846,0,0.054,0.0723529411764706,0.0668571428571429,0.00103926096997691,0.00444444444444444,"NA",0.0453629032258065,0.0821782178217822,0.0499043977055449,0.0582352941176471,0.0655131264916468,0.0890459363957598,0.000900900900900901,0.0452662721893491,0,0.00110024449877751,0.0571065989847716,0.0972972972972973,0,0,0.00217391304347826,"NA",0.0861074705111402,0.0554414784394251,0.0345323741007194,0.037987012987013,0.00162454873646209,0,0.0739085239085239,0.0754054054054054,0.0839590443686007,0,0.00564263322884013,0.0284810126582279,0.0331758034026465,"NA",0.0339041095890411,0.012565445026178,0.0164759725400458,0.00860655737704918,0.137722419928826,0,0.00972972972972973,0.0574468085106383,"NA",0.020162932790224,0.0388732394366197,0.0374541003671971,0.0017175572519084,0.00278637770897833,0,0,0,0.0173703256936068,0.0790017211703959,0,"NA",0.0739376770538244,0.00895027624309392,0,0.0610344827586207,0.0129496402877698,0.0198375870069606,0,0.00267857142857143,0.00203160270880361,0.10246679316888,0.00341555977229602,0.013719512195122,0.000850661625708885,0.00870616686819831,0,0.0182994454713494,0.0285302593659942,"NA",0.0160714285714286,0.109248554913295,0.0011166253101737,0.129411764705882,0.153343949044586,0.0063943161634103,0.00604026845637584,"NA",0.0222496909765142,0,0.0464516129032258,0.0145161290322581,0.0198738170347003,0.0769516728624535,0.00104287369640788,0,0,"NA",0.0765368852459016,0.00692307692307692,0.183495145631068,0.0153627311522048,0.00308924485125858,0.0392136025504782,0.00929965556831228,"NA",0.00841908325537886,0.0603658536585366,0.0474293059125964,0.132989690721649,0.0609170305676856,0,0.0161676646706587,0.0855633802816901,0.0121758737316798,0.00101123595505618,0.0723618090452261,0.00512333965844402,0.0433734939759036,"NA",0,0,0,0,0.0431506849315069,0.0731046931407942,0.0187891440501044,0.0108315098468271,0,0,0.0701694915254237,0.0184143222506394,0,0.00927835051546392,"NA",0.0882352941176471,0.0180987202925046,0.125462304409673,0,0.0193548387096774,0,0.0280519480519481,0,0.0169811320754717,0.0522403258655805,"NA",0.0657724329324699,0,0.104516129032258,0.0303234501347709,0.0380952380952381,0.00526315789473684,0.134824902723735,0.0175324675324675,0.00464516129032258,0.00245901639344262,0.0251748251748252,0.0171591992373689,"NA",0.021652719665272,0.0192399049881235,0.00761421319796954,0.043984962406015,0.0183673469387755,0.120595533498759,0.0898916967509025,"NA",0.07056,0.0249230769230769,0.00436893203883495,0.0871310507674144,0,0.00100896860986547,0.024896265560166,0.00241935483870968,0.00981818181818182,0.00455927051671732,0.0123046875,0.00129124820659971,0.00589198036006547,0.00304054054054054,0.00758693361433087,0.0698757763975155,0.203581526861451,"NA",0.0572033898305085,0.0127249357326478,0.0310344827586207,0.045,0.00647482014388489,0.151276595744681,0.131049250535332,0.0288461538461539,0.020093023255814,0.0327272727272727,0.0173553719008264,0.104651162790698,0.0463605823068309,0.084,0.00358565737051793,0.00923076923076923,0.0239872068230277,0.00578778135048232,0.05625,0.00141509433962264,0,0.120643431635389,0.0523809523809524,0.0883018867924528,"NA",0.0271942446043166,0.00622406639004149,0.0287469287469287,0.0480582524271845,0,0.0631431244153414,0.0394881170018282,0.0764028776978417,0.00927835051546392,0.0225626740947075,0,"NA",0,0,0,0.00213776722090261,0,0.0748440748440748,0.049936948297604,0.113778409090909,0.0659751037344398,0.179479768786127,0.00619266055045872,0.0148914167528438,0.0754556500607533,"NA",0.0438578680203046,0.0284386617100372,0.0327272727272727,0.0091970802919708,0.00378947368421053,0.0568421052631579,0.0214772727272727,0.156637168141593,0.0253521126760563,0.0103448275862069,0.0433734939759036,0.00959302325581396,0,0.0983372921615202,0.0774,0.0643979057591623,0.00353287536800785,0.0464788732394366,0,"NA",0.0145588235294118,0.0642857142857143,0.092713567839196,0.028125,"NA",0.0412213740458015,0.0457964601769911,0,0.170192307692308,0.0278350515463918,0.074792243767313,0,0.00266666666666667,0.0107355864811133,0.0154601226993865,0.0764530551415797,0.0488466757123474,0.0196506550218341,0,0.000946372239747634,0.0184615384615385],"Shots":[0.154905335628227,1.42857142857143,2.37577639751553,1.42605633802817,"NA",1.19387755102041,1.83139534883721,0.393873085339168,0.74243813015582,0.190274841437632,1.61434977578475,1.49068322981366,3.35820895522388,0.922131147540984,2.95847750865052,0.958466453674121,0,1.71974522292994,0.253045923149016,2.42553191489362,0.254957507082153,1.30434782608696,3.22003577817531,1.00446428571429,0,2.38636363636364,0.377622377622378,2.53521126760563,0.58252427184466,2.51072961373391,0.718562874251497,0.0896414342629482,"NA",0.26973026973027,0.584415584415584,1.41453831041257,0.577981651376147,"NA",2.82103134479272,0.330275229357798,2.74038461538462,0.196078431372549,1.98,2.91176470588235,2.22857142857143,0.415704387990762,0.444444444444444,"NA",1.63306451612903,2.07920792079208,2.23709369024857,0.264705882352941,1.39618138424821,2.01413427561837,0.45045045045045,1.06508875739645,1.28571428571429,0.770171149144254,1.37055837563452,1.73745173745174,0.520231213872832,0.400890868596882,0.869565217391304,"NA",2.94888597640891,0.739219712525667,0.863309352517986,2.53246753246753,0.812274368231047,0.110294117647059,1.4968814968815,1.7027027027027,1.5358361774744,0.430622009569378,1.41065830721003,2.73417721518987,2.63705103969754,"NA",3.39041095890411,0.942408376963351,0.205949656750572,0.368852459016393,2.56227758007117,0.389189189189189,0.72972972972973,0.382978723404255,"NA",0.366598778004073,2.36619718309859,1.9828641370869,0.17175572519084,2.22910216718266,0.440456769983687,0.425867507886435,0.230769230769231,1.51990349819059,2.16867469879518,0.258249641319943,"NA",1.01983002832861,0.497237569060773,0.610859728506787,1.86206896551724,0.369989722507708,0.522041763341067,0.0914634146341463,1.60714285714286,1.21896162528217,2.22011385199241,1.19544592030361,1.3719512195122,0.595463137996219,1.30592503022975,0.660550458715596,0.499075785582255,0.951008645533141,"NA",1.14795918367347,1.82080924855491,0.11166253101737,2.05882352941176,2.00636942675159,1.43872113676732,0.604026845637584,"NA",1.89122373300371,0.547112462006079,0.967741935483871,0.870967741935484,1.13564668769716,0.669144981412639,0.834298957126304,0.36036036036036,0.618556701030928,"NA",2.30532786885246,0.276923076923077,3.49514563106796,2.04836415362731,0.205949656750572,1.4346439957492,0.516647531572905,"NA",0.58933582787652,2.46951219512195,0.462724935732648,2.47422680412371,2.25982532751092,0,1.72455089820359,2.21830985915493,0.608793686583991,0.707865168539326,0.678391959798995,0.853889943074004,0.690032858707557,"NA",0.347043701799486,0.36,0.223880597014925,0,2.83561643835616,0.812274368231047,1.22129436325678,0.787746170678337,0.11826544021025,0.488069414316703,1.22033898305085,1.38107416879795,0.621546961325967,1.23711340206186,"NA",0.882352941176471,0.164533820840951,2.30440967283073,0.113350125944584,0.387096774193548,0.164533820840951,1.87012987012987,0.182186234817814,1.69811320754717,3.29938900203666,"NA",0.582793709528215,0.144694533762058,2.90322580645161,1.57681940700809,1.66666666666667,0.526315789473684,2.18871595330739,0.500927643784787,0.580645161290323,0.983606557377049,0.944055944055944,0.772163965681602,"NA",1.41213389121339,0.534441805225653,1.97969543147208,1.69172932330827,0.584415584415584,2.79156327543424,1.84115523465704,"NA",1.728,2.35384615384615,2.18446601941748,2.44391971664699,0.386266094420601,0.403587443946188,0.622406639004149,1.20967741935484,0.654545454545455,0.547112462006079,2.28515625,0.258249641319943,1.17839607201309,0.608108108108108,1.0432033719705,1.8167701863354,3.5626767200754,"NA",1.65254237288136,0.925449871465296,2.06896551724138,0.306818181818182,0.161870503597122,1.53191489361702,2.50535331905782,2.74038461538462,0.586046511627907,2.80519480519481,0.495867768595041,0.697674418604651,3.12430011198208,2.76923076923077,1.79282868525896,1.15384615384615,0.863539445628998,1.01286173633441,0.362903225806452,1.13207547169811,0.402684563758389,3.13672922252011,2.5,0.679245283018868,"NA",1.42446043165468,0.622406639004149,1.32678132678133,0.655339805825243,1.44,2.10477081384471,1.15173674588665,2.97841726618705,1.23711340206186,0.584958217270195,0.25,"NA",0.102040816326531,0.767045454545455,0.303030303030303,0.213776722090261,0.643776824034335,1.30977130977131,2.38335435056747,2.68465909090909,0.995850622406639,3.64161849710983,0.619266055045872,1.86142709410548,3.06196840826245,"NA",1.73604060913706,1.50557620817844,1.20574162679426,0.394160583941606,0.568421052631579,0.710526315789474,1.43181818181818,2.25663716814159,2.21830985915493,1.72413793103448,0.903614457831325,1.65697674418605,0.399556048834628,0.641330166270784,1.26,1.2565445026178,0.618253189401374,0.950704225352113,0.093167701863354,"NA",1.05882352941176,0.902255639097744,2.48743718592965,0.611413043478261,"NA",0.687022900763359,1.99115044247788,0,3.02884615384615,2.47422680412371,0.997229916897507,0,1.46666666666667,2.32604373757455,0.441717791411043,2.01192250372578,2.3202170963365,2.16157205240175,0.409090909090909,1.32492113564669,2.07692307692308],"Key passes":[1.08433734939759,0.535714285714286,1.39751552795031,1.58450704225352,"NA",1.6530612244898,1.04651162790698,0.196936542669584,0.164986251145738,1.33192389006342,0.605381165919282,2.2360248447205,0,0.55327868852459,2.80276816608997,0.766773162939297,0.875912408759124,0.764331210191083,0.590440487347704,1.40425531914894,0.764872521246459,0.474308300395257,1.44901610017889,2.109375,0.808988764044944,0.340909090909091,0.377622377622378,1.26760563380282,0,1.7381974248927,0.179640718562874,0.268924302788845,"NA",0.719280719280719,0.667903525046382,1.94499017681729,0.247706422018349,"NA",1.1830131445905,0.743119266055046,1.58653846153846,0.980392156862745,1.98,0.794117647058823,1.37142857142857,0.415704387990762,0,"NA",1.45161290322581,0.792079207920792,1.7208413001912,0.264705882352941,1.28878281622912,0.318021201413428,0.36036036036036,0.665680473372781,1.54285714285714,0.880195599022005,2.05583756345178,0.694980694980695,0.260115606936416,0.501113585746102,0.652173913043478,"NA",0.943643512450852,0.554414784394251,0.431654676258993,1.07142857142857,0.649819494584838,0.220588235294118,0.0935550935550936,1.45945945945946,2.25255972696246,1.61483253588517,2.72727272727273,0.455696202531646,1.95652173913043,"NA",1.84931506849315,1.09947643979058,1.02974828375286,0.245901639344262,1.12099644128114,0.194594594594595,0.72972972972973,0.127659574468085,"NA",0.54989816700611,1.52112676056338,1.5422276621787,0.858778625954199,0.557275541795666,0.734094616639478,0.28391167192429,0.230769230769231,0.434258142340169,0.464716006884682,0.516499282639885,"NA",1.27478753541076,0.0994475138121547,0.203619909502262,2.06896551724138,0.739979445015416,0.31322505800464,0.914634146341463,0.267857142857143,0.203160270880361,0.853889943074004,0.170777988614801,1.92073170731707,1.10586011342155,0.761789600967352,0.165137614678899,0.33271719038817,0.951008645533141,"NA",1.14795918367347,1.04046242774566,0.334987593052109,0.294117647058824,0.429936305732484,0.479573712255773,0.949185043144775,"NA",1.77997527812114,1.3677811550152,1.16129032258065,0.870967741935484,2.55520504731861,0.33457249070632,0.834298957126304,0.36036036036036,0.309278350515464,"NA",2.02868852459016,0.553846153846154,0.87378640776699,1.53627311522048,0.617848970251716,2.39107332624867,0.929965556831229,"NA",0,0.823170731707317,0.115681233933162,0.618556701030928,1.17903930131004,0.971223021582734,1.94011976047904,0.316901408450704,1.01465614430665,0.707865168539326,0.565326633165829,0.512333965844402,0.0985761226725082,"NA",0.231362467866324,1.08,0.447761194029851,0.441176470588235,0.986301369863014,0,1.03340292275574,0.984682713347921,1.06438896189225,0.0976138828633406,2.13559322033898,0.230179028132992,0.994475138121547,1.39175257731959,"NA",0.147058823529412,0.575868372943327,1.02418207681366,0.793450881612091,0.774193548387097,0.164533820840951,1.16883116883117,0.364372469635628,0,1.46639511201629,"NA",0.832562442183164,1.30225080385852,0.870967741935484,1.33423180592992,0.238095238095238,0.526315789473684,0.61284046692607,0.918367346938776,0.348387096774194,2.45901639344262,0,0.686367969494757,"NA",1.03556485355649,0.320665083135392,0.913705583756345,1.35338345864662,0.250463821892393,0.781637717121588,0.866425992779783,"NA",1.296,2.07692307692308,2.62135922330097,2.44391971664699,0.675965665236052,0.70627802690583,0.12448132780083,1.20967741935484,0.327272727272727,0.455927051671733,0.87890625,0.258249641319943,1.620294599018,0.608108108108108,1.3277133825079,1.53726708074534,0.508953817153629,"NA",1.27118644067797,0.925449871465296,2.06896551724138,0.715909090909091,0.485611510791367,0.765957446808511,2.50535331905782,2.88461538461538,0.334883720930233,0.467532467532468,0.743801652892562,0,2.31802911534155,1.38461538461538,0.717131474103586,1.73076923076923,0.287846481876333,1.01286173633441,0.725806451612903,0.424528301886792,1.00671140939597,3.13672922252011,1.66666666666667,1.69811320754717,"NA",1.81294964028777,0.871369294605809,1.10565110565111,0.218446601941748,0.72,1.26286248830683,1.97440585009141,1.03597122302158,0.927835051546392,0.919220055710306,0.875,"NA",0.204081632653061,0.767045454545455,1.36363636363636,1.06888361045131,0,1.4968814968815,0.567465321563682,1.02272727272727,1.61825726141079,0.780346820809249,0.51605504587156,1.86142709410548,0.984204131227218,"NA",2.55837563451777,0.752788104089219,1.03349282296651,0.262773722627737,0.947368421052632,0,0.818181818181818,0.79646017699115,0.633802816901408,0.689655172413793,0.36144578313253,1.48255813953488,1.99778024417314,1.06888361045131,0.54,0.628272251308901,0.883218842001963,0.211267605633803,0.46583850931677,"NA",0.397058823529412,0.56390977443609,0.452261306532663,1.71195652173913,"NA",0.572519083969466,0.199115044247788,0.671641791044776,0.865384615384615,0.618556701030928,0.914127423822715,1.27208480565371,1.6,1.78926441351889,0.331288343558282,1.60953800298063,0.854816824966079,1.37554585152838,0.204545454545455,0.757097791798107,2.53846153846154],"Progressive passes":[4.80206540447504,3.92857142857143,3.49378881987578,6.65492957746479,0.424128180961357,5.14285714285714,2.87790697674419,1.2800875273523,2.80476626947754,3.80549682875264,1.21076233183856,5.8695652173913,5.03731343283582,3.31967213114754,4.51557093425606,2.3961661341853,5.47445255474453,0.955414012738854,3.62699156513589,3.19148936170213,2.03966005665722,2.37154150197628,3.54203935599284,4.31919642857143,2.02247191011236,2.72727272727273,1.76223776223776,1.90140845070423,4.36893203883495,3.47639484978541,3.23353293413174,3.04780876494024,0,3.23676323676324,5.92764378478664,3.88998035363458,4.62385321100917,0,1.91102123356926,3.88073394495413,2.45192307692308,4.50980392156863,4.68,2.47058823529412,3.77142857142857,4.05311778290993,1.55555555555556,0.36036036036036,2.72177419354839,1.68316831683168,2.92543021032505,2.11764705882353,3.54415274463007,1.80212014134276,1.98198198198198,3.59467455621302,4.62857142857143,1.10024449877751,8.90862944162436,1.73745173745174,2.08092485549133,3.9086859688196,2.82608695652174,0.642201834862385,0.707732634338139,3.3264887063655,6.2589928057554,3.7987012987013,2.92418772563177,3.30882352941176,2.43243243243243,3.40540540540541,5.32423208191126,9.15071770334928,6.01880877742947,2.16455696202532,4.16824196597354,0.267857142857143,3.08219178082192,2.5130890052356,1.64759725400458,1.59836065573771,1.76156583629893,3.21081081081081,2.67567567567568,2.04255319148936,0,3.11608961303462,3.80281690140845,4.07588739290086,2.74809160305344,6.68730650154799,2.34910277324633,4.25867507886435,2.30769230769231,2.17129071170084,0.929432013769363,2.84074605451937,0.831792975970425,0.254957507082153,0.895027624309392,1.01809954751131,2.79310344827586,3.4224049331963,2.81902552204176,2.83536585365854,0.267857142857143,2.03160270880361,0,1.87855787476281,3.01829268292683,3.57277882797732,4.1354292623942,1.32110091743119,1.99630314232902,3.19884726224784,0,1.37755102040816,1.82080924855491,3.23821339950372,3.52941176470588,1.14649681528662,2.23801065719361,3.53787152444871,0.364372469635628,4.2274412855377,4.37689969604863,0.387096774193548,2.32258064516129,7.09779179810726,1.33828996282528,3.441483198146,1.71171171171171,2.68041237113402,0.27027027027027,3.59631147540984,2.63076923076923,0.29126213592233,4.48079658605974,2.26544622425629,7.7470775770457,6.61308840413318,0.0841908325537886,2.9466791393826,1.64634146341463,2.31362467866324,1.03092783505155,2.84934497816594,3.56115107913669,5.06586826347305,3.80281690140845,2.3337091319053,2.73033707865169,4.9748743718593,2.04933586337761,1.28148959474261,0.275229357798165,1.85089974293059,2.52,2.46268656716418,2.86764705882353,3.20547945205479,1.62454873646209,1.40918580375783,1.2800875273523,2.60183968462549,2.34273318872017,2.74576271186441,3.45268542199489,2.98342541436464,2.47422680412371,0.386819484240688,1.02941176470588,3.12614259597806,0.640113798008535,5.89420654911839,3.48387096774194,1.97440585009141,6.07792207792208,1.45748987854251,1.69811320754717,2.74949083503055,0.227272727272727,3.33024976873266,5.35369774919614,1.16129032258065,2.06199460916442,3.33333333333333,1.05263157894737,0.787937743190661,4.17439703153989,1.50967741935484,3.44262295081967,1.88811188811189,2.57387988560534,0.166975881261596,3.48326359832636,1.71021377672209,1.97969543147208,2.36842105263158,3.42300556586271,0.893300248138958,5.63176895306859,0.638297872340426,4.608,5.12307692307692,5.09708737864078,5.20661157024793,3.76609442060086,2.92600896860987,2.86307053941909,3.87096774193548,5.23636363636364,5.19756838905775,2.109375,4.519368723099,4.27168576104746,3.04054054054054,5.0263435194942,5.17080745341615,0.763430725730443,0.0837209302325581,4.44915254237288,3.00771208226221,6.55172413793103,4.09090909090909,3.39928057553957,1.91489361702128,4.04710920770878,5.48076923076923,3.85116279069767,3.50649350649351,4.95867768595041,3.48837209302326,7.65957446808511,2.67692307692308,1.43426294820717,3.92307692307692,3.83795309168443,7.95819935691318,4.35483870967742,6.93396226415094,4.22818791946309,5.79088471849866,3.21428571428571,5.43396226415094,0.0908173562058527,6.2158273381295,2.73858921161826,3.0958230958231,1.74757281553398,2.88,1.93638914873714,2.63254113345521,2.46043165467626,4.02061855670103,3.92757660167131,3.875,0.164835164835165,2.04081632653061,3.06818181818182,4.09090909090909,3.8479809976247,3.09012875536481,0.748440748440748,1.36191677175284,1.27840909090909,3.98340248962656,3.12138728323699,3.40596330275229,4.46742502585315,1.31227217496962,0.166204986149584,4.75126903553299,4.01486988847584,3.61722488038277,1.18248175182482,2.65263157894737,2.36842105263158,3.27272727272727,0.398230088495575,0.950704225352113,2.41379310344828,1.08433734939759,3.31395348837209,6.89234184239734,3.8479809976247,1.98,2.98429319371728,2.64965652600589,3.59154929577465,1.77018633540373,0.493601462522852,2.64705882352941,2.81954887218045,0.678391959798995,5.13586956521739,0,1.94656488549618,1.5929203539823,7.05223880597015,0.576923076923077,4.32989690721649,8.22714681440443,8.58657243816254,4.8,6.44135188866799,5.41104294478528,3.0849478390462,1.34328358208955,6.2882096069869,3.06818181818182,3.97476340694006,5.07692307692308],"Progressive carries":[0.464716006884682,1.07142857142857,0.978260869565217,1.10915492957746,"NA",3.03061224489796,0.784883720930233,0.590809628008753,1.23739688359303,1.52219873150106,0.70627802690583,2.70186335403727,1.67910447761194,1.10655737704918,1.71280276816609,1.72523961661342,1.53284671532847,0.764331210191083,0.84348641049672,0.382978723404255,0.509915014164306,0.8300395256917,2.09302325581395,1.40625,1.61797752808989,1.36363636363636,0.881118881118881,1.37323943661972,0.436893203883495,1.5450643776824,0.718562874251497,0.358565737051793,"NA",1.25874125874126,1.25231910946197,2.29862475442043,0.577981651376147,"NA",1.09201213346815,0.660550458715596,1.29807692307692,0.784313725490196,1.35,0.705882352941177,1.54285714285714,2.07852193995381,1.55555555555556,"NA",1.08870967741935,0.693069306930693,0.860420650095602,0.529411764705882,0.644391408114558,1.27208480565371,0.36036036036036,1.33136094674556,1.54285714285714,1.10024449877751,2.28426395939086,0.347490347490348,0.260115606936416,1.40311804008909,1.30434782608696,"NA",0.825688073394495,0.184804928131417,1.29496402877698,0.876623376623377,0.649819494584838,0.772058823529412,0.187110187110187,0.972972972972973,1.12627986348123,0.645933014354067,1.22257053291536,0.455696202531646,2.2117202268431,"NA",1.23287671232877,0.785340314136126,0.411899313501144,1.10655737704918,0.800711743772242,0.486486486486487,0.72972972972973,0.51063829787234,"NA",1.28309572301426,1.26760563380282,0.881272949816401,0.343511450381679,0.557275541795666,1.17455138662316,1.5615141955836,0.692307692307692,0.108564535585042,0.464716006884682,0.774748923959828,"NA",0.509915014164306,0.0994475138121547,0.203619909502262,0.724137931034483,0.739979445015416,0.626450116009281,0.548780487804878,0.803571428571429,0.609480812641084,0.512333965844402,0.512333965844402,0.823170731707317,0.680529300567108,0.435308343409915,0.165137614678899,0.249537892791128,0.778097982708934,"NA",1.14795918367347,0.780346820809249,0.446650124069479,1.76470588235294,1.0031847133758,0.63943161634103,0.690316395014382,"NA",0.667490729295426,0.820668693009118,0.193548387096774,0.67741935483871,0,0,1.04287369640788,0.540540540540541,0.721649484536082,"NA",2.39754098360656,0.830769230769231,0.29126213592233,1.15220483641536,1.02974828375286,1.6259298618491,1.6532721010333,"NA",0.757717492984097,1.09756097560976,0.694087403598972,1.03092783505155,1.57205240174672,0.323741007194245,2.15568862275449,1.26760563380282,1.11612175873732,1.1123595505618,1.35678391959799,0.341555977229602,0.0985761226725082,"NA",0.57840616966581,0.72,0,0.661764705882353,0.73972602739726,0.162454873646209,1.12734864300626,0.492341356673961,0.236530880420499,0.390455531453362,0,1.15089514066496,0.497237569060773,0.927835051546392,"NA",0.441176470588235,0.740402193784278,1.02418207681366,1.92695214105793,0.387096774193548,0.575868372943327,0.701298701298701,1.09311740890688,0.849056603773585,2.19959266802444,"NA",1.16558741905643,1.59163987138264,0.290322580645161,0.606469002695418,0.357142857142857,0.526315789473684,0.963035019455253,0.75139146567718,0.348387096774194,0.983606557377049,0,0.686367969494757,"NA",0.658995815899582,0.427553444180523,0.304568527918782,0,0.250463821892393,0.781637717121588,3.24909747292419,"NA",2.16,3.73846153846154,3.20388349514563,2.97520661157025,2.1244635193133,4.54035874439462,2.61410788381743,2.90322580645161,2.94545454545455,2.00607902735562,2.8125,1.67862266857963,2.20949263502455,0.608108108108108,2.46575342465753,3.49378881987578,0.933081998114986,"NA",2.54237288135593,2.66066838046273,2.41379310344828,1.125,1.13309352517986,1.53191489361702,1.9271948608137,2.16346153846154,1.0046511627907,1.16883116883117,0.991735537190083,0,1.81410974244121,1.47692307692308,0.717131474103586,1.61538461538462,0.575692963752665,2.31511254019293,0.725806451612903,0.707547169811321,1.20805369127517,2.41286863270777,1.9047619047619,1.35849056603774,"NA",1.81294964028777,1.12033195020747,0.442260442260442,0.655339805825243,1.08,0.841908325537886,1.15173674588665,2.20143884892086,0.927835051546392,1.58774373259053,0.625,"NA",0.816326530612245,1.02272727272727,1.36363636363636,1.28266033254157,0.515021459227468,0.561330561330561,1.13493064312736,0.639204545454545,0.622406639004149,1.30057803468208,0.825688073394495,1.67528438469493,0.874848116646416,"NA",1.55329949238579,1.2546468401487,1.20574162679426,0.394160583941606,1.32631578947368,0,0.715909090909091,0.530973451327434,0.316901408450704,0.689655172413793,0.180722891566265,0.61046511627907,0.99889012208657,0.427553444180523,0,0.628272251308901,0.353287536800785,0.316901408450704,0.93167701863354,"NA",0.529411764705882,0.451127819548872,0.678391959798995,1.83423913043478,"NA",1.37404580152672,1.19469026548673,2.01492537313433,0.721153846153846,1.23711340206186,1.16343490304709,0.318021201413428,1.06666666666667,1.07355864811133,0.883435582822086,0.402384500745156,1.09905020352782,1.57205240174672,1.22727272727273,1.32492113564669,1.38461538461538],"Dribbles won":[0.309810671256454,0.892857142857143,1.11801242236025,0.158450704225352,"NA",0.642857142857143,1.56976744186047,0.0984682713347921,0.0824931255728689,0.570824524312896,0.201793721973094,0.372670807453416,2.01492537313433,0.184426229508197,2.80276816608997,0.0958466453674121,0.656934306569343,0.955414012738854,0.506091846298032,0.638297872340426,0.764872521246459,0.237154150197628,1.61001788908766,0.502232142857143,0.808988764044944,0,0,2.00704225352113,0.436893203883495,0.965665236051502,0.359281437125749,0,"NA",0.17982017982018,0.584415584415584,0.707269155206287,0.0825688073394495,"NA",0.819009100101112,0,0.721153846153846,0.392156862745098,0.81,0.529411764705882,1.2,0,0.666666666666667,"NA",1.81451612903226,0.495049504950495,1.37667304015296,0,0.536992840095465,0.742049469964664,0.0900900900900901,0.931952662721893,0.514285714285714,0.990220048899755,0.685279187817259,0,0,0.200445434298441,0.434782608695652,"NA",1.29750982961992,0.184804928131417,0.863309352517986,0.681818181818182,0.162454873646209,0.110294117647059,0.187110187110187,1.94594594594595,0.409556313993174,0,0,0.455696202531646,1.27599243856333,"NA",1.54109589041096,0.157068062827225,0.823798627002288,0.737704918032787,1.12099644128114,0.0972972972972973,0.243243243243243,0.127659574468085,"NA",0.366598778004073,1.6056338028169,1.3219094247246,0.17175572519084,0,0.587275693311582,0.28391167192429,0.230769230769231,0.108564535585042,1.08433734939759,0.645624103299857,"NA",0.254957507082153,0,0,1.13793103448276,0.739979445015416,0.104408352668213,0.182926829268293,0.535714285714286,0.812641083521445,1.53700189753321,0.853889943074004,0,0.170132325141777,0.97944377267231,0.495412844036697,0.166358595194085,0.432276657060519,"NA",0,0.520231213872832,0.11166253101737,0.294117647058824,0.286624203821656,0.959147424511545,0.517737296260786,"NA",0.667490729295426,0.820668693009118,0.387096774193548,0.67741935483871,0.28391167192429,0,0.104287369640788,0.18018018018018,0.103092783505155,"NA",1.01434426229508,0.553846153846154,0.776699029126214,2.56045519203414,0.411899313501144,0.478214665249734,0.516647531572905,"NA",0.505144995322731,3.01829268292683,0.231362467866324,0.515463917525773,0.982532751091703,0,1.83233532934132,1.90140845070423,0.304396843291996,0.404494382022472,0.678391959798995,0.341555977229602,0.0985761226725082,"NA",0.115681233933162,0.36,0,0.220588235294118,2.58904109589041,0,0.845511482254697,0.689277899343545,0.236530880420499,0.683297180043384,0.915254237288136,0.690537084398977,0.497237569060773,2.31958762886598,"NA",0.735294117647059,0.246800731261426,1.15220483641536,0.226700251889169,0.387096774193548,0.164533820840951,0.467532467532468,0,2.54716981132075,2.10794297352342,"NA",0.0832562442183164,0.144694533762058,0.290322580645161,0.485175202156334,0.595238095238095,0.789473684210526,0.525291828793774,0.250463821892393,1.27741935483871,0.491803278688525,0,0.171591992373689,"NA",1.03556485355649,0.320665083135392,2.58883248730964,0,0.333951762523191,0.893300248138958,0.649819494584838,"NA",1.584,1.10769230769231,0.436893203883495,1.06257378984652,0.482832618025751,0.302690582959641,0.49792531120332,1.20967741935484,0.327272727272727,0,1.7578125,0.387374461979914,0.736497545008183,1.21621621621622,1.42255005268704,0.419254658385093,0.508953817153629,"NA",2.41525423728814,0.57840616966581,4.6551724137931,0.511363636363636,0.485611510791367,0.957446808510638,0.963597430406852,1.44230769230769,0.167441860465116,1.63636363636364,0,0.348837209302326,0.302351623740202,0.646153846153846,0.358565737051793,0.923076923076923,0.287846481876333,1.88102893890675,0.181451612903226,0.141509433962264,0.201342281879195,1.93029490616622,0.833333333333333,0,"NA",0.258992805755396,0.49792531120332,0.442260442260442,0,0,0.336763330215154,0.658135283363803,1.03597122302158,1.85567010309278,1.08635097493036,0.375,"NA",0.306122448979592,1.27840909090909,0.454545454545455,0.213776722090261,0,0.187110187110187,0.907944514501892,1.15056818181818,0.24896265560166,1.04046242774566,0.206422018348624,0.558428128231644,1.20291616038882,"NA",1.37055837563452,0.4182156133829,0.258373205741627,0.131386861313869,1.13684210526316,0,0.818181818181818,0.530973451327434,0.316901408450704,0.344827586206897,0.180722891566265,1.13372093023256,0.699223085460599,0,0.36,2.04188481675393,0.70657507360157,0.528169014084507,0.372670807453416,"NA",0.397058823529412,0,0.452261306532663,0.122282608695652,"NA",0.687022900763359,0.199115044247788,0,0.432692307692308,0,0,0,0.133333333333333,3.57852882703777,0.110429447852761,3.75558867362146,2.07598371777476,0.393013100436681,0.204545454545455,0.378548895899054,4.15384615384615],"EPV added":[0.25249569707401,0.201607142857143,0.356226708074534,0.287429577464789,0.0907634307257305,0.419877551020408,0.173197674418605,0.078183807439825,0.144940421631531,0.201310782241015,0.100695067264574,0.426521739130435,0.232723880597015,0.221864754098361,0.329792387543253,0.195047923322684,0.161605839416058,0.0890445859872612,0.140609184629803,0.211914893617021,0.0660339943342776,0.156403162055336,0.163416815742397,0.225,0.148651685393258,0.15,0.134433566433566,0.117781690140845,0.134417475728155,0.188304721030043,0.0901796407185629,0.113217131474104,0.0963063063063063,0.150509490509491,0.225,0.266463654223969,0.178844036697248,0.0672935779816514,0.120849342770475,0.213440366972477,0.151298076923077,0.188627450980392,0.40122,0.133852941176471,0.242057142857143,0.125127020785219,0.098,0.101441441441441,0.172016129032258,0.144059405940594,0.188604206500956,0.173647058823529,0.259582338902148,0.0808833922261484,0.0877477477477478,0.149778106508876,0.293657142857143,0.208716381418093,0.377360406091371,0.0993822393822394,0.0871387283236994,0.195534521158129,0.21804347826087,0.0811926605504587,0.0831585845347313,0.12788501026694,0.20589928057554,0.226558441558442,0.123465703971119,0.186176470588235,0.154927234927235,0.181702702702703,0.339726962457338,0.363014354066986,0.453009404388715,0.123949367088608,0.217684310018904,0.0965625,0.358150684931507,0.28413612565445,0.138398169336384,0.084344262295082,0.115462633451957,0.124443243243243,0.224756756756757,0.0831063829787234,0.0492401215805471,0.131608961303462,0.163014084507042,0.288506731946144,0.229637404580153,0.260804953560372,0.125970636215334,0.142381703470032,0.126692307692308,0.162195416164053,0.0438382099827883,0.102008608321377,0.127513863216266,0.168016997167139,0.0766740331491713,0.0869457013574661,0.373241379310345,0.192672147995889,0.183341067285383,0.192987804878049,0.03375,0.0859367945823928,0.0710436432637571,0.103662239089184,0.249420731707317,0.231124763705104,0.206118500604595,0.0890091743119266,0.0965711645101664,0.163054755043228,0.0780612244897959,0.135229591836735,0.145404624277457,0.115347394540943,0.104705882352941,0.0965923566878981,0.0987921847246892,0.186903163950144,0.0767004048582996,0.295587144622991,0.300364741641337,0.133354838709677,0.133548387096774,0.343817034700316,0.0976951672862454,0.2541483198146,0.101081081081081,0.129484536082474,0.0865765765765766,0.31859631147541,0.113953846153846,0.0710679611650486,0.249132290184922,0.237048054919909,0.493708820403826,0.226808266360505,0.0641534144059869,0.158615528531338,0.105914634146341,0.1123264781491,0.0874226804123711,0.174399563318777,0.160251798561151,0.349868263473054,0.21169014084507,0.164577226606539,0.194561797752809,0.303241206030151,0.0828273244781784,0.0498795180722892,0.088348623853211,0.0918508997429306,0.08244,0.103208955223881,0.101470588235294,0.168287671232877,0.0794404332129964,0.0595615866388309,0.210919037199125,0.238068331143233,0.0714533622559653,0.32735593220339,0.09,0.175897790055249,0.358144329896907,0.106375358166189,0.0561764705882353,0.152029250457038,0.062475106685633,0.194848866498741,0.160838709677419,0.10390310786106,0.201272727272727,0.0996558704453442,0.0891509433962264,0.215743380855397,0.0690909090909091,0.233783533765032,0.157138263665595,0.0545806451612903,0.260053908355795,0.110714285714286,0.0468421052631579,0.0588326848249027,0.212142857142857,0.139354838709677,0.26827868852459,0.0726923076923077,0.198531935176359,0.101270871985158,0.210125523012552,0.135748218527316,0.167208121827411,0.294699248120301,0.132996289424861,0.0707940446650124,0.253212996389892,0.0643768996960487,0.20232,0.257676923076923,0.531990291262136,0.328547815820543,0.154796137339056,0.193116591928251,0.12448132780083,0.158951612903226,0.186218181818182,0.18775075987842,0.15767578125,0.188005738880918,0.286055646481178,0.160540540540541,0.39290832455216,0.379844720496894,0.079057492931197,0.0486418604651163,0.290593220338983,0.226272493573265,0.358620689655173,0.229193181818182,0.232607913669065,0.256787234042553,0.521306209850107,0.394326923076923,0.179748837209302,0.154285714285714,0.173553719008264,0.106046511627907,0.49454647256439,0.251169230769231,0.112589641434263,0.199730769230769,0.161961620469083,0.234549839228296,0.129737903225807,0.214669811320755,0.323355704697987,0.272412868632708,0.179880952380952,0.20377358490566,0.0495862764883956,0.314935251798561,0.137302904564315,0.215601965601966,0.090873786407767,0.11088,0.172086061739944,0.294844606946984,0.117064748201439,0.127731958762887,0.302339832869081,0.198125,0.0549725274725275,0.133163265306122,0.133977272727273,0.174545454545455,0.13938242280285,0.130042918454936,0.040977130977131,0.0624211853720051,0.130014204545455,0.229668049792531,0.130317919075145,0.121479357798165,0.28535677352637,0.0895625759416768,0.0911634349030471,0.368406091370558,0.16435873605948,0.317885167464115,0.0801459854014599,0.171852631578947,0.0757894736842105,0.179181818181818,0.0548230088495575,0.176514084507042,0.093448275862069,0.139156626506024,0.270087209302326,0.475771365149834,0.175724465558195,0.11322,0.143874345549738,0.170549558390579,0.163098591549296,0.143291925465839,0.0911517367458866,0.162,0.106353383458647,0.0373115577889447,0.396807065217391,0.0389750692520776,0.105343511450382,0.179203539823009,0.32339552238806,0.0501923076923077,0.282371134020619,0.24606648199446,0.23660777385159,0.346266666666667,0.341212723658052,0.136049079754601,0.37381520119225,0.103432835820896,0.32325327510917,0.1485,0.233091482649842,0.382846153846154],"Tackles won":[1.54905335628227,1.78571428571429,1.53726708074534,0.950704225352113,"NA",1.19387755102041,0,1.67396061269147,1.23739688359303,1.14164904862579,0.302690582959641,0.838509316770186,1.00746268656716,1.10655737704918,0.778546712802768,1.24600638977636,3.28467153284672,1.52866242038217,2.44611059044049,2.80851063829787,1.52974504249292,2.13438735177866,1.93202146690519,1.20535714285714,2.8314606741573,1.02272727272727,3.14685314685315,0.422535211267606,0.145631067961165,1.3519313304721,0.718562874251497,0.268924302788845,"NA",0.53946053946054,2.25417439703154,1.59135559921415,1.32110091743119,"NA",0.910010111223458,2.22935779816514,0.576923076923077,0.784313725490196,1.26,1.14705882352941,1.54285714285714,1.55889145496536,1.77777777777778,"NA",1.27016129032258,0.891089108910891,1.20458891013384,0.794117647058823,0.859188544152745,1.59010600706714,1.08108108108108,3.46153846153846,1.8,1.10024449877751,2.28426395939086,1.04247104247104,0.780346820809249,2.50556792873051,1.52173913043478,"NA",0.943643512450852,3.14168377823409,1.94244604316547,2.14285714285714,0.324909747292419,0.882352941176471,0.935550935550936,2.43243243243243,1.6382252559727,0.645933014354067,1.3166144200627,0.911392405063291,1.19092627599244,"NA",2.15753424657534,0.471204188481675,2.47139588100687,2.70491803278689,0.320284697508897,0.972972972972973,1.45945945945946,1.78723404255319,"NA",1.64969450101833,1.52112676056338,1.65238678090575,1.20229007633588,0.557275541795666,2.64274061990212,1.27760252365931,0.230769230769231,0.542822677925211,1.23924268502582,1.16212338593974,"NA",0,0.596685082872928,2.23981900452489,0.931034482758621,1.20246659815005,1.67053364269142,1.73780487804878,0,1.42212189616253,0.341555977229602,2.04933586337761,0.823170731707317,1.87145557655955,3.5912938331318,1.81651376146789,1.99630314232902,1.46974063400576,"NA",1.60714285714286,1.30057803468208,2.12158808933002,2.05882352941176,0.573248407643312,2.71758436944938,2.32981783317354,"NA",1.55747836835599,1.64133738601824,1.54838709677419,1.74193548387097,0.851735015772871,0.669144981412639,2.50289687137891,1.35135135135135,1.03092783505155,"NA",1.84426229508197,1.52307692307692,0.194174757281553,1.02418207681366,1.85354691075515,0.956429330499469,2.1699196326062,"NA",1.51543498596819,1.3719512195122,1.73521850899743,0.309278350515464,1.47379912663755,4.20863309352518,1.50898203592814,1.26760563380282,1.52198421645998,2.12359550561798,1.58291457286432,1.87855787476281,1.38006571741511,"NA",1.15681233933162,2.16,1.56716417910448,2.64705882352941,2.95890410958904,1.46209386281588,0.46972860125261,1.87089715536105,1.419185282523,1.95227765726681,1.22033898305085,3.22250639386189,1.49171270718232,2.01030927835052,"NA",1.76470588235294,1.56307129798903,0.512091038406828,2.38035264483627,3.48387096774194,0.658135283363803,1.16883116883117,1.45748987854251,1.69811320754717,0.824847250509165,"NA",0.832562442183164,2.02572347266881,1.45161290322581,1.94070080862534,2.97619047619048,1.31578947368421,0.0875486381322957,2.00371057513915,2.20645161290323,1.9672131147541,1.57342657342657,2.57387988560534,"NA",1.22384937238494,0.748218527315915,1.06598984771574,1.69172932330827,0.667903525046382,0.223325062034739,1.94945848375451,"NA",1.728,1.24615384615385,1.16504854368932,1.38134592680047,2.80042918454936,1.51345291479821,1.49377593360996,1.93548387096774,2.29090909090909,0.820668693009118,0.703125,2.58249641319943,1.03109656301146,1.21621621621622,2.18124341412013,0.698757763975155,0.0848256361922714,"NA",1.01694915254237,2.4293059125964,0.862068965517241,1.02272727272727,1.94244604316547,2.1063829787234,1.9271948608137,0.721153846153846,0.251162790697674,2.1038961038961,2.72727272727273,2.09302325581395,0.907054871220605,0.738461538461539,1.79282868525896,2.19230769230769,0.959488272921109,2.31511254019293,2.54032258064516,0.849056603773585,1.61073825503356,0.96514745308311,1.78571428571429,2.37735849056604,"NA",1.81294964028777,1.61825726141079,1.10565110565111,1.09223300970874,0.36,0.673526660430309,1.15173674588665,1.55395683453237,1.54639175257732,1.92200557103064,1.5,"NA",0.204081632653061,0.767045454545455,1.66666666666667,1.49643705463183,0.772532188841202,0.187110187110187,0.907944514501892,0.383522727272727,3.23651452282158,0.780346820809249,1.34174311926605,2.23371251292658,0.437424058323208,"NA",1.00507614213198,2.00743494423792,1.80861244019139,1.18248175182482,2.65263157894737,1.18421052631579,3.375,0.132743362831858,0.316901408450704,1.72413793103448,1.80722891566265,1.48255813953488,1.3984461709212,0.427553444180523,1.44,1.72774869109948,1.05986261040236,2.53521126760563,1.58385093167702,"NA",1.05882352941176,2.59398496240602,0.678391959798995,0.855978260869565,"NA",1.48854961832061,3.38495575221239,1.00746268656716,0.576923076923077,2.78350515463918,1.32963988919668,2.54416961130742,3.2,0.357852882703777,0.773006134969325,1.47540983606557,0.854816824966079,1.37554585152838,3.68181818181818,2.17665615141956,0],"Interceptions":[0.464716006884682,0.357142857142857,0.559006211180124,0.475352112676056,"NA",0.918367346938776,0.261627906976744,0.886214442013129,0.74243813015582,0.761099365750529,0.403587443946188,0.279503105590062,0.335820895522388,0.55327868852459,0.311418685121107,0.670926517571885,1.97080291970803,1.52866242038217,0.759137769447048,0.765957446808511,0,1.18577075098814,0.322003577817531,0.602678571428571,1.21348314606742,1.02272727272727,0.377622377622378,0.211267605633803,1.01941747572816,0,0.359281437125749,0.717131474103586,"NA",0.719280719280719,0.918367346938776,1.41453831041257,0.990825688073395,"NA",1.09201213346815,1.48623853211009,0.721153846153846,1.76470588235294,0.36,0.970588235294118,1.71428571428571,1.97459584295612,0.888888888888889,"NA",1.27016129032258,0.099009900990099,0.17208413001912,0,0.429594272076372,0.212014134275618,1.44144144144144,2.1301775147929,0.514285714285714,1.76039119804401,0.685279187817259,0.694980694980695,0.780346820809249,2.70601336302895,1.08695652173913,"NA",0.235910878112713,0.739219712525667,1.29496402877698,0.876623376623377,0.812274368231047,0.882352941176471,1.02910602910603,0.243243243243243,0.716723549488055,1.39952153110048,0.376175548589342,0.569620253164557,0.425330812854442,"NA",0.616438356164384,0.157068062827225,0.617848970251716,0.491803278688525,0,0.778378378378378,1.45945945945946,1.27659574468085,"NA",2.38289205702648,0.0845070422535211,0.771113831089351,1.03053435114504,0.557275541795666,1.90864600326264,2.8391167192429,0.692307692307692,1.41133896260555,2.16867469879518,1.03299856527977,"NA",0,1.0939226519337,1.22171945701357,0.620689655172414,0.92497430626927,0.522041763341067,1.64634146341463,0.535714285714286,1.21896162528217,0.170777988614801,0.341555977229602,0.823170731707317,1.02079395085066,1.30592503022975,2.80733944954128,1.1645101663586,0.259365994236311,"NA",0.688775510204082,0.260115606936416,1.45161290322581,0.588235294117647,0,0.479573712255773,0.776605944391179,"NA",0.556242274412855,0.273556231003039,0.580645161290323,0.774193548387097,0.28391167192429,0.33457249070632,0.52143684820394,2.07207207207207,1.34020618556701,"NA",0.276639344262295,0.692307692307692,0.29126213592233,0.640113798008535,1.02974828375286,0.478214665249734,0.723306544202067,"NA",0.757717492984097,0.274390243902439,1.27249357326478,0.206185567010309,0.294759825327511,0.647482014388489,0.970059880239521,1.26760563380282,0.507328072153326,1.21348314606742,0.791457286432161,1.0246679316888,0.985761226725082,"NA",0.347043701799486,1.44,0.895522388059702,0.220588235294118,1.23287671232877,0.812274368231047,0.187891440501044,0.590809628008753,0.591327201051248,0.976138828633406,0.610169491525424,0.920716112531969,0.870165745856354,0.77319587628866,"NA",0.147058823529412,0.987202925045704,0.128022759601707,1.58690176322418,1.74193548387097,1.56307129798903,0.467532467532468,0.364372469635628,0.566037735849057,0.366598778004073,"NA",0.666049953746531,1.88102893890675,0.290322580645161,1.33423180592992,0.952380952380952,0,0,1.58627087198516,0.929032258064516,0.491803278688525,1.88811188811189,1.45853193517636,"NA",0.47071129707113,0.748218527315915,0.304568527918782,0,1.16883116883117,0.11166253101737,0.866425992779783,"NA",0.864,1.24615384615385,0.58252427184466,0.425029515938607,1.7381974248927,0.807174887892377,0.995850622406639,0.967741935483871,2.29090909090909,1.00303951367781,1.0546875,1.42037302725968,0.147299509001637,0.608108108108108,1.13804004214963,0.978260869565217,0.0848256361922714,"NA",0.38135593220339,1.38817480719794,0.172413793103448,0.613636363636364,0.647482014388489,0.382978723404255,0,0.288461538461538,0.586046511627907,0.467532467532468,1.2396694214876,1.04651162790698,0.201567749160134,0.553846153846154,2.86852589641434,1.61538461538462,1.63113006396588,1.44694533762058,2.72177419354839,0.849056603773585,2.21476510067114,0.241286863270777,0.476190476190476,1.0188679245283,"NA",1.16546762589928,0.622406639004149,0,0.87378640776699,0.72,0.336763330215154,0.493601462522852,0.258992805755396,0.927835051546392,1.5041782729805,1.25,"NA",0.714285714285714,0,1.06060606060606,0.427553444180523,0.901287553648069,0.187110187110187,0,0.127840909090909,0.37344398340249,0.260115606936416,0.619266055045872,0.837642192347466,0,"NA",0.274111675126904,1.50557620817844,0.77511961722488,1.31386861313869,0.947368421052632,0.710526315789474,1.125,0,0.316901408450704,0.689655172413793,0.72289156626506,0.61046511627907,0.99889012208657,0.641330166270784,0.72,1.2565445026178,0.529931305201178,1.79577464788732,1.2111801242236,"NA",0.661764705882353,0.56390977443609,0.226130653266332,0.489130434782609,"NA",1.14503816793893,1.19469026548673,1.34328358208955,0.288461538461538,0.618556701030928,0.997229916897507,0.636042402826855,0.533333333333333,0.536779324055666,0.331288343558282,0.402384500745156,0.122116689280868,0.589519650655022,1.22727272727273,0.851735015772871,0.461538461538462],"Recoveries":[2.94320137693632,4.82142857142857,3.21428571428571,3.01056338028169,1.1875589066918,4.13265306122449,3.40116279069767,3.24945295404814,2.63978001833181,5.13742071881607,1.21076233183856,2.88819875776398,5.7089552238806,2.76639344262295,3.58131487889273,2.77955271565495,2.18978102189781,2.29299363057325,3.71134020618557,4.72340425531915,2.80453257790368,3.3201581027668,3.38103756708408,4.21875,2.62921348314607,3.40909090909091,1.51048951048951,2.00704225352113,2.76699029126214,4.05579399141631,2.33532934131737,2.06175298804781,1.44144144144144,2.78721278721279,4.09090909090909,6.18860510805501,3.22018348623853,1.48623853211009,3.09403437815976,2.80733944954128,3.46153846153846,3.92156862745098,5.31,1.94117647058824,7.71428571428571,5.81986143187067,3.33333333333333,2.25225225225225,6.3508064516129,2.47524752475248,4.99043977055449,2.38235294117647,3.97374701670644,3.39222614840989,2.7027027027027,6.12426035502959,2.82857142857143,3.96088019559902,5.0253807106599,3.82239382239382,5.46242774566474,3.70824053452116,3.47826086956522,2.56880733944954,4.01048492791612,2.95687885010267,3.23741007194245,4.18831168831169,2.76173285198556,3.41911764705882,4.02286902286902,2.67567567567568,3.58361774744027,3.44497607655502,2.06896551724138,2.73417721518987,3.48771266540643,0.267857142857143,2.77397260273973,2.82722513089005,2.88329519450801,3.44262295081967,1.76156583629893,3.11351351351351,4.37837837837838,2.42553191489362,2.18844984802432,3.11608961303462,4.47887323943662,3.30477356181151,2.5763358778626,4.17956656346749,6.31321370309951,3.83280757097792,2.53846153846154,2.93124246079614,3.25301204819277,5.03586800573888,1.24768946395564,2.80453257790368,1.69060773480663,4.27601809954751,4.55172413793103,2.31243576567318,2.40139211136891,2.65243902439024,1.33928571428571,4.06320541760722,2.56166982922201,3.75711574952562,4.11585365853659,2.72211720226843,4.57073760580411,3.79816513761468,2.32902033271719,4.40922190201729,1.53061224489796,3.6734693877551,2.60115606936416,3.23821339950372,5.29411764705882,2.00636942675159,4.79573712255773,4.40076701821668,0.546558704453441,3.89369592088999,3.00911854103343,3.09677419354839,3.67741935483871,4.54258675078864,3.01115241635688,5.31865585168019,2.88288288288288,2.98969072164948,2.79279279279279,4.14959016393443,3.6,1.35922330097087,3.20056899004267,4.94279176201373,4.39957492029756,3.09988518943743,1.59962581852198,2.9466791393826,5.21341463414634,4.16452442159383,1.34020618556701,2.75109170305677,1.94244604316547,3.55688622754491,4.43661971830986,3.85569334836528,5.35955056179775,4.07035175879397,5.29411764705882,1.97152245345016,1.74311926605505,2.66066838046273,5.4,2.6865671641791,2.20588235294118,3.32876712328767,2.59927797833935,1.87891440501044,2.5601750547046,3.19316688567674,2.83080260303688,5.49152542372881,4.60358056265985,4.10220994475138,3.09278350515464,1.67621776504298,1.61764705882353,3.53747714808044,1.40825035561878,8.61460957178841,3.67741935483871,4.03107861060329,3.97402597402597,2.91497975708502,4.24528301886792,4.39918533604888,1.36363636363636,2.08140610545791,3.47266881028939,2.61290322580645,3.27493261455526,4.28571428571429,3.94736842105263,2.18871595330739,5.09276437847866,3.01935483870968,2.21311475409836,3.46153846153846,3.00285986653956,2.00371057513915,3.85983263598326,2.7790973871734,2.43654822335025,1.69172932330827,2.92207792207792,0.893300248138958,5.30685920577617,1.27659574468085,3.744,3.6,5.38834951456311,4.46280991735537,3.18669527896996,2.82511210762332,3.7344398340249,4.35483870967742,3.27272727272727,3.10030395136778,2.8125,4.26111908177905,2.50409165302782,4.56081081081081,5.69020021074816,3.07453416149068,1.35721017907634,1.33953488372093,4.06779661016949,4.04884318766067,3.27586206896552,3.27272727272727,3.56115107913669,5.17021276595745,2.31263383297645,3.17307692307692,3.09767441860465,3.97402597402597,4.46280991735537,5.23255813953488,3.42665173572228,2.03076923076923,5.37848605577689,5.07692307692308,4.22174840085288,8.39228295819936,4.71774193548387,2.68867924528302,1.61073825503356,2.41286863270777,3.0952380952381,3.39622641509434,2.54288597376387,5.8273381294964,3.85892116182573,1.76904176904177,2.18446601941748,3.24,3.53601496725912,2.96160877513711,3.23741007194245,3.4020618556701,5.84958217270195,5,1.23626373626374,3.16326530612245,1.78977272727273,5.3030303030303,3.42042755344418,2.31759656652361,2.24532224532225,2.95081967213115,2.94034090909091,2.73858921161826,3.12138728323699,3.30275229357798,6.60806618407446,2.07776427703524,1.74515235457064,3.10659898477157,4.6003717472119,4.56459330143541,3.41605839416058,4.73684210526316,5.21052631578947,5.42045454545455,2.12389380530973,3.48591549295775,2.75862068965517,2.16867469879518,3.75,5.59378468368479,3.63420427553444,3.24,2.5130890052356,3.26790971540726,4.11971830985915,3.4472049689441,1.06946983546618,3.17647058823529,3.49624060150376,2.48743718592965,2.93478260869565,1.82825484764543,3.3206106870229,5.17699115044248,3.02238805970149,2.88461538461538,4.63917525773196,3.07479224376731,4.13427561837456,5.6,4.47316103379722,3.20245398773006,5.9016393442623,3.41926729986431,3.73362445414847,5.31818181818182,4.25867507886435,3.69230769230769],"Aerials won":[1.54905335628227,1.60714285714286,0.419254658385093,1.74295774647887,"NA",1.10204081632653,1.04651162790698,2.36323851203501,2.30980751604033,1.14164904862579,2.21973094170404,0,1.67910447761194,0.55327868852459,0.467128027681661,2.10862619808307,0.437956204379562,1.33757961783439,1.34957825679475,1.02127659574468,1.27478753541076,0.355731225296443,0.644007155635063,0.301339285714286,0.404494382022472,0.681818181818182,0.377622377622378,1.05633802816901,0.436893203883495,0.965665236051502,1.97604790419162,0.806772908366534,"NA",0.989010989010989,1.08534322820037,0.530451866404715,3.63302752293578,"NA",1.72901921132457,3.96330275229358,0.576923076923077,0.784313725490196,0.54,3,1.37142857142857,0.727482678983834,2.44444444444444,"NA",1.45161290322581,3.36633663366337,1.20458891013384,2.38235294117647,0.966587112171838,2.3321554770318,2.79279279279279,1.19822485207101,0,1.10024449877751,1.14213197969543,2.77992277992278,1.5606936416185,0.601336302895323,0.869565217391304,"NA",1.76933158584535,1.29363449691992,1.72661870503597,3.40909090909091,0.162454873646209,2.42647058823529,3.74220374220374,0.486486486486487,0.102389078498294,1.07655502392344,0.564263322884012,0.341772151898734,0.255198487712665,"NA",0,0.942408376963351,1.02974828375286,0.737704918032787,3.52313167259786,2.82162162162162,0.972972972972973,1.65957446808511,"NA",0.916496945010183,1.43661971830986,0.440636474908201,0.687022900763359,0.835913312693498,0.587275693311582,2.8391167192429,3.23076923076923,3.25693606755127,2.01376936316695,1.67862266857963,"NA",2.29461756373938,2.38674033149171,1.01809954751131,1.13793103448276,0.832476875642343,0.835266821345708,1.1890243902439,1.07142857142857,1.62528216704289,1.19544592030361,1.70777988614801,1.92073170731707,0.935727788279773,1.63240628778718,1.48623853211009,2.24584103512015,0.259365994236311,"NA",0.229591836734694,1.5606936416185,1.33995037220844,3.52941176470588,1.71974522292994,0.319715808170515,0.690316395014382,"NA",0.778739184177997,0.820668693009118,0.193548387096774,0.580645161290323,0,3.01115241635688,0,3.15315315315315,3.60824742268041,"NA",0.276639344262295,1.38461538461538,4.36893203883495,0.512091038406828,2.36842105263158,0,0.826636050516648,"NA",1.43124415341441,0.548780487804878,1.61953727506427,2.06185567010309,0.196506550218341,0.647482014388489,0.215568862275449,0.950704225352113,0.913190529875986,1.31460674157303,1.13065326633166,0.512333965844402,1.57721796276013,"NA",0.347043701799486,1.08,2.46268656716418,1.32352941176471,0.493150684931507,1.46209386281588,3.75782881002088,0.984682713347921,0.827858081471748,1.65943600867679,0.610169491525424,0.690537084398977,0.37292817679558,0.618556701030928,"NA",0.735294117647059,3.45521023765996,3.58463726884779,0.340050377833753,0.967741935483871,1.06946983546618,1.16883116883117,1.45748987854251,0.566037735849057,0.274949083503055,"NA",0.91581868640148,0.289389067524116,1.74193548387097,2.06199460916442,0.357142857142857,1.05263157894737,3.85214007782101,0.75139146567718,0.348387096774194,0,4.09090909090909,1.71591992373689,"NA",1.12970711297071,2.35154394299287,0.913705583756345,0.676691729323308,3.5899814471243,0.893300248138958,0.866425992779783,"NA",0.432,1.52307692307692,0.728155339805825,0.531286894923259,2.51072961373391,1.10986547085202,3.7344398340249,1.93548387096774,0.327272727272727,3.46504559270517,0.52734375,1.42037302725968,0.294599018003273,0.608108108108108,0.948366701791359,0.559006211180124,1.95098963242224,"NA",0.38135593220339,2.31362467866324,0,1.94318181818182,1.4568345323741,1.34042553191489,0.578158458244111,0,2.34418604651163,0,1.48760330578512,2.09302325581395,0.100783874580067,0.553846153846154,0.717131474103586,2.65384615384615,2.78251599147122,0.723472668810289,0.544354838709677,1.41509433962264,1.61073825503356,0.723860589812332,0.238095238095238,1.35849056603774,"NA",0.906474820143885,1.12033195020747,0.884520884520885,4.5873786407767,2.52,0.841908325537886,0.493601462522852,0.129496402877698,3.4020618556701,0.835654596100279,1.25,"NA",3.06122448979592,0.511363636363636,0.909090909090909,0,4.37768240343348,0.561330561330561,2.26986128625473,0.511363636363636,1.86721991701245,5.72254335260116,1.7545871559633,0.651499482936918,1.42162818955043,"NA",0.639593908629442,1.50557620817844,1.46411483253589,1.97080291970803,1.13684210526316,2.84210526315789,0.613636363636364,2.78761061946903,0,1.03448275862069,4.69879518072289,0.436046511627907,0.699223085460599,0.855106888361045,1.44,0.31413612565445,0.529931305201178,2.32394366197183,1.86335403726708,"NA",0.926470588235294,2.4812030075188,1.35678391959799,0.611413043478261,"NA",0.458015267175573,1.19469026548673,3.02238805970149,1.29807692307692,0.309278350515464,3.73961218836565,2.22614840989399,0.933333333333333,0.894632206759443,2.20858895705521,0.402384500745156,0.366350067842605,0.196506550218341,1.84090909090909,0.473186119873817,0],"Pass %":[81.8791946308725,89.6103896103896,80.5309734513274,79.7927461139896,65.9217877094972,89.9045020463847,79.8319327731092,94.5652173913043,89.6988906497623,82.1989528795812,80,88.7864823348694,84.4961240310078,92.6517571884984,85.7142857142857,81.5950920245399,87.43961352657,81.25,87.3294346978557,75.2032520325203,76.1904761904762,85.6540084388186,83.3333333333333,75,91.1949685534591,92.3076923076923,83.5714285714286,75.1633986928105,86.9358669833729,88.2575757575758,86.9918699186992,91.2408759124088,71,80.3858520900322,82.6839826839827,81.6733067729084,86.56,60.4651162790698,75.1072961373391,74.9598715890851,80.7692307692308,81.5642458100559,84.4574780058651,69.6581196581197,81.3008130081301,86.4628820960699,87.3134328358209,62.6984126984127,60.5769230769231,68.8775510204082,71.5686274509804,81.0810810810811,78.9667896678967,64.4736842105263,82.5136612021858,79.2452830188679,81.9548872180451,79.3103448275862,79.3103448275862,81.0606060606061,87.8571428571429,82.5966850828729,75.4189944134078,77.35368956743,72.9411764705882,83.8174273858921,83.9506172839506,74.7774480712166,87.0967741935484,91.0688140556369,89.247311827957,87.1428571428571,84.6590909090909,83.3969465648855,86.9712351945854,86.6197183098592,84.1849148418491,61.3733905579399,84.8837209302326,85.5524079320113,82.3529411764706,85,68.2926829268293,88.6792452830189,82.4324324324324,89.9676375404531,66.3461538461538,91.25,77.2594752186589,84.3478260869565,89.1129032258064,91.4893617021277,90.7608695652174,90.2743142144638,84.5679012345679,80,58.4415584415584,83.8056680161943,54.8672566371681,69.8412698412698,78.6610878661088,74.0157480314961,78.4053156146179,85.2459016393443,85.4030501089325,82.7586206896552,74.1935483870968,83.4394904458599,76.3888888888889,79.2792792792793,82.8025477707006,75.4310344827586,75.3521126760563,86.8995633187773,85.2941176470588,84.1145833333333,61.4285714285714,82,73.5294117647059,87.2235872235872,78.6206896551724,77.3584905660377,80.2955665024631,76.797385620915,53.0487804878049,75.226586102719,83.8983050847458,72.972972972973,86.4516129032258,83.7837837837838,77.2727272727273,90.02079002079,83.4381551362683,86.3636363636364,62.6903553299492,87.1604938271605,82.8125,72.1804511278196,85.655737704918,84.0425531914894,90.4436860068259,81.7518248175183,76.4966740576497,88.4422110552764,86.2595419847328,87.7342419080068,77.1739130434783,85.7558139534884,77.7777777777778,83.7370242214533,80.3738317757009,91.2621359223301,89.8148148148148,85.0220264317181,71.1711711711712,77.5330396475771,42.6020408163265,76.3157894736842,74.0740740740741,86.8965517241379,76.7676767676768,65.8823529411765,82.8282828282828,57.3863636363636,80.0796812749004,79.7546012269939,80.3636363636364,73.2394366197183,77.1428571428571,88.6567164179104,71.4285714285714,55.5133079847909,82.4742268041237,79.7833935018051,66.3265306122449,90.7718120805369,81.6,91.3621262458472,75.974025974026,89.406779661017,77.5280898876404,81.5094339622642,61.1570247933884,81.0958904109589,89.9713467048711,56.8965517241379,72.8448275862069,86.8804664723032,71.2121212121212,56.7415730337079,84.9122807017544,75.1196172248804,79.8165137614679,77.0992366412214,77.7173913043478,62.8019323671498,76.3250883392226,89.2857142857143,72.2222222222222,86.4864864864865,84.21875,70.2702702702703,85.0446428571429,72.5978647686833,78.3950617283951,77.0053475935829,85.8288770053476,80.1435406698565,87.6404494382023,78.7965616045845,77.9310344827586,84.9056603773585,90.8536585365854,88.3308714918759,78.4,92.7335640138408,89.3203883495146,91.4027149321267,90.3571428571429,88.641425389755,64.1791044776119,75.8620689655172,86.7132867132867,82.0253164556962,83.9285714285714,94.4871794871795,89.1304347826087,87.2246696035242,88.5375494071146,88.8888888888889,91.5076335877863,86.7256637168142,89.0829694323144,89.9408284023669,80.8270676691729,84.3621399176955,83.59375,79.5918367346939,88.7477313974592,93.3628318584071,89.8230088495575,89.3867924528302,83.8174273858921,79.8611111111111,83.587786259542,89.5424836601307,67.4897119341564,88.8421052631579,79.6812749003984,65.4320987654321,77.9005524861878,81.9672131147541,80.68669527897,80.2083333333333,90.8296943231441,84.5588235294118,83.8235294117647,86.6120218579235,58.9041095890411,85.5042016806723,74.2424242424242,84.180790960452,88.8888888888889,85.7142857142857,73.1707317073171,70.7792207792208,76.1061946902655,84.3511450381679,78.1818181818182,82.8042328042328,78.448275862069,59.4827586206897,49.2163009404389,78.6743515850144,82.5932504440497,79.2048929663609,84.5559845559846,75,87.741935483871,80.6153846153846,76.530612244898,85.4838709677419,80,83.0917874396135,78.9772727272727,82.4156305506217,81.0679611650485,75.8139534883721,80.5970149253731,86.5671641791045,74.8344370860927,77.9944289693593,61.71875,79.9196787148594,71.9827586206897,61.5384615384615,85.80375782881,71.304347826087,89.5081967213115,87.2340425531915,88.4057971014493,84.3373493975904,88.9952153110048,91.2731006160164,89.5752895752896,92.2465208747515,85.7142857142857,95.9398496240601,88.9763779527559,92.7536231884058,76.7025089605735,89.5104895104895,89.0547263681592,80.9523809523809],"Goals prevented":["NA","NA","NA","NA",0.0712535344015081,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.321621621621621,"NA","NA","NA","NA",-0.222935779816514,"NA","NA","NA","NA","NA","NA","NA","NA","NA",0.054054054054054,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.404587155963303,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.1125,"NA","NA","NA","NA","NA","NA","NA","NA",0.268085106382979,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.472458410351201,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.221938775510204,"NA","NA","NA","NA","NA","NA","NA",0.187651821862348,"NA","NA","NA","NA","NA","NA","NA","NA","NA",0.0657657657657656,"NA","NA","NA","NA","NA","NA","NA",-0.0942937324602432,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.0733944954128441,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.0580229226361031,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.743181818181818,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.328107606679035,"NA","NA","NA","NA","NA","NA","NA",0.196048632218845,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.0870697674418604,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.12351160443996,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0.278571428571429,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.119667590027701,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",-0.255027422303473,"NA","NA","NA","NA",-0.10803324099723,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"Saves":["NA","NA","NA","NA",1.86616399622997,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",3.15315315315315,"NA","NA","NA","NA",1.56880733944954,"NA","NA","NA","NA","NA","NA","NA","NA","NA",2.79279279279279,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2.47706422018349,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",3.88392857142857,"NA","NA","NA","NA","NA","NA","NA","NA",2.46200607902736,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2.24584103512015,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",4.43877551020408,"NA","NA","NA","NA","NA","NA","NA",2.55060728744939,"NA","NA","NA","NA","NA","NA","NA","NA","NA",2.7027027027027,"NA","NA","NA","NA","NA","NA","NA",2.52572497661366,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",4.03669724770642,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2.96561604584527,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",3.63636363636364,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",3.42300556586271,"NA","NA","NA","NA","NA","NA","NA",2.27963525835866,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2.42790697674419,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2.99697275479314,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",3.21428571428571,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",1.99445983379501,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2.38574040219378,"NA","NA","NA","NA",2.1606648199446,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"]},"columns":[{"id":"Player","name":"Player","type":"character","minWidth":160,"sticky":"left","style":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"},{"fontWeight":700,"color":"#132257"}]},{"id":"Club","name":"Club","type":"character","filterable":true,"minWidth":140},{"id":"Role","name":"Role","type":"character","filterable":true,"minWidth":110},{"id":"Apps","name":"Apps","type":"numeric","width":60},{"id":"Mins","name":"Mins","type":"numeric","width":65},{"id":"Goals","name":"Goals /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F8DFD6"},{"background":"#96B2F1"},{"background":"#8CABEF"},{"background":"#F6C6B6"},null,{"background":"#F6C6B6"},{"background":"#B2C8F4"},{"background":"#A7BFF3"},{"background":"#B9CEF5"},{"background":"#F8DFD6"},{"background":"#D6E1F6"},{"background":"#AEC5F3"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#A4BDF2"},{"background":"#ABC3F3"},{"background":"#F8DFD6"},{"background":"#8FADF0"},{"background":"#F6C6B6"},{"background":"#E7ECF7"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#A0BAF2"},{"background":"#BED2F5"},{"background":"#F6C6B6"},{"background":"#9DB8F2"},{"background":"#F8DFD6"},{"background":"#96B2F1"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},null,{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#D1DEF6"},{"background":"#F8DFD6"},null,{"background":"#B0C7F4"},{"background":"#F8DFD6"},{"background":"#ABC3F3"},{"background":"#F6C6B6"},{"background":"#84A6EF"},{"background":"#F5F5F7"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},null,{"background":"#CFDCF6"},{"background":"#F7D9CF"},{"background":"#D6E1F6"},{"background":"#F8DFD6"},{"background":"#87A7EF"},{"background":"#A2BBF2"},{"background":"#B2C8F4"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#9DB8F2"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#C0D3F5"},{"background":"#BBD0F5"},null,{"background":"#C3D5F5"},{"background":"#CAD9F6"},{"background":"#F8DFD6"},{"background":"#C5D6F5"},{"background":"#F8DFD6"},{"background":"#9BB6F1"},{"background":"#ABC3F3"},{"background":"#82A4EE"},{"background":"#BED2F5"},{"background":"#F8DFD6"},{"background":"#91AFF0"},{"background":"#98B4F1"},{"background":"#B7CCF4"},null,{"background":"#F6C6B6"},{"background":"#A2BBF2"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#82A4EE"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},null,{"background":"#F6C6B6"},{"background":"#8AA9EF"},{"background":"#9DB8F2"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#DDE6F6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},null,{"background":"#ED9880"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#A7BFF3"},{"background":"#AEC5F3"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#EBEFF7"},{"background":"#8AA9EF"},{"background":"#CAD9F6"},{"background":"#9BB6F1"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#E9EDF7"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F7F7F7"},null,{"background":"#ED9880"},{"background":"#F7F5F4"},{"background":"#F8DFD6"},{"background":"#82A4EE"},{"background":"#E4EAF6"},{"background":"#F6C6B6"},{"background":"#D4DFF6"},null,{"background":"#F8DDD4"},{"background":"#84A6EF"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#B2C8F4"},{"background":"#F8DFD6"},null,{"background":"#AEC5F3"},{"background":"#F8DFD6"},{"background":"#A4BDF2"},{"background":"#E4EAF6"},{"background":"#F8DFD6"},{"background":"#F0F2F7"},{"background":"#F8DFD6"},null,{"background":"#F8DFD6"},{"background":"#B0C7F4"},{"background":"#F8DFD6"},{"background":"#F4B6A3"},{"background":"#C3D5F5"},{"background":"#F8DFD6"},{"background":"#EEF1F7"},{"background":"#7FA2EE"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},null,{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#91AFF0"},{"background":"#91AFF0"},{"background":"#F7D4C8"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#A9C1F3"},{"background":"#F6C6B6"},{"background":"#B9CEF5"},{"background":"#96B2F1"},{"background":"#F6C6B6"},null,{"background":"#DBE4F6"},{"background":"#BBD0F5"},{"background":"#F8EEEA"},{"background":"#F6C6B6"},{"background":"#C7D8F5"},{"background":"#F8DFD6"},{"background":"#84A6EF"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#CCDBF6"},null,{"background":"#8CABEF"},{"background":"#F6C6B6"},{"background":"#ABC3F3"},{"background":"#F5C4B3"},{"background":"#F6C6B6"},{"background":"#F0F2F7"},{"background":"#B7CCF4"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#ED9880"},{"background":"#F8DFD6"},{"background":"#B4CAF4"},null,{"background":"#F5F5F7"},{"background":"#F8DFD6"},{"background":"#9DB8F2"},{"background":"#ED9880"},{"background":"#F8DFD6"},{"background":"#8AA9EF"},{"background":"#EBEFF7"},null,{"background":"#F6C6B6"},{"background":"#E2E9F6"},{"background":"#E0E7F6"},{"background":"#F0F2F7"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#96B2F1"},{"background":"#F8DFD6"},{"background":"#A9C1F3"},{"background":"#F6C6B6"},{"background":"#F2F4F7"},{"background":"#E0E7F6"},{"background":"#91AFF0"},null,{"background":"#F6C6B6"},{"background":"#96B2F1"},{"background":"#D4DFF6"},{"background":"#A2BBF2"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#C7D8F5"},{"background":"#7FA2EE"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#8CABEF"},{"background":"#94B0F0"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F4BBA9"},{"background":"#F8DFD6"},null,{"background":"#E4EAF6"},{"background":"#F8DFD6"},{"background":"#87A7EF"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#B7CCF4"},{"background":"#D8E3F6"},{"background":"#B4CAF4"},{"background":"#F6C6B6"},{"background":"#B7CCF4"},{"background":"#F6C6B6"},null,{"background":"#A4BDF2"},{"background":"#ED9880"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#94B0F0"},{"background":"#F7CEC0"},{"background":"#E9EDF7"},{"background":"#F8E8E3"},{"background":"#F6C6B6"},{"background":"#F7F5F4"},{"background":"#A0BAF2"},{"background":"#F6C6B6"},{"background":"#D1DEF6"},null,{"background":"#F2AE99"},{"background":"#F8DFD6"},{"background":"#F7F5F4"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#BED2F5"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#B2C8F4"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},{"background":"#D8E3F6"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8DFD6"},null,{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F8E3DB"},{"background":"#F8DFD6"},null,{"background":"#98B4F1"},{"background":"#C3D5F5"},{"background":"#F8DFD6"},{"background":"#DDE6F6"},{"background":"#A7BFF3"},{"background":"#8FADF0"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#CFDCF6"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F6CBBB"},{"background":"#F8DFD6"},{"background":"#F6C6B6"},{"background":"#F6C6B6"},{"background":"#F6C6B6"}]},{"id":"NPxG","name":"NPxG /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F8DFD6"},{"background":"#D8E3F6"},{"background":"#82A4EE"},{"background":"#F8DFD6"},null,{"background":"#F7D2C5"},{"background":"#C3D5F5"},{"background":"#E2E9F6"},{"background":"#8FADF0"},{"background":"#EF9D86"},{"background":"#F8E8E3"},{"background":"#ABC3F3"},{"background":"#96B2F1"},{"background":"#F5BEAC"},{"background":"#BBD0F5"},{"background":"#96B2F1"},{"background":"#EA8A71"},{"background":"#F7F5F4"},{"background":"#ED9880"},{"background":"#A9C1F3"},{"background":"#F0A590"},{"background":"#CCDBF6"},{"background":"#8FADF0"},{"background":"#CAD9F6"},{"background":"#E9876E"},{"background":"#9DB8F2"},{"background":"#F7D8CD"},{"background":"#CAD9F6"},{"background":"#DBE4F6"},{"background":"#E2E9F6"},{"background":"#F7F1EF"},{"background":"#F2F4F7"},null,{"background":"#D6E1F6"},{"background":"#F5BEAC"},{"background":"#EBEFF7"},{"background":"#87A7EF"},null,{"background":"#9DB8F2"},{"background":"#F8E6E0"},{"background":"#8CABEF"},{"background":"#EF9D86"},{"background":"#84A6EF"},{"background":"#94B0F0"},{"background":"#C5D6F5"},{"background":"#F1A893"},{"background":"#F5C1AF"},null,{"background":"#BED2F5"},{"background":"#F0F2F7"},{"background":"#91AFF0"},{"background":"#F7D9CF"},{"background":"#8AA9EF"},{"background":"#A0BAF2"},{"background":"#F0F2F7"},{"background":"#F7D8CD"},{"background":"#F6CDBE"},{"background":"#C0D3F5"},{"background":"#F8E8E3"},{"background":"#8CABEF"},{"background":"#D6E1F6"},{"background":"#F7D2C5"},{"background":"#F5C4B3"},null,{"background":"#F7F7F7"},{"background":"#F7F1EF"},{"background":"#B2C8F4"},{"background":"#E4EAF6"},{"background":"#F7D2C5"},{"background":"#EE9A83"},{"background":"#96B2F1"},{"background":"#87A7EF"},{"background":"#A2BBF2"},{"background":"#F4B6A3"},{"background":"#DDE6F6"},{"background":"#A4BDF2"},{"background":"#D4DFF6"},null,{"background":"#E7ECF7"},{"background":"#F8E5DE"},{"background":"#EC927A"},{"background":"#F4B6A3"},{"background":"#A4BDF2"},{"background":"#F6C6B6"},{"background":"#F8EAE5"},{"background":"#D8E3F6"},null,{"background":"#EB8F77"},{"background":"#9DB8F2"},{"background":"#B9CEF5"},{"background":"#F2AB96"},{"background":"#F8ECE8"},{"background":"#F2F4F7"},{"background":"#F8E1D9"},{"background":"#F0A38D"},{"background":"#B7CCF4"},{"background":"#B7CCF4"},{"background":"#F0A590"},null,{"background":"#F0A590"},{"background":"#F6C9B9"},{"background":"#F2AE99"},{"background":"#CCDBF6"},{"background":"#E4EAF6"},{"background":"#F0A38D"},{"background":"#EB8F77"},{"background":"#EF9D86"},{"background":"#ABC3F3"},{"background":"#ABC3F3"},{"background":"#F8E8E3"},{"background":"#F7F3F2"},{"background":"#F4B9A6"},{"background":"#D8E3F6"},{"background":"#CFDCF6"},{"background":"#F6CDBE"},{"background":"#E9EDF7"},null,{"background":"#EB8F77"},{"background":"#D6E1F6"},{"background":"#F0A590"},{"background":"#7FA2EE"},{"background":"#EBEFF7"},{"background":"#F8E5DE"},{"background":"#F8E3DB"},null,{"background":"#F8E3DB"},{"background":"#F4BBA9"},{"background":"#B4CAF4"},{"background":"#F7D9CF"},{"background":"#F3B39F"},{"background":"#B4CAF4"},{"background":"#F7CEC0"},{"background":"#F4B9A6"},{"background":"#F7F0ED"},null,{"background":"#D6E1F6"},{"background":"#F3B39F"},{"background":"#82A4EE"},{"background":"#F8ECE8"},{"background":"#F5C4B3"},{"background":"#E4EAF6"},{"background":"#EBEFF7"},null,{"background":"#F7F5F4"},{"background":"#96B2F1"},{"background":"#F7CEC0"},{"background":"#C3D5F5"},{"background":"#B0C7F4"},{"background":"#EA8A71"},{"background":"#B7CCF4"},{"background":"#A2BBF2"},{"background":"#F4B9A6"},{"background":"#F8EEEA"},{"background":"#A4BDF2"},{"background":"#F4B6A3"},{"background":"#F8EEEA"},null,{"background":"#F8DDD4"},{"background":"#EC927A"},{"background":"#EFA089"},{"background":"#E9876E"},{"background":"#D1DEF6"},{"background":"#9DB8F2"},{"background":"#F4B6A3"},{"background":"#F3B09C"},{"background":"#ED957D"},{"background":"#B9CEF5"},{"background":"#F8DDD4"},{"background":"#F5F5F7"},{"background":"#F7F3F2"},{"background":"#F7D8CD"},null,{"background":"#C7D8F5"},{"background":"#F7D4C8"},{"background":"#DDE6F6"},{"background":"#EA8A71"},{"background":"#F6CBBB"},{"background":"#F2AE99"},{"background":"#F5F5F7"},{"background":"#EF9D86"},{"background":"#F8DFD6"},{"background":"#B2C8F4"},null,{"background":"#91AFF0"},{"background":"#EA8A71"},{"background":"#F8EEEA"},{"background":"#F8DDD4"},{"background":"#AEC5F3"},{"background":"#E9876E"},{"background":"#BED2F5"},{"background":"#F2AB96"},{"background":"#F2AB96"},{"background":"#ED9880"},{"background":"#F5F5F7"},{"background":"#F7F7F7"},null,{"background":"#D4DFF6"},{"background":"#C5D6F5"},{"background":"#F7D4C8"},{"background":"#F7CEC0"},{"background":"#D4DFF6"},{"background":"#B0C7F4"},{"background":"#F7F0ED"},null,{"background":"#BED2F5"},{"background":"#CFDCF6"},{"background":"#F7F1EF"},{"background":"#A7BFF3"},{"background":"#E7ECF7"},{"background":"#F6CDBE"},{"background":"#94B0F0"},{"background":"#F3B09C"},{"background":"#EFA089"},{"background":"#F8EEEA"},{"background":"#F0F2F7"},{"background":"#F3B09C"},{"background":"#F6CBBB"},{"background":"#EE9A83"},{"background":"#F5C1AF"},{"background":"#AEC5F3"},{"background":"#8AA9EF"},null,{"background":"#C3D5F5"},{"background":"#A9C1F3"},{"background":"#CFDCF6"},{"background":"#A0BAF2"},{"background":"#F7D0C3"},{"background":"#82A4EE"},{"background":"#7FA2EE"},{"background":"#8CABEF"},{"background":"#AEC5F3"},{"background":"#A2BBF2"},{"background":"#F6C9B9"},{"background":"#EEF1F7"},{"background":"#A7BFF3"},{"background":"#84A6EF"},{"background":"#F5C4B3"},{"background":"#E0E7F6"},{"background":"#F8DDD4"},{"background":"#F7D6CA"},{"background":"#F7D6CA"},{"background":"#F8E8E3"},{"background":"#F1A893"},{"background":"#8AA9EF"},{"background":"#F4BBA9"},{"background":"#ABC3F3"},null,{"background":"#E0E7F6"},{"background":"#F6CBBB"},{"background":"#C0D3F5"},{"background":"#DDE6F6"},{"background":"#E9EDF7"},{"background":"#B2C8F4"},{"background":"#F7D4C8"},{"background":"#98B4F1"},{"background":"#F7D0C3"},{"background":"#EBEFF7"},{"background":"#EC927A"},null,{"background":"#F8E3DB"},{"background":"#F6CBBB"},{"background":"#EA8C74"},{"background":"#ED9880"},{"background":"#F7DBD1"},{"background":"#F5C4B3"},{"background":"#91AFF0"},{"background":"#F7F1EF"},{"background":"#F7F5F4"},{"background":"#D1DEF6"},{"background":"#BBD0F5"},{"background":"#EEF1F7"},{"background":"#E4EAF6"},null,{"background":"#F7D9CF"},{"background":"#98B4F1"},{"background":"#F8EAE5"},{"background":"#F8E5DE"},{"background":"#ED957D"},{"background":"#D1DEF6"},{"background":"#F7CEC0"},{"background":"#91AFF0"},{"background":"#F7F7F7"},{"background":"#F8E6E0"},{"background":"#CAD9F6"},{"background":"#F7DBD1"},{"background":"#EF9D86"},{"background":"#C0D3F5"},{"background":"#C3D5F5"},{"background":"#E9EDF7"},{"background":"#F5BEAC"},{"background":"#A7BFF3"},{"background":"#ED9880"},null,{"background":"#BED2F5"},{"background":"#F7DBD1"},{"background":"#96B2F1"},{"background":"#F8ECE8"},null,{"background":"#C7D8F5"},{"background":"#9BB6F1"},{"background":"#EA8A71"},{"background":"#B7CCF4"},{"background":"#E0E7F6"},{"background":"#84A6EF"},{"background":"#EA8A71"},{"background":"#F6C6B6"},{"background":"#F0F2F7"},{"background":"#B0C7F4"},{"background":"#C7D8F5"},{"background":"#F2AE99"},{"background":"#9BB6F1"},{"background":"#F8E1D9"},{"background":"#F4BBA9"},{"background":"#DBE4F6"}]},{"id":"xA","name":"xA /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F2AE99"},{"background":"#B2C8F4"},{"background":"#84A6EF"},{"background":"#F7F0ED"},null,{"background":"#F7CEC0"},{"background":"#D8E3F6"},{"background":"#F2AE99"},{"background":"#BED2F5"},{"background":"#F2AE99"},{"background":"#EBEFF7"},{"background":"#F8E8E3"},{"background":"#AEC5F3"},{"background":"#BBD0F5"},{"background":"#E0E7F6"},{"background":"#ABC3F3"},{"background":"#F2AE99"},{"background":"#C5D6F5"},{"background":"#F4B9A6"},{"background":"#C3D5F5"},{"background":"#F7D0C3"},{"background":"#D1DEF6"},{"background":"#B0C7F4"},{"background":"#F5F5F7"},{"background":"#EC927A"},{"background":"#F2F4F7"},{"background":"#F8E6E0"},{"background":"#F2AE99"},{"background":"#91AFF0"},{"background":"#F7F1EF"},{"background":"#F7F1EF"},{"background":"#F2AE99"},null,{"background":"#F2AE99"},{"background":"#F8DDD4"},{"background":"#F8E1D9"},{"background":"#C0D3F5"},null,{"background":"#D6E1F6"},{"background":"#F8E3DB"},{"background":"#9BB6F1"},{"background":"#EC927A"},{"background":"#B7CCF4"},{"background":"#98B4F1"},{"background":"#A2BBF2"},{"background":"#F1A893"},{"background":"#F8E8E3"},null,{"background":"#C7D8F5"},{"background":"#F7F1EF"},{"background":"#BED2F5"},{"background":"#A4BDF2"},{"background":"#A2BBF2"},{"background":"#87A7EF"},{"background":"#F7D2C5"},{"background":"#CAD9F6"},{"background":"#EC927A"},{"background":"#F7D6CA"},{"background":"#B4CAF4"},{"background":"#8AA9EF"},{"background":"#F2AE99"},{"background":"#EC927A"},{"background":"#F2AE99"},null,{"background":"#F7F7F7"},{"background":"#B7CCF4"},{"background":"#C0D3F5"},{"background":"#D4DFF6"},{"background":"#F8DDD4"},{"background":"#F2AE99"},{"background":"#98B4F1"},{"background":"#96B2F1"},{"background":"#8FADF0"},{"background":"#F2AE99"},{"background":"#F6C6B6"},{"background":"#E9EDF7"},{"background":"#DBE4F6"},null,{"background":"#D8E3F6"},{"background":"#F8DFD6"},{"background":"#E4EAF6"},{"background":"#F7F5F4"},{"background":"#ABC3F3"},{"background":"#F2AE99"},{"background":"#EEF1F7"},{"background":"#A7BFF3"},null,{"background":"#F7F5F4"},{"background":"#D1DEF6"},{"background":"#D6E1F6"},{"background":"#F8DFD6"},{"background":"#F3B39F"},{"background":"#EC927A"},{"background":"#F2AE99"},{"background":"#F2AE99"},{"background":"#E0E7F6"},{"background":"#91AFF0"},{"background":"#EC927A"},null,{"background":"#F8E3DB"},{"background":"#F7F7F7"},{"background":"#EC927A"},{"background":"#A9C1F3"},{"background":"#EBEFF7"},{"background":"#F7F3F2"},{"background":"#F2AE99"},{"background":"#ED9880"},{"background":"#F8E1D9"},{"background":"#E4EAF6"},{"background":"#F4B9A6"},{"background":"#F8DFD6"},{"background":"#F0A38D"},{"background":"#F7D2C5"},{"background":"#F2AE99"},{"background":"#DBE4F6"},{"background":"#E7ECF7"},null,{"background":"#F4B6A3"},{"background":"#D1DEF6"},{"background":"#F7D8CD"},{"background":"#82A4EE"},{"background":"#A4BDF2"},{"background":"#F6CDBE"},{"background":"#F6CBBB"},null,{"background":"#F5C4B3"},{"background":"#F2AE99"},{"background":"#C0D3F5"},{"background":"#F8E3DB"},{"background":"#F7F5F4"},{"background":"#96B2F1"},{"background":"#F2AB96"},{"background":"#F2AE99"},{"background":"#F2AE99"},null,{"background":"#91AFF0"},{"background":"#F7F0ED"},{"background":"#8AA9EF"},{"background":"#F8E5DE"},{"background":"#F8E5DE"},{"background":"#CFDCF6"},{"background":"#F0F2F7"},null,{"background":"#F7F3F2"},{"background":"#AEC5F3"},{"background":"#B0C7F4"},{"background":"#B7CCF4"},{"background":"#ABC3F3"},{"background":"#F2AE99"},{"background":"#F8E6E0"},{"background":"#8FADF0"},{"background":"#F7DBD1"},{"background":"#F0A590"},{"background":"#9DB8F2"},{"background":"#F5C4B3"},{"background":"#B7CCF4"},null,{"background":"#F2AE99"},{"background":"#EC927A"},{"background":"#F2AE99"},{"background":"#EC927A"},{"background":"#CCDBF6"},{"background":"#9BB6F1"},{"background":"#F4BBA9"},{"background":"#F7DBD1"},{"background":"#F2AE99"},{"background":"#F2AE99"},{"background":"#9DB8F2"},{"background":"#F8ECE8"},{"background":"#F2AE99"},{"background":"#F7D4C8"},null,{"background":"#8AA9EF"},{"background":"#DDE6F6"},{"background":"#BED2F5"},{"background":"#EC927A"},{"background":"#F7F1EF"},{"background":"#F2AE99"},{"background":"#E9EDF7"},{"background":"#F2AE99"},{"background":"#F8E8E3"},{"background":"#B9CEF5"},null,{"background":"#A0BAF2"},{"background":"#EC927A"},{"background":"#DDE6F6"},{"background":"#F6CBBB"},{"background":"#D4DFF6"},{"background":"#EF9D86"},{"background":"#B0C7F4"},{"background":"#F8ECE8"},{"background":"#F5C4B3"},{"background":"#EB8F77"},{"background":"#C7D8F5"},{"background":"#E2E9F6"},null,{"background":"#F5F5F7"},{"background":"#D6E1F6"},{"background":"#F0A590"},{"background":"#F7D4C8"},{"background":"#D8E3F6"},{"background":"#C3D5F5"},{"background":"#84A6EF"},null,{"background":"#9DB8F2"},{"background":"#F0F2F7"},{"background":"#F5C1AF"},{"background":"#8CABEF"},{"background":"#F2AE99"},{"background":"#F7D4C8"},{"background":"#CAD9F6"},{"background":"#F3B09C"},{"background":"#F7D8CD"},{"background":"#F8EAE5"},{"background":"#F8DDD4"},{"background":"#F7D9CF"},{"background":"#F6CBBB"},{"background":"#F4B6A3"},{"background":"#F7CEC0"},{"background":"#A0BAF2"},{"background":"#82A4EE"},null,{"background":"#B2C8F4"},{"background":"#EBEFF7"},{"background":"#E2E9F6"},{"background":"#B4CAF4"},{"background":"#F8EEEA"},{"background":"#7FA2EE"},{"background":"#7FA2EE"},{"background":"#E4EAF6"},{"background":"#D4DFF6"},{"background":"#DDE6F6"},{"background":"#F8EAE5"},{"background":"#84A6EF"},{"background":"#C3D5F5"},{"background":"#8CABEF"},{"background":"#F5BEAC"},{"background":"#F2F4F7"},{"background":"#CCDBF6"},{"background":"#F6C9B9"},{"background":"#ABC3F3"},{"background":"#F7DBD1"},{"background":"#F2AE99"},{"background":"#82A4EE"},{"background":"#F8DDD4"},{"background":"#8CABEF"},null,{"background":"#EEF1F7"},{"background":"#F8EEEA"},{"background":"#E4EAF6"},{"background":"#AEC5F3"},{"background":"#F2AE99"},{"background":"#A7BFF3"},{"background":"#CFDCF6"},{"background":"#96B2F1"},{"background":"#F7D4C8"},{"background":"#CFDCF6"},{"background":"#EC927A"},null,{"background":"#F2AE99"},{"background":"#E9876E"},{"background":"#EC927A"},{"background":"#F2AB96"},{"background":"#F2AE99"},{"background":"#F8E8E3"},{"background":"#BED2F5"},{"background":"#CAD9F6"},{"background":"#A2BBF2"},{"background":"#91AFF0"},{"background":"#F8ECE8"},{"background":"#F8E5DE"},{"background":"#F8EEEA"},null,{"background":"#F7CEC0"},{"background":"#C3D5F5"},{"background":"#E0E7F6"},{"background":"#F5F5F7"},{"background":"#F5BEAC"},{"background":"#A9C1F3"},{"background":"#F7F7F7"},{"background":"#9DB8F2"},{"background":"#F0F2F7"},{"background":"#F7D8CD"},{"background":"#B9CEF5"},{"background":"#F7D6CA"},{"background":"#EC927A"},{"background":"#87A7EF"},{"background":"#94B0F0"},{"background":"#A4BDF2"},{"background":"#F4BBA9"},{"background":"#B2C8F4"},{"background":"#F2AE99"},null,{"background":"#E9EDF7"},{"background":"#A7BFF3"},{"background":"#F0F2F7"},{"background":"#C5D6F5"},null,{"background":"#BBD0F5"},{"background":"#C7D8F5"},{"background":"#F2AE99"},{"background":"#96B2F1"},{"background":"#EBEFF7"},{"background":"#96B2F1"},{"background":"#F2AE99"},{"background":"#F3B09C"},{"background":"#F7D9CF"},{"background":"#E7ECF7"},{"background":"#94B0F0"},{"background":"#F7D9CF"},{"background":"#D6E1F6"},{"background":"#EC927A"},{"background":"#F0A590"},{"background":"#F8EEEA"}]},{"id":"Shots","name":"Shots /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#EFA089"},{"background":"#F5F5F7"},{"background":"#ABC3F3"},{"background":"#F7F7F7"},null,{"background":"#F8DFD6"},{"background":"#D6E1F6"},{"background":"#F7D9CF"},{"background":"#BED2F5"},{"background":"#F3B09C"},{"background":"#F6CBBB"},{"background":"#EEF1F7"},{"background":"#82A4EE"},{"background":"#F7CEC0"},{"background":"#8CABEF"},{"background":"#A7BFF3"},{"background":"#EA8A71"},{"background":"#E0E7F6"},{"background":"#EC927A"},{"background":"#A7BFF3"},{"background":"#ED957D"},{"background":"#96B2F1"},{"background":"#84A6EF"},{"background":"#F7D6CA"},{"background":"#E9876E"},{"background":"#A7BFF3"},{"background":"#F7D2C5"},{"background":"#CAD9F6"},{"background":"#F5F5F7"},{"background":"#9DB8F2"},{"background":"#C0D3F5"},{"background":"#EB8F77"},null,{"background":"#F5C1AF"},{"background":"#F0F2F7"},{"background":"#F7F5F4"},{"background":"#F7F7F7"},null,{"background":"#B0C7F4"},{"background":"#F6C9B9"},{"background":"#96B2F1"},{"background":"#EA8C74"},{"background":"#CFDCF6"},{"background":"#8FADF0"},{"background":"#B9CEF5"},{"background":"#F0A590"},{"background":"#F8E5DE"},null,{"background":"#E9EDF7"},{"background":"#F8EEEA"},{"background":"#B7CCF4"},{"background":"#F5BEAC"},{"background":"#96B2F1"},{"background":"#C7D8F5"},{"background":"#F8E6E0"},{"background":"#F7D9CF"},{"background":"#F8E8E3"},{"background":"#BBD0F5"},{"background":"#F8EEEA"},{"background":"#87A7EF"},{"background":"#F7F0ED"},{"background":"#F0A38D"},{"background":"#F6CBBB"},null,{"background":"#A4BDF2"},{"background":"#F5C4B3"},{"background":"#B2C8F4"},{"background":"#9DB8F2"},{"background":"#B7CCF4"},{"background":"#EE9A83"},{"background":"#91AFF0"},{"background":"#E2E9F6"},{"background":"#EBEFF7"},{"background":"#F8E1D9"},{"background":"#F7F1EF"},{"background":"#98B4F1"},{"background":"#9BB6F1"},null,{"background":"#7FA2EE"},{"background":"#F7D0C3"},{"background":"#F3B39F"},{"background":"#F7CEC0"},{"background":"#C3D5F5"},{"background":"#F7D8CD"},{"background":"#C0D3F5"},{"background":"#F7D4C8"},null,{"background":"#EF9D86"},{"background":"#AEC5F3"},{"background":"#CCDBF6"},{"background":"#F2AB96"},{"background":"#B7CCF4"},{"background":"#F1A893"},{"background":"#F8DFD6"},{"background":"#F4B9A6"},{"background":"#8CABEF"},{"background":"#BED2F5"},{"background":"#ED9880"},null,{"background":"#EF9D86"},{"background":"#F8ECE8"},{"background":"#F4BBA9"},{"background":"#D1DEF6"},{"background":"#F7D0C3"},{"background":"#F2AE99"},{"background":"#EC927A"},{"background":"#F5C4B3"},{"background":"#9BB6F1"},{"background":"#F7F7F7"},{"background":"#F8DFD6"},{"background":"#F7F0ED"},{"background":"#F3B39F"},{"background":"#F8EAE5"},{"background":"#D4DFF6"},{"background":"#F8EEEA"},{"background":"#F7D2C5"},null,{"background":"#F0A590"},{"background":"#F7D9CF"},{"background":"#EF9D86"},{"background":"#84A6EF"},{"background":"#F8E8E3"},{"background":"#F0F2F7"},{"background":"#F4B6A3"},null,{"background":"#F8DDD4"},{"background":"#F7F5F4"},{"background":"#F7D2C5"},{"background":"#F6CBBB"},{"background":"#F7DBD1"},{"background":"#D1DEF6"},{"background":"#F6C6B6"},{"background":"#F6CDBE"},{"background":"#E4EAF6"},null,{"background":"#B2C8F4"},{"background":"#F5C4B3"},{"background":"#91AFF0"},{"background":"#C5D6F5"},{"background":"#F3B39F"},{"background":"#F2F4F7"},{"background":"#F8EEEA"},null,{"background":"#E9EDF7"},{"background":"#A2BBF2"},{"background":"#F8E8E3"},{"background":"#DDE6F6"},{"background":"#B4CAF4"},{"background":"#EA8A71"},{"background":"#DDE6F6"},{"background":"#7FA2EE"},{"background":"#F4B9A6"},{"background":"#F5C1AF"},{"background":"#CFDCF6"},{"background":"#F6C9B9"},{"background":"#C7D8F5"},null,{"background":"#F6CBBB"},{"background":"#EE9A83"},{"background":"#F4B6A3"},{"background":"#E9876E"},{"background":"#91AFF0"},{"background":"#B7CCF4"},{"background":"#F2AE99"},{"background":"#F5C4B3"},{"background":"#EF9D86"},{"background":"#F8EAE5"},{"background":"#F8E5DE"},{"background":"#F7F1EF"},{"background":"#E0E7F6"},{"background":"#F8E6E0"},null,{"background":"#F6CDBE"},{"background":"#F1A893"},{"background":"#EBEFF7"},{"background":"#EA8A71"},{"background":"#EF9D86"},{"background":"#F1A893"},{"background":"#CFDCF6"},{"background":"#F2AE99"},{"background":"#E4EAF6"},{"background":"#84A6EF"},null,{"background":"#F2F4F7"},{"background":"#EA8A71"},{"background":"#ABC3F3"},{"background":"#F4BBA9"},{"background":"#E4EAF6"},{"background":"#E9876E"},{"background":"#F7F1EF"},{"background":"#F2AB96"},{"background":"#F3B09C"},{"background":"#ED9880"},{"background":"#ABC3F3"},{"background":"#B9CEF5"},null,{"background":"#F7F3F2"},{"background":"#F7F1EF"},{"background":"#F8E3DB"},{"background":"#F7CEC0"},{"background":"#F0F2F7"},{"background":"#B7CCF4"},{"background":"#D4DFF6"},null,{"background":"#DBE4F6"},{"background":"#AEC5F3"},{"background":"#BED2F5"},{"background":"#A4BDF2"},{"background":"#F7D6CA"},{"background":"#F8DDD4"},{"background":"#DDE6F6"},{"background":"#F8E3DB"},{"background":"#F5BEAC"},{"background":"#F7F5F4"},{"background":"#B2C8F4"},{"background":"#F4BBA9"},{"background":"#F8DDD4"},{"background":"#F4B9A6"},{"background":"#F7D8CD"},{"background":"#D8E3F6"},{"background":"#8AA9EF"},null,{"background":"#E9EDF7"},{"background":"#ABC3F3"},{"background":"#C3D5F5"},{"background":"#F6C6B6"},{"background":"#F0A38D"},{"background":"#8AA9EF"},{"background":"#A0BAF2"},{"background":"#96B2F1"},{"background":"#EBEFF7"},{"background":"#91AFF0"},{"background":"#F2AB96"},{"background":"#C5D6F5"},{"background":"#8AA9EF"},{"background":"#94B0F0"},{"background":"#D8E3F6"},{"background":"#9DB8F2"},{"background":"#B0C7F4"},{"background":"#F7D8CD"},{"background":"#F6CDBE"},{"background":"#A0BAF2"},{"background":"#F8DDD4"},{"background":"#87A7EF"},{"background":"#D1DEF6"},{"background":"#CCDBF6"},null,{"background":"#F7F5F4"},{"background":"#DDE6F6"},{"background":"#F8ECE8"},{"background":"#D6E1F6"},{"background":"#94B0F0"},{"background":"#C0D3F5"},{"background":"#F7DBD1"},{"background":"#8CABEF"},{"background":"#F8E6E0"},{"background":"#EBEFF7"},{"background":"#EC927A"},null,{"background":"#ED9880"},{"background":"#EB8F77"},{"background":"#ED9880"},{"background":"#EB8F77"},{"background":"#D6E1F6"},{"background":"#F4B6A3"},{"background":"#A9C1F3"},{"background":"#BED2F5"},{"background":"#F7D4C8"},{"background":"#82A4EE"},{"background":"#E2E9F6"},{"background":"#D4DFF6"},{"background":"#96B2F1"},null,{"background":"#F7D4C8"},{"background":"#8FADF0"},{"background":"#F8E1D9"},{"background":"#F7DBD1"},{"background":"#F3B09C"},{"background":"#C3D5F5"},{"background":"#F5F5F7"},{"background":"#F0F2F7"},{"background":"#BBD0F5"},{"background":"#E0E7F6"},{"background":"#AEC5F3"},{"background":"#E7ECF7"},{"background":"#EFA089"},{"background":"#D8E3F6"},{"background":"#98B4F1"},{"background":"#F8E8E3"},{"background":"#F5BEAC"},{"background":"#A9C1F3"},{"background":"#ED957D"},null,{"background":"#A2BBF2"},{"background":"#F7CEC0"},{"background":"#D6E1F6"},{"background":"#E7ECF7"},null,{"background":"#CAD9F6"},{"background":"#CAD9F6"},{"background":"#EA8A71"},{"background":"#9DB8F2"},{"background":"#A2BBF2"},{"background":"#A4BDF2"},{"background":"#EA8A71"},{"background":"#F0F2F7"},{"background":"#B0C7F4"},{"background":"#F8E3DB"},{"background":"#C7D8F5"},{"background":"#E4EAF6"},{"background":"#82A4EE"},{"background":"#F0A590"},{"background":"#F8ECE8"},{"background":"#C3D5F5"}]},{"id":"Key passes","name":"Key passes /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#96B2F1"},{"background":"#F3B09C"},{"background":"#D6E1F6"},{"background":"#C3D5F5"},null,{"background":"#B7CCF4"},{"background":"#F7F7F7"},{"background":"#F4B6A3"},{"background":"#F2AE99"},{"background":"#8FADF0"},{"background":"#F2AE99"},{"background":"#96B2F1"},{"background":"#E9876E"},{"background":"#F4B6A3"},{"background":"#84A6EF"},{"background":"#B9CEF5"},{"background":"#B0C7F4"},{"background":"#F7D4C8"},{"background":"#F5BEAC"},{"background":"#D4DFF6"},{"background":"#F7D6CA"},{"background":"#EEF1F7"},{"background":"#D4DFF6"},{"background":"#98B4F1"},{"background":"#F7DBD1"},{"background":"#EF9D86"},{"background":"#F7F0ED"},{"background":"#B7CCF4"},{"background":"#EB8F77"},{"background":"#B4CAF4"},{"background":"#F3B39F"},{"background":"#F7D6CA"},null,{"background":"#CAD9F6"},{"background":"#D8E3F6"},{"background":"#A9C1F3"},{"background":"#F6CDBE"},null,{"background":"#BED2F5"},{"background":"#C0D3F5"},{"background":"#C0D3F5"},{"background":"#F8ECE8"},{"background":"#A4BDF2"},{"background":"#F7D9CF"},{"background":"#DBE4F6"},{"background":"#EFA089"},{"background":"#EB8F77"},null,{"background":"#D1DEF6"},{"background":"#F7D4C8"},{"background":"#B7CCF4"},{"background":"#F7D4C8"},{"background":"#91AFF0"},{"background":"#ED9880"},{"background":"#F8EAE5"},{"background":"#F6CBBB"},{"background":"#C3D5F5"},{"background":"#AEC5F3"},{"background":"#A0BAF2"},{"background":"#D1DEF6"},{"background":"#F7D0C3"},{"background":"#F2AB96"},{"background":"#F6C9B9"},null,{"background":"#F0F2F7"},{"background":"#F4B9A6"},{"background":"#F7F5F4"},{"background":"#F5F5F7"},{"background":"#DBE4F6"},{"background":"#F5C4B3"},{"background":"#EE9A83"},{"background":"#CFDCF6"},{"background":"#94B0F0"},{"background":"#87A7EF"},{"background":"#84A6EF"},{"background":"#F0A590"},{"background":"#A7BFF3"},null,{"background":"#B0C7F4"},{"background":"#F0F2F7"},{"background":"#9BB6F1"},{"background":"#F6CBBB"},{"background":"#CAD9F6"},{"background":"#F4B6A3"},{"background":"#C3D5F5"},{"background":"#F1A893"},null,{"background":"#F3B39F"},{"background":"#CAD9F6"},{"background":"#C5D6F5"},{"background":"#B4CAF4"},{"background":"#F4B9A6"},{"background":"#F7CEC0"},{"background":"#F7D8CD"},{"background":"#F6C6B6"},{"background":"#F7F7F7"},{"background":"#F0A590"},{"background":"#F3B09C"},null,{"background":"#B0C7F4"},{"background":"#EFA089"},{"background":"#EB8F77"},{"background":"#9DB8F2"},{"background":"#C0D3F5"},{"background":"#ED9880"},{"background":"#ABC3F3"},{"background":"#E9876E"},{"background":"#F4B9A6"},{"background":"#F8DDD4"},{"background":"#EA8A71"},{"background":"#AEC5F3"},{"background":"#EEF1F7"},{"background":"#F7D2C5"},{"background":"#F3B09C"},{"background":"#F8E3DB"},{"background":"#F8ECE8"},null,{"background":"#C3D5F5"},{"background":"#D1DEF6"},{"background":"#F8E8E3"},{"background":"#F7DBD1"},{"background":"#EB8F77"},{"background":"#F2AB96"},{"background":"#F8EAE5"},null,{"background":"#91AFF0"},{"background":"#8CABEF"},{"background":"#EBEFF7"},{"background":"#F8E1D9"},{"background":"#8AA9EF"},{"background":"#F8E5DE"},{"background":"#F8DFD6"},{"background":"#F8EAE5"},{"background":"#F8DDD4"},null,{"background":"#A2BBF2"},{"background":"#E7ECF7"},{"background":"#F7F1EF"},{"background":"#C7D8F5"},{"background":"#DDE6F6"},{"background":"#91AFF0"},{"background":"#A4BDF2"},null,{"background":"#EB8F77"},{"background":"#F8DDD4"},{"background":"#F0A38D"},{"background":"#F4BBA9"},{"background":"#E9EDF7"},{"background":"#A2BBF2"},{"background":"#ABC3F3"},{"background":"#F8DDD4"},{"background":"#F7F1EF"},{"background":"#F6CDBE"},{"background":"#E4EAF6"},{"background":"#F2AE99"},{"background":"#EF9D86"},null,{"background":"#F6C9B9"},{"background":"#F2F4F7"},{"background":"#F5F5F7"},{"background":"#F0A38D"},{"background":"#F7F0ED"},{"background":"#EB8F77"},{"background":"#D6E1F6"},{"background":"#F8EEEA"},{"background":"#98B4F1"},{"background":"#EF9D86"},{"background":"#96B2F1"},{"background":"#EC927A"},{"background":"#A0BAF2"},{"background":"#D8E3F6"},null,{"background":"#EA8A71"},{"background":"#E0E7F6"},{"background":"#DDE6F6"},{"background":"#F7D8CD"},{"background":"#F7D8CD"},{"background":"#F2AB96"},{"background":"#E9EDF7"},{"background":"#F8EEEA"},{"background":"#E9876E"},{"background":"#CFDCF6"},null,{"background":"#B7CCF4"},{"background":"#E0E7F6"},{"background":"#F8EEEA"},{"background":"#ABC3F3"},{"background":"#ED957D"},{"background":"#F0A590"},{"background":"#F4B6A3"},{"background":"#F8E6E0"},{"background":"#EF9D86"},{"background":"#8AA9EF"},{"background":"#EB8F77"},{"background":"#D4DFF6"},null,{"background":"#F7F5F4"},{"background":"#F8DFD6"},{"background":"#F7F7F7"},{"background":"#A4BDF2"},{"background":"#F6CDBE"},{"background":"#F7CEC0"},{"background":"#F8DFD6"},null,{"background":"#E2E9F6"},{"background":"#9BB6F1"},{"background":"#87A7EF"},{"background":"#8FADF0"},{"background":"#D6E1F6"},{"background":"#CFDCF6"},{"background":"#F0A590"},{"background":"#E7ECF7"},{"background":"#EE9A83"},{"background":"#F2F4F7"},{"background":"#F8E5DE"},{"background":"#F7CEC0"},{"background":"#B9CEF5"},{"background":"#F5C1AF"},{"background":"#E0E7F6"},{"background":"#C7D8F5"},{"background":"#EF9D86"},null,{"background":"#E4EAF6"},{"background":"#A7BFF3"},{"background":"#9DB8F2"},{"background":"#CCDBF6"},{"background":"#EBEFF7"},{"background":"#BBD0F5"},{"background":"#8CABEF"},{"background":"#82A4EE"},{"background":"#F8E6E0"},{"background":"#F1A893"},{"background":"#F7D0C3"},{"background":"#EB8F77"},{"background":"#91AFF0"},{"background":"#D8E3F6"},{"background":"#F7CEC0"},{"background":"#7FA2EE"},{"background":"#F7D9CF"},{"background":"#F7F1EF"},{"background":"#C5D6F5"},{"background":"#F7F3F2"},{"background":"#9DB8F2"},{"background":"#7FA2EE"},{"background":"#96B2F1"},{"background":"#84A6EF"},null,{"background":"#B2C8F4"},{"background":"#B2C8F4"},{"background":"#F0F2F7"},{"background":"#F5C1AF"},{"background":"#C7D8F5"},{"background":"#E4EAF6"},{"background":"#A7BFF3"},{"background":"#F7F5F4"},{"background":"#F8E8E3"},{"background":"#A9C1F3"},{"background":"#F8E3DB"},null,{"background":"#F4BBA9"},{"background":"#F5C4B3"},{"background":"#DDE6F6"},{"background":"#F5F5F7"},{"background":"#EB8F77"},{"background":"#9DB8F2"},{"background":"#F5BEAC"},{"background":"#E4EAF6"},{"background":"#BBD0F5"},{"background":"#F6CBBB"},{"background":"#EBEFF7"},{"background":"#AEC5F3"},{"background":"#EBEFF7"},null,{"background":"#82A4EE"},{"background":"#BED2F5"},{"background":"#F7F3F2"},{"background":"#F7D2C5"},{"background":"#F8E8E3"},{"background":"#EB8F77"},{"background":"#F7DBD1"},{"background":"#F7D9CF"},{"background":"#F6C6B6"},{"background":"#F6CBBB"},{"background":"#F8EEEA"},{"background":"#CCDBF6"},{"background":"#A2BBF2"},{"background":"#96B2F1"},{"background":"#E9EDF7"},{"background":"#F5C4B3"},{"background":"#F8E5DE"},{"background":"#F5BEAC"},{"background":"#F0F2F7"},null,{"background":"#F7F1EF"},{"background":"#F4BBA9"},{"background":"#ED9880"},{"background":"#82A4EE"},null,{"background":"#E2E9F6"},{"background":"#EA8C74"},{"background":"#D6E1F6"},{"background":"#F8E8E3"},{"background":"#F5C4B3"},{"background":"#ABC3F3"},{"background":"#94B0F0"},{"background":"#BED2F5"},{"background":"#B2C8F4"},{"background":"#F8E1D9"},{"background":"#BED2F5"},{"background":"#F8E3DB"},{"background":"#8AA9EF"},{"background":"#EC927A"},{"background":"#F7D2C5"},{"background":"#8CABEF"}]},{"id":"Progressive passes","name":"Progressive passes /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#A2BBF2"},{"background":"#D8E3F6"},{"background":"#F5F5F7"},{"background":"#8CABEF"},{"background":"#B0C7F4"},{"background":"#A7BFF3"},{"background":"#F7D9CF"},{"background":"#EB8F77"},{"background":"#F8EEEA"},{"background":"#C3D5F5"},{"background":"#F7F1EF"},{"background":"#98B4F1"},{"background":"#B0C7F4"},{"background":"#F8ECE8"},{"background":"#BBD0F5"},{"background":"#F8DDD4"},{"background":"#96B2F1"},{"background":"#EA8A71"},{"background":"#E9EDF7"},{"background":"#F8E6E0"},{"background":"#F0A590"},{"background":"#F7DBD1"},{"background":"#F0F2F7"},{"background":"#C5D6F5"},{"background":"#F0A590"},{"background":"#F6CBBB"},{"background":"#F3B09C"},{"background":"#C3D5F5"},{"background":"#ABC3F3"},{"background":"#F7F5F4"},{"background":"#E7ECF7"},{"background":"#EEF1F7"},{"background":"#F0A38D"},{"background":"#E4EAF6"},{"background":"#94B0F0"},{"background":"#DDE6F6"},{"background":"#A4BDF2"},{"background":"#F0A38D"},{"background":"#BED2F5"},{"background":"#BBD0F5"},{"background":"#F4B9A6"},{"background":"#BED2F5"},{"background":"#B7CCF4"},{"background":"#F4BBA9"},{"background":"#E7ECF7"},{"background":"#D1DEF6"},{"background":"#EF9D86"},{"background":"#CFDCF6"},{"background":"#F6CBBB"},{"background":"#D6E1F6"},{"background":"#F7DBD1"},{"background":"#F7CEC0"},{"background":"#CFDCF6"},{"background":"#EF9D86"},{"background":"#F5C4B3"},{"background":"#EEF1F7"},{"background":"#B7CCF4"},{"background":"#EA8A71"},{"background":"#7FA2EE"},{"background":"#F2AB96"},{"background":"#F6CDBE"},{"background":"#DBE4F6"},{"background":"#F7D4C8"},{"background":"#91AFF0"},{"background":"#F5C4B3"},{"background":"#F8EEEA"},{"background":"#91AFF0"},{"background":"#E4EAF6"},{"background":"#F7F5F4"},{"background":"#E0E7F6"},{"background":"#F8DDD4"},{"background":"#F7F1EF"},{"background":"#A2BBF2"},{"background":"#7FA2EE"},{"background":"#96B2F1"},{"background":"#F2AB96"},{"background":"#CAD9F6"},{"background":"#EEF1F7"},{"background":"#F8E1D9"},{"background":"#F5BEAC"},{"background":"#F0A38D"},{"background":"#EF9D86"},{"background":"#D1DEF6"},{"background":"#E9EDF7"},{"background":"#F8E8E3"},{"background":"#F6CDBE"},{"background":"#F0A38D"},{"background":"#F8E5DE"},{"background":"#E4EAF6"},{"background":"#CFDCF6"},{"background":"#F8EEEA"},{"background":"#8CABEF"},{"background":"#F3B39F"},{"background":"#AEC5F3"},{"background":"#F7D4C8"},{"background":"#F7D0C3"},{"background":"#E9876E"},{"background":"#F7D6CA"},{"background":"#84A6EF"},{"background":"#EB8F77"},{"background":"#E8846B"},{"background":"#EA8C74"},{"background":"#F7D0C3"},{"background":"#D6E1F6"},{"background":"#F7D2C5"},{"background":"#F7F0ED"},{"background":"#ED9880"},{"background":"#F6C9B9"},{"background":"#E9876E"},{"background":"#EFA089"},{"background":"#F8DDD4"},{"background":"#F0F2F7"},{"background":"#CCDBF6"},{"background":"#ED957D"},{"background":"#F6C6B6"},{"background":"#F8E8E3"},{"background":"#F0A38D"},{"background":"#E4EAF6"},{"background":"#CAD9F6"},{"background":"#E2E9F6"},{"background":"#D1DEF6"},{"background":"#F8E8E3"},{"background":"#F2AE99"},{"background":"#F2F4F7"},{"background":"#C3D5F5"},{"background":"#8AA9EF"},{"background":"#A9C1F3"},{"background":"#E8846B"},{"background":"#F3B09C"},{"background":"#87A7EF"},{"background":"#ED9880"},{"background":"#F7F1EF"},{"background":"#F1A893"},{"background":"#F8EAE5"},{"background":"#E2E9F6"},{"background":"#EBEFF7"},{"background":"#F8E5DE"},{"background":"#EF9D86"},{"background":"#BED2F5"},{"background":"#F7D2C5"},{"background":"#84A6EF"},{"background":"#8CABEF"},{"background":"#F7CEC0"},{"background":"#F5F5F7"},{"background":"#EE9A83"},{"background":"#F7D6CA"},{"background":"#F8DDD4"},{"background":"#F7D8CD"},{"background":"#CCDBF6"},{"background":"#AEC5F3"},{"background":"#C5D6F5"},{"background":"#F3B09C"},{"background":"#F6CDBE"},{"background":"#A0BAF2"},{"background":"#F1A893"},{"background":"#EC927A"},{"background":"#D8E3F6"},{"background":"#F4B6A3"},{"background":"#F5C1AF"},{"background":"#F8DFD6"},{"background":"#F7D8CD"},{"background":"#F8E8E3"},{"background":"#EFA089"},{"background":"#DDE6F6"},{"background":"#EC927A"},{"background":"#F8E3DB"},{"background":"#F7D8CD"},{"background":"#F7CEC0"},{"background":"#F7F3F2"},{"background":"#F2F4F7"},{"background":"#F5BEAC"},{"background":"#B9CEF5"},{"background":"#EB8F77"},{"background":"#EBEFF7"},{"background":"#F4B6A3"},{"background":"#96B2F1"},{"background":"#F7F7F7"},{"background":"#F5BEAC"},{"background":"#94B0F0"},{"background":"#EE9A83"},{"background":"#EF9D86"},{"background":"#F7CEC0"},{"background":"#F7F7F7"},{"background":"#DDE6F6"},{"background":"#A0BAF2"},{"background":"#F8EEEA"},{"background":"#B0C7F4"},{"background":"#F7F0ED"},{"background":"#F8E3DB"},{"background":"#F7D4C8"},{"background":"#C7D8F5"},{"background":"#ED9880"},{"background":"#91AFF0"},{"background":"#F4B6A3"},{"background":"#F8E1D9"},{"background":"#F7F0ED"},{"background":"#F7F5F4"},{"background":"#F0A590"},{"background":"#B7CCF4"},{"background":"#ABC3F3"},{"background":"#D6E1F6"},{"background":"#F7D9CF"},{"background":"#9DB8F2"},{"background":"#9BB6F1"},{"background":"#B9CEF5"},{"background":"#A9C1F3"},{"background":"#ABC3F3"},{"background":"#A4BDF2"},{"background":"#C7D8F5"},{"background":"#F7F7F7"},{"background":"#F7F1EF"},{"background":"#E0E7F6"},{"background":"#A2BBF2"},{"background":"#9BB6F1"},{"background":"#F2AB96"},{"background":"#A7BFF3"},{"background":"#C7D8F5"},{"background":"#F8DFD6"},{"background":"#B2C8F4"},{"background":"#A7BFF3"},{"background":"#F7CEC0"},{"background":"#F6C6B6"},{"background":"#C3D5F5"},{"background":"#F0F2F7"},{"background":"#8FADF0"},{"background":"#B2C8F4"},{"background":"#DBE4F6"},{"background":"#F4B9A6"},{"background":"#D4DFF6"},{"background":"#9DB8F2"},{"background":"#BED2F5"},{"background":"#F5F5F7"},{"background":"#B2C8F4"},{"background":"#D4DFF6"},{"background":"#84A6EF"},{"background":"#F6C9B9"},{"background":"#ED957D"},{"background":"#B9CEF5"},{"background":"#C0D3F5"},{"background":"#82A4EE"},{"background":"#ABC3F3"},{"background":"#8AA9EF"},{"background":"#B0C7F4"},{"background":"#9BB6F1"},{"background":"#96B2F1"},{"background":"#96B2F1"},{"background":"#F7D8CD"},{"background":"#91AFF0"},{"background":"#F8ECE8"},{"background":"#F8E5DE"},{"background":"#F2AE99"},{"background":"#F7F3F2"},{"background":"#F0A38D"},{"background":"#F5C4B3"},{"background":"#F4B9A6"},{"background":"#D4DFF6"},{"background":"#B7CCF4"},{"background":"#E0E7F6"},{"background":"#F8DFD6"},{"background":"#F6CBBB"},{"background":"#A4BDF2"},{"background":"#CFDCF6"},{"background":"#E2E9F6"},{"background":"#EBEFF7"},{"background":"#F6CBBB"},{"background":"#EC927A"},{"background":"#F7F7F7"},{"background":"#D6E1F6"},{"background":"#9DB8F2"},{"background":"#D8E3F6"},{"background":"#C0D3F5"},{"background":"#F0F2F7"},{"background":"#F8E6E0"},{"background":"#82A4EE"},{"background":"#B4CAF4"},{"background":"#E9EDF7"},{"background":"#EA8C74"},{"background":"#F6C6B6"},{"background":"#F7D9CF"},{"background":"#F8EAE5"},{"background":"#F0A590"},{"background":"#EA8A71"},{"background":"#F4B6A3"},{"background":"#E9876E"},{"background":"#F8ECE8"},{"background":"#8AA9EF"},{"background":"#C0D3F5"},{"background":"#F5C1AF"},{"background":"#F7DBD1"},{"background":"#F5C4B3"},{"background":"#CAD9F6"},{"background":"#F3B39F"},{"background":"#A4BDF2"},{"background":"#F8E6E0"},{"background":"#F7D2C5"},{"background":"#F4BBA9"},{"background":"#9DB8F2"},{"background":"#F0A38D"},{"background":"#F4BBA9"},{"background":"#ED9880"},{"background":"#87A7EF"},{"background":"#F2AE99"},{"background":"#C3D5F5"},{"background":"#84A6EF"},{"background":"#82A4EE"},{"background":"#B4CAF4"},{"background":"#91AFF0"},{"background":"#98B4F1"},{"background":"#F8E3DB"},{"background":"#EBEFF7"},{"background":"#8FADF0"},{"background":"#F8DFD6"},{"background":"#D8E3F6"},{"background":"#AEC5F3"}]},{"id":"Progressive carries","name":"Progressive carries /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F7CEC0"},{"background":"#F7F0ED"},{"background":"#F8E8E3"},{"background":"#F7F5F4"},null,{"background":"#87A7EF"},{"background":"#F7D9CF"},{"background":"#F8E5DE"},{"background":"#BBD0F5"},{"background":"#A9C1F3"},{"background":"#F8E3DB"},{"background":"#91AFF0"},{"background":"#B7CCF4"},{"background":"#F7F5F4"},{"background":"#B4CAF4"},{"background":"#94B0F0"},{"background":"#A4BDF2"},{"background":"#F7D4C8"},{"background":"#F8DFD6"},{"background":"#ED9880"},{"background":"#F2AB96"},{"background":"#E0E7F6"},{"background":"#ABC3F3"},{"background":"#C7D8F5"},{"background":"#BBD0F5"},{"background":"#CCDBF6"},{"background":"#DBE4F6"},{"background":"#91AFF0"},{"background":"#F6CDBE"},{"background":"#C0D3F5"},{"background":"#F7F7F7"},{"background":"#F4BBA9"},null,{"background":"#B4CAF4"},{"background":"#B9CEF5"},{"background":"#9DB8F2"},{"background":"#F8E1D9"},null,{"background":"#B0C7F4"},{"background":"#F8EEEA"},{"background":"#D8E3F6"},{"background":"#F7D8CD"},{"background":"#CFDCF6"},{"background":"#F6CBBB"},{"background":"#C3D5F5"},{"background":"#AEC5F3"},{"background":"#A2BBF2"},null,{"background":"#F7F1EF"},{"background":"#F8DDD4"},{"background":"#F8E1D9"},{"background":"#F7D8CD"},{"background":"#F8E8E3"},{"background":"#DDE6F6"},{"background":"#F5BEAC"},{"background":"#D1DEF6"},{"background":"#C3D5F5"},{"background":"#CCDBF6"},{"background":"#9DB8F2"},{"background":"#F4B9A6"},{"background":"#F2AE99"},{"background":"#C7D8F5"},{"background":"#D6E1F6"},null,{"background":"#EBEFF7"},{"background":"#EA8A71"},{"background":"#B0C7F4"},{"background":"#F8E3DB"},{"background":"#F8ECE8"},{"background":"#E9EDF7"},{"background":"#F0A38D"},{"background":"#F8E8E3"},{"background":"#F5F5F7"},{"background":"#F8EAE5"},{"background":"#E4EAF6"},{"background":"#F0A590"},{"background":"#A0BAF2"},null,{"background":"#E2E9F6"},{"background":"#F7DBD1"},{"background":"#F6C6B6"},{"background":"#CAD9F6"},{"background":"#F7F7F7"},{"background":"#F7D0C3"},{"background":"#F0F2F7"},{"background":"#F7D4C8"},null,{"background":"#D8E3F6"},{"background":"#E0E7F6"},{"background":"#F8E5DE"},{"background":"#F4B6A3"},{"background":"#F3B09C"},{"background":"#E9EDF7"},{"background":"#A0BAF2"},{"background":"#F7F1EF"},{"background":"#EE9A83"},{"background":"#F1A893"},{"background":"#F7D6CA"},null,{"background":"#F0A590"},{"background":"#ED9880"},{"background":"#EA8C74"},{"background":"#F7D0C3"},{"background":"#EEF1F7"},{"background":"#F4B9A6"},{"background":"#F8DDD4"},{"background":"#F0F2F7"},{"background":"#F8E6E0"},{"background":"#F2AE99"},{"background":"#F2AE99"},{"background":"#F7DBD1"},{"background":"#F5C4B3"},{"background":"#EF9D86"},{"background":"#EF9D86"},{"background":"#F1A893"},{"background":"#F7D8CD"},null,{"background":"#9DB8F2"},{"background":"#F8EEEA"},{"background":"#F6CDBE"},{"background":"#91AFF0"},{"background":"#CAD9F6"},{"background":"#F5BEAC"},{"background":"#F6C9B9"},null,{"background":"#F7D4C8"},{"background":"#E4EAF6"},{"background":"#EA8A71"},{"background":"#F5C4B3"},{"background":"#E9876E"},{"background":"#EA8C74"},{"background":"#F8ECE8"},{"background":"#F7DBD1"},{"background":"#F5F5F7"},null,{"background":"#98B4F1"},{"background":"#DDE6F6"},{"background":"#ED9880"},{"background":"#EEF1F7"},{"background":"#D4DFF6"},{"background":"#B9CEF5"},{"background":"#96B2F1"},null,{"background":"#EBEFF7"},{"background":"#F7F3F2"},{"background":"#F7F3F2"},{"background":"#B7CCF4"},{"background":"#BED2F5"},{"background":"#F4B6A3"},{"background":"#A9C1F3"},{"background":"#B2C8F4"},{"background":"#F5F5F7"},{"background":"#F7F7F7"},{"background":"#AEC5F3"},{"background":"#EC927A"},{"background":"#ED957D"},null,{"background":"#F8E3DB"},{"background":"#F7CEC0"},{"background":"#EA8C74"},{"background":"#F5C1AF"},{"background":"#F7D2C5"},{"background":"#EF9D86"},{"background":"#A4BDF2"},{"background":"#F2AB96"},{"background":"#F0A590"},{"background":"#F5C1AF"},{"background":"#E9876E"},{"background":"#F0F2F7"},{"background":"#F7D2C5"},{"background":"#F8E6E0"},null,{"background":"#EFA089"},{"background":"#EBEFF7"},{"background":"#BED2F5"},{"background":"#B0C7F4"},{"background":"#EE9A83"},{"background":"#F8DFD6"},{"background":"#F6CBBB"},{"background":"#CFDCF6"},{"background":"#F8DFD6"},{"background":"#A4BDF2"},null,{"background":"#C0D3F5"},{"background":"#BED2F5"},{"background":"#EB8F77"},{"background":"#F6CBBB"},{"background":"#ED9880"},{"background":"#F4B6A3"},{"background":"#D6E1F6"},{"background":"#F7D2C5"},{"background":"#EC927A"},{"background":"#D1DEF6"},{"background":"#EA8C74"},{"background":"#F7F0ED"},null,{"background":"#F5BEAC"},{"background":"#F6C9B9"},{"background":"#EF9D86"},{"background":"#E9876E"},{"background":"#F2AB96"},{"background":"#F7F1EF"},{"background":"#84A6EF"},null,{"background":"#A7BFF3"},{"background":"#7FA2EE"},{"background":"#84A6EF"},{"background":"#8AA9EF"},{"background":"#87A7EF"},{"background":"#7FA2EE"},{"background":"#84A6EF"},{"background":"#8CABEF"},{"background":"#8CABEF"},{"background":"#8CABEF"},{"background":"#8FADF0"},{"background":"#96B2F1"},{"background":"#A2BBF2"},{"background":"#F3B09C"},{"background":"#94B0F0"},{"background":"#82A4EE"},{"background":"#DDE6F6"},null,{"background":"#91AFF0"},{"background":"#82A4EE"},{"background":"#96B2F1"},{"background":"#C5D6F5"},{"background":"#C3D5F5"},{"background":"#A7BFF3"},{"background":"#AEC5F3"},{"background":"#A7BFF3"},{"background":"#D6E1F6"},{"background":"#EBEFF7"},{"background":"#F8EAE5"},{"background":"#EA8C74"},{"background":"#B2C8F4"},{"background":"#C5D6F5"},{"background":"#F7CEC0"},{"background":"#98B4F1"},{"background":"#F8DDD4"},{"background":"#9BB6F1"},{"background":"#F2F4F7"},{"background":"#F7F5F4"},{"background":"#BED2F5"},{"background":"#96B2F1"},{"background":"#82A4EE"},{"background":"#ABC3F3"},null,{"background":"#B2C8F4"},{"background":"#C7D8F5"},{"background":"#F0A38D"},{"background":"#F8EEEA"},{"background":"#D1DEF6"},{"background":"#F8DDD4"},{"background":"#F0F2F7"},{"background":"#A2BBF2"},{"background":"#F8E6E0"},{"background":"#9BB6F1"},{"background":"#F4B9A6"},null,{"background":"#E7ECF7"},{"background":"#C3D5F5"},{"background":"#CCDBF6"},{"background":"#DBE4F6"},{"background":"#F7D6CA"},{"background":"#F5C4B3"},{"background":"#F2F4F7"},{"background":"#F7CEC0"},{"background":"#F4B6A3"},{"background":"#96B2F1"},{"background":"#E2E9F6"},{"background":"#B7CCF4"},{"background":"#E4EAF6"},null,{"background":"#8AA9EF"},{"background":"#B7CCF4"},{"background":"#E7ECF7"},{"background":"#F5C4B3"},{"background":"#D4DFF6"},{"background":"#EA8C74"},{"background":"#F6CDBE"},{"background":"#F4BBA9"},{"background":"#EB8F77"},{"background":"#F6C6B6"},{"background":"#EFA089"},{"background":"#F3B39F"},{"background":"#F8ECE8"},{"background":"#F6C9B9"},{"background":"#EA8C74"},{"background":"#F4BBA9"},{"background":"#ED957D"},{"background":"#F3B09C"},{"background":"#D6E1F6"},null,{"background":"#F7D8CD"},{"background":"#F0A590"},{"background":"#F7D9CF"},{"background":"#8FADF0"},null,{"background":"#ABC3F3"},{"background":"#E9EDF7"},{"background":"#8AA9EF"},{"background":"#F8E8E3"},{"background":"#E0E7F6"},{"background":"#C0D3F5"},{"background":"#F3B39F"},{"background":"#F8EEEA"},{"background":"#F7F1EF"},{"background":"#D8E3F6"},{"background":"#EF9D86"},{"background":"#ABC3F3"},{"background":"#9DB8F2"},{"background":"#E4EAF6"},{"background":"#D4DFF6"},{"background":"#CAD9F6"}]},{"id":"Dribbles won","name":"Dribbles won /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#DDE6F6"},{"background":"#DDE6F6"},{"background":"#C3D5F5"},{"background":"#EFA089"},null,{"background":"#F7F0ED"},{"background":"#ABC3F3"},{"background":"#F6CDBE"},{"background":"#F5C1AF"},{"background":"#A9C1F3"},{"background":"#EF9D86"},{"background":"#F7CEC0"},{"background":"#96B2F1"},{"background":"#F0A590"},{"background":"#8AA9EF"},{"background":"#F6CBBB"},{"background":"#A2BBF2"},{"background":"#D6E1F6"},{"background":"#F8E5DE"},{"background":"#F8EEEA"},{"background":"#E4EAF6"},{"background":"#EEF1F7"},{"background":"#A7BFF3"},{"background":"#F8E5DE"},{"background":"#E4EAF6"},{"background":"#EA8C74"},{"background":"#F0A38D"},{"background":"#91AFF0"},{"background":"#C3D5F5"},{"background":"#D1DEF6"},{"background":"#D6E1F6"},{"background":"#F0A38D"},null,{"background":"#F8ECE8"},{"background":"#A4BDF2"},{"background":"#EEF1F7"},{"background":"#F5C4B3"},null,{"background":"#E4EAF6"},{"background":"#F0A38D"},{"background":"#EBEFF7"},{"background":"#F7D4C8"},{"background":"#E2E9F6"},{"background":"#F8E8E3"},{"background":"#BBD0F5"},{"background":"#EA8C74"},{"background":"#A0BAF2"},null,{"background":"#A2BBF2"},{"background":"#F7D4C8"},{"background":"#B2C8F4"},{"background":"#F0A38D"},{"background":"#ABC3F3"},{"background":"#E7ECF7"},{"background":"#F6C9B9"},{"background":"#D8E3F6"},{"background":"#F8E6E0"},{"background":"#84A6EF"},{"background":"#F5F5F7"},{"background":"#F0A38D"},{"background":"#F0A38D"},{"background":"#F2AB96"},{"background":"#F7DBD1"},null,{"background":"#A4BDF2"},{"background":"#F0A590"},{"background":"#8CABEF"},{"background":"#F7F7F7"},{"background":"#F8E1D9"},{"background":"#F7D4C8"},{"background":"#F7F3F2"},{"background":"#98B4F1"},{"background":"#F7D8CD"},{"background":"#F0A38D"},{"background":"#EA8C74"},{"background":"#F8DFD6"},{"background":"#B7CCF4"},null,{"background":"#AEC5F3"},{"background":"#EF9D86"},{"background":"#8FADF0"},{"background":"#96B2F1"},{"background":"#C3D5F5"},{"background":"#F6CDBE"},{"background":"#EBEFF7"},{"background":"#F8DDD4"},null,{"background":"#F6CDBE"},{"background":"#A7BFF3"},{"background":"#B2C8F4"},{"background":"#F8EAE5"},{"background":"#EA8C74"},{"background":"#F8ECE8"},{"background":"#E9EDF7"},{"background":"#F5F5F7"},{"background":"#F7D2C5"},{"background":"#C5D6F5"},{"background":"#F7F1EF"},null,{"background":"#F0A590"},{"background":"#F0A38D"},{"background":"#EA8C74"},{"background":"#BED2F5"},{"background":"#96B2F1"},{"background":"#ED9880"},{"background":"#F7F1EF"},{"background":"#F7F1EF"},{"background":"#94B0F0"},{"background":"#96B2F1"},{"background":"#E0E7F6"},{"background":"#EA8C74"},{"background":"#F0A38D"},{"background":"#CFDCF6"},{"background":"#BED2F5"},{"background":"#F8E5DE"},{"background":"#F7D9CF"},null,{"background":"#EA8C74"},{"background":"#F8E3DB"},{"background":"#F7D8CD"},{"background":"#E4EAF6"},{"background":"#F2AE99"},{"background":"#D4DFF6"},{"background":"#F8E8E3"},null,{"background":"#F7F7F7"},{"background":"#91AFF0"},{"background":"#F7D2C5"},{"background":"#F7F5F4"},{"background":"#F4BBA9"},{"background":"#F0A38D"},{"background":"#ED9880"},{"background":"#F8EEEA"},{"background":"#F7D0C3"},null,{"background":"#CCDBF6"},{"background":"#ABC3F3"},{"background":"#F0F2F7"},{"background":"#8CABEF"},{"background":"#C7D8F5"},{"background":"#F8E3DB"},{"background":"#B0C7F4"},null,{"background":"#B4CAF4"},{"background":"#87A7EF"},{"background":"#F2F4F7"},{"background":"#F8DDD4"},{"background":"#CFDCF6"},{"background":"#F0A38D"},{"background":"#A0BAF2"},{"background":"#7FA2EE"},{"background":"#F5BEAC"},{"background":"#F7D6CA"},{"background":"#9DB8F2"},{"background":"#F6C6B6"},{"background":"#F7CEC0"},null,{"background":"#F7D9CF"},{"background":"#F6CBBB"},{"background":"#F0A38D"},{"background":"#F3B09C"},{"background":"#8CABEF"},{"background":"#F0A38D"},{"background":"#D6E1F6"},{"background":"#F5F5F7"},{"background":"#F0F2F7"},{"background":"#9BB6F1"},{"background":"#D8E3F6"},{"background":"#F2F4F7"},{"background":"#BBD0F5"},{"background":"#91AFF0"},null,{"background":"#E9EDF7"},{"background":"#EBEFF7"},{"background":"#B7CCF4"},{"background":"#F3B09C"},{"background":"#F7D2C5"},{"background":"#F8E3DB"},{"background":"#F8E1D9"},{"background":"#F0A38D"},{"background":"#8FADF0"},{"background":"#94B0F0"},null,{"background":"#F6C6B6"},{"background":"#EF9D86"},{"background":"#F4B6A3"},{"background":"#F6CBBB"},{"background":"#F8ECE8"},{"background":"#EBEFF7"},{"background":"#F8E8E3"},{"background":"#F4B6A3"},{"background":"#B4CAF4"},{"background":"#F7CEC0"},{"background":"#F0A38D"},{"background":"#F8E8E3"},null,{"background":"#CAD9F6"},{"background":"#DBE4F6"},{"background":"#82A4EE"},{"background":"#EA8C74"},{"background":"#D8E3F6"},{"background":"#D1DEF6"},{"background":"#F7F3F2"},null,{"background":"#A9C1F3"},{"background":"#C3D5F5"},{"background":"#F7DBD1"},{"background":"#C7D8F5"},{"background":"#C0D3F5"},{"background":"#E2E9F6"},{"background":"#B7CCF4"},{"background":"#B9CEF5"},{"background":"#F5C4B3"},{"background":"#F0A38D"},{"background":"#A2BBF2"},{"background":"#CFDCF6"},{"background":"#E9EDF7"},{"background":"#B7CCF4"},{"background":"#B0C7F4"},{"background":"#F7D8CD"},{"background":"#F7D9CF"},null,{"background":"#91AFF0"},{"background":"#A7BFF3"},{"background":"#7FA2EE"},{"background":"#B2C8F4"},{"background":"#C0D3F5"},{"background":"#87A7EF"},{"background":"#D4DFF6"},{"background":"#AEC5F3"},{"background":"#F8E6E0"},{"background":"#A4BDF2"},{"background":"#EA8C74"},{"background":"#D6E1F6"},{"background":"#F5BEAC"},{"background":"#F7F1EF"},{"background":"#F6CBBB"},{"background":"#8AA9EF"},{"background":"#E7ECF7"},{"background":"#9DB8F2"},{"background":"#F7F0ED"},{"background":"#F8DFD6"},{"background":"#F7F5F4"},{"background":"#9BB6F1"},{"background":"#DDE6F6"},{"background":"#F0A38D"},null,{"background":"#F4B9A6"},{"background":"#B7CCF4"},{"background":"#F8DDD4"},{"background":"#F0A38D"},{"background":"#F0A38D"},{"background":"#F5C4B3"},{"background":"#F7F5F4"},{"background":"#C7D8F5"},{"background":"#9DB8F2"},{"background":"#82A4EE"},{"background":"#F7CEC0"},null,{"background":"#E0E7F6"},{"background":"#ABC3F3"},{"background":"#F8DFD6"},{"background":"#F2AE99"},{"background":"#F0A38D"},{"background":"#ED9880"},{"background":"#DBE4F6"},{"background":"#BED2F5"},{"background":"#F3B39F"},{"background":"#CAD9F6"},{"background":"#F7F7F7"},{"background":"#F8EAE5"},{"background":"#B0C7F4"},null,{"background":"#9DB8F2"},{"background":"#C5D6F5"},{"background":"#F4B9A6"},{"background":"#F8DDD4"},{"background":"#BED2F5"},{"background":"#F0A38D"},{"background":"#E0E7F6"},{"background":"#F8EEEA"},{"background":"#F5C1AF"},{"background":"#F6C9B9"},{"background":"#F8EEEA"},{"background":"#C0D3F5"},{"background":"#F0F2F7"},{"background":"#F0A38D"},{"background":"#D4DFF6"},{"background":"#96B2F1"},{"background":"#F0F2F7"},{"background":"#AEC5F3"},{"background":"#D1DEF6"},null,{"background":"#CAD9F6"},{"background":"#EA8C74"},{"background":"#F5C4B3"},{"background":"#F7DBD1"},null,{"background":"#98B4F1"},{"background":"#F1A893"},{"background":"#F0A38D"},{"background":"#F4BBA9"},{"background":"#EA8C74"},{"background":"#F0A38D"},{"background":"#F0A38D"},{"background":"#EE9A83"},{"background":"#84A6EF"},{"background":"#F7D6CA"},{"background":"#84A6EF"},{"background":"#8AA9EF"},{"background":"#CCDBF6"},{"background":"#F2AB96"},{"background":"#F7D0C3"},{"background":"#82A4EE"}]},{"id":"EPV added","name":"EPV added /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#96B2F1"},{"background":"#F5F5F7"},{"background":"#A2BBF2"},{"background":"#BBD0F5"},{"background":"#D8E3F6"},{"background":"#8CABEF"},{"background":"#F8E1D9"},{"background":"#EC927A"},{"background":"#F7F3F2"},{"background":"#C0D3F5"},{"background":"#F7F7F7"},{"background":"#8CABEF"},{"background":"#D8E3F6"},{"background":"#E2E9F6"},{"background":"#ABC3F3"},{"background":"#C5D6F5"},{"background":"#EBEFF7"},{"background":"#ED957D"},{"background":"#F5C4B3"},{"background":"#EBEFF7"},{"background":"#EA8A71"},{"background":"#F0F2F7"},{"background":"#F7D8CD"},{"background":"#E0E7F6"},{"background":"#F6C9B9"},{"background":"#F6CBBB"},{"background":"#F8E6E0"},{"background":"#E4EAF6"},{"background":"#F8E5DE"},{"background":"#F7F0ED"},{"background":"#F1A893"},{"background":"#F6CDBE"},{"background":"#B9CEF5"},{"background":"#F7F5F4"},{"background":"#AEC5F3"},{"background":"#C7D8F5"},{"background":"#D6E1F6"},{"background":"#F7D8CD"},{"background":"#DDE6F6"},{"background":"#B4CAF4"},{"background":"#F6CDBE"},{"background":"#F7F1EF"},{"background":"#8FADF0"},{"background":"#F5BEAC"},{"background":"#D4DFF6"},{"background":"#F3B09C"},{"background":"#F4B6A3"},{"background":"#9BB6F1"},{"background":"#F8DFD6"},{"background":"#BED2F5"},{"background":"#F7F1EF"},{"background":"#DDE6F6"},{"background":"#94B0F0"},{"background":"#EA8C74"},{"background":"#F0A38D"},{"background":"#F6CBBB"},{"background":"#B7CCF4"},{"background":"#B9CEF5"},{"background":"#96B2F1"},{"background":"#F4B6A3"},{"background":"#EFA089"},{"background":"#F7F5F4"},{"background":"#E4EAF6"},{"background":"#F7F7F7"},{"background":"#F8E3DB"},{"background":"#F4B6A3"},{"background":"#BBD0F5"},{"background":"#E0E7F6"},{"background":"#F7D6CA"},{"background":"#D4DFF6"},{"background":"#F2F4F7"},{"background":"#F8EAE5"},{"background":"#A9C1F3"},{"background":"#82A4EE"},{"background":"#8AA9EF"},{"background":"#F2AE99"},{"background":"#E4EAF6"},{"background":"#B0C7F4"},{"background":"#9DB8F2"},{"background":"#C0D3F5"},{"background":"#F8EEEA"},{"background":"#EF9D86"},{"background":"#EBEFF7"},{"background":"#F7D8CD"},{"background":"#B0C7F4"},{"background":"#EE9A83"},{"background":"#F0A38D"},{"background":"#F4B9A6"},{"background":"#F7D6CA"},{"background":"#B9CEF5"},{"background":"#A7BFF3"},{"background":"#C7D8F5"},{"background":"#F3B09C"},{"background":"#F7F0ED"},{"background":"#F7DBD1"},{"background":"#E4EAF6"},{"background":"#E8846B"},{"background":"#EFA089"},{"background":"#84A6EF"},{"background":"#ABC3F3"},{"background":"#EB8F77"},{"background":"#EC927A"},{"background":"#9BB6F1"},{"background":"#CCDBF6"},{"background":"#F8ECE8"},{"background":"#CAD9F6"},{"background":"#E9876E"},{"background":"#EF9D86"},{"background":"#F7D4C8"},{"background":"#F0A38D"},{"background":"#D1DEF6"},{"background":"#DBE4F6"},{"background":"#F0F2F7"},{"background":"#F0A590"},{"background":"#F3B09C"},{"background":"#F7D8CD"},{"background":"#F7F0ED"},{"background":"#C3D5F5"},{"background":"#B7CCF4"},{"background":"#F7D2C5"},{"background":"#F5C4B3"},{"background":"#F7F1EF"},{"background":"#EF9D86"},{"background":"#F8EEEA"},{"background":"#F8E6E0"},{"background":"#8AA9EF"},{"background":"#91AFF0"},{"background":"#F4B9A6"},{"background":"#F4BBA9"},{"background":"#A7BFF3"},{"background":"#F3B39F"},{"background":"#CCDBF6"},{"background":"#F4BBA9"},{"background":"#F8DDD4"},{"background":"#EEF1F7"},{"background":"#B0C7F4"},{"background":"#F7D0C3"},{"background":"#F7D9CF"},{"background":"#D4DFF6"},{"background":"#9DB8F2"},{"background":"#84A6EF"},{"background":"#ABC3F3"},{"background":"#F6C6B6"},{"background":"#EEF1F7"},{"background":"#F0A590"},{"background":"#F6CDBE"},{"background":"#F8E8E3"},{"background":"#F8E5DE"},{"background":"#EBEFF7"},{"background":"#A2BBF2"},{"background":"#B7CCF4"},{"background":"#F7D9CF"},{"background":"#F7F3F2"},{"background":"#8CABEF"},{"background":"#EC927A"},{"background":"#E8846B"},{"background":"#E2E9F6"},{"background":"#F2AE99"},{"background":"#EB8F77"},{"background":"#F5BEAC"},{"background":"#EF9D86"},{"background":"#F7DBD1"},{"background":"#ED957D"},{"background":"#F5C4B3"},{"background":"#EEF1F7"},{"background":"#9BB6F1"},{"background":"#E9876E"},{"background":"#AEC5F3"},{"background":"#ED9880"},{"background":"#D8E3F6"},{"background":"#A0BAF2"},{"background":"#91AFF0"},{"background":"#E9876E"},{"background":"#F7F7F7"},{"background":"#F6CBBB"},{"background":"#F7F5F4"},{"background":"#F7D4C8"},{"background":"#F5C1AF"},{"background":"#F5F5F7"},{"background":"#F4B9A6"},{"background":"#ED9880"},{"background":"#E7ECF7"},{"background":"#F8DFD6"},{"background":"#A2BBF2"},{"background":"#F7CEC0"},{"background":"#F2AE99"},{"background":"#9DB8F2"},{"background":"#F1A893"},{"background":"#EF9D86"},{"background":"#F4BBA9"},{"background":"#E9EDF7"},{"background":"#F5BEAC"},{"background":"#96B2F1"},{"background":"#EA8A71"},{"background":"#C3D5F5"},{"background":"#A4BDF2"},{"background":"#F0F2F7"},{"background":"#F8E8E3"},{"background":"#B0C7F4"},{"background":"#91AFF0"},{"background":"#F8E1D9"},{"background":"#F7CEC0"},{"background":"#CFDCF6"},{"background":"#F7CEC0"},{"background":"#F2F4F7"},{"background":"#CAD9F6"},{"background":"#7FA2EE"},{"background":"#AEC5F3"},{"background":"#F5F5F7"},{"background":"#C7D8F5"},{"background":"#F7D9CF"},{"background":"#F7D2C5"},{"background":"#F8ECE8"},{"background":"#D1DEF6"},{"background":"#F7D0C3"},{"background":"#CFDCF6"},{"background":"#BED2F5"},{"background":"#F7D2C5"},{"background":"#91AFF0"},{"background":"#96B2F1"},{"background":"#F8DDD4"},{"background":"#ED9880"},{"background":"#B7CCF4"},{"background":"#ABC3F3"},{"background":"#9DB8F2"},{"background":"#A9C1F3"},{"background":"#A4BDF2"},{"background":"#96B2F1"},{"background":"#82A4EE"},{"background":"#91AFF0"},{"background":"#D6E1F6"},{"background":"#F7CEC0"},{"background":"#F8E3DB"},{"background":"#F6C9B9"},{"background":"#84A6EF"},{"background":"#CFDCF6"},{"background":"#F2AB96"},{"background":"#C0D3F5"},{"background":"#E9EDF7"},{"background":"#D6E1F6"},{"background":"#F8DDD4"},{"background":"#B2C8F4"},{"background":"#87A7EF"},{"background":"#C3D5F5"},{"background":"#A4BDF2"},{"background":"#BED2F5"},{"background":"#F2AE99"},{"background":"#B2C8F4"},{"background":"#F8ECE8"},{"background":"#E9EDF7"},{"background":"#F2AB96"},{"background":"#F6CBBB"},{"background":"#F8DFD6"},{"background":"#B4CAF4"},{"background":"#F2AB96"},{"background":"#F3B39F"},{"background":"#8FADF0"},{"background":"#F7F7F7"},{"background":"#F4BBA9"},{"background":"#F8E3DB"},{"background":"#CAD9F6"},{"background":"#F8E5DE"},{"background":"#F5C1AF"},{"background":"#F8DFD6"},{"background":"#ED9880"},{"background":"#EA8A71"},{"background":"#D6E1F6"},{"background":"#DDE6F6"},{"background":"#D1DEF6"},{"background":"#F7D4C8"},{"background":"#BED2F5"},{"background":"#F8EEEA"},{"background":"#C3D5F5"},{"background":"#82A4EE"},{"background":"#E0E7F6"},{"background":"#B2C8F4"},{"background":"#ED9880"},{"background":"#F8DDD4"},{"background":"#EA8C74"},{"background":"#F8E8E3"},{"background":"#F4B6A3"},{"background":"#F8E6E0"},{"background":"#EE9A83"},{"background":"#F8EEEA"},{"background":"#C5D6F5"},{"background":"#87A7EF"},{"background":"#DBE4F6"},{"background":"#F7CEC0"},{"background":"#F5C4B3"},{"background":"#F7DBD1"},{"background":"#E2E9F6"},{"background":"#F7F1EF"},{"background":"#CFDCF6"},{"background":"#E7ECF7"},{"background":"#F0A590"},{"background":"#EB8F77"},{"background":"#7FA2EE"},{"background":"#EA8A71"},{"background":"#F6C6B6"},{"background":"#F8E8E3"},{"background":"#84A6EF"},{"background":"#F0A590"},{"background":"#C3D5F5"},{"background":"#98B4F1"},{"background":"#A0BAF2"},{"background":"#A4BDF2"},{"background":"#A7BFF3"},{"background":"#F8EAE5"},{"background":"#98B4F1"},{"background":"#F0F2F7"},{"background":"#8AA9EF"},{"background":"#F6C6B6"},{"background":"#D8E3F6"},{"background":"#94B0F0"}]},{"id":"Tackles won","name":"Tackles won /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#E0E7F6"},{"background":"#E0E7F6"},{"background":"#F7F1EF"},{"background":"#F3B09C"},null,{"background":"#F7CEC0"},{"background":"#E9876E"},{"background":"#CCDBF6"},{"background":"#F8E5DE"},{"background":"#F7DBD1"},{"background":"#F5C4B3"},{"background":"#F0A590"},{"background":"#F4B9A6"},{"background":"#F5C4B3"},{"background":"#EF9D86"},{"background":"#F8E6E0"},{"background":"#82A4EE"},{"background":"#F7F0ED"},{"background":"#A7BFF3"},{"background":"#96B2F1"},{"background":"#F7F1EF"},{"background":"#A7BFF3"},{"background":"#CFDCF6"},{"background":"#F7D2C5"},{"background":"#96B2F1"},{"background":"#F4BBA9"},{"background":"#84A6EF"},{"background":"#F8DDD4"},{"background":"#E8846B"},{"background":"#F8DDD4"},{"background":"#F2AB96"},{"background":"#EB8F77"},null,{"background":"#EE9A83"},{"background":"#9DB8F2"},{"background":"#F2F4F7"},{"background":"#F8ECE8"},null,{"background":"#D1DEF6"},{"background":"#A0BAF2"},{"background":"#EC927A"},{"background":"#EF9D86"},{"background":"#F7D9CF"},{"background":"#F6C6B6"},{"background":"#F7F3F2"},{"background":"#F5F5F7"},{"background":"#C5D6F5"},null,{"background":"#F7DBD1"},{"background":"#D6E1F6"},{"background":"#F7D0C3"},{"background":"#F4B6A3"},{"background":"#F5C4B3"},{"background":"#F5F5F7"},{"background":"#F7D6CA"},{"background":"#84A6EF"},{"background":"#DBE4F6"},{"background":"#F7D9CF"},{"background":"#B2C8F4"},{"background":"#F7D2C5"},{"background":"#F4B6A3"},{"background":"#A4BDF2"},{"background":"#F8ECE8"},null,{"background":"#CAD9F6"},{"background":"#91AFF0"},{"background":"#B7CCF4"},{"background":"#BED2F5"},{"background":"#EC927A"},{"background":"#F6C6B6"},{"background":"#F6C9B9"},{"background":"#A9C1F3"},{"background":"#F0F2F7"},{"background":"#EFA089"},{"background":"#F7DBD1"},{"background":"#F2AE99"},{"background":"#F7CEC0"},null,{"background":"#BED2F5"},{"background":"#EA8C74"},{"background":"#96B2F1"},{"background":"#8AA9EF"},{"background":"#F7CEC0"},{"background":"#F6CDBE"},{"background":"#F0F2F7"},{"background":"#C3D5F5"},null,{"background":"#F0F2F7"},{"background":"#F8ECE8"},{"background":"#EEF1F7"},{"background":"#F8E1D9"},{"background":"#EB8F77"},{"background":"#A2BBF2"},{"background":"#F8EAE5"},{"background":"#EA8A71"},{"background":"#EF9D86"},{"background":"#F7D8CD"},{"background":"#F6CBBB"},null,{"background":"#EA8C74"},{"background":"#EF9D86"},{"background":"#B2C8F4"},{"background":"#F3B09C"},{"background":"#F8E3DB"},{"background":"#E9EDF7"},{"background":"#C7D8F5"},{"background":"#EA8C74"},{"background":"#F7F7F7"},{"background":"#F7D4C8"},{"background":"#C3D5F5"},{"background":"#EFA089"},{"background":"#D4DFF6"},{"background":"#82A4EE"},{"background":"#C0D3F5"},{"background":"#B2C8F4"},{"background":"#F8E3DB"},null,{"background":"#9DB8F2"},{"background":"#B7CCF4"},{"background":"#A9C1F3"},{"background":"#AEC5F3"},{"background":"#F7F1EF"},{"background":"#9DB8F2"},{"background":"#AEC5F3"},null,{"background":"#A4BDF2"},{"background":"#CFDCF6"},{"background":"#F7F5F4"},{"background":"#E2E9F6"},{"background":"#F0A590"},{"background":"#F1A893"},{"background":"#A7BFF3"},{"background":"#F7F0ED"},{"background":"#F7D0C3"},null,{"background":"#D6E1F6"},{"background":"#E2E9F6"},{"background":"#F4B6A3"},{"background":"#F5BEAC"},{"background":"#BED2F5"},{"background":"#F3B39F"},{"background":"#A4BDF2"},null,{"background":"#E4EAF6"},{"background":"#F8DFD6"},{"background":"#CAD9F6"},{"background":"#F6CBBB"},{"background":"#F8E5DE"},{"background":"#7FA2EE"},{"background":"#F8EAE5"},{"background":"#F8E8E3"},{"background":"#F8EEEA"},{"background":"#C0D3F5"},{"background":"#D6E1F6"},{"background":"#D1DEF6"},{"background":"#F7F3F2"},null,{"background":"#F8DDD4"},{"background":"#BBD0F5"},{"background":"#DBE4F6"},{"background":"#A0BAF2"},{"background":"#94B0F0"},{"background":"#EEF1F7"},{"background":"#F8E8E3"},{"background":"#D4DFF6"},{"background":"#F7F5F4"},{"background":"#B4CAF4"},{"background":"#F7D4C8"},{"background":"#8CABEF"},{"background":"#EBEFF7"},{"background":"#C7D8F5"},null,{"background":"#E0E7F6"},{"background":"#DDE6F6"},{"background":"#F8EEEA"},{"background":"#ABC3F3"},{"background":"#84A6EF"},{"background":"#F0A38D"},{"background":"#F6CDBE"},{"background":"#F2F4F7"},{"background":"#E9EDF7"},{"background":"#F0A38D"},null,{"background":"#F4BBA9"},{"background":"#C5D6F5"},{"background":"#ABC3F3"},{"background":"#8AA9EF"},{"background":"#91AFF0"},{"background":"#B0C7F4"},{"background":"#EF9D86"},{"background":"#C7D8F5"},{"background":"#B7CCF4"},{"background":"#82A4EE"},{"background":"#D8E3F6"},{"background":"#8FADF0"},null,{"background":"#F7D6CA"},{"background":"#F2AE99"},{"background":"#BED2F5"},{"background":"#96B2F1"},{"background":"#F0A590"},{"background":"#F4BBA9"},{"background":"#CAD9F6"},null,{"background":"#E4EAF6"},{"background":"#F7D8CD"},{"background":"#F6CBBB"},{"background":"#F8DFD6"},{"background":"#87A7EF"},{"background":"#E7ECF7"},{"background":"#E9EDF7"},{"background":"#CCDBF6"},{"background":"#B0C7F4"},{"background":"#F4B9A6"},{"background":"#ED9880"},{"background":"#8CABEF"},{"background":"#F5BEAC"},{"background":"#F7D2C5"},{"background":"#B7CCF4"},{"background":"#ED957D"},{"background":"#ED9880"},null,{"background":"#F4B9A6"},{"background":"#98B4F1"},{"background":"#F1A893"},{"background":"#F7CEC0"},{"background":"#B7CCF4"},{"background":"#ABC3F3"},{"background":"#CFDCF6"},{"background":"#ED9880"},{"background":"#EA8C74"},{"background":"#C3D5F5"},{"background":"#9BB6F1"},{"background":"#ABC3F3"},{"background":"#F2AB96"},{"background":"#EE9A83"},{"background":"#DDE6F6"},{"background":"#A2BBF2"},{"background":"#F6CBBB"},{"background":"#AEC5F3"},{"background":"#94B0F0"},{"background":"#F5BEAC"},{"background":"#D4DFF6"},{"background":"#F4B6A3"},{"background":"#91AFF0"},{"background":"#9BB6F1"},null,{"background":"#D8E3F6"},{"background":"#D1DEF6"},{"background":"#F5C4B3"},{"background":"#F7D8CD"},{"background":"#ED957D"},{"background":"#EC927A"},{"background":"#F6C9B9"},{"background":"#F7F7F7"},{"background":"#F7F5F4"},{"background":"#BBD0F5"},{"background":"#F8E8E3"},null,{"background":"#E9876E"},{"background":"#EBEFF7"},{"background":"#EBEFF7"},{"background":"#F8E8E3"},{"background":"#F3B09C"},{"background":"#F2AE99"},{"background":"#F2AB96"},{"background":"#F7D9CF"},{"background":"#8CABEF"},{"background":"#E4EAF6"},{"background":"#F8EEEA"},{"background":"#B4CAF4"},{"background":"#F8E3DB"},null,{"background":"#C3D5F5"},{"background":"#B0C7F4"},{"background":"#D8E3F6"},{"background":"#F8DDD4"},{"background":"#9DB8F2"},{"background":"#F8DFD6"},{"background":"#8AA9EF"},{"background":"#F0A590"},{"background":"#EA8A71"},{"background":"#E7ECF7"},{"background":"#C0D3F5"},{"background":"#F8E6E0"},{"background":"#F8E1D9"},{"background":"#ED9880"},{"background":"#F5F5F7"},{"background":"#E4EAF6"},{"background":"#F5C1AF"},{"background":"#96B2F1"},{"background":"#D6E1F6"},null,{"background":"#F7D4C8"},{"background":"#A2BBF2"},{"background":"#F0F2F7"},{"background":"#F5C1AF"},null,{"background":"#EBEFF7"},{"background":"#87A7EF"},{"background":"#F6CDBE"},{"background":"#F7F7F7"},{"background":"#98B4F1"},{"background":"#F8EEEA"},{"background":"#91AFF0"},{"background":"#8FADF0"},{"background":"#EA8A71"},{"background":"#F3B39F"},{"background":"#F8E5DE"},{"background":"#DDE6F6"},{"background":"#F7F1EF"},{"background":"#7FA2EE"},{"background":"#B9CEF5"},{"background":"#E9876E"}]},{"id":"Interceptions","name":"Interceptions /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#EF9D86"},{"background":"#F5C1AF"},{"background":"#F8E8E3"},{"background":"#F7D6CA"},null,{"background":"#D4DFF6"},{"background":"#F1A893"},{"background":"#F7F3F2"},{"background":"#F8DDD4"},{"background":"#F8E1D9"},{"background":"#B0C7F4"},{"background":"#F2AE99"},{"background":"#F4BBA9"},{"background":"#F8E5DE"},{"background":"#F4B6A3"},{"background":"#F6C9B9"},{"background":"#8CABEF"},{"background":"#98B4F1"},{"background":"#E9EDF7"},{"background":"#E9EDF7"},{"background":"#EA8A71"},{"background":"#CAD9F6"},{"background":"#F4B9A6"},{"background":"#F7F1EF"},{"background":"#B0C7F4"},{"background":"#C0D3F5"},{"background":"#ED9880"},{"background":"#F0F2F7"},{"background":"#DDE6F6"},{"background":"#EA8A71"},{"background":"#EC927A"},{"background":"#F7D2C5"},null,{"background":"#F7D4C8"},{"background":"#F2F4F7"},{"background":"#9DB8F2"},{"background":"#E9EDF7"},null,{"background":"#8AA9EF"},{"background":"#A4BDF2"},{"background":"#EEF1F7"},{"background":"#91AFF0"},{"background":"#F5C4B3"},{"background":"#C7D8F5"},{"background":"#94B0F0"},{"background":"#8CABEF"},{"background":"#F7F5F4"},null,{"background":"#A2BBF2"},{"background":"#F7CEC0"},{"background":"#ED9880"},{"background":"#E8846B"},{"background":"#EF9D86"},{"background":"#EF9D86"},{"background":"#ABC3F3"},{"background":"#8AA9EF"},{"background":"#F7DBD1"},{"background":"#94B0F0"},{"background":"#F2F4F7"},{"background":"#F6CDBE"},{"background":"#F8E5DE"},{"background":"#82A4EE"},{"background":"#B7CCF4"},null,{"background":"#E4EAF6"},{"background":"#EBEFF7"},{"background":"#BED2F5"},{"background":"#D6E1F6"},{"background":"#F8EAE5"},{"background":"#F7F1EF"},{"background":"#DBE4F6"},{"background":"#F0A38D"},{"background":"#F0F2F7"},{"background":"#B2C8F4"},{"background":"#F6C9B9"},{"background":"#F8ECE8"},{"background":"#F7CEC0"},null,{"background":"#F7F5F4"},{"background":"#ED957D"},{"background":"#F3B39F"},{"background":"#F0A38D"},{"background":"#F0A590"},{"background":"#F8E3DB"},{"background":"#A7BFF3"},{"background":"#C0D3F5"},null,{"background":"#84A6EF"},{"background":"#EB8F77"},{"background":"#E7ECF7"},{"background":"#D6E1F6"},{"background":"#F8E6E0"},{"background":"#8CABEF"},{"background":"#7FA2EE"},{"background":"#F6CBBB"},{"background":"#B0C7F4"},{"background":"#87A7EF"},{"background":"#BED2F5"},null,{"background":"#F0A590"},{"background":"#D4DFF6"},{"background":"#AEC5F3"},{"background":"#F5F5F7"},{"background":"#F0F2F7"},{"background":"#F8DFD6"},{"background":"#96B2F1"},{"background":"#9DB8F2"},{"background":"#C5D6F5"},{"background":"#F8E8E3"},{"background":"#F5BEAC"},{"background":"#E0E7F6"},{"background":"#C3D5F5"},{"background":"#A0BAF2"},{"background":"#82A4EE"},{"background":"#CFDCF6"},{"background":"#F0A590"},null,{"background":"#91AFF0"},{"background":"#DBE4F6"},{"background":"#ABC3F3"},{"background":"#F1A893"},{"background":"#F0A590"},{"background":"#F7D8CD"},{"background":"#E0E7F6"},null,{"background":"#96B2F1"},{"background":"#E9876E"},{"background":"#F8ECE8"},{"background":"#E4EAF6"},{"background":"#F3B09C"},{"background":"#EA8C74"},{"background":"#F8DDD4"},{"background":"#8AA9EF"},{"background":"#B9CEF5"},null,{"background":"#F2AB96"},{"background":"#F6CBBB"},{"background":"#BED2F5"},{"background":"#F5F5F7"},{"background":"#D8E3F6"},{"background":"#F7D8CD"},{"background":"#F7DBD1"},null,{"background":"#F8DFD6"},{"background":"#F2AB96"},{"background":"#C0D3F5"},{"background":"#F7F7F7"},{"background":"#F3B39F"},{"background":"#F5C1AF"},{"background":"#C7D8F5"},{"background":"#C3D5F5"},{"background":"#F7DBD1"},{"background":"#B0C7F4"},{"background":"#F8E6E0"},{"background":"#BED2F5"},{"background":"#EBEFF7"},null,{"background":"#EB8F77"},{"background":"#9DB8F2"},{"background":"#F7F7F7"},{"background":"#EF9D86"},{"background":"#A9C1F3"},{"background":"#F8EAE5"},{"background":"#F7F1EF"},{"background":"#F7F0ED"},{"background":"#F2AE99"},{"background":"#EEF1F7"},{"background":"#F7F3F2"},{"background":"#D4DFF6"},{"background":"#F8EEEA"},{"background":"#E4EAF6"},null,{"background":"#EC927A"},{"background":"#EBEFF7"},{"background":"#F8E3DB"},{"background":"#96B2F1"},{"background":"#91AFF0"},{"background":"#9DB8F2"},{"background":"#F7D2C5"},{"background":"#ED957D"},{"background":"#F8EAE5"},{"background":"#F5C4B3"},null,{"background":"#F6C6B6"},{"background":"#8FADF0"},{"background":"#C3D5F5"},{"background":"#82A4EE"},{"background":"#CCDBF6"},{"background":"#F0A590"},{"background":"#F0A590"},{"background":"#96B2F1"},{"background":"#CFDCF6"},{"background":"#A4BDF2"},{"background":"#8FADF0"},{"background":"#A9C1F3"},null,{"background":"#F7D4C8"},{"background":"#F8DDD4"},{"background":"#B7CCF4"},{"background":"#F0A590"},{"background":"#CCDBF6"},{"background":"#F7D4C8"},{"background":"#D8E3F6"},null,{"background":"#D8E3F6"},{"background":"#A7BFF3"},{"background":"#F8EEEA"},{"background":"#F6CDBE"},{"background":"#96B2F1"},{"background":"#F8E8E3"},{"background":"#E7ECF7"},{"background":"#CAD9F6"},{"background":"#84A6EF"},{"background":"#E2E9F6"},{"background":"#BBD0F5"},{"background":"#AEC5F3"},{"background":"#EC927A"},{"background":"#F7F1EF"},{"background":"#B4CAF4"},{"background":"#C5D6F5"},{"background":"#F6CBBB"},null,{"background":"#F6CBBB"},{"background":"#B4CAF4"},{"background":"#ED9880"},{"background":"#F3B09C"},{"background":"#F5C1AF"},{"background":"#EE9A83"},{"background":"#EA8A71"},{"background":"#F3B09C"},{"background":"#F0A590"},{"background":"#F7D2C5"},{"background":"#A7BFF3"},{"background":"#D6E1F6"},{"background":"#EE9A83"},{"background":"#F8E5DE"},{"background":"#7FA2EE"},{"background":"#9BB6F1"},{"background":"#98B4F1"},{"background":"#9BB6F1"},{"background":"#84A6EF"},{"background":"#F8EEEA"},{"background":"#87A7EF"},{"background":"#EFA089"},{"background":"#ABC3F3"},{"background":"#E0E7F6"},null,{"background":"#B2C8F4"},{"background":"#F4B6A3"},{"background":"#EA8A71"},{"background":"#F7F0ED"},{"background":"#F7D6CA"},{"background":"#F5BEAC"},{"background":"#F7D9CF"},{"background":"#F0A590"},{"background":"#D1DEF6"},{"background":"#A2BBF2"},{"background":"#A4BDF2"},null,{"background":"#F7D0C3"},{"background":"#F0A590"},{"background":"#B9CEF5"},{"background":"#F7CEC0"},{"background":"#F5F5F7"},{"background":"#F8EEEA"},{"background":"#EA8A71"},{"background":"#F8DDD4"},{"background":"#F6C6B6"},{"background":"#DBE4F6"},{"background":"#F4B6A3"},{"background":"#DDE6F6"},{"background":"#F0A590"},null,{"background":"#D1DEF6"},{"background":"#A0BAF2"},{"background":"#E2E9F6"},{"background":"#BBD0F5"},{"background":"#CFDCF6"},{"background":"#F7CEC0"},{"background":"#B7CCF4"},{"background":"#F0A590"},{"background":"#F4B9A6"},{"background":"#F0F2F7"},{"background":"#F7D9CF"},{"background":"#F7F5F4"},{"background":"#C3D5F5"},{"background":"#F4BBA9"},{"background":"#F7D6CA"},{"background":"#A2BBF2"},{"background":"#F8DFD6"},{"background":"#91AFF0"},{"background":"#C7D8F5"},null,{"background":"#F5C4B3"},{"background":"#F8E8E3"},{"background":"#EBEFF7"},{"background":"#EFA089"},null,{"background":"#D1DEF6"},{"background":"#B2C8F4"},{"background":"#B7CCF4"},{"background":"#CAD9F6"},{"background":"#F7F7F7"},{"background":"#E4EAF6"},{"background":"#F4B9A6"},{"background":"#F8E1D9"},{"background":"#F8E3DB"},{"background":"#EA8A71"},{"background":"#F6CBBB"},{"background":"#F7D9CF"},{"background":"#F2AB96"},{"background":"#ABC3F3"},{"background":"#DBE4F6"},{"background":"#F7D0C3"}]},{"id":"Recoveries","name":"Recoveries /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F8DDD4"},{"background":"#B9CEF5"},{"background":"#F6CDBE"},{"background":"#F5BEAC"},{"background":"#F2AE99"},{"background":"#E9EDF7"},{"background":"#F7D9CF"},{"background":"#EBEFF7"},{"background":"#F4B6A3"},{"background":"#8FADF0"},{"background":"#EB8F77"},{"background":"#F4B9A6"},{"background":"#94B0F0"},{"background":"#F2AB96"},{"background":"#F8EAE5"},{"background":"#F6CBBB"},{"background":"#EF9D86"},{"background":"#EC927A"},{"background":"#F7F3F2"},{"background":"#BED2F5"},{"background":"#F3B09C"},{"background":"#E4EAF6"},{"background":"#F7D8CD"},{"background":"#E2E9F6"},{"background":"#EF9D86"},{"background":"#F7DBD1"},{"background":"#E8846B"},{"background":"#F7D9CF"},{"background":"#F6C6B6"},{"background":"#EEF1F7"},{"background":"#F0A590"},{"background":"#EC927A"},{"background":"#F8E6E0"},{"background":"#F6CDBE"},{"background":"#ABC3F3"},{"background":"#8CABEF"},{"background":"#F5F5F7"},{"background":"#F7F0ED"},{"background":"#BED2F5"},{"background":"#F6CDBE"},{"background":"#F8DFD6"},{"background":"#F2F4F7"},{"background":"#A7BFF3"},{"background":"#EA8A71"},{"background":"#84A6EF"},{"background":"#91AFF0"},{"background":"#E0E7F6"},{"background":"#A4BDF2"},{"background":"#87A7EF"},{"background":"#F0F2F7"},{"background":"#B7CCF4"},{"background":"#F1A893"},{"background":"#B7CCF4"},{"background":"#F7D8CD"},{"background":"#F5C1AF"},{"background":"#8CABEF"},{"background":"#F4B6A3"},{"background":"#B9CEF5"},{"background":"#B4CAF4"},{"background":"#C0D3F5"},{"background":"#82A4EE"},{"background":"#F7F1EF"},{"background":"#F8E3DB"},{"background":"#91AFF0"},{"background":"#82A4EE"},{"background":"#F4BBA9"},{"background":"#F2F4F7"},{"background":"#E4EAF6"},{"background":"#F5C4B3"},{"background":"#D8E3F6"},{"background":"#B4CAF4"},{"background":"#EFA089"},{"background":"#F8ECE8"},{"background":"#D6E1F6"},{"background":"#EA8C74"},{"background":"#F0A590"},{"background":"#F8E5DE"},{"background":"#EA8A71"},{"background":"#F2AE99"},{"background":"#F3B39F"},{"background":"#F7D4C8"},{"background":"#D6E1F6"},{"background":"#F5C4B3"},{"background":"#F8EEEA"},{"background":"#9BB6F1"},{"background":"#F2AB96"},{"background":"#B0C7F4"},{"background":"#F6C9B9"},{"background":"#CCDBF6"},{"background":"#F7D4C8"},{"background":"#F3B09C"},{"background":"#E4EAF6"},{"background":"#8AA9EF"},{"background":"#BED2F5"},{"background":"#F2AE99"},{"background":"#F7D9CF"},{"background":"#F7CEC0"},{"background":"#B2C8F4"},{"background":"#F6C6B6"},{"background":"#D1DEF6"},{"background":"#EA8A71"},{"background":"#DDE6F6"},{"background":"#C7D8F5"},{"background":"#EF9D86"},{"background":"#ED957D"},{"background":"#F4B6A3"},{"background":"#ED9880"},{"background":"#AEC5F3"},{"background":"#E4EAF6"},{"background":"#F7F7F7"},{"background":"#E9EDF7"},{"background":"#F0A38D"},{"background":"#C3D5F5"},{"background":"#C0D3F5"},{"background":"#F0A38D"},{"background":"#D4DFF6"},{"background":"#F7F7F7"},{"background":"#96B2F1"},{"background":"#DDE6F6"},{"background":"#F0F2F7"},{"background":"#84A6EF"},{"background":"#F7D4C8"},{"background":"#BBD0F5"},{"background":"#D4DFF6"},{"background":"#ED9880"},{"background":"#91AFF0"},{"background":"#F8E3DB"},{"background":"#F6C6B6"},{"background":"#F8EEEA"},{"background":"#CAD9F6"},{"background":"#F8E5DE"},{"background":"#A4BDF2"},{"background":"#F7D2C5"},{"background":"#F8DFD6"},{"background":"#84A6EF"},{"background":"#E7ECF7"},{"background":"#CAD9F6"},{"background":"#F2AE99"},{"background":"#F6CBBB"},{"background":"#94B0F0"},{"background":"#D6E1F6"},{"background":"#F8ECE8"},{"background":"#EEF1F7"},{"background":"#F8DDD4"},{"background":"#AEC5F3"},{"background":"#A2BBF2"},{"background":"#EF9D86"},{"background":"#F1A893"},{"background":"#EA8C74"},{"background":"#F8E8E3"},{"background":"#98B4F1"},{"background":"#F5F5F7"},{"background":"#A2BBF2"},{"background":"#ABC3F3"},{"background":"#AEC5F3"},{"background":"#EB8F77"},{"background":"#D8E3F6"},{"background":"#F4B9A6"},{"background":"#9DB8F2"},{"background":"#F4BBA9"},{"background":"#EB8F77"},{"background":"#F7D6CA"},{"background":"#F3B39F"},{"background":"#F7CEC0"},{"background":"#EF9D86"},{"background":"#F7F5F4"},{"background":"#F7D0C3"},{"background":"#9BB6F1"},{"background":"#C3D5F5"},{"background":"#A9C1F3"},{"background":"#F5C4B3"},{"background":"#E2E9F6"},{"background":"#E8846B"},{"background":"#CFDCF6"},{"background":"#F4B6A3"},{"background":"#7FA2EE"},{"background":"#F8EEEA"},{"background":"#B2C8F4"},{"background":"#F0F2F7"},{"background":"#F7D6CA"},{"background":"#E0E7F6"},{"background":"#D8E3F6"},{"background":"#F8DFD6"},{"background":"#ED957D"},{"background":"#F8E1D9"},{"background":"#D6E1F6"},{"background":"#A4BDF2"},{"background":"#DBE4F6"},{"background":"#8AA9EF"},{"background":"#F8E8E3"},{"background":"#B2C8F4"},{"background":"#F5C1AF"},{"background":"#F8EEEA"},{"background":"#D1DEF6"},{"background":"#F8E1D9"},{"background":"#B9CEF5"},{"background":"#F5F5F7"},{"background":"#F6C9B9"},{"background":"#F7F7F7"},{"background":"#F4BBA9"},{"background":"#F7D8CD"},{"background":"#E9876E"},{"background":"#A9C1F3"},{"background":"#F7CEC0"},{"background":"#F7F5F4"},{"background":"#F8ECE8"},{"background":"#A0BAF2"},{"background":"#D1DEF6"},{"background":"#F7F3F2"},{"background":"#F7CEC0"},{"background":"#C3D5F5"},{"background":"#D8E3F6"},{"background":"#F7D2C5"},{"background":"#F8EEEA"},{"background":"#F3B09C"},{"background":"#9DB8F2"},{"background":"#ED9880"},{"background":"#C7D8F5"},{"background":"#96B2F1"},{"background":"#F5C4B3"},{"background":"#F0A590"},{"background":"#F7D8CD"},{"background":"#EBEFF7"},{"background":"#B0C7F4"},{"background":"#F7D2C5"},{"background":"#E9EDF7"},{"background":"#CCDBF6"},{"background":"#8CABEF"},{"background":"#EC927A"},{"background":"#F6CBBB"},{"background":"#F8EAE5"},{"background":"#F0F2F7"},{"background":"#D1DEF6"},{"background":"#87A7EF"},{"background":"#F8DFD6"},{"background":"#EA8A71"},{"background":"#A2BBF2"},{"background":"#91AFF0"},{"background":"#A0BAF2"},{"background":"#82A4EE"},{"background":"#96B2F1"},{"background":"#F5BEAC"},{"background":"#E9876E"},{"background":"#ED9880"},{"background":"#B7CCF4"},{"background":"#DDE6F6"},{"background":"#9BB6F1"},{"background":"#91AFF0"},{"background":"#BBD0F5"},{"background":"#E9876E"},{"background":"#EE9A83"},{"background":"#EEF1F7"},{"background":"#F8E8E3"},{"background":"#F5BEAC"},{"background":"#F7CEC0"},{"background":"#F7DBD1"},{"background":"#7FA2EE"},{"background":"#B7CCF4"},{"background":"#F4BBA9"},{"background":"#F7F0ED"},{"background":"#F6CBBB"},{"background":"#ABC3F3"},{"background":"#F8DDD4"},{"background":"#EFA089"},{"background":"#F7F1EF"},{"background":"#F4B9A6"},{"background":"#C3D5F5"},{"background":"#F0A590"},{"background":"#ABC3F3"},{"background":"#E7ECF7"},{"background":"#84A6EF"},{"background":"#F8DDD4"},{"background":"#CFDCF6"},{"background":"#B0C7F4"},{"background":"#96B2F1"},{"background":"#C5D6F5"},{"background":"#DBE4F6"},{"background":"#BED2F5"},{"background":"#8AA9EF"},{"background":"#9DB8F2"},{"background":"#F8E3DB"},{"background":"#F8E5DE"},{"background":"#F2AB96"},{"background":"#ED9880"},{"background":"#F7F5F4"},{"background":"#98B4F1"},{"background":"#C7D8F5"},{"background":"#EEF1F7"},{"background":"#EE9A83"},{"background":"#F7D0C3"},{"background":"#A7BFF3"},{"background":"#D4DFF6"},{"background":"#F0A38D"},{"background":"#F7F1EF"},{"background":"#F8E6E0"},{"background":"#EBEFF7"},{"background":"#F7DBD1"},{"background":"#C3D5F5"},{"background":"#E2E9F6"},{"background":"#B0C7F4"},{"background":"#F8E6E0"},{"background":"#CAD9F6"},{"background":"#C0D3F5"},{"background":"#F8E8E3"},{"background":"#A4BDF2"},{"background":"#96B2F1"},{"background":"#CFDCF6"},{"background":"#F7F7F7"},{"background":"#8FADF0"},{"background":"#9DB8F2"},{"background":"#C5D6F5"},{"background":"#A7BFF3"},{"background":"#E0E7F6"},{"background":"#F7F1EF"}]},{"id":"Aerials won","name":"Aerials won /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[{"background":"#F8EEEA"},{"background":"#9DB8F2"},{"background":"#F6CBBB"},{"background":"#94B0F0"},null,{"background":"#C0D3F5"},{"background":"#C3D5F5"},{"background":"#CCDBF6"},{"background":"#D6E1F6"},{"background":"#F7D6CA"},{"background":"#BED2F5"},{"background":"#EB8F77"},{"background":"#96B2F1"},{"background":"#F8DFD6"},{"background":"#F7CEC0"},{"background":"#E0E7F6"},{"background":"#ED9880"},{"background":"#A9C1F3"},{"background":"#A7BFF3"},{"background":"#C7D8F5"},{"background":"#B0C7F4"},{"background":"#EA8C74"},{"background":"#F7F1EF"},{"background":"#F3B39F"},{"background":"#F6C9B9"},{"background":"#F7F5F4"},{"background":"#EC927A"},{"background":"#F8DDD4"},{"background":"#ED957D"},{"background":"#CFDCF6"},{"background":"#E4EAF6"},{"background":"#F1A893"},null,{"background":"#F6C6B6"},{"background":"#F6CDBE"},{"background":"#F7DBD1"},{"background":"#94B0F0"},null,{"background":"#E4EAF6"},{"background":"#8AA9EF"},{"background":"#F8E6E0"},{"background":"#E9EDF7"},{"background":"#F8DDD4"},{"background":"#84A6EF"},{"background":"#A7BFF3"},{"background":"#F0F2F7"},{"background":"#C0D3F5"},null,{"background":"#A2BBF2"},{"background":"#ABC3F3"},{"background":"#B2C8F4"},{"background":"#C7D8F5"},{"background":"#F5C1AF"},{"background":"#87A7EF"},{"background":"#B2C8F4"},{"background":"#B4CAF4"},{"background":"#EB8F77"},{"background":"#F7CEC0"},{"background":"#B9CEF5"},{"background":"#B7CCF4"},{"background":"#F7F0ED"},{"background":"#F8ECE8"},{"background":"#E0E7F6"},null,{"background":"#D6E1F6"},{"background":"#AEC5F3"},{"background":"#EEF1F7"},{"background":"#7FA2EE"},{"background":"#E8846B"},{"background":"#C3D5F5"},{"background":"#8CABEF"},{"background":"#F7D2C5"},{"background":"#EF9D86"},{"background":"#F6CDBE"},{"background":"#F8E5DE"},{"background":"#F5BEAC"},{"background":"#F1A893"},null,{"background":"#EB8F77"},{"background":"#D1DEF6"},{"background":"#F6C9B9"},{"background":"#F0A590"},{"background":"#A4BDF2"},{"background":"#B0C7F4"},{"background":"#F5C4B3"},{"background":"#F2F4F7"},null,{"background":"#D6E1F6"},{"background":"#A4BDF2"},{"background":"#F7CEC0"},{"background":"#F0A38D"},{"background":"#E4EAF6"},{"background":"#F8EAE5"},{"background":"#AEC5F3"},{"background":"#A2BBF2"},{"background":"#A0BAF2"},{"background":"#8CABEF"},{"background":"#98B4F1"},null,{"background":"#B7CCF4"},{"background":"#C5D6F5"},{"background":"#C7D8F5"},{"background":"#BBD0F5"},{"background":"#F3B39F"},{"background":"#E7ECF7"},{"background":"#F7D8CD"},{"background":"#F8E3DB"},{"background":"#F7F7F7"},{"background":"#F8E8E3"},{"background":"#96B2F1"},{"background":"#8FADF0"},{"background":"#D4DFF6"},{"background":"#9BB6F1"},{"background":"#F8ECE8"},{"background":"#D8E3F6"},{"background":"#F2AB96"},null,{"background":"#EB8F77"},{"background":"#F0F2F7"},{"background":"#F7D9CF"},{"background":"#98B4F1"},{"background":"#EBEFF7"},{"background":"#F4B9A6"},{"background":"#F7F5F4"},null,{"background":"#F6CBBB"},{"background":"#F2AB96"},{"background":"#F0A38D"},{"background":"#F8E8E3"},{"background":"#EB8F77"},{"background":"#ABC3F3"},{"background":"#EB8F77"},{"background":"#A4BDF2"},{"background":"#96B2F1"},null,{"background":"#F2AE99"},{"background":"#F8DDD4"},{"background":"#8AA9EF"},{"background":"#F7D6CA"},{"background":"#CAD9F6"},{"background":"#EB8F77"},{"background":"#F2AE99"},null,{"background":"#F8E3DB"},{"background":"#F8DFD6"},{"background":"#F7F5F4"},{"background":"#CAD9F6"},{"background":"#F0A590"},{"background":"#EFA089"},{"background":"#F0A590"},{"background":"#F5BEAC"},{"background":"#D8E3F6"},{"background":"#AEC5F3"},{"background":"#F7D4C8"},{"background":"#F7D8CD"},{"background":"#F7F1EF"},null,{"background":"#EA8A71"},{"background":"#C3D5F5"},{"background":"#C0D3F5"},{"background":"#ABC3F3"},{"background":"#F7D2C5"},{"background":"#F8EAE5"},{"background":"#96B2F1"},{"background":"#CAD9F6"},{"background":"#F3B09C"},{"background":"#F5F5F7"},{"background":"#F8EEEA"},{"background":"#F7F7F7"},{"background":"#EB8F77"},{"background":"#F7F1EF"},null,{"background":"#EBEFF7"},{"background":"#9DB8F2"},{"background":"#9DB8F2"},{"background":"#F5BEAC"},{"background":"#CCDBF6"},{"background":"#F6CBBB"},{"background":"#B7CCF4"},{"background":"#F8E8E3"},{"background":"#F8E5DE"},{"background":"#F2AB96"},null,{"background":"#F4B9A6"},{"background":"#F3B09C"},{"background":"#DDE6F6"},{"background":"#C3D5F5"},{"background":"#F5C4B3"},{"background":"#F7D9CF"},{"background":"#91AFF0"},{"background":"#E9EDF7"},{"background":"#F5C1AF"},{"background":"#E9876E"},{"background":"#87A7EF"},{"background":"#F0F2F7"},null,{"background":"#BED2F5"},{"background":"#CFDCF6"},{"background":"#F7D4C8"},{"background":"#F5C4B3"},{"background":"#96B2F1"},{"background":"#F7CEC0"},{"background":"#E2E9F6"},null,{"background":"#F6CBBB"},{"background":"#9DB8F2"},{"background":"#EEF1F7"},{"background":"#F7DBD1"},{"background":"#BED2F5"},{"background":"#F7D0C3"},{"background":"#91AFF0"},{"background":"#8CABEF"},{"background":"#F4BBA9"},{"background":"#9BB6F1"},{"background":"#F7D8CD"},{"background":"#F8E1D9"},{"background":"#F3B09C"},{"background":"#F8ECE8"},{"background":"#CFDCF6"},{"background":"#F8E3DB"},{"background":"#D1DEF6"},null,{"background":"#F5C4B3"},{"background":"#D6E1F6"},{"background":"#EB8F77"},{"background":"#E9EDF7"},{"background":"#F8E6E0"},{"background":"#F7DBD1"},{"background":"#F8E8E3"},{"background":"#EB8F77"},{"background":"#D1DEF6"},{"background":"#EB8F77"},{"background":"#A0BAF2"},{"background":"#E2E9F6"},{"background":"#EF9D86"},{"background":"#F8E1D9"},{"background":"#F5F5F7"},{"background":"#B9CEF5"},{"background":"#B4CAF4"},{"background":"#F2F4F7"},{"background":"#EF9D86"},{"background":"#F8DFD6"},{"background":"#F7F3F2"},{"background":"#F0F2F7"},{"background":"#ED9880"},{"background":"#F8DDD4"},null,{"background":"#DBE4F6"},{"background":"#F7D2C5"},{"background":"#E0E7F6"},{"background":"#82A4EE"},{"background":"#BBD0F5"},{"background":"#E4EAF6"},{"background":"#F7D4C8"},{"background":"#EFA089"},{"background":"#82A4EE"},{"background":"#F4B6A3"},{"background":"#B2C8F4"},null,{"background":"#A7BFF3"},{"background":"#F2AB96"},{"background":"#D8E3F6"},{"background":"#EB8F77"},{"background":"#84A6EF"},{"background":"#F4B6A3"},{"background":"#8AA9EF"},{"background":"#F2AB96"},{"background":"#91AFF0"},{"background":"#82A4EE"},{"background":"#EBEFF7"},{"background":"#F7F3F2"},{"background":"#F7F7F7"},null,{"background":"#F4BBA9"},{"background":"#F8EEEA"},{"background":"#A2BBF2"},{"background":"#E7ECF7"},{"background":"#BED2F5"},{"background":"#ABC3F3"},{"background":"#F7F0ED"},{"background":"#B0C7F4"},{"background":"#EB8F77"},{"background":"#C5D6F5"},{"background":"#7FA2EE"},{"background":"#F6CDBE"},{"background":"#F5F5F7"},{"background":"#F4B6A3"},{"background":"#F8E5DE"},{"background":"#F4B9A6"},{"background":"#F7D9CF"},{"background":"#D4DFF6"},{"background":"#EBEFF7"},null,{"background":"#F4BBA9"},{"background":"#84A6EF"},{"background":"#F7F1EF"},{"background":"#EF9D86"},null,{"background":"#EE9A83"},{"background":"#B7CCF4"},{"background":"#A9C1F3"},{"background":"#F8EEEA"},{"background":"#F4B6A3"},{"background":"#8FADF0"},{"background":"#DBE4F6"},{"background":"#D4DFF6"},{"background":"#DDE6F6"},{"background":"#DDE6F6"},{"background":"#F6C6B6"},{"background":"#EF9D86"},{"background":"#E9876E"},{"background":"#91AFF0"},{"background":"#F7D0C3"},{"background":"#EB8F77"}]},{"id":"Pass %","name":"Pass %","type":"numeric","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"na":"-","minWidth":95,"style":[{"background":"#F7D2C5"},{"background":"#A2BBF2"},{"background":"#F7DBD1"},{"background":"#F7D0C3"},{"background":"#D8E3F6"},{"background":"#9DB8F2"},{"background":"#F7D2C5"},{"background":"#82A4EE"},{"background":"#9DB8F2"},{"background":"#F7D8CD"},{"background":"#A4BDF2"},{"background":"#B2C8F4"},{"background":"#E7ECF7"},{"background":"#82A4EE"},{"background":"#D4DFF6"},{"background":"#F7CEC0"},{"background":"#C7D8F5"},{"background":"#F8E5DE"},{"background":"#B7CCF4"},{"background":"#F2AB96"},{"background":"#F3B39F"},{"background":"#E4EAF6"},{"background":"#F7F1EF"},{"background":"#F0A590"},{"background":"#8FADF0"},{"background":"#84A6EF"},{"background":"#F8EEEA"},{"background":"#E4EAF6"},{"background":"#D6E1F6"},{"background":"#B7CCF4"},{"background":"#D4DFF6"},{"background":"#91AFF0"},{"background":"#B9CEF5"},{"background":"#F6C6B6"},{"background":"#F8DFD6"},{"background":"#F8EAE5"},{"background":"#DBE4F6"},{"background":"#F7CEC0"},{"background":"#EBEFF7"},{"background":"#E9876E"},{"background":"#F8DFD6"},{"background":"#F8E8E3"},{"background":"#E9EDF7"},{"background":"#EB8F77"},{"background":"#F8E5DE"},{"background":"#CAD9F6"},{"background":"#CAD9F6"},{"background":"#EEF1F7"},{"background":"#E9876E"},{"background":"#F5C4B3"},{"background":"#ED9880"},{"background":"#F6CDBE"},{"background":"#F2AE99"},{"background":"#EA8A71"},{"background":"#F8DDD4"},{"background":"#F6CDBE"},{"background":"#F8ECE8"},{"background":"#F3B09C"},{"background":"#F7CEC0"},{"background":"#F6C9B9"},{"background":"#C0D3F5"},{"background":"#F7F0ED"},{"background":"#F2AE99"},{"background":"#84A6EF"},{"background":"#F8E8E3"},{"background":"#F5F5F7"},{"background":"#F7F5F4"},{"background":"#F0A38D"},{"background":"#D1DEF6"},{"background":"#94B0F0"},{"background":"#ABC3F3"},{"background":"#BED2F5"},{"background":"#E4EAF6"},{"background":"#F8EAE5"},{"background":"#BED2F5"},{"background":"#C5D6F5"},{"background":"#F0F2F7"},{"background":"#F8DFD6"},{"background":"#E2E9F6"},{"background":"#D8E3F6"},{"background":"#F7D9CF"},{"background":"#EEF1F7"},{"background":"#F4BBA9"},{"background":"#B4CAF4"},{"background":"#F7DBD1"},{"background":"#96B2F1"},{"background":"#CFDCF6"},{"background":"#8CABEF"},{"background":"#F5BEAC"},{"background":"#EEF1F7"},{"background":"#B0C7F4"},{"background":"#87A7EF"},{"background":"#96B2F1"},{"background":"#96B2F1"},{"background":"#F0F2F7"},{"background":"#F5BEAC"},{"background":"#E8846B"},{"background":"#F7F7F7"},{"background":"#F2AE99"},{"background":"#F6CBBB"},{"background":"#F1A893"},{"background":"#EF9D86"},{"background":"#F6C6B6"},{"background":"#EBEFF7"},{"background":"#DBE4F6"},{"background":"#F8E1D9"},{"background":"#F7F7F7"},{"background":"#F8EEEA"},{"background":"#D1DEF6"},{"background":"#F7CEC0"},{"background":"#F7F1EF"},{"background":"#F3B09C"},{"background":"#F2AB96"},{"background":"#D6E1F6"},{"background":"#E9EDF7"},{"background":"#F2F4F7"},{"background":"#F8E6E0"},{"background":"#9DB8F2"},{"background":"#F7F1EF"},{"background":"#CFDCF6"},{"background":"#F0A590"},{"background":"#BED2F5"},{"background":"#F7D9CF"},{"background":"#F4B9A6"},{"background":"#F0A38D"},{"background":"#DDE6F6"},{"background":"#F7F3F2"},{"background":"#EE9A83"},{"background":"#CCDBF6"},{"background":"#F7F5F4"},{"background":"#ED957D"},{"background":"#9BB6F1"},{"background":"#F8ECE8"},{"background":"#DDE6F6"},{"background":"#F7F7F7"},{"background":"#BBD0F5"},{"background":"#F8E5DE"},{"background":"#F7D9CF"},{"background":"#D6E1F6"},{"background":"#F7F7F7"},{"background":"#96B2F1"},{"background":"#F7D0C3"},{"background":"#91AFF0"},{"background":"#B9CEF5"},{"background":"#CFDCF6"},{"background":"#C3D5F5"},{"background":"#C3D5F5"},{"background":"#D1DEF6"},{"background":"#EF9D86"},{"background":"#F7F5F4"},{"background":"#F5C4B3"},{"background":"#8CABEF"},{"background":"#A0BAF2"},{"background":"#EBEFF7"},{"background":"#EC927A"},{"background":"#ED9880"},{"background":"#EA8A71"},{"background":"#EA8C74"},{"background":"#EFA089"},{"background":"#D8E3F6"},{"background":"#F4B9A6"},{"background":"#EA8C74"},{"background":"#F8E6E0"},{"background":"#ED9880"},{"background":"#F7D6CA"},{"background":"#F4B6A3"},{"background":"#F5C1AF"},{"background":"#EF9D86"},{"background":"#F5BEAC"},{"background":"#B7CCF4"},{"background":"#ED957D"},{"background":"#F4BBA9"},{"background":"#F8EEEA"},{"background":"#F4B9A6"},{"background":"#F4B6A3"},{"background":"#94B0F0"},{"background":"#F8E8E3"},{"background":"#8CABEF"},{"background":"#F3B09C"},{"background":"#A7BFF3"},{"background":"#F5C1AF"},{"background":"#F8E6E0"},{"background":"#F7D8CD"},{"background":"#F6CDBE"},{"background":"#9DB8F2"},{"background":"#EB8F77"},{"background":"#F8E3DB"},{"background":"#C0D3F5"},{"background":"#F7D4C8"},{"background":"#E9876E"},{"background":"#E0E7F6"},{"background":"#F1A893"},{"background":"#ABC3F3"},{"background":"#EC927A"},{"background":"#EE9A83"},{"background":"#E2E9F6"},{"background":"#F4B6A3"},{"background":"#ABC3F3"},{"background":"#F8DDD4"},{"background":"#8AA9EF"},{"background":"#F5F5F7"},{"background":"#F7CEC0"},{"background":"#DDE6F6"},{"background":"#A4BDF2"},{"background":"#F5C4B3"},{"background":"#F4BBA9"},{"background":"#CFDCF6"},{"background":"#F7D8CD"},{"background":"#C5D6F5"},{"background":"#F2AB96"},{"background":"#EFA089"},{"background":"#E0E7F6"},{"background":"#91AFF0"},{"background":"#BED2F5"},{"background":"#F5C4B3"},{"background":"#87A7EF"},{"background":"#A4BDF2"},{"background":"#8AA9EF"},{"background":"#98B4F1"},{"background":"#B2C8F4"},{"background":"#F2AE99"},{"background":"#9BB6F1"},{"background":"#C3D5F5"},{"background":"#F7D6CA"},{"background":"#F5F5F7"},{"background":"#84A6EF"},{"background":"#AEC5F3"},{"background":"#CCDBF6"},{"background":"#B4CAF4"},{"background":"#AEC5F3"},{"background":"#8AA9EF"},{"background":"#C3D5F5"},{"background":"#A7BFF3"},{"background":"#98B4F1"},{"background":"#F8E1D9"},{"background":"#E9EDF7"},{"background":"#F7F3F2"},{"background":"#F3B39F"},{"background":"#B2C8F4"},{"background":"#7FA2EE"},{"background":"#9BB6F1"},{"background":"#A9C1F3"},{"background":"#F7F0ED"},{"background":"#F7D2C5"},{"background":"#96B2F1"},{"background":"#A2BBF2"},{"background":"#C3D5F5"},{"background":"#B0C7F4"},{"background":"#F4B6A3"},{"background":"#EA8A71"},{"background":"#EF9D86"},{"background":"#F7D4C8"},{"background":"#F8DFD6"},{"background":"#F7D8CD"},{"background":"#91AFF0"},{"background":"#E4EAF6"},{"background":"#F7F1EF"},{"background":"#C7D8F5"},{"background":"#F6C6B6"},{"background":"#E7ECF7"},{"background":"#F0F2F7"},{"background":"#F0F2F7"},{"background":"#AEC5F3"},{"background":"#E2E9F6"},{"background":"#F8EEEA"},{"background":"#EC927A"},{"background":"#D6E1F6"},{"background":"#EBEFF7"},{"background":"#B7CCF4"},{"background":"#F8E3DB"},{"background":"#F6C9B9"},{"background":"#EF9D86"},{"background":"#ED9880"},{"background":"#B0C7F4"},{"background":"#F8DDD4"},{"background":"#F6CBBB"},{"background":"#F2F4F7"},{"background":"#F0A590"},{"background":"#C0D3F5"},{"background":"#F8DDD4"},{"background":"#CAD9F6"},{"background":"#D8E3F6"},{"background":"#F7D4C8"},{"background":"#F8E8E3"},{"background":"#F6CBBB"},{"background":"#F8ECE8"},{"background":"#F6CBBB"},{"background":"#EA8A71"},{"background":"#F7DBD1"},{"background":"#C7D8F5"},{"background":"#E8846B"},{"background":"#F0A38D"},{"background":"#F7F0ED"},{"background":"#F4BBA9"},{"background":"#ED9880"},{"background":"#F0A590"},{"background":"#E0E7F6"},{"background":"#B0C7F4"},{"background":"#A4BDF2"},{"background":"#B9CEF5"},{"background":"#BBD0F5"},{"background":"#91AFF0"},{"background":"#A9C1F3"},{"background":"#8FADF0"},{"background":"#A0BAF2"},{"background":"#84A6EF"},{"background":"#D4DFF6"},{"background":"#7FA2EE"},{"background":"#ABC3F3"},{"background":"#82A4EE"},{"background":"#EB8F77"},{"background":"#A2BBF2"},{"background":"#A7BFF3"},{"background":"#F8E3DB"}]},{"id":"Goals prevented","name":"Goals prevented /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[null,null,null,null,{"background":"#E2E9F6"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#9BB6F1"},null,null,null,null,{"background":"#F2AE99"},null,null,null,null,null,null,null,null,null,{"background":"#F7F0ED"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#84A6EF"},null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F7D8CD"},null,null,null,null,null,null,null,null,{"background":"#B0C7F4"},null,null,null,null,null,null,null,null,null,null,null,{"background":"#ED9880"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F4BBA9"},null,null,null,null,null,null,null,{"background":"#C3D5F5"},null,null,null,null,null,null,null,null,null,{"background":"#EEF1F7"},null,null,null,null,null,null,null,{"background":"#F8E6E0"},null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#D8E3F6"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F7F7F7"},null,null,null,null,null,null,null,null,null,null,{"background":"#EA8A71"},null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#91AFF0"},null,null,null,null,null,null,null,{"background":"#B9CEF5"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#CFDCF6"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F6C6B6"},null,null,null,null,null,null,null,null,null,null,null,{"background":"#A4BDF2"},null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F7CEC0"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F0A38D"},null,null,null,null,{"background":"#F8DFD6"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},{"id":"Saves","name":"Saves /90","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"na":"-","minWidth":95,"style":[null,null,null,null,{"background":"#ED9880"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#C3D5F5"},null,null,null,null,{"background":"#EA8A71"},null,null,null,null,null,null,null,null,null,{"background":"#E2E9F6"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F8E6E0"},null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#9BB6F1"},null,null,null,null,null,null,null,null,{"background":"#F8DFD6"},null,null,null,null,null,null,null,null,null,null,null,{"background":"#F4BBA9"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#84A6EF"},null,null,null,null,null,null,null,{"background":"#F7F7F7"},null,null,null,null,null,null,null,null,null,{"background":"#EEF1F7"},null,null,null,null,null,null,null,{"background":"#F7F0ED"},null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#91AFF0"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#D8E3F6"},null,null,null,null,null,null,null,null,null,null,{"background":"#A4BDF2"},null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#B0C7F4"},null,null,null,null,null,null,null,{"background":"#F6C6B6"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F7D8CD"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#CFDCF6"},null,null,null,null,null,null,null,null,null,null,null,{"background":"#B9CEF5"},null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F0A38D"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"background":"#F7CEC0"},null,null,null,null,{"background":"#F2AE99"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]}],"searchable":true,"defaultSorted":[{"id":"NPxG","desc":true}],"defaultPageSize":25,"highlight":true,"striped":true,"compact":true,"theme":{"headerStyle":{"background":"#132257","color":"white"}},"dataKey":"3837a77545619cc7543f9215006394dc"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<p style="font-size:.75rem;color:#555;margin:.4rem;">Premier League players with 248+ minutes. Colours = percentile within the player's role (blue = high). Tottenham players in bold.</p>
+</div>
+```
+
+:::
+:::
+
+
+# Methodology
+
+## Row
+
+::: {.card .method-card title="How these numbers are worked out"}
+- **Minutes** come from the events: a player who started is on from minute 0; a substitute from his SubstitutionOn event; a player is off at his SubstitutionOff event or a red card, otherwise at the end of the game (stoppage time included). Penalty shoot-outs are left out.
+- **Per 90** = season total / minutes x 90. **Percentiles** compare a player with every league player in the same role (Goalkeeper, Defender, Midfielder, Forward; the role a player is listed in most) who has enough minutes (a quarter of the most games any club has played, at least 90 minutes). 50 = league median; for ball losses and fouls lower is better, so a high percentile means fewer.
+- **Goals** leave out own goals. **xG / NPxG / xGOT** are FotMob's, joined to the Opta events. **xA** and **EPV added** are the pipeline's (EPV added counts successful actions only).
+- **Goals prevented** (goalkeepers) = xGOT of shots on target faced while on the pitch minus goals conceded from them (own goals left out). **Save %** = shots on target faced that were not goals.
+- **Passing pairs**: a completed pass where the next action in the data is by a team-mate is counted as a pass to that team-mate.
+- Data: Opta (WhoScored), FotMob shots. Built by the Under Pressure pipeline.
+:::
+

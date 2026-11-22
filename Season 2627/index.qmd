@@ -61,7 +61,8 @@ base_dir <- "."
 exclude_dirs <- c(
   "Images", "images", "bigrams", "data", "Data", "R", "scripts",
   "_extensions", "_site", "_cache", "_freeze", "index_B_files",
-  "index_files", "site_libs"
+  "index_files", "site_libs",
+  "LFC Player Analysis"   # hidden for now (files kept); remove this line to show it again
 )
 
 # Get subdirectories (competitions)
@@ -80,7 +81,8 @@ thumb_map <- c(
   "CL"      = "Images/UCL.png",
   "League Cup"  = "Images/League_cup.png",
   "Specials" = "Images/Premier-League-ball.png",
-  "LFC Player Analysis"    = "Images/Players.png"
+  "LFC Player Analysis"    = "Images/Players.png",
+  "Club Player Analysis"   = "Images/Players.png"
 )
 
 default_thumb <- "Images/Premier-League-ball.png"

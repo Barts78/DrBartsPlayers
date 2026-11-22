@@ -5,6 +5,7 @@ params:
   team: "Aston Villa"
   database: "EPLComp_LFC_Games_2627"
   competition: "Premier League"
+  other_databases: "Champions League=CL_LFC_Games_2627;League Cup=LC_LFC_Games_2627;FA Cup=FAC_LFC_Games_2627"
   season: "2627"
 format:
   dashboard:
@@ -34,9 +35,42 @@ format:
           .pp-head, .pp-head.html-fill-container { display:flex !important; flex-direction:row !important; flex-wrap:wrap !important; gap:.5rem; margin:.6rem 0; }
           .pp-chip { display:inline-block !important; width:auto !important; flex:0 0 auto !important; background:var(--pp-col); color:var(--pp-txt); border-radius:999px; padding:.15rem .7rem; font-size:.85rem; font-weight:600; }
           .pp-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap:.6rem; }
-          .pp-grid img { width:100%; height:auto; display:block; border:1px solid #DDD; }
+          .pp-grid img, .cv-img { width:100%; height:auto; display:block; border:1px solid #DDD; }
           .rt-wrap { background:#FFFFFF; color:#1A1A1A; }
+          .cv-bar, .cv-bar.html-fill-container { display:flex !important; flex-direction:row !important; flex-wrap:wrap !important; gap:.4rem; margin:.2rem 0 .6rem 0; }
+          .cv-btn { flex:0 0 auto !important; border:2px solid var(--pp-col); background:#FFFFFF; color:#1A1A1A; border-radius:6px; padding:.2rem .8rem; font-size:.85rem; font-weight:600; cursor:pointer; }
+          .cv-btn.active { background:var(--pp-col); color:var(--pp-txt); }
+          .cv-note { font-size:.75rem; color:#555; margin:.4rem; }
           </style>
+          <script>
+          (function () {
+            var cur = { view: null, player: null };
+            function apply() {
+              document.querySelectorAll('.cv-btn').forEach(function (b) {
+                b.classList.toggle('active', b.getAttribute('data-view') === cur.view);
+              });
+              document.querySelectorAll('.cv-panel').forEach(function (p) {
+                var pl = p.getAttribute('data-player');
+                var show = p.getAttribute('data-view') === cur.view && (!pl || pl === cur.player);
+                p.style.display = show ? '' : 'none';
+              });
+              window.dispatchEvent(new Event('resize'));
+            }
+            document.addEventListener('click', function (e) {
+              var b = e.target.closest ? e.target.closest('.cv-btn') : null;
+              if (!b) return;
+              cur.view = b.getAttribute('data-view'); apply();
+            });
+            document.addEventListener('change', function (e) {
+              if (e.target && e.target.id === 'pp-select') { cur.player = e.target.value; apply(); }
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+              var b = document.querySelector('.cv-btn'); if (b) cur.view = b.getAttribute('data-view');
+              var s = document.getElementById('pp-select'); if (s) cur.player = s.value;
+              apply();
+            });
+          })();
+          </script>
 ---
 
 ```{r}
@@ -57,16 +91,22 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 # ---- settings -------------------------------------------------------------
 data_root   <- "~/Documents/Dropbox files/AI LFC data"
+db_dir      <- file.path(data_root, "Data Sets/WhoScored/Databases")
 Match_Home  <- as.character(params$team)
 Competition <- as.character(params$competition)
 GameName    <- as.character(params$database)
 
-# ---- database (the parquet copy the pipeline writes beside the xlsx) ------
-fileName    <- file.path(data_root, "Data Sets/WhoScored/Databases", paste0(GameName, ".xlsx"))
-parquetName <- sub("\\.xlsx$", ".parquet", fileName)
+# the league database first, then the cups ("Label=DatabaseName;..."); a missing one is skipped
+parse_dbs <- function(s) {
+  s <- trimws(strsplit(as.character(s), ";")[[1]]); s <- s[nzchar(s)]
+  if (!length(s)) return(character())
+  setNames(trimws(sub("^[^=]*=", "", s)), trimws(sub("=.*$", "", s)))
+}
+databases <- c(setNames(GameName, Competition), parse_dbs(params$other_databases))
+
 keep_cols <- c("game_name", "Game_date", "TeamName", "playerId", "role", "player_shirt", "type",
                "type/value", "outcomeType/value", "period", "minute", "second", "expandedMinute",
-               "x", "y", "finalX", "finalY", "cardType_displayName",
+               "x", "y", "finalX", "finalY", "cardType_displayName", "teamColor",
                "Goals", "Own_Goals", "Assists", "TotalShots", "OTShots", "xG", "NPxG", "xGOT", "MyxA",
                "TeamxT", "EPVvalue", "Touches", "PK_Box_Touches", "Final_Third_Touches",
                "Attempted_Passes", "Successful_Passes", "Prog_Passes", "Final_Third_Passes",
@@ -76,14 +116,27 @@ keep_cols <- c("game_name", "Game_date", "TeamName", "playerId", "role", "player
                "Tackles_Total", "Tackles_Won", "Interceptions_Total", "Recoverys_Total",
                "Clearances_Total", "Aerial_total", "Aerial_Won", "Ground_Duels_Total",
                "Ground_Duels_Won", "Fouls_Conceeded", "Defensive_Action", "BCs")
-SeasonDB <- if (file.exists(parquetName) && requireNamespace("arrow", quietly = TRUE)) {
-  sch <- arrow::open_dataset(parquetName)$schema$names
-  as.data.frame(arrow::read_parquet(parquetName, col_select = all_of(intersect(keep_cols, sch))))
-} else {
-  read_xlsx(fileName, guess_max = 100000)
+read_db <- function(name) {
+  pq <- file.path(db_dir, paste0(name, ".parquet")); xl <- file.path(db_dir, paste0(name, ".xlsx"))
+  d <- if (file.exists(pq) && requireNamespace("arrow", quietly = TRUE)) {
+    sch <- arrow::open_dataset(pq)$schema$names
+    as.data.frame(arrow::read_parquet(pq, col_select = all_of(intersect(keep_cols, sch))))
+  } else if (file.exists(xl)) read_xlsx(xl, guess_max = 100000) else NULL
+  if (is.null(d)) return(NULL)
+  for (cl in setdiff(keep_cols, names(d))) d[[cl]] <- NA
+  d <- d[, keep_cols]
+  d[] <- lapply(d, function(v) if (is.factor(v)) as.character(v) else v)
+  d$TeamName <- as.character(d$TeamName); d$playerId <- as.character(d$playerId)
+  d$game_name <- as.character(d$game_name); d$Game_date <- as.character(d$Game_date)
+  d$teamColor <- as.character(d$teamColor); d$role <- as.character(d$role); d$type <- as.character(d$type)
+  d$cardType_displayName <- as.character(d$cardType_displayName); d$player_shirt <- as.character(d$player_shirt)
+  d
 }
-for (cl in setdiff(keep_cols, names(SeasonDB))) SeasonDB[[cl]] <- NA
-SeasonDB <- SeasonDB[, keep_cols]
+loaded <- lapply(databases, read_db)
+if (is.null(loaded[[1]])) stop("League database not found: ", databases[[1]])
+loaded <- loaded[!vapply(loaded, is.null, logical(1))]
+SeasonDB <- bind_rows(lapply(names(loaded), function(cp) mutate(loaded[[cp]], Comp = cp, .before = 1)))
+rm(loaded)
 
 # one name per club (WhoScored sometimes gives the long name)
 team_alias <- c("Manchester United" = "Man Utd", "Manchester City" = "Man City",
@@ -94,124 +147,51 @@ SeasonDB$TeamName <- normalise_team(SeasonDB$TeamName)
 for (nm in names(team_alias)) SeasonDB$game_name <- gsub(nm, team_alias[[nm]], SeasonDB$game_name, fixed = TRUE)
 Match_Home <- normalise_team(Match_Home)
 
+# ---- colours: the club's own (most common in its league games) ------------
+contrast_text <- function(bg) {
+  rgb <- grDevices::col2rgb(bg)[, 1] / 255
+  if (sum(rgb * c(0.299, 0.587, 0.114)) > 0.6) "black" else "white"
+}
+club_cols <- SeasonDB$teamColor[SeasonDB$TeamName == Match_Home & SeasonDB$Comp == Competition]
+club_cols <- trimws(club_cols[!is.na(club_cols) & nzchar(trimws(club_cols))])
+Color_Home      <- if (length(club_cols)) names(sort(table(club_cols), decreasing = TRUE))[1] else "red4"
+Color_Home_Text <- contrast_text(Color_Home)
+# percentile shading: pale grey (low) to the club colour (high)
+pct_cols   <- grDevices::colorRampPalette(c("#F2F2F2", Color_Home))(5)
+pct_colour <- scales::col_numeric(pct_cols, domain = c(0, 100))
+tint <- function(p) grDevices::colorRampPalette(c("#FFFFFF", Color_Home))(101)[round(p * 100) + 1]
+Color_Dark <- "#3A3A3A"    # second colour on the maps (works with any club colour)
+club_vars  <- paste0("--pp-col:", Color_Home, ";--pp-txt:", Color_Home_Text, ";")
+
+# ---- events ----------------------------------------------------------------
 num0 <- function(v) coalesce(suppressWarnings(as.numeric(v)), 0)
-ev <- SeasonDB %>%
+ev_all <- SeasonDB %>%
   mutate(.row = row_number()) %>%
   filter(num0(period) < 5, !is.na(TeamName)) %>%
   mutate(across(c(Goals:BCs, `type/value`, `outcomeType/value`, expandedMinute, minute, second), num0),
          across(c(x, y, finalX, finalY), ~ suppressWarnings(as.numeric(.x))),
          Goals = ifelse(Own_Goals == 1, 0, Goals),          # own goals are not the player's goals
          Shot = TotalShots == 1 & Own_Goals != 1,
-         role = recode(as.character(role), Keeper = "Goalkeeper"))
+         role = recode(as.character(role), Keeper = "Goalkeeper"),
+         game_id = paste(Comp, game_name, Game_date, sep = " | "))
 rm(SeasonDB)
-if (!Match_Home %in% ev$TeamName) stop("No games for '", Match_Home, "' in ", GameName)
+if (!Match_Home %in% ev_all$TeamName[ev_all$Comp == Competition]) stop("No ", Competition, " games for '", Match_Home, "'")
 
-# ---- colours: the club's own (most common in the data) -------------------
-team_colour_from_data <- function(team) {
-  f <- file.path(data_root, "Data Sets/WhoScored/Databases", paste0(GameName, ".parquet"))
-  v <- tryCatch(arrow::read_parquet(f, col_select = c("TeamName", "teamColor")), error = function(e) NULL)
-  if (is.null(v)) return(NA_character_)
-  v <- v$teamColor[normalise_team(v$TeamName) == team]
-  v <- trimws(as.character(v[!is.na(v) & nzchar(trimws(as.character(v)))]))
-  if (length(v)) names(sort(table(v), decreasing = TRUE))[1] else NA_character_
-}
-contrast_text <- function(bg) {
-  rgb <- grDevices::col2rgb(bg)[, 1] / 255
-  if (sum(rgb * c(0.299, 0.587, 0.114)) > 0.6) "black" else "white"
-}
-Color_Home      <- coalesce(team_colour_from_data(Match_Home), "red4")
-Color_Home_Text <- contrast_text(Color_Home)
-
-# ---- games -----------------------------------------------------------------
-games_all <- ev %>%
-  group_by(game_name) %>%
-  summarise(Date = min(as.Date(as.character(Game_date), tryFormats = c("%d-%m-%Y", "%Y-%m-%d", "%d/%m/%Y"), optional = TRUE)),
-            End = max(expandedMinute), Teams = list(unique(TeamName)), .groups = "drop")
-team_games <- games_all %>%
-  filter(map_lgl(Teams, ~ Match_Home %in% .x)) %>%
-  arrange(Date) %>%
-  mutate(Game_No = row_number(),
-         Opponent = map_chr(Teams, ~ setdiff(.x, Match_Home)[1]),
-         Venue = ifelse(startsWith(game_name, paste0(Match_Home, " vs")), "H", "A"),
-         Opp_Abbr = toupper(substr(gsub("[^A-Za-z]", "", Opponent), 1, 3)),
-         Game_Label = paste0(Game_No, ". ", Opp_Abbr, " (", Venue, ")"))
-last_game_date <- max(team_games$Date, na.rm = TRUE)
-Season_Label <- paste0(Match_Home, " | ", Competition, " | ", nrow(team_games), " games to ", format(last_game_date, "%d-%m-%Y"))
-
-# ---- minutes from the substitution (and red card) events ------------------
-# on = minute of the SubstitutionOn event (0 for starters); off = minute of the
-# SubstitutionOff event or a red card, else the end of the game
-apps <- ev %>% filter(!is.na(playerId)) %>% distinct(game_name, TeamName, playerId)
-sub_on  <- ev %>% filter(type == "SubstitutionOn") %>% group_by(game_name, TeamName, playerId) %>% summarise(On = min(expandedMinute), .groups = "drop")
-sub_off <- ev %>% filter(type == "SubstitutionOff" | (type == "Card" & cardType_displayName %in% c("Red", "SecondYellow"))) %>%
-  group_by(game_name, TeamName, playerId) %>% summarise(Off = min(expandedMinute), .groups = "drop")
-player_games <- apps %>%
-  left_join(sub_on, by = c("game_name", "TeamName", "playerId")) %>%
-  left_join(sub_off, by = c("game_name", "TeamName", "playerId")) %>%
-  left_join(games_all %>% select(game_name, End), by = "game_name") %>%
-  mutate(Started = is.na(On), On = coalesce(On, 0), Off = coalesce(Off, End),
-         Minutes = pmax(Off - On, 0))
-
-# ---- passes received (next action by a team-mate after a completed pass) --
-ev <- ev %>% arrange(game_name, .row) %>% group_by(game_name) %>%
+# passes received: the next action is by a team-mate after a completed pass
+ev_all <- ev_all %>% arrange(game_id, .row) %>% group_by(game_id) %>%
   mutate(Receiver = ifelse(`type/value` %in% c(1, 2) & `outcomeType/value` == 1 &
                              lead(TeamName) == TeamName & lead(playerId) != playerId, lead(playerId), NA_character_)) %>%
   ungroup()
 
-# ---- goalkeepers: goals prevented while on the pitch ----------------------
-opp_sot <- ev %>% filter(Shot, OTShots == 1) %>%
-  transmute(game_name, Shooter_Team = TeamName, minute = expandedMinute, xGOT, Goals)
-gk_prevented <- player_games %>%
-  inner_join(ev %>% filter(role == "Goalkeeper") %>% distinct(game_name, TeamName, playerId),
-             by = c("game_name", "TeamName", "playerId")) %>%
-  left_join(opp_sot, by = "game_name", relationship = "many-to-many") %>%
-  filter(Shooter_Team != TeamName, minute >= On, minute <= Off) %>%
-  group_by(game_name, TeamName, playerId) %>%
-  summarise(xGOT_faced = sum(xGOT), Conceded = sum(Goals), SoT_faced = n(), .groups = "drop")
-
-# ---- per player per game ---------------------------------------------------
-per_game <- ev %>%
-  filter(!is.na(playerId)) %>%
-  group_by(game_name, TeamName, playerId) %>%
-  summarise(Goals = sum(Goals), Assists = sum(Assists), Shots = sum(Shot), SoT = sum(Shot & OTShots == 1),
-            xG = sum(xG[Shot]), NPxG = sum(NPxG[Shot]), xA = sum(MyxA), xT = sum(TeamxT),
-            EPV = sum(EPVvalue[`outcomeType/value` == 1]),
-            Touches = sum(Touches), Box_Touches = sum(PK_Box_Touches),
-            Passes = sum(Attempted_Passes), Passes_Completed = sum(Successful_Passes),
-            Prog_Passes = sum(Prog_Passes), Final_Third_Passes = sum(Final_Third_Passes),
-            Box_Passes = sum(PK_Box_Passes), Key_Passes = sum(Key_Passes),
-            Crosses = sum(Cross_Passes), Crosses_Completed = sum(Successful_Cross),
-            Prog_Carries = sum(Prog_Carries), Dribbles = sum(Dribbles_Total), Dribbles_Won = sum(Dribbles_Won),
-            Ball_Losses = sum(Dispossessed_Total) + sum(Mis_Control),
-            Tackles_Won = sum(Tackles_Won), Interceptions = sum(Interceptions_Total),
-            Recoveries = sum(Recoverys_Total), Clearances = sum(Clearances_Total),
-            Aerials = sum(Aerial_total), Aerials_Won = sum(Aerial_Won),
-            Duels = sum(Ground_Duels_Total), Duels_Won = sum(Ground_Duels_Won),
-            Fouls = sum(Fouls_Conceeded), Def_Actions = sum(Defensive_Action),
-            Saves = sum(type == "Save"), Claims = sum(type %in% c("Claim", "Punch")),
-            Sweeper = sum(type == "KeeperSweeper"),
-            .groups = "drop") %>%
-  right_join(player_games, by = c("game_name", "TeamName", "playerId")) %>%
-  left_join(gk_prevented, by = c("game_name", "TeamName", "playerId")) %>%
-  mutate(across(where(is.numeric), ~ coalesce(.x, 0)))
-
-player_role <- ev %>% filter(!is.na(playerId), !is.na(role)) %>%
+# a player's role and shirt over the whole season (all competitions)
+player_role <- ev_all %>% filter(!is.na(playerId), !is.na(role)) %>%
   count(TeamName, playerId, role) %>% group_by(TeamName, playerId) %>%
   slice_max(n, n = 1, with_ties = FALSE) %>% ungroup() %>% select(-n)
-player_shirt <- ev %>% filter(!is.na(playerId)) %>%
+player_shirt <- ev_all %>% filter(!is.na(playerId)) %>%
   count(TeamName, playerId, Shirt = suppressWarnings(as.integer(player_shirt))) %>%
   group_by(TeamName, playerId) %>% slice_max(n, n = 1, with_ties = FALSE) %>% ungroup() %>% select(-n)
 
-season <- per_game %>%
-  group_by(TeamName, playerId) %>%
-  summarise(Apps = n(), Starts = sum(Started), across(c(Minutes, Goals:Sweeper, xGOT_faced, Conceded, SoT_faced), sum),
-            .groups = "drop") %>%
-  left_join(player_role, by = c("TeamName", "playerId")) %>%
-  left_join(player_shirt, by = c("TeamName", "playerId")) %>%
-  mutate(role = factor(coalesce(role, "Midfielder"), levels = c("Goalkeeper", "Defender", "Midfielder", "Forward")),
-         Prevented = xGOT_faced - Conceded)
-
-# ---- metrics: per 90 (or a %), compared with league players in the same role
+# ---- metrics: per 90 (or a %), compared with players in the same role ------
 metric_def <- tribble(
   ~Metric,                 ~Group,        ~higher_better, ~roles,
   "Goals",                 "Shooting",    TRUE,  "outfield",
@@ -247,49 +227,137 @@ metric_def <- tribble(
   "Sweeper actions",       "Goalkeeping", TRUE,  "gk")
 p90 <- function(v, m) ifelse(m > 0, 90 * v / m, NA_real_)
 pct <- function(a, b) ifelse(b > 0, 100 * a / b, NA_real_)
-season_metrics <- season %>%
-  transmute(TeamName, playerId, role, Minutes,
-            `Goals` = p90(Goals, Minutes), `NPxG` = p90(NPxG, Minutes), `Shots` = p90(Shots, Minutes),
-            `Shots on target` = p90(SoT, Minutes), `Box touches` = p90(Box_Touches, Minutes),
-            `Assists` = p90(Assists, Minutes), `xA` = p90(xA, Minutes), `Key passes` = p90(Key_Passes, Minutes),
-            `Passes into box` = p90(Box_Passes, Minutes), `Crosses completed` = p90(Crosses_Completed, Minutes),
-            `Passes completed` = p90(Passes_Completed, Minutes), `Pass %` = pct(Passes_Completed, Passes),
-            `Progressive passes` = p90(Prog_Passes, Minutes), `Final-third passes` = p90(Final_Third_Passes, Minutes),
-            `Progressive carries` = p90(Prog_Carries, Minutes), `Dribbles won` = p90(Dribbles_Won, Minutes),
-            `EPV added` = p90(EPV, Minutes), `Ball losses` = p90(Ball_Losses, Minutes),
-            `Tackles won` = p90(Tackles_Won, Minutes), `Interceptions` = p90(Interceptions, Minutes),
-            `Recoveries` = p90(Recoveries, Minutes), `Clearances` = p90(Clearances, Minutes),
-            `Aerials won` = p90(Aerials_Won, Minutes), `Aerial %` = pct(Aerials_Won, Aerials),
-            `Ground duel %` = pct(Duels_Won, Duels), `Fouls` = p90(Fouls, Minutes),
-            `Saves` = p90(Saves, Minutes), `Goals prevented` = p90(Prevented, Minutes),
-            `Save %` = pct(SoT_faced - Conceded, SoT_faced), `Claims & punches` = p90(Claims, Minutes),
-            `Sweeper actions` = p90(Sweeper, Minutes)) %>%
-  pivot_longer(-c(TeamName, playerId, role, Minutes), names_to = "Metric", values_to = "Value") %>%
-  left_join(metric_def, by = "Metric") %>%
-  filter(roles == "all" | (roles == "gk") == (role == "Goalkeeper"))
-
-# league peers: same role, enough minutes for per-90 numbers to mean something
-max_team_games <- max(table(unlist(games_all$Teams)))
-min_minutes <- max(90, round(0.25 * 90 * max_team_games))
-peers <- season_metrics %>% filter(Minutes >= min_minutes, !is.na(Value))
 pct_rank <- function(v, pool, higher) {
   pool <- pool[!is.na(pool)]
   if (is.na(v) || !length(pool)) return(NA_real_)
   if (!higher) { v <- -v; pool <- -pool }
   round(100 * (sum(pool < v) + 0.5 * sum(pool == v)) / length(pool))
 }
-season_metrics <- season_metrics %>%
-  group_by(role, Metric) %>%
-  mutate(Percentile = vapply(seq_along(Value), function(i)
-                        pct_rank(Value[i], peers$Value[peers$role == role[1] & peers$Metric == Metric[1]], higher_better[1]),
-                        numeric(1)),
-         Peer_Avg = mean(peers$Value[peers$role == role[1] & peers$Metric == Metric[1]], na.rm = TRUE)) %>%
-  ungroup()
-n_peers <- peers %>% distinct(role, TeamName, playerId) %>% count(role)
 
-# the club's squad
-squad <- season %>% filter(TeamName == Match_Home) %>% arrange(role, desc(Minutes))
-squad_metrics <- season_metrics %>% filter(TeamName == Match_Home)
+# ---- everything for one view (all competitions, or one competition) -------
+build_view <- function(ev, label) {
+  games_all <- ev %>%
+    group_by(game_id, game_name) %>%
+    summarise(Date = min(as.Date(as.character(Game_date), tryFormats = c("%d-%m-%Y", "%Y-%m-%d", "%d/%m/%Y"), optional = TRUE)),
+              Comp = first(Comp), End = max(expandedMinute), Teams = list(unique(TeamName)), .groups = "drop")
+  comp_abbr <- c("Premier League" = "", "Champions League" = "CL ", "League Cup" = "LC ", "FA Cup" = "FAC ")
+  team_games <- games_all %>%
+    filter(map_lgl(Teams, ~ Match_Home %in% .x)) %>%
+    arrange(Date) %>%
+    mutate(Game_No = row_number(),
+           Opponent = map_chr(Teams, ~ coalesce(setdiff(.x, Match_Home)[1], "?")),
+           Venue = ifelse(startsWith(game_name, paste0(Match_Home, " vs")), "H", "A"),
+           Opp_Abbr = toupper(substr(gsub("[^A-Za-z]", "", Opponent), 1, 3)),
+           Game_Label = paste0(Game_No, ". ", coalesce(unname(comp_abbr[Comp]), ""), Opp_Abbr, " (", Venue, ")"))
+  last_date <- max(team_games$Date, na.rm = TRUE)
+  view_label <- paste0(Match_Home, " | ", label, " | ", nrow(team_games), " games to ", format(last_date, "%d-%m-%Y"))
+
+  # minutes from the substitution (and red card) events
+  apps <- ev %>% filter(!is.na(playerId)) %>% distinct(game_id, TeamName, playerId)
+  sub_on  <- ev %>% filter(type == "SubstitutionOn") %>% group_by(game_id, TeamName, playerId) %>%
+    summarise(On = min(expandedMinute), .groups = "drop")
+  sub_off <- ev %>% filter(type == "SubstitutionOff" | (type == "Card" & cardType_displayName %in% c("Red", "SecondYellow"))) %>%
+    group_by(game_id, TeamName, playerId) %>% summarise(Off = min(expandedMinute), .groups = "drop")
+  player_games <- apps %>%
+    left_join(sub_on, by = c("game_id", "TeamName", "playerId")) %>%
+    left_join(sub_off, by = c("game_id", "TeamName", "playerId")) %>%
+    left_join(games_all %>% select(game_id, End), by = "game_id") %>%
+    mutate(Started = is.na(On), On = coalesce(On, 0), Off = coalesce(Off, End), Minutes = pmax(Off - On, 0))
+
+  # goalkeepers: goals prevented while on the pitch
+  opp_sot <- ev %>% filter(Shot, OTShots == 1) %>%
+    transmute(game_id, Shooter_Team = TeamName, shot_min = expandedMinute, xGOT, Goals)
+  gk_prevented <- player_games %>%
+    inner_join(player_role %>% filter(role == "Goalkeeper") %>% select(TeamName, playerId), by = c("TeamName", "playerId")) %>%
+    inner_join(opp_sot, by = "game_id", relationship = "many-to-many") %>%
+    filter(Shooter_Team != TeamName, shot_min >= On, shot_min <= Off) %>%
+    group_by(game_id, TeamName, playerId) %>%
+    summarise(xGOT_faced = sum(xGOT), Conceded = sum(Goals), SoT_faced = n(), .groups = "drop")
+
+  per_game <- ev %>%
+    filter(!is.na(playerId)) %>%
+    group_by(game_id, TeamName, playerId) %>%
+    summarise(Goals = sum(Goals), Assists = sum(Assists), Shots = sum(Shot), SoT = sum(Shot & OTShots == 1),
+              xG = sum(xG[Shot]), NPxG = sum(NPxG[Shot]), xA = sum(MyxA), xT = sum(TeamxT),
+              EPV = sum(EPVvalue[`outcomeType/value` == 1]),
+              Touches = sum(Touches), Box_Touches = sum(PK_Box_Touches),
+              Passes = sum(Attempted_Passes), Passes_Completed = sum(Successful_Passes),
+              Prog_Passes = sum(Prog_Passes), Final_Third_Passes = sum(Final_Third_Passes),
+              Box_Passes = sum(PK_Box_Passes), Key_Passes = sum(Key_Passes),
+              Crosses = sum(Cross_Passes), Crosses_Completed = sum(Successful_Cross),
+              Prog_Carries = sum(Prog_Carries), Dribbles = sum(Dribbles_Total), Dribbles_Won = sum(Dribbles_Won),
+              Ball_Losses = sum(Dispossessed_Total) + sum(Mis_Control),
+              Tackles_Won = sum(Tackles_Won), Interceptions = sum(Interceptions_Total),
+              Recoveries = sum(Recoverys_Total), Clearances = sum(Clearances_Total),
+              Aerials = sum(Aerial_total), Aerials_Won = sum(Aerial_Won),
+              Duels = sum(Ground_Duels_Total), Duels_Won = sum(Ground_Duels_Won),
+              Fouls = sum(Fouls_Conceeded), Def_Actions = sum(Defensive_Action),
+              Saves = sum(type == "Save"), Claims = sum(type %in% c("Claim", "Punch")),
+              Sweeper = sum(type == "KeeperSweeper"),
+              .groups = "drop") %>%
+    right_join(player_games, by = c("game_id", "TeamName", "playerId")) %>%
+    left_join(gk_prevented, by = c("game_id", "TeamName", "playerId")) %>%
+    mutate(across(where(is.numeric), ~ coalesce(.x, 0)))
+
+  season <- per_game %>%
+    group_by(TeamName, playerId) %>%
+    summarise(Apps = n(), Starts = sum(Started), across(c(Minutes, Goals:Sweeper, xGOT_faced, Conceded, SoT_faced), sum),
+              .groups = "drop") %>%
+    left_join(player_role, by = c("TeamName", "playerId")) %>%
+    left_join(player_shirt, by = c("TeamName", "playerId")) %>%
+    mutate(role = factor(coalesce(role, "Midfielder"), levels = c("Goalkeeper", "Defender", "Midfielder", "Forward")),
+           Prevented = xGOT_faced - Conceded)
+
+  season_metrics <- season %>%
+    transmute(TeamName, playerId, role, Minutes,
+              `Goals` = p90(Goals, Minutes), `NPxG` = p90(NPxG, Minutes), `Shots` = p90(Shots, Minutes),
+              `Shots on target` = p90(SoT, Minutes), `Box touches` = p90(Box_Touches, Minutes),
+              `Assists` = p90(Assists, Minutes), `xA` = p90(xA, Minutes), `Key passes` = p90(Key_Passes, Minutes),
+              `Passes into box` = p90(Box_Passes, Minutes), `Crosses completed` = p90(Crosses_Completed, Minutes),
+              `Passes completed` = p90(Passes_Completed, Minutes), `Pass %` = pct(Passes_Completed, Passes),
+              `Progressive passes` = p90(Prog_Passes, Minutes), `Final-third passes` = p90(Final_Third_Passes, Minutes),
+              `Progressive carries` = p90(Prog_Carries, Minutes), `Dribbles won` = p90(Dribbles_Won, Minutes),
+              `EPV added` = p90(EPV, Minutes), `Ball losses` = p90(Ball_Losses, Minutes),
+              `Tackles won` = p90(Tackles_Won, Minutes), `Interceptions` = p90(Interceptions, Minutes),
+              `Recoveries` = p90(Recoveries, Minutes), `Clearances` = p90(Clearances, Minutes),
+              `Aerials won` = p90(Aerials_Won, Minutes), `Aerial %` = pct(Aerials_Won, Aerials),
+              `Ground duel %` = pct(Duels_Won, Duels), `Fouls` = p90(Fouls, Minutes),
+              `Saves` = p90(Saves, Minutes), `Goals prevented` = p90(Prevented, Minutes),
+              `Save %` = pct(SoT_faced - Conceded, SoT_faced), `Claims & punches` = p90(Claims, Minutes),
+              `Sweeper actions` = p90(Sweeper, Minutes)) %>%
+    pivot_longer(-c(TeamName, playerId, role, Minutes), names_to = "Metric", values_to = "Value") %>%
+    left_join(metric_def, by = "Metric") %>%
+    filter(roles == "all" | (roles == "gk") == (role == "Goalkeeper"))
+
+  # peers: same role, in this view's games, with enough minutes for per-90 numbers to mean something
+  max_team_games <- max(table(unlist(games_all$Teams)))
+  min_minutes <- max(90, round(0.25 * 90 * max_team_games))
+  peers <- season_metrics %>% filter(Minutes >= min_minutes, !is.na(Value))
+  season_metrics <- season_metrics %>%
+    group_by(role, Metric) %>%
+    mutate(Percentile = vapply(seq_along(Value), function(i)
+                          pct_rank(Value[i], peers$Value[peers$role == role[1] & peers$Metric == Metric[1]], higher_better[1]),
+                          numeric(1))) %>%
+    ungroup()
+  n_peers <- peers %>% distinct(role, TeamName, playerId) %>% count(role)
+
+  squad <- season %>% filter(TeamName == Match_Home) %>% arrange(role, desc(Minutes))
+  list(label = label, id = gsub("[^a-z0-9]+", "-", tolower(label)), view_label = view_label,
+       team_games = team_games, per_game = per_game, season = season, season_metrics = season_metrics,
+       squad = squad, squad_metrics = season_metrics %>% filter(TeamName == Match_Home),
+       pairs = ev %>% filter(TeamName == Match_Home, !is.na(Receiver)) %>% count(Passer = playerId, Receiver, name = "Passes"),
+       ev_club = ev %>% filter(TeamName == Match_Home),
+       min_minutes = min_minutes, n_peers = n_peers, n_teams = n_distinct(unlist(games_all$Teams)))
+}
+
+club_comps <- intersect(names(databases), unique(ev_all$Comp[ev_all$TeamName == Match_Home]))
+views <- c(list(build_view(ev_all, "All competitions")),
+           lapply(club_comps, function(cp) build_view(ev_all %>% filter(Comp == cp), cp)))
+if (length(club_comps) == 1) views <- views[2]      # league only: no need for an "all" view
+views[[1]]$first <- TRUE
+names(views) <- vapply(views, `[[`, "", "id")
+V_all <- views[[1]]
+Season_Label <- V_all$view_label
 
 # ---- shared plot bits -----------------------------------------------------
 My_caption <- "X @Barts78 | Bluesky @barts78 | GitHub Barts78 | Data: Opta"
@@ -304,8 +372,6 @@ theme_pp <- function() {
 }
 pitch <- function() list(annotate_pitch(dimensions = pitch_opta, fill = "#E5E5E5", colour = "#454545"),
                          theme_pitch(), coord_flip(xlim = c(0, 100), ylim = c(100, 0)))
-pct_cols <- c("#E8846B", "#F6C9B9", "#F7F7F7", "#BBD0F5", "#7FA2EE")
-pct_colour <- scales::col_numeric(pct_cols, domain = c(0, 100))
 fig_dir <- function() {
   d <- knitr::opts_current$get("fig.path")
   if (is.null(d) || !nzchar(d)) d <- "figure-html/"
@@ -317,13 +383,27 @@ save_fig <- function(p, stub, width, height, dpi = 150) {
   suppressWarnings(suppressMessages(ggsave(f, p, width = width, height = height, dpi = dpi, bg = "snow")))
   f
 }
+img_tag <- function(f) if (is.na(f)) p(class = "cv-note", "Not enough data for this chart.") else tags$img(src = f, class = "cv-img", loading = "lazy")
 # one raw-HTML block with no blank lines (a blank line would end Quarto's HTML block)
 as_block <- function(tags) {
   rt <- htmltools::renderTags(tags)
   htmltools::attachDependencies(htmltools::HTML(gsub("\n[[:space:]]*\n", "\n", rt$html)), rt$dependencies)
 }
+# competition buttons (all cards on the page switch together) and one panel per view
+view_block <- function(make, extra = NULL) {
+  bar <- if (length(views) > 1) div(class = "cv-bar", lapply(views, function(v)
+    tags$button(class = paste("cv-btn", if (isTRUE(v$first)) "active"), `data-view` = v$id, v$label)))
+  panels <- lapply(views, function(v) div(class = "cv-panel", `data-view` = v$id,
+                                          style = if (!isTRUE(v$first)) "display:none;", make(v)))
+  as_block(div(style = club_vars, extra, bar, panels))
+}
 short_name <- function(v) { p <- strsplit(v, " "); vapply(p, function(z) if (length(z) > 1) paste(substr(z[1], 1, 1), paste(z[-1], collapse = " "), sep = ". ") else z, "") }
 f1 <- function(v) ifelse(is.na(v), "-", format(round(v, 2), nsmall = 2))
+stub <- function(x) gsub("[^A-Za-z0-9]+", "-", iconv(x, to = "ASCII//TRANSLIT"))
+pct_cell <- function(p, low_minutes = FALSE) {
+  if (low_minutes || is.na(p)) return(list(color = "#999999"))
+  list(background = pct_colour(p), color = if (p >= 70) Color_Home_Text else "#1A1A1A", fontWeight = if (p >= 80) 600 else 400)
+}
 ```
 
 # Squad
@@ -332,70 +412,72 @@ f1 <- function(v) ifelse(is.na(v), "-", format(round(v, 2), nsmall = 2))
 
 ```{r}
 #| content: valuebox
-#| title: Players used
-list(icon = "people", color = "primary", value = nrow(squad))
+#| title: Players used (all competitions)
+list(icon = "people", color = "primary", value = nrow(V_all$squad))
 ```
 
 ```{r}
 #| content: valuebox
 #| title: Top scorer
-top <- squad %>% arrange(desc(Goals), desc(xG)) %>% slice(1)
+top <- V_all$squad %>% arrange(desc(Goals), desc(xG)) %>% slice(1)
 list(icon = "dribbble", color = "primary", value = paste0(short_name(top$playerId), " (", top$Goals, ")"))
 ```
 
 ```{r}
 #| content: valuebox
 #| title: Most xG + xA
-top <- squad %>% arrange(desc(xG + xA)) %>% slice(1)
+top <- V_all$squad %>% arrange(desc(xG + xA)) %>% slice(1)
 list(icon = "bullseye", color = "primary", value = paste0(short_name(top$playerId), " (", f1(top$xG + top$xA), ")"))
 ```
 
 ```{r}
 #| content: valuebox
 #| title: Most minutes
-top <- squad %>% arrange(desc(Minutes)) %>% slice(1)
+top <- V_all$squad %>% arrange(desc(Minutes)) %>% slice(1)
 list(icon = "stopwatch", color = "primary", value = paste0(short_name(top$playerId), " (", round(top$Minutes), ")"))
 ```
 
 ## Row
 
 ```{r}
-#| title: Squad Table (search, sort; colours = percentile against league players in the same role)
+#| title: Squad Table (search, sort; shading = percentile against players in the same role)
 
 sq_cols <- c("NPxG", "xA", "Shots", "Key passes", "Progressive passes", "Progressive carries",
              "EPV added", "Tackles won", "Interceptions", "Recoveries", "Aerials won", "Pass %")
-sq_val <- squad_metrics %>% filter(Metric %in% sq_cols) %>%
-  select(playerId, Metric, Value) %>% pivot_wider(names_from = Metric, values_from = Value)
-sq_pct <- squad_metrics %>% filter(Metric %in% sq_cols) %>%
-  select(playerId, Metric, Percentile) %>% pivot_wider(names_from = Metric, values_from = Percentile)
-sq <- squad %>%
-  transmute(Shirt, Player = playerId, Role = as.character(role), Apps, Starts, Mins = round(Minutes),
-            G = Goals, A = Assists, `xG tot` = round(xG, 2), `xA tot` = round(xA, 2)) %>%
-  left_join(sq_val, by = c("Player" = "playerId")) %>%
-  select(Shirt, Player, Role, Apps, Starts, Mins, G, A, `xG tot`, `xA tot`, any_of(sq_cols))
-pct_style <- function(col) {
-  function(value, index) {
-    p <- sq_pct[[col]][match(sq$Player[index], sq_pct$playerId)]
-    if (is.na(p) || sq$Mins[index] < min_minutes) return(list(color = "#999999"))
-    list(background = pct_colour(p), fontWeight = if (p >= 80) 600 else 400)
-  }
+squad_table <- function(v) {
+  sq_val <- v$squad_metrics %>% filter(Metric %in% sq_cols) %>%
+    select(playerId, Metric, Value) %>% pivot_wider(names_from = Metric, values_from = Value)
+  sq_pct <- v$squad_metrics %>% filter(Metric %in% sq_cols) %>%
+    select(playerId, Metric, Percentile) %>% pivot_wider(names_from = Metric, values_from = Percentile)
+  sq <- v$squad %>%
+    transmute(Shirt, Player = playerId, Role = as.character(role), Apps, Starts, Mins = round(Minutes),
+              G = Goals, A = Assists, `xG tot` = round(xG, 2), `xA tot` = round(xA, 2)) %>%
+    left_join(sq_val, by = c("Player" = "playerId")) %>%
+    select(Shirt, Player, Role, Apps, Starts, Mins, G, A, `xG tot`, `xA tot`, any_of(sq_cols))
+  pc <- intersect(sq_cols, names(sq))
+  col_defs <- c(
+    list(Player = colDef(minWidth = 160, sticky = "left", style = list(fontWeight = 600)),
+         Shirt = colDef(name = "#", width = 45), Role = colDef(minWidth = 110),
+         Apps = colDef(width = 60), Starts = colDef(width = 65), Mins = colDef(width = 65),
+         G = colDef(width = 45), A = colDef(width = 45),
+         `xG tot` = colDef(name = "xG", width = 60), `xA tot` = colDef(name = "xA", width = 60)),
+    setNames(lapply(pc, function(cl) {
+      force(cl)
+      colDef(name = paste0(cl, ifelse(cl == "Pass %", "", " /90")), minWidth = 95, na = "-",
+             format = colFormat(digits = ifelse(cl == "Pass %", 1, 2)),
+             style = function(value, index) pct_cell(sq_pct[[cl]][match(sq$Player[index], sq_pct$playerId)],
+                                                     sq$Mins[index] < v$min_minutes))
+    }), pc))
+  div(class = "rt-wrap",
+    reactable(sq, columns = col_defs, searchable = TRUE, striped = TRUE, highlight = TRUE, compact = TRUE,
+              defaultPageSize = 40, defaultSorted = list(Mins = "desc"),
+              theme = reactableTheme(headerStyle = list(background = Color_Home, color = Color_Home_Text))),
+    p(class = "cv-note",
+      paste0(v$view_label, ". Per-90 shading: percentile against players in the same role in ", v$label, " (",
+             v$n_teams, " clubs) with ", v$min_minutes, "+ minutes; darker = higher, grey text = too few minutes. ",
+             "Minutes from the substitution and red-card events.")))
 }
-col_defs <- c(
-  list(Player = colDef(minWidth = 160, sticky = "left", style = list(fontWeight = 600)),
-       Shirt = colDef(name = "#", width = 45), Role = colDef(minWidth = 110),
-       Apps = colDef(width = 60), Starts = colDef(width = 65), Mins = colDef(width = 65),
-       G = colDef(width = 45), A = colDef(width = 45), `xG tot` = colDef(name = "xG", width = 60), `xA tot` = colDef(name = "xA", width = 60)),
-  setNames(lapply(intersect(sq_cols, names(sq)), function(cl)
-    colDef(name = paste0(cl, ifelse(cl == "Pass %", "", " /90")), minWidth = 95,
-           format = colFormat(digits = ifelse(cl == "Pass %", 1, 2)), style = pct_style(cl), na = "-")),
-    intersect(sq_cols, names(sq))))
-div(class = "rt-wrap",
-  reactable(sq, columns = col_defs, searchable = TRUE, striped = TRUE, highlight = TRUE, compact = TRUE,
-            defaultPageSize = 40, defaultSorted = list(Mins = "desc"), groupBy = NULL,
-            theme = reactableTheme(headerStyle = list(background = Color_Home, color = Color_Home_Text))),
-  p(style = "font-size:.75rem;color:#555;margin:.4rem;",
-    paste0(Season_Label, ". Per-90 colours: percentile against ", Competition, " players in the same role with ",
-           min_minutes, "+ minutes (blue = high, red = low; grey = too few minutes). Minutes from the substitution and red-card events.")))
+view_block(squad_table)
 ```
 
 ## Row
@@ -403,80 +485,86 @@ div(class = "rt-wrap",
 ```{r}
 #| title: Minutes by Game
 #| label: minutes grid
-#| fig-width: 12
-#| fig-height: 7
-#| fig-dpi: 200
 
-mg <- per_game %>% filter(TeamName == Match_Home) %>%
-  left_join(team_games %>% select(game_name, Game_No, Game_Label), by = "game_name") %>%
-  left_join(squad %>% select(playerId, role), by = "playerId")
-ord <- squad %>% arrange(role, Minutes) %>% pull(playerId)
-mg <- mg %>% mutate(Player = factor(playerId, levels = ord),
-                    Game_Label = factor(Game_Label, levels = team_games$Game_Label))
-ggplot(mg, aes(Game_Label, Player)) +
-  geom_tile(aes(fill = Minutes), colour = "white", linewidth = 0.6) +
-  geom_text(aes(label = round(Minutes), fontface = ifelse(Started, "bold", "italic")), size = 2.3,
-            colour = ifelse(mg$Minutes > 55, Color_Home_Text, "black")) +
-  scale_fill_gradient(low = "#F2E6E6", high = Color_Home, limits = c(0, NA), name = "Minutes") +
-  facet_grid(role ~ ., scales = "free_y", space = "free_y") +
-  scale_x_discrete(position = "top") +
-  labs(title = paste0(Match_Home, " Minutes by Game"),
-       subtitle = paste0(Season_Label, " | bold = started, italic = came on"),
-       x = NULL, y = NULL, caption = My_caption) +
-  theme_pp() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 0, size = 6.5), axis.text.y = element_text(size = 7),
-        panel.grid = element_blank(), strip.text = element_text(face = "bold", colour = Color_Home_Text),
-        strip.background = element_rect(fill = Color_Home, colour = NA))
+minutes_plot <- function(v) {
+  mg <- v$per_game %>% filter(TeamName == Match_Home) %>%
+    left_join(v$team_games %>% select(game_id, Game_No, Game_Label), by = "game_id") %>%
+    left_join(v$squad %>% select(playerId, role), by = "playerId")
+  ord <- v$squad %>% arrange(role, Minutes) %>% pull(playerId)
+  role_short <- c(Goalkeeper = "GK", Defender = "DEF", Midfielder = "MID", Forward = "FWD")
+  mg <- mg %>% mutate(role = factor(role_short[as.character(role)], levels = role_short),
+                      Player = factor(playerId, levels = ord),
+                      Game_Label = factor(Game_Label, levels = v$team_games$Game_Label))
+  ggplot(mg, aes(Game_Label, Player)) +
+    geom_tile(aes(fill = Minutes), colour = "white", linewidth = 0.6) +
+    geom_text(aes(label = round(Minutes), fontface = ifelse(Started, "bold", "italic")), size = 2.3,
+              colour = ifelse(mg$Minutes > 55, Color_Home_Text, "black")) +
+    scale_fill_gradient(low = "#F2F2F2", high = Color_Home, limits = c(0, NA), name = "Minutes") +
+    facet_grid(role ~ ., scales = "free_y", space = "free_y") +
+    labs(title = paste0(Match_Home, " Minutes by Game"),
+         subtitle = paste0(v$view_label, " | bold = started, italic = came on"),
+         x = NULL, y = NULL, caption = My_caption) +
+    theme_pp() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 6.5), axis.text.y = element_text(size = 7),
+          panel.grid = element_blank(), strip.text = element_text(face = "bold", colour = Color_Home_Text),
+          strip.background = element_rect(fill = Color_Home, colour = NA))
+}
+view_block(function(v) {
+  w <- max(8, min(16, 4 + 0.35 * nrow(v$team_games)))
+  img_tag(tryCatch(save_fig(minutes_plot(v), paste0("minutes-", v$id), w, 7, dpi = 170), error = function(e) NA))
+})
 ```
 
 # Player Profiles
 
 ```{r}
 #| include: false
-# percentile chart, game-by-game chart and four pitch maps for every squad player
-profile_players <- squad %>% filter(Minutes > 0) %>% arrange(role, desc(Minutes))
+# percentile chart, game-by-game chart and four pitch maps for every squad player, per view
 
-percentile_plot <- function(pid) {
-  d <- squad_metrics %>% filter(playerId == pid) %>%
+percentile_plot <- function(v, pid) {
+  d <- v$squad_metrics %>% filter(playerId == pid) %>%
     mutate(Metric = factor(Metric, levels = rev(metric_def$Metric)),
            Group = factor(Group, levels = unique(metric_def$Group)),
            lab = ifelse(Metric %in% c("Pass %", "Aerial %", "Ground duel %", "Save %"),
                         paste0(round(Value, 1), "%"), format(round(Value, 2), nsmall = 2)))
   role <- as.character(d$role[1]); mins <- round(d$Minutes[1])
-  low <- mins < min_minutes
+  low <- mins < v$min_minutes
+  np <- v$n_peers$n[v$n_peers$role == role]; if (!length(np)) np <- 0
   ggplot(d, aes(y = Metric)) +
     geom_col(aes(x = 100), fill = "grey92", width = 0.75) +
     geom_col(aes(x = Percentile, fill = Percentile), width = 0.75, colour = "#454545", linewidth = 0.2) +
     geom_vline(xintercept = 50, colour = "grey50", linetype = "dashed", linewidth = 0.3) +
     geom_text(aes(x = 101, label = lab), hjust = 0, size = 2.4) +
-    geom_text(aes(x = pmax(Percentile, 0) - 1, label = Percentile), hjust = 1, size = 2.2, colour = "black") +
+    geom_text(aes(x = pmax(Percentile, 0) - 1, label = Percentile,
+                  colour = ifelse(coalesce(Percentile, 0) >= 70, "dark", "light")), hjust = 1, size = 2.2) +
+    scale_colour_manual(values = c(dark = Color_Home_Text, light = "black"), guide = "none") +
     scale_fill_gradientn(colours = pct_cols, limits = c(0, 100), guide = "none") +
     scale_x_continuous(limits = c(0, 118), breaks = c(0, 25, 50, 75, 100), expand = c(0, 0)) +
     facet_grid(Group ~ ., scales = "free_y", space = "free_y") +
-    labs(title = paste0(pid, " | Percentiles vs League ", role, "s"),
-         subtitle = paste0(Season_Label, " | ", mins, " mins | per 90 unless %; bar = percentile against ",
-                           n_peers$n[n_peers$role == role], " ", tolower(role), "s with ", min_minutes, "+ mins",
+    labs(title = paste0(pid, " | Percentiles vs ", role, "s (", v$label, ")"),
+         subtitle = paste0(v$view_label, " | ", mins, " mins | per 90 unless %; bar = percentile against ",
+                           np, " ", tolower(role), "s with ", v$min_minutes, "+ mins",
                            if (low) " | FEW MINUTES: read with care" else ""),
-         x = "Percentile (right of the dashed line = above the league median)", y = NULL, caption = My_caption) +
+         x = "Percentile (right of the dashed line = above the median)", y = NULL, caption = My_caption) +
     theme_pp() +
     theme(strip.text = element_text(face = "bold", colour = Color_Home_Text, size = 7),
           strip.background = element_rect(fill = Color_Home, colour = NA),
           panel.grid.major.y = element_blank())
 }
 
-trend_plot <- function(pid) {
-  d <- per_game %>% filter(TeamName == Match_Home, playerId == pid) %>%
-    right_join(team_games %>% select(game_name, Game_No, Game_Label), by = "game_name") %>%
-    mutate(Minutes = coalesce(Minutes, 0), Game_Label = factor(Game_Label, levels = team_games$Game_Label))
+trend_plot <- function(v, pid) {
+  d <- v$per_game %>% filter(TeamName == Match_Home, playerId == pid) %>%
+    right_join(v$team_games %>% select(game_id, Game_No, Game_Label), by = "game_id") %>%
+    mutate(Minutes = coalesce(Minutes, 0), Game_Label = factor(Game_Label, levels = v$team_games$Game_Label))
   long <- d %>% select(Game_Label, xG, xA) %>% pivot_longer(-Game_Label) %>% mutate(value = coalesce(value, 0))
   ymax <- max(0.5, max(coalesce(d$xG, 0) + coalesce(d$xA, 0)))
   ggplot() +
-    geom_col(data = d, aes(Game_Label, ymax * Minutes / 100), fill = "grey88", width = 0.9) +
+    geom_col(data = d, aes(Game_Label, ymax * Minutes / 100), fill = "grey90", width = 0.9) +
     geom_col(data = long, aes(Game_Label, value, fill = name), width = 0.55, colour = "#454545", linewidth = 0.2) +
     geom_point(data = d %>% filter(coalesce(Goals, 0) > 0), aes(Game_Label, ymax * 1.08), shape = 21, fill = "white", size = 2.6) +
     geom_text(data = d %>% filter(coalesce(Goals, 0) > 0), aes(Game_Label, ymax * 1.08, label = Goals), size = 2) +
     geom_text(data = d, aes(Game_Label, -ymax * 0.05, label = round(Minutes)), size = 2, colour = "grey40") +
-    scale_fill_manual(values = c(xG = Color_Home, xA = "grey45"), name = NULL) +
+    scale_fill_manual(values = c(xG = Color_Home, xA = Color_Dark), name = NULL) +
     scale_y_continuous(expand = expansion(mult = c(0.08, 0.05))) +
     labs(title = paste0(pid, " | Game by Game"),
          subtitle = "Bars = xG and xA, grey background = minutes (number under each game), white dot = goals",
@@ -484,8 +572,8 @@ trend_plot <- function(pid) {
     theme_pp() + theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 6))
 }
 
-pitch_plot <- function(pid) {
-  d <- ev %>% filter(TeamName == Match_Home, playerId == pid)
+pitch_plot <- function(v, pid) {
+  d <- v$ev_club %>% filter(playerId == pid)
   t <- d %>% filter(Touches == 1, !is.na(x))
   p_touch <- ggplot(t, aes(x, y)) + pitch() +
     { if (nrow(t) >= 10) stat_density_2d(aes(fill = after_stat(level)), geom = "polygon", alpha = 0.55, bins = 8) } +
@@ -495,7 +583,7 @@ pitch_plot <- function(pid) {
   s <- d %>% filter(Shot, !is.na(x)) %>% mutate(Outcome = ifelse(Goals == 1, "Goal", ifelse(OTShots == 1, "On target", "Off target / blocked")))
   p_shot <- ggplot(s, aes(x, y)) + pitch() +
     geom_point(aes(size = xG, fill = Outcome), shape = 21, colour = "black", alpha = 0.85) +
-    scale_fill_manual(values = c(Goal = Color_Home, `On target` = "#0000FF", `Off target / blocked` = "grey70"), name = NULL, drop = FALSE) +
+    scale_fill_manual(values = c(Goal = Color_Home, `On target` = Color_Dark, `Off target / blocked` = "grey80"), name = NULL, drop = FALSE) +
     scale_size_continuous(range = c(1, 6), limits = c(0, 1), guide = "none") +
     labs(title = paste0("Shots (", nrow(s), ", ", f1(sum(s$xG)), " xG)")) +
     theme(legend.position = "bottom", legend.text = element_text(size = 6))
@@ -505,7 +593,7 @@ pitch_plot <- function(pid) {
   p_pass <- ggplot(pp) + pitch() +
     geom_segment(aes(x = x, y = y, xend = finalX, yend = finalY, colour = Kind),
                  arrow = arrow(length = unit(0.08, "cm")), linewidth = 0.35, alpha = 0.8) +
-    scale_colour_manual(values = c(`Key pass` = Color_Home, `Progressive / into box` = "#0000FF"), name = NULL) +
+    scale_colour_manual(values = c(`Key pass` = Color_Home, `Progressive / into box` = Color_Dark), name = NULL) +
     labs(title = paste0("Progressive, box and key passes (", nrow(pp), ")")) +
     theme(legend.position = "bottom", legend.text = element_text(size = 6))
   da <- d %>% filter(!is.na(x), Tackles_Won == 1 | Interceptions_Total == 1 | Recoverys_Total == 1 |
@@ -514,13 +602,13 @@ pitch_plot <- function(pid) {
                               Aerial_Won == 1 ~ "Aerial won", Clearances_Total == 1 ~ "Clearance", TRUE ~ "Recovery"))
   p_def <- ggplot(da, aes(x, y)) + pitch() +
     geom_point(aes(fill = Action), shape = 21, colour = "black", size = 1.6, alpha = 0.85) +
-    scale_fill_manual(values = c(`Tackle won` = Color_Home, Interception = "#0000FF", `Aerial won` = "gold2",
-                                 Clearance = "grey40", Recovery = "grey85"), name = NULL) +
+    scale_fill_manual(values = c(`Tackle won` = Color_Home, Interception = Color_Dark, `Aerial won` = tint(0.45),
+                                 Clearance = "grey60", Recovery = "white"), name = NULL) +
     labs(title = paste0("Defensive actions (", nrow(da), ")")) +
     theme(legend.position = "bottom", legend.text = element_text(size = 6))
   (p_touch | p_shot | p_pass | p_def) +
-    plot_annotation(title = paste0(pid, " | Season Maps"),
-                    subtitle = paste0(Season_Label, " | attacking upwards"), caption = My_caption,
+    plot_annotation(title = paste0(pid, " | Maps (", v$label, ")"),
+                    subtitle = paste0(v$view_label, " | attacking upwards"), caption = My_caption,
                     theme = theme(plot.title = element_text(face = "bold", size = 11),
                                   plot.subtitle = element_text(size = 7.5, colour = "grey30"),
                                   plot.caption = element_text(size = 6, colour = "grey40"))) &
@@ -532,34 +620,43 @@ pitch_plot <- function(pid) {
 ## Row
 
 ```{r}
-#| title: Player Profile (pick a player)
+#| title: Player Profile (pick a player and a competition)
 
-stub <- function(pid) gsub("[^A-Za-z0-9]+", "-", iconv(pid, to = "ASCII//TRANSLIT"))
-panels <- lapply(seq_len(nrow(profile_players)), function(i) {
-  pl <- profile_players[i, ]; pid <- pl$playerId
-  f_pct <- tryCatch(save_fig(percentile_plot(pid), paste0("pp-", stub(pid), "-pct"), 7, 7.5), error = function(e) NA)
-  f_trd <- tryCatch(save_fig(trend_plot(pid), paste0("pp-", stub(pid), "-trend"), 7, 3.6), error = function(e) NA)
-  f_map <- tryCatch(save_fig(pitch_plot(pid), paste0("pp-", stub(pid), "-maps"), 13, 4.6), error = function(e) NA)
-  img <- function(f) if (is.na(f)) p("Not enough data for this chart.") else tags$img(src = f, loading = "lazy")
-  chips <- c(as.character(pl$role), paste0("#", coalesce(as.character(pl$Shirt), "-")),
-             paste0(pl$Apps, " apps (", pl$Starts, " starts)"), paste0(round(pl$Minutes), " mins"),
-             paste0(pl$Goals, " goals"), paste0(pl$Assists, " assists"),
-             paste0(f1(pl$xG), " xG"), paste0(f1(pl$xA), " xA"))
-  div(class = "pp-panel", `data-player` = stub(pid), style = if (i > 1) "display:none;" else NULL,
-      div(class = "pp-head", lapply(chips, function(ch) span(class = "pp-chip", ch))),
-      div(class = "pp-grid", div(img(f_pct)), div(img(f_trd))),
-      div(style = "margin-top:.6rem;", img(f_map)))
-})
+profile_players <- V_all$squad %>% filter(Minutes > 0) %>% arrange(role, desc(Minutes))
+first_player <- profile_players %>% filter(role != "Goalkeeper") %>% slice_max(Minutes, n = 1, with_ties = FALSE) %>% pull(playerId)
+if (!length(first_player)) first_player <- profile_players$playerId[1]
+
+panels <- list()
+for (v in views) for (pid in profile_players$playerId) {
+  pl <- v$squad %>% filter(playerId == pid)
+  show <- isTRUE(v$first) && pid == first_player
+  body <- if (!nrow(pl) || pl$Minutes <= 0) {
+    p(class = "cv-note", paste0(pid, " has not played in ", v$label, " this season."))
+  } else {
+    f_pct <- tryCatch(save_fig(percentile_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-pct"), 7, 7.5, dpi = 130), error = function(e) NA)
+    f_trd <- tryCatch(save_fig(trend_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-trend"), 7, 3.6, dpi = 130), error = function(e) NA)
+    f_map <- tryCatch(save_fig(pitch_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-maps"), 13, 4.6, dpi = 130), error = function(e) NA)
+    chips <- c(as.character(pl$role), paste0("#", coalesce(as.character(pl$Shirt), "-")),
+               paste0(pl$Apps, " apps (", pl$Starts, " starts)"), paste0(round(pl$Minutes), " mins"),
+               paste0(pl$Goals, " goals"), paste0(pl$Assists, " assists"),
+               paste0(f1(pl$xG), " xG"), paste0(f1(pl$xA), " xA"))
+    tagList(div(class = "pp-head", lapply(chips, function(ch) span(class = "pp-chip", ch))),
+            div(class = "pp-grid", div(img_tag(f_pct)), div(img_tag(f_trd))),
+            div(style = "margin-top:.6rem;", img_tag(f_map)))
+  }
+  panels[[length(panels) + 1]] <- div(class = "cv-panel", `data-view` = v$id, `data-player` = stub(pid),
+                                      style = if (!show) "display:none;", body)
+}
 opts <- lapply(split(profile_players, profile_players$role, drop = TRUE), function(g)
   tags$optgroup(label = as.character(g$role[1]),
-                lapply(g$playerId, function(pid) tags$option(value = stub(pid), pid))))
-as_block(div(id = "pp", class = "pp-wrap", style = paste0("--pp-col:", Color_Home, ";--pp-txt:", Color_Home_Text, ";"),
+                lapply(g$playerId, function(pid) tags$option(value = stub(pid), selected = if (pid == first_player) NA, pid))))
+bar <- if (length(views) > 1) div(class = "cv-bar", lapply(views, function(v)
+  tags$button(class = paste("cv-btn", if (isTRUE(v$first)) "active"), `data-view` = v$id, v$label)))
+as_block(div(id = "pp", class = "pp-wrap", style = club_vars,
   tags$label(`for` = "pp-select", style = "font-weight:600;margin-right:.5rem;", "Player:"),
   tags$select(id = "pp-select", unname(opts)),
-  panels,
-  tags$script(HTML("(function(){var s=document.getElementById('pp-select');if(!s)return;
-    s.addEventListener('change',function(){document.querySelectorAll('#pp .pp-panel').forEach(function(p){
-      p.style.display=(p.getAttribute('data-player')===s.value)?'':'none';});});})();"))))
+  div(style = "margin-top:.5rem;", bar),
+  panels))
 ```
 
 # Passing
@@ -568,26 +665,28 @@ as_block(div(id = "pp", class = "pp-wrap", style = paste0("--pp-col:", Color_Hom
 
 ```{r}
 #| title: Who Passes to Whom
-#| fig-width: 10
-#| fig-height: 8
-#| fig-dpi: 200
 
-top_pl <- squad %>% filter(role != "Goalkeeper" | Minutes == max(Minutes[role == "Goalkeeper"])) %>%
-  slice_max(Minutes, n = 16, with_ties = FALSE) %>% arrange(role, desc(Minutes)) %>% pull(playerId)
-pairs <- ev %>% filter(TeamName == Match_Home, !is.na(Receiver)) %>% count(Passer = playerId, Receiver, name = "Passes")
-pm <- pairs %>% filter(Passer %in% top_pl, Receiver %in% top_pl) %>%
-  mutate(Passer = factor(short_name(Passer), levels = rev(short_name(top_pl))),
-         Receiver = factor(short_name(Receiver), levels = short_name(top_pl)))
-ggplot(pm, aes(Receiver, Passer, fill = Passes)) +
-  geom_tile(colour = "white", linewidth = 0.5) +
-  geom_text(aes(label = Passes), size = 2.3, colour = ifelse(pm$Passes > 0.55 * max(pm$Passes), Color_Home_Text, "black")) +
-  scale_fill_gradient(low = "#F5EFEF", high = Color_Home, name = "Completed passes") +
-  scale_x_discrete(position = "top") +
-  labs(title = paste0(Match_Home, ": Who Passes to Whom"),
-       subtitle = paste0(Season_Label, " | completed passes from the row player to the column player (top 16 by minutes)"),
-       x = NULL, y = "Passer", caption = My_caption) +
-  theme_pp() + theme(legend.position = "bottom") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 0, size = 7), axis.text.y = element_text(size = 7), panel.grid = element_blank())
+pass_matrix <- function(v) {
+  sq <- v$squad
+  gk_top <- sq %>% filter(role == "Goalkeeper") %>% slice_max(Minutes, n = 1, with_ties = FALSE)
+  top_pl <- bind_rows(gk_top, sq %>% filter(role != "Goalkeeper")) %>%
+    slice_max(Minutes, n = 16, with_ties = FALSE) %>% arrange(role, desc(Minutes)) %>% pull(playerId)
+  pm <- v$pairs %>% filter(Passer %in% top_pl, Receiver %in% top_pl) %>%
+    mutate(Passer = factor(short_name(Passer), levels = rev(short_name(top_pl))),
+           Receiver = factor(short_name(Receiver), levels = short_name(top_pl)))
+  ggplot(pm, aes(Receiver, Passer, fill = Passes)) +
+    geom_tile(colour = "white", linewidth = 0.5) +
+    geom_text(aes(label = Passes), size = 2.3, colour = ifelse(pm$Passes > 0.55 * max(pm$Passes), Color_Home_Text, "black")) +
+    scale_fill_gradient(low = "#F2F2F2", high = Color_Home, name = "Completed passes") +
+    labs(title = paste0(Match_Home, ": Who Passes to Whom"),
+         subtitle = paste0(v$view_label, " | completed passes from the row player to the column player (top 16 by minutes)"),
+         x = "Receiver", y = "Passer", caption = My_caption) +
+    theme_pp() +
+    theme(legend.position = "bottom",
+          axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 7), axis.text.y = element_text(size = 7),
+          panel.grid = element_blank())
+}
+view_block(function(v) img_tag(tryCatch(save_fig(pass_matrix(v), paste0("passmatrix-", v$id), 10, 8.5, dpi = 170), error = function(e) NA)))
 ```
 
 ## Row
@@ -595,75 +694,88 @@ ggplot(pm, aes(Receiver, Passer, fill = Passes)) +
 ```{r}
 #| title: Top Passing Pairs
 
-pp_tab <- pairs %>%
-  mutate(a = pmin(Passer, Receiver), b = pmax(Passer, Receiver)) %>%
-  group_by(a, b) %>%
-  summarise(Total = sum(Passes),
-            `A to B` = sum(Passes[Passer == a]), `B to A` = sum(Passes[Passer == b]), .groups = "drop") %>%
-  slice_max(Total, n = 15, with_ties = FALSE) %>%
-  transmute(`Player A` = a, `Player B` = b, `A to B`, `B to A`, Total)
-gt(pp_tab) %>%
-  tab_header(title = md(paste0("**", Match_Home, " Top Passing Pairs**")), subtitle = Season_Label) %>%
-  gt_plt_bar(column = Total, keep_column = TRUE, color = Color_Home, width = 35) %>%
-  cols_label(DUPE_COLUMN_PLT = "") %>%
-  tab_options(column_labels.background.color = "#DBDBDB", table.width = "100%", heading.align = "left") %>%
-  tab_source_note("Completed passes where the next action is by the receiving team-mate. Data: Opta")
+view_block(function(v) {
+  pp_tab <- v$pairs %>%
+    mutate(a = pmin(Passer, Receiver), b = pmax(Passer, Receiver)) %>%
+    group_by(a, b) %>%
+    summarise(Total = sum(Passes),
+              `A to B` = sum(Passes[Passer == a]), `B to A` = sum(Passes[Passer == b]), .groups = "drop") %>%
+    slice_max(Total, n = 15, with_ties = FALSE) %>%
+    transmute(`Player A` = a, `Player B` = b, `A to B`, `B to A`, Total)
+  gt(pp_tab) %>%
+    tab_header(title = md(paste0("**", Match_Home, " Top Passing Pairs**")), subtitle = v$view_label) %>%
+    gt_plt_bar(column = Total, keep_column = TRUE, color = Color_Home, width = 35) %>%
+    cols_label(DUPE_COLUMN_PLT = "") %>%
+    tab_options(column_labels.background.color = "#DBDBDB", table.width = "100%", heading.align = "left") %>%
+    tab_source_note("Completed passes where the next action is by the receiving team-mate. Data: Opta") %>%
+    tab_options(table.background.color = "white") %>%
+    as_raw_html(inline_css = TRUE) %>% HTML() %>% div(class = "rt-wrap")
+})
 ```
 
 ```{r}
 #| title: Who Each Player Passes To Most
 
-fav <- pairs %>% group_by(Passer) %>%
-  summarise(Completed = sum(Passes), `Favourite target` = Receiver[which.max(Passes)],
-            `Share %` = round(100 * max(Passes) / sum(Passes), 1), .groups = "drop") %>%
-  inner_join(squad %>% select(Passer = playerId, role, Minutes), by = "Passer") %>%
-  arrange(role, desc(Minutes)) %>%
-  transmute(Player = Passer, Role = as.character(role), Completed, `Favourite target`, `Share %`)
-gt(fav, groupname_col = "Role") %>%
-  tab_header(title = md("**Favourite Passing Targets**"), subtitle = Season_Label) %>%
-  tab_options(column_labels.background.color = "#DBDBDB", row_group.background.color = Color_Home,
-              row_group.font.weight = "bold", table.width = "100%", heading.align = "left") %>%
-  tab_style(cell_text(color = Color_Home_Text), cells_row_groups())
+view_block(function(v) {
+  fav <- v$pairs %>% group_by(Passer) %>%
+    summarise(Completed = sum(Passes), `Favourite target` = Receiver[which.max(Passes)],
+              `Share %` = round(100 * max(Passes) / sum(Passes), 1), .groups = "drop") %>%
+    inner_join(v$squad %>% select(Passer = playerId, role, Minutes), by = "Passer") %>%
+    arrange(role, desc(Minutes)) %>%
+    transmute(Player = Passer, Role = as.character(role), Completed, `Favourite target`, `Share %`)
+  gt(fav, groupname_col = "Role") %>%
+    tab_header(title = md("**Favourite Passing Targets**"), subtitle = v$view_label) %>%
+    tab_options(column_labels.background.color = "#DBDBDB", row_group.background.color = Color_Home,
+                row_group.font.weight = "bold", table.width = "100%", heading.align = "left") %>%
+    tab_style(cell_text(color = Color_Home_Text), cells_row_groups()) %>%
+    tab_options(table.background.color = "white") %>%
+    as_raw_html(inline_css = TRUE) %>% HTML() %>% div(class = "rt-wrap")
+})
 ```
 
-# League Finder
+# Player Finder
 
 ## Row
 
 ```{r}
-#| title: Every League Player (search a name or club, filter a column, sort)
+#| title: Every Player (search a name or club, filter a column, sort)
 
 lf_cols <- c("Goals", "NPxG", "xA", "Shots", "Key passes", "Progressive passes", "Progressive carries",
              "Dribbles won", "EPV added", "Tackles won", "Interceptions", "Recoveries", "Aerials won",
              "Pass %", "Goals prevented", "Saves")
-lf_long <- season_metrics %>% filter(Minutes >= min_minutes, Metric %in% lf_cols)
-lf_val <- lf_long %>% select(TeamName, playerId, Metric, Value) %>% pivot_wider(names_from = Metric, values_from = Value)
-lf_pct <- lf_long %>% select(TeamName, playerId, Metric, Percentile) %>% pivot_wider(names_from = Metric, values_from = Percentile)
-lf <- season %>% filter(Minutes >= min_minutes) %>%
-  transmute(Player = playerId, Club = TeamName, Role = as.character(role), Apps, Mins = round(Minutes)) %>%
-  left_join(lf_val, by = c("Player" = "playerId", "Club" = "TeamName")) %>%
-  select(Player, Club, Role, Apps, Mins, any_of(lf_cols))
-lf_style <- function(col) function(value, index) {
-  p <- lf_pct[[col]][lf_pct$playerId == lf$Player[index] & lf_pct$TeamName == lf$Club[index]]
-  if (!length(p) || is.na(p)) return(NULL)
-  list(background = pct_colour(p))
+finder_table <- function(v) {
+  lf_long <- v$season_metrics %>% filter(Minutes >= v$min_minutes, Metric %in% lf_cols)
+  lf_val <- lf_long %>% select(TeamName, playerId, Metric, Value) %>% pivot_wider(names_from = Metric, values_from = Value)
+  lf_pct <- lf_long %>% select(TeamName, playerId, Metric, Percentile) %>% pivot_wider(names_from = Metric, values_from = Percentile)
+  lf <- v$season %>% filter(Minutes >= v$min_minutes) %>%
+    transmute(Player = playerId, Club = TeamName, Role = as.character(role), Apps, Mins = round(Minutes)) %>%
+    left_join(lf_val, by = c("Player" = "playerId", "Club" = "TeamName")) %>%
+    select(Player, Club, Role, Apps, Mins, any_of(lf_cols))
+  key <- paste(lf$Player, lf$Club); pkey <- paste(lf_pct$playerId, lf_pct$TeamName)
+  pc <- intersect(lf_cols, names(lf))
+  lf_defs <- c(
+    list(Player = colDef(minWidth = 160, sticky = "left", style = function(value, index)
+           if (lf$Club[index] == Match_Home) list(fontWeight = 700, color = Color_Home) else NULL),
+         Club = colDef(minWidth = 140, filterable = TRUE), Role = colDef(minWidth = 110, filterable = TRUE),
+         Apps = colDef(width = 60), Mins = colDef(width = 65)),
+    setNames(lapply(pc, function(cl) {
+      force(cl)
+      colDef(name = paste0(cl, ifelse(cl == "Pass %", "", " /90")), minWidth = 95, na = "-",
+             format = colFormat(digits = ifelse(cl == "Pass %", 1, 2)),
+             style = function(value, index) {
+               p <- lf_pct[[cl]][match(key[index], pkey)]
+               if (is.na(p)) NULL else pct_cell(p)
+             })
+    }), pc))
+  div(class = "rt-wrap",
+    reactable(lf, columns = lf_defs, searchable = TRUE, striped = TRUE, highlight = TRUE, compact = TRUE,
+              defaultPageSize = 25, defaultSorted = list(NPxG = "desc"),
+              theme = reactableTheme(headerStyle = list(background = Color_Home, color = Color_Home_Text))),
+    p(class = "cv-note",
+      paste0(v$label, ": players with ", v$min_minutes, "+ minutes (", v$n_teams, " clubs). ",
+             "Shading = percentile within the player's role (darker = higher). ", Match_Home, " players in bold.")))
 }
-lf_defs <- c(
-  list(Player = colDef(minWidth = 160, sticky = "left", style = function(value, index)
-         if (lf$Club[index] == Match_Home) list(fontWeight = 700, color = Color_Home) else NULL),
-       Club = colDef(minWidth = 140, filterable = TRUE), Role = colDef(minWidth = 110, filterable = TRUE),
-       Apps = colDef(width = 60), Mins = colDef(width = 65)),
-  setNames(lapply(intersect(lf_cols, names(lf)), function(cl)
-    colDef(name = paste0(cl, ifelse(cl == "Pass %", "", " /90")), minWidth = 95, na = "-",
-           format = colFormat(digits = ifelse(cl == "Pass %", 1, 2)), style = lf_style(cl))),
-    intersect(lf_cols, names(lf))))
-div(class = "rt-wrap",
-  reactable(lf, columns = lf_defs, searchable = TRUE, striped = TRUE, highlight = TRUE, compact = TRUE,
-            defaultPageSize = 25, defaultSorted = list(NPxG = "desc"),
-            theme = reactableTheme(headerStyle = list(background = Color_Home, color = Color_Home_Text))),
-  p(style = "font-size:.75rem;color:#555;margin:.4rem;",
-    paste0(Competition, " players with ", min_minutes, "+ minutes. Colours = percentile within the player's role (blue = high). ",
-           Match_Home, " players in bold.")))
+view_block(finder_table)
 ```
 
 # Methodology
@@ -671,8 +783,9 @@ div(class = "rt-wrap",
 ## Row
 
 ::: {.card .method-card title="How these numbers are worked out"}
+- **Competitions**: the buttons switch every table and chart on a page between all competitions and each competition the club has played in (Premier League, Champions League, League Cup, FA Cup when its database exists). Percentiles always compare with players in the same view: in the Champions League view that means every Champions League player.
 - **Minutes** come from the events: a player who started is on from minute 0; a substitute from his SubstitutionOn event; a player is off at his SubstitutionOff event or a red card, otherwise at the end of the game (stoppage time included). Penalty shoot-outs are left out.
-- **Per 90** = season total / minutes x 90. **Percentiles** compare a player with every league player in the same role (Goalkeeper, Defender, Midfielder, Forward; the role a player is listed in most) who has enough minutes (a quarter of the most games any club has played, at least 90 minutes). 50 = league median; for ball losses and fouls lower is better, so a high percentile means fewer.
+- **Per 90** = total / minutes x 90. **Percentiles** compare a player with every player in the same role (Goalkeeper, Defender, Midfielder, Forward; the role a player is listed in most) who has enough minutes in that view (a quarter of the most games any club has played there, at least 90 minutes). 50 = median; for ball losses and fouls lower is better, so a high percentile means fewer. Shading runs from pale grey (low) to the club colour (high).
 - **Goals** leave out own goals. **xG / NPxG / xGOT** are FotMob's, joined to the Opta events. **xA** and **EPV added** are the pipeline's (EPV added counts successful actions only).
 - **Goals prevented** (goalkeepers) = xGOT of shots on target faced while on the pitch minus goals conceded from them (own goals left out). **Save %** = shots on target faced that were not goals.
 - **Passing pairs**: a completed pass where the next action in the data is by a team-mate is counted as a pass to that team-mate.

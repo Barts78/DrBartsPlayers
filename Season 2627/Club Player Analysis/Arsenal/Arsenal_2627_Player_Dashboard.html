@@ -103,6 +103,17 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
 
+<style id="up-navbar-fit">
+/* top banner: keep it on one line on laptop screens */
+.navbar .navbar-nav .nav-link { padding-left:.45rem !important; padding-right:.45rem !important; font-size:.9rem; white-space:nowrap; }
+.navbar .navbar-nav { flex-wrap:nowrap; }
+.navbar-title, .navbar-title-text { white-space:nowrap; }
+.navbar-logo { max-height:2.2rem; }
+.quarto-dashboard-links { display:flex; flex-direction:row; flex-wrap:nowrap; align-items:center; }
+select.up-comp { margin-left:.6rem !important; max-width:10.5rem; }
+@media (max-width: 1500px) { .navbar-author { display:none; } }
+@media (max-width: 1400px) { .quarto-dashboard-links { display:none !important; } }
+</style>
 </head>
 
 <body class="quarto-dashboard fullcontent quarto-light">

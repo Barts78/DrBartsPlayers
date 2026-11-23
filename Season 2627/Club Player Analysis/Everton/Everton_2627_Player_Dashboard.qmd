@@ -511,7 +511,7 @@ minutes_plot <- function(v) {
 }
 view_block(function(v) {
   w <- max(8, min(16, 4 + 0.35 * nrow(v$team_games)))
-  img_tag(tryCatch(save_fig(minutes_plot(v), paste0("minutes-", v$id), w, 7, dpi = 170), error = function(e) NA))
+  img_tag(tryCatch(save_fig(minutes_plot(v), paste0("minutes-", v$id), w, 7, dpi = 140), error = function(e) NA))
 })
 ```
 
@@ -633,9 +633,9 @@ for (v in views) for (pid in profile_players$playerId) {
   body <- if (!nrow(pl) || pl$Minutes <= 0) {
     p(class = "cv-note", paste0(pid, " has not played in ", v$label, " this season."))
   } else {
-    f_pct <- tryCatch(save_fig(percentile_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-pct"), 7, 7.5, dpi = 130), error = function(e) NA)
-    f_trd <- tryCatch(save_fig(trend_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-trend"), 7, 3.6, dpi = 130), error = function(e) NA)
-    f_map <- tryCatch(save_fig(pitch_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-maps"), 13, 4.6, dpi = 130), error = function(e) NA)
+    f_pct <- tryCatch(save_fig(percentile_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-pct"), 7, 7.5, dpi = 110), error = function(e) NA)
+    f_trd <- tryCatch(save_fig(trend_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-trend"), 7, 3.6, dpi = 110), error = function(e) NA)
+    f_map <- tryCatch(save_fig(pitch_plot(v, pid), paste0("pp-", v$id, "-", stub(pid), "-maps"), 13, 4.6, dpi = 110), error = function(e) NA)
     chips <- c(as.character(pl$role), paste0("#", coalesce(as.character(pl$Shirt), "-")),
                paste0(pl$Apps, " apps (", pl$Starts, " starts)"), paste0(round(pl$Minutes), " mins"),
                paste0(pl$Goals, " goals"), paste0(pl$Assists, " assists"),
@@ -686,7 +686,7 @@ pass_matrix <- function(v) {
           axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 7), axis.text.y = element_text(size = 7),
           panel.grid = element_blank())
 }
-view_block(function(v) img_tag(tryCatch(save_fig(pass_matrix(v), paste0("passmatrix-", v$id), 10, 8.5, dpi = 170), error = function(e) NA)))
+view_block(function(v) img_tag(tryCatch(save_fig(pass_matrix(v), paste0("passmatrix-", v$id), 10, 8.5, dpi = 140), error = function(e) NA)))
 ```
 
 ## Row
